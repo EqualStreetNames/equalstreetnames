@@ -2,13 +2,13 @@
 
 ## How to get the streets of Brussels from _OpenStreetMap_ ?
 
-We used the [Overpass API](https://overpass-api.de/) to query the _OpenStretMap_ database.
+We used the [Overpass API](https://overpass-api.de/) to query the _OpenStreetMap_ database.
 
 ### Relations `associatedStreet`
 
-This is not the case everywhere in the world but in Brussels most of the streets have their [`associatedStreet` relation](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet).
+This is not the case everywhere in the world, but in Brussels most of the streets have an [`associatedStreet` relation](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet).
 
-We requested from _OpenStreetMap_ all the objects of [type `relation`](https://wiki.openstreetmap.org/wiki/Relation) tagged with [`type=associatedStreet`](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet) that are in Brussels Region and in the municipality 21001 (Anderlecht - see [list of municipalities](./municipalities.md)).
+We queried from _OpenStreetMap_ all the objects of [type `relation`](https://wiki.openstreetmap.org/wiki/Relation) tagged with [`type=associatedStreet`](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet) that are in Brussels Region and in the municipality 21001 (Anderlecht - see [list of municipalities](./municipalities.md)).
 
 ```
 [out:json][timeout:120];

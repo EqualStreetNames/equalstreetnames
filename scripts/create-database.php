@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__ . '/../');
+chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 
@@ -24,7 +24,7 @@ $glob = glob('data/overpass/associatedStreet/*.csv');
 foreach ($glob as $path) {
     $fname = pathinfo($path, PATHINFO_FILENAME);
 
-    if (($handle = fopen($path, "r")) !== false) {
+    if (($handle = fopen($path, 'r')) !== false) {
         while (($data = fgetcsv($handle, 1000, "\t")) !== false) {
             $stmt = $pdo->prepare('INSERT INTO relation VALUES(:municipality, :id, :name, :name_fr, :name_nl, :wikidata, :etymology)');
             $stmt->execute(
@@ -64,7 +64,7 @@ $glob = glob('data/overpass/highway/*.csv');
 foreach ($glob as $path) {
     $fname = pathinfo($path, PATHINFO_FILENAME);
 
-    if (($handle = fopen($path, "r")) !== false) {
+    if (($handle = fopen($path, 'r')) !== false) {
         while (($data = fgetcsv($handle, 1000, "\t")) !== false) {
             $stmt = $pdo->prepare('INSERT INTO way VALUES(:municipality, :id, :name, :name_fr, :name_nl, :wikidata, :etymology)');
             $stmt->execute(

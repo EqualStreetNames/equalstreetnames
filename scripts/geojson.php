@@ -1,12 +1,8 @@
 <?php
 
-/**
- *
- */
-
 declare(strict_types=1);
 
-chdir(__DIR__ . '/../');
+chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 
@@ -19,7 +15,7 @@ $relations = extractRelations($json['elements']);
 $waysInRelation = array_keys($ways);
 
 $geojson = [
-    'type' => 'FeatureCollection',
+    'type'     => 'FeatureCollection',
     'features' => [],
 ];
 
@@ -53,10 +49,10 @@ foreach ($relations as $r) {
     }
 
     $geojson['features'][] = [
-        'type' => 'Feature',
-        'id' => $r['id'],
+        'type'       => 'Feature',
+        'id'         => $r['id'],
         'properties' => $properties,
-        'geometry' => makeGeometry($linestrings),
+        'geometry'   => makeGeometry($linestrings),
     ];
 }
 
@@ -70,7 +66,7 @@ $nodes = extractNodes($json['elements']);
 $ways = extractWays($json['elements']);
 
 $geojson = [
-    'type' => 'FeatureCollection',
+    'type'     => 'FeatureCollection',
     'features' => [],
 ];
 
@@ -87,10 +83,10 @@ foreach ($ways as $w) {
         $linestring = appendCoordinates($nodes, $w);
 
         $geojson['features'][] = [
-            'type' => 'Feature',
-            'id' => $w['id'],
+            'type'       => 'Feature',
+            'id'         => $w['id'],
             'properties' => $properties,
-            'geometry' => makeGeometry(is_null($linestrings) ? null : [$linestring]),
+            'geometry'   => makeGeometry(is_null($linestrings) ? null : [$linestring]),
         ];
     }
 }
@@ -183,12 +179,12 @@ function makeGeometry(array $linestrings): ?array
         return null;
     } elseif (count($linestrings) > 1) {
         return [
-            'type' => 'MultiLineString',
+            'type'        => 'MultiLineString',
             'coordinates' => $linestrings,
         ];
     } else {
         return [
-            'type' => 'LineString',
+            'type'        => 'LineString',
             'coordinates' => $linestrings[0],
         ];
     }

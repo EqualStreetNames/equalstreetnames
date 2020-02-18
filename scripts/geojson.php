@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -27,6 +27,19 @@ foreach ($relations as $r) {
         'wikidata'  => $r['tags']['wikidata'] ?? null,
         'etymology' => $r['tags']['name:etymology:wikidata'] ?? null,
     ];
+
+    if (!is_null($properties['etymology'])) {
+        $etymology = extractWikidata($properties['etymology']);
+
+        if (!is_null($etymology['gender'])) {
+            $properties = array_merge(
+                $properties,
+                [
+                    'person' => $etymology,
+                ]
+            );
+        }
+    }
 
     $streets = array_filter(
         $r['members'],
@@ -79,6 +92,19 @@ foreach ($ways as $w) {
             'wikidata'  => $w['tags']['wikidata'] ?? null,
             'etymology' => $w['tags']['name:etymology:wikidata'] ?? null,
         ];
+
+        if (!is_null($properties['etymology'])) {
+            $etymology = extractWikidata($properties['etymology']);
+
+            if (!is_null($etymology['gender'])) {
+                $properties = array_merge(
+                    $properties,
+                    [
+                        'person' => $etymology,
+                    ]
+                );
+            }
+        }
 
         $linestring = appendCoordinates($nodes, $w);
 
@@ -187,5 +213,75 @@ function makeGeometry(array $linestrings): ?array
             'type'        => 'LineString',
             'coordinates' => $linestrings[0],
         ];
+    }
+}
+
+function extractWikidata(string $identifier): ?array
+{
+    $path = sprintf('data/wikidata/%s.json', $identifier);
+
+    if (!file_exists($path)) {
+        printf('Missing file for %s.%s', $identifier, PHP_EOL);
+
+        return null;
+    }
+
+    $json = json_decode(file_get_contents($path), true);
+
+    $entity = $json['entities'][$identifier] ?? null;
+
+    if (is_null($entity)) {
+        printf('Entity %s missing in "%s".%s', $identifier, basename($path), PHP_EOL);
+
+        return null;
+    }
+
+    $labels = array_filter(
+        $entity['labels'],
+        function ($language) {
+            return in_array($language, ['fr', 'en', 'nl', 'de']);
+        },
+        ARRAY_FILTER_USE_KEY
+    );
+
+    $descriptions = array_filter(
+        $entity['descriptions'],
+        function ($language) {
+            return in_array($language, ['fr', 'en', 'nl', 'de']);
+        },
+        ARRAY_FILTER_USE_KEY
+    );
+
+    $genderId = $entity['claims']['P21'][0]['mainsnak']['datavalue']['value']['id'] ?? null;
+
+    $image = $entity['claims']['P18'][0]['mainsnak']['datavalue']['value'] ?? null;
+
+    return [
+        'labels'       => $labels,
+        'descriptions' => $descriptions,
+        'gender'       => is_null($genderId) ? "" : extractGender($genderId),
+        'image'        => sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
+    ];
+}
+
+function extractGender(string $identifier): ?string
+{
+    $gender = null;
+
+    switch ($identifier) {
+        case 'Q6581097': // male
+            return 'M';
+
+        case 'Q6581072': // female
+            return 'F';
+
+        case 'Q1097630': // intersex
+        case 'Q1052281': // transgender female
+        case 'Q2449503': // transgender male
+            return 'X';
+
+        default:
+            printf('Undefined gender %s.%s', $identifier, PHP_EOL);
+            return null;
     }
 }

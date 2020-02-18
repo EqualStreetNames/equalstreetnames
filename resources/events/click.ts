@@ -21,7 +21,7 @@ export default function(map: Map, event: MapMouseEvent): void {
 
   let html = `<strong>${name}</strong><br>`;
 
-  if (properties.person !== null) {
+  if (typeof properties.person !== "undefined" && properties.person !== null) {
     const personData = JSON.parse(properties.person);
 
     html += "<div>";

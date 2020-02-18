@@ -239,7 +239,7 @@ function extractWikidata(string $identifier): ?array
     $labels = array_filter(
         $entity['labels'],
         function ($language) {
-            return in_array($language, ['fr', 'en', 'nl', 'de']);
+            return in_array($language, ['de', 'en', 'fr', 'nl']);
         },
         ARRAY_FILTER_USE_KEY
     );
@@ -247,7 +247,7 @@ function extractWikidata(string $identifier): ?array
     $descriptions = array_filter(
         $entity['descriptions'],
         function ($language) {
-            return in_array($language, ['fr', 'en', 'nl', 'de']);
+            return in_array($language, ['de', 'en', 'fr', 'nl']);
         },
         ARRAY_FILTER_USE_KEY
     );

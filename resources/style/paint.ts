@@ -9,7 +9,7 @@ export default {
       ["==", ["get", "gender", ["get", "person"]], "F"],
       "#800080",
       ["==", ["get", "gender", ["get", "person"]], "M"],
-      "#FFFF00",
+      "#C8C800",
       ["==", ["get", "gender", ["get", "person"]], "X"],
       "#008040",
       "#DDDDDD"

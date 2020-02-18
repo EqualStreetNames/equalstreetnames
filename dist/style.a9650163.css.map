@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.css"],"names":[],"mappings":"AAKA,eAHE,WAMF,CAHA,KAEE,qBACF","file":"style.a9650163.css","sourceRoot":"..","sourcesContent":["html,\nbody {\n  height: 100%;\n}\n\n#map {\n  height: 100%;\n  background-color: #dddddd;\n}\n"]}

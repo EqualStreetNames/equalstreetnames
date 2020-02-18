@@ -2,3 +2,5 @@
 !.gitignore
 !overpass
 !overpass/.gitkeep
+!wikidata
+!wikidata/.gitkeep

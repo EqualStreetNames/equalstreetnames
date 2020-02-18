@@ -30,6 +30,7 @@ map.addControl(scale);
 
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
+  bbox: [4.243544, 50.763726, 4.482277, 50.913384],
   countries: "be",
   enableEventLogging: false,
   mapboxgl: mapboxgl

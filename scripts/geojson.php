@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__ . '/../');
+chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 
@@ -259,7 +259,7 @@ function extractWikidata(string $identifier): ?array
     return [
         'labels'       => $labels,
         'descriptions' => $descriptions,
-        'gender'       => is_null($genderId) ? "" : extractGender($genderId),
+        'gender'       => is_null($genderId) ? '' : extractGender($genderId),
         'image'        => sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
     ];
 }
@@ -282,6 +282,7 @@ function extractGender(string $identifier): ?string
 
         default:
             printf('Undefined gender %s.%s', $identifier, PHP_EOL);
+
             return null;
     }
 }

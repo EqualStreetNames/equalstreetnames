@@ -259,7 +259,7 @@ function extractWikidata(string $identifier): ?array
     return [
         'labels'       => $labels,
         'descriptions' => $descriptions,
-        'gender'       => is_null($genderId) ? '' : extractGender($genderId),
+        'gender'       => is_null($genderId) ? null : extractGender($genderId),
         'image'        => sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
     ];
 }

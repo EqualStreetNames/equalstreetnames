@@ -252,6 +252,14 @@ function extractWikidata(string $identifier): ?array
         ARRAY_FILTER_USE_KEY
     );
 
+    $sitelinks = array_filter(
+        $entity['sitelinks'],
+        function ($language) {
+            return in_array($language, ['dewiki', 'enwiki', 'frwiki', 'nlwiki']);
+        },
+        ARRAY_FILTER_USE_KEY
+    );
+
     $genderId = $entity['claims']['P21'][0]['mainsnak']['datavalue']['value']['id'] ?? null;
 
     $image = $entity['claims']['P18'][0]['mainsnak']['datavalue']['value'] ?? null;
@@ -261,6 +269,7 @@ function extractWikidata(string $identifier): ?array
         'descriptions' => $descriptions,
         'gender'       => is_null($genderId) ? null : extractGender($genderId),
         'image'        => sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
+        'sitelinks'    => $sitelinks,
     ];
 }
 

@@ -11,3 +11,17 @@ body {
   height: 100%;
   background-color: #dddddd;
 }
+
+.mapboxgl-popup-content {
+  min-width: 200px;
+}
+.mapboxgl-popup-content > .popup-streetname {
+  font-weight: bold;
+}
+.mapboxgl-popup-content > .popup-wikidata > .popup-name {
+  font-size: 1.3rem;
+  white-space: nowrap;
+}
+.mapboxgl-popup-content > .popup-wikidata > .popup-links {
+  margin-top: 10px;
+}

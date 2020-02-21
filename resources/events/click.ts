@@ -1,77 +1,65 @@
 "use strict";
 
-import mapboxgl, { Map, MapMouseEvent } from "mapbox-gl";
+import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from "mapbox-gl";
 
-const lang = "fr";
+import getName from "../wikidata/labels";
+import getDescription from "../wikidata/descriptions";
+import getWikipedia from "../wikidata/sitelinks";
 
-export default function(map: Map, event: MapMouseEvent): void {
-  console.log(event.features[0].geometry);
+import popupContent from "../popup";
 
-  const properties = event.features[0].properties;
+interface Property {
+  name: string;
+  "name:fr"?: string;
+  "name:nl"?: string;
+  wikidata: string | null;
+  etymology: string | null;
+  person?: string;
+}
 
-  const name = properties[`name:${lang}`] ?? properties.name;
+export default function(
+  map: Map,
+  features: MapboxGeoJSONFeature[],
+  lnglat: LngLat
+): void {
+  const properties = features[0].properties as Property;
+  const person =
+    typeof properties.person !== "undefined" && properties.person !== null
+      ? JSON.parse(properties.person)
+      : null;
 
-  // Ensure that if the map is zoomed out such that multiple
-  // copies of the feature are visible, the popup appears
-  // over the copy being pointed to.
-  // const coordinates = event.features[0].geometry.coordinates.slice();
-  // while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
-  //   coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
-  // }
+  console.log(person);
 
-  let html = `<strong>${name}</strong><br>`;
+  const lang =
+    (document.querySelector("html") as HTMLElement).getAttribute("lang") ??
+    "en";
 
-  if (typeof properties.person !== "undefined" && properties.person !== null) {
-    const personData = JSON.parse(properties.person);
+  const html = popupContent(
+    getStreetname(properties),
+    properties.etymology ?? null,
+    person !== null ? getName(person, lang) : null,
+    person !== null ? getDescription(person, lang) : null,
+    person !== null ? getWikipedia(person, lang) : null
+  );
 
-    html += "<div>";
-
-    // if (personData.image !== null) {
-    //   html += `<div><img src="${personData.image}"></div>`;
-    // }
-
-    if (Object.keys(personData.labels).length > 0) {
-      const label =
-        personData.labels[lang] ??
-        personData.labels.en ??
-        personData.labels.fr ??
-        personData.labels.nl ??
-        personData.labels.de;
-
-      html += `<div>${label.value}</div>`;
-    }
-
-    if (Object.keys(personData.descriptions).length > 0) {
-      const description =
-        personData.descriptions[lang] ??
-        personData.descriptions.en ??
-        personData.descriptions.fr ??
-        personData.descriptions.nl ??
-        personData.descriptions.de;
-
-      html += `<div>${description.value}</div>`;
-    }
-
-    if (Object.keys(personData.sitelinks).length > 0) {
-      const wikipedia =
-        personData.sitelinks[`${lang}wiki`] ??
-        personData.sitelinks.enwiki ??
-        personData.sitelinks.frwiki ??
-        personData.sitelinks.nlwiki ??
-        personData.sitelinks.dewiki;
-
-      html += `<div>Link to <a target="_blank" href="${wikipedia.url}">Wikipedia</a>.</div>`;
-    }
-
-    html += `<div>Data from <a target="_blank" href="https://www.wikidata.org/wiki/${properties.etymology}">Wikidata</a></div>`;
-
-    html += "</div>";
-  }
-
-  new mapboxgl.Popup({
-    maxWidth: "none"
-  })
-    .setLngLat(event.lngLat)
+  new mapboxgl.Popup({ maxWidth: "none" })
+    .setLngLat(lnglat)
     .setHTML(html)
     .addTo(map);
+}
+
+function getStreetname(properties: {
+  name: string;
+  "name:fr"?: string;
+  "name:nl"?: string;
+}): string {
+  const streetname = properties.name;
+  const streetnameFr = properties["name:fr"] ?? null;
+  const streetnameNl = properties["name:nl"] ?? null;
+
+  if (streetnameFr !== null && streetnameNl !== null) {
+    return `${streetnameFr}<br>${streetnameNl}`;
+  } else {
+    return streetname;
+  }
 }

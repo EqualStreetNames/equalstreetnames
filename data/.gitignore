@@ -1,5 +1,7 @@
 *
 !.gitignore
+!event-2020-02-17
+!event-2020-02-17/*.ods
 !overpass
 !overpass/.gitkeep
 !wikidata

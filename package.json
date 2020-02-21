@@ -28,6 +28,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "mapbox-gl": "^1.7.0"
   }

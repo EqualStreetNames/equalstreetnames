@@ -1,6 +1,10 @@
 "use strict";
 
-import mapboxgl from "mapbox-gl";
+import mapboxgl, {
+  MapMouseEvent,
+  MapboxGeoJSONFeature,
+  EventData
+} from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 import onClick from "./events/click";
@@ -47,8 +51,20 @@ map.on("load", () => {
   addWays(map);
 
   // Add click event.
-  map.on("click", "layer-relations", event => onClick(map, event));
-  map.on("click", "layer-ways", event => onClick(map, event));
+  map.on(
+    "click",
+    "layer-relations",
+    (
+      event: MapMouseEvent & { features?: MapboxGeoJSONFeature[] } & EventData
+    ) => onClick(map, event.features ?? [], event.lngLat)
+  );
+  map.on(
+    "click",
+    "layer-ways",
+    (
+      event: MapMouseEvent & { features?: MapboxGeoJSONFeature[] } & EventData
+    ) => onClick(map, event.features ?? [], event.lngLat)
+  );
 
   // Change the cursor to a pointer when the mouse is over a layer.
   map.on("mouseenter", "layer-relations", event => onMouseEnter(map, event));

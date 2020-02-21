@@ -12,6 +12,8 @@ import addWays from "./layers/ways";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiamJlbGllbiIsImEiOiJjazZxa2t1OTUwYTc4M25xbGRsZWZ6bWhvIn0.h4pue9yL6pEYH8rjluftMw";
 
+const lang = document.querySelector("html").getAttribute("lang");
+
 // Initialize map.
 const map = new mapboxgl.Map({
   center: [4.3651, 50.8355],
@@ -33,6 +35,7 @@ const geocoder = new MapboxGeocoder({
   bbox: [4.243544, 50.763726, 4.482277, 50.913384],
   countries: "be",
   enableEventLogging: false,
+  language: lang,
   mapboxgl: mapboxgl
 });
 map.addControl(geocoder);

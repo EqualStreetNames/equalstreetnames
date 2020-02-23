@@ -6,3 +6,5 @@
 !overpass/.gitkeep
 !wikidata
 !wikidata/.gitkeep
+!relations.geojson
+!ways.geojson

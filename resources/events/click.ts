@@ -30,8 +30,6 @@ export default function(
       ? JSON.parse(properties.person)
       : null;
 
-  console.log(person);
-
   const lang =
     (document.querySelector("html") as HTMLElement).getAttribute("lang") ??
     "en";

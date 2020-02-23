@@ -264,11 +264,16 @@ function extractWikidata(string $identifier): ?array
 
     $image = $entity['claims']['P18'][0]['mainsnak']['datavalue']['value'] ?? null;
 
+    $dateOfBirth = $entity['claims']['P569'][0]['mainsnak']['datavalue']['value']['time'] ?? null;
+    $dateOfDeath = $entity['claims']['P570'][0]['mainsnak']['datavalue']['value']['time'] ?? null;
+
     return [
         'labels'       => $labels,
         'descriptions' => $descriptions,
         'gender'       => is_null($genderId) ? null : extractGender($genderId),
-        'image'        => sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
+        'birth'        => is_null($dateOfBirth) ? null : date('Y', strtotime($dateOfBirth)),
+        'death'        => is_null($dateOfDeath) ? null : date('Y', strtotime($dateOfDeath)),
+        'image'        => is_null($image) ? null : sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
         'sitelinks'    => $sitelinks,
     ];
 }

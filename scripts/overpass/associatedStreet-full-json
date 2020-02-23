@@ -1,7 +1,7 @@
 /**
  * Get all the associatedStreet relations in Brussels Region.
  */
-[out:json][timeout:120];
+[out:json][timeout:300];
 ( area["admin_level"="4"]["ref:INS"="04000"]["wikidata"="Q240"]; )->.a;
 ( relation["type"="associatedStreet"](area.a); );
 out body;

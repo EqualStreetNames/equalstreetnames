@@ -4,8 +4,8 @@ export default function(
   streetname: string,
   wikidata?: string | null,
   name?: string | null,
-  birth?: string | null,
-  death?: string | null,
+  birth?: number | null,
+  death?: number | null,
   description?: string | null,
   wikipedia?: { lang: string; url: string } | null
 ): string {

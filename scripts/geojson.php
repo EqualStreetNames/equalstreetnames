@@ -271,8 +271,8 @@ function extractWikidata(string $identifier): ?array
         'labels'       => $labels,
         'descriptions' => $descriptions,
         'gender'       => is_null($genderId) ? null : extractGender($genderId),
-        'birth'        => is_null($dateOfBirth) ? null : date('Y', strtotime($dateOfBirth)),
-        'death'        => is_null($dateOfDeath) ? null : date('Y', strtotime($dateOfDeath)),
+        'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 1, 4)),
+        'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 1, 4)),
         'image'        => is_null($image) ? null : sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
         'sitelinks'    => $sitelinks,
     ];

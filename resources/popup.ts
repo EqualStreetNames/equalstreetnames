@@ -27,6 +27,9 @@ export default function(
         (death === null ? "???" : death) +
         "</div>";
     }
+    if (description !== null) {
+      html += `<p class="popup-description">${description}</p>`;
+    }
     html += '<div class="popup-links">';
     html +=
       typeof wikipedia !== "undefined" && wikipedia !== null

@@ -4,6 +4,8 @@ export default function(
   streetname: string,
   wikidata?: string | null,
   name?: string | null,
+  birth?: string | null,
+  death?: string | null,
   description?: string | null,
   wikipedia?: { lang: string; url: string } | null
 ): string {
@@ -17,7 +19,14 @@ export default function(
   ) {
     html += '<div class="popup-wikidata">';
     html += `<div class="popup-name">${name}</div>`;
-    html += `<div class="popup-description">${description}</div>`;
+    if (birth !== null || death !== null) {
+      html +=
+        '<div class="popup-life">' +
+        (birth === null ? "???" : birth) +
+        " - " +
+        (death === null ? "???" : death) +
+        "</div>";
+    }
     html += '<div class="popup-links">';
     html +=
       typeof wikipedia !== "undefined" && wikipedia !== null

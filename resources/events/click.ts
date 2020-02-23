@@ -3,6 +3,8 @@
 import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from "mapbox-gl";
 
 import getName from "../wikidata/labels";
+import getBirth from "../wikidata/birth";
+import getDeath from "../wikidata/death";
 import getDescription from "../wikidata/descriptions";
 import getWikipedia from "../wikidata/sitelinks";
 
@@ -38,6 +40,8 @@ export default function(
     getStreetname(properties),
     properties.etymology ?? null,
     person !== null ? getName(person, lang) : null,
+    person !== null ? getBirth(person) : null,
+    person !== null ? getDeath(person) : null,
     person !== null ? getDescription(person, lang) : null,
     person !== null ? getWikipedia(person, lang) : null
   );

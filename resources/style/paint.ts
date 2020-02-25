@@ -1,5 +1,7 @@
 "use strict";
 
+import colors from "../colors";
+
 export default {
   "line-color": [
     "case",
@@ -7,11 +9,11 @@ export default {
     [
       "case",
       ["==", ["get", "gender", ["get", "person"]], "F"],
-      "#800080",
+      colors.female,
       ["==", ["get", "gender", ["get", "person"]], "M"],
-      "#C8C800",
+      colors.male,
       ["==", ["get", "gender", ["get", "person"]], "X"],
-      "#008040",
+      colors.other,
       "#DDDDDD"
     ],
     "#DDDDDD"

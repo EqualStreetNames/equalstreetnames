@@ -18,6 +18,6 @@ export default {
     ],
     "#DDDDDD"
   ],
-  "line-width": ["case", ["==", ["to-boolean", ["get", "person"]], true], 5, 1],
+  "line-width": ["case", ["==", ["to-boolean", ["get", "person"]], true], 3, 1],
   "line-opacity": 0.8
 };

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -13,6 +13,8 @@ $ways = extractWays($json['elements']);
 $relations = extractRelations($json['elements']);
 
 $waysInRelation = array_keys($ways);
+
+$streetsGender = readStreetsGender();
 
 $geojson = [
     'type'     => 'FeatureCollection',
@@ -36,6 +38,19 @@ foreach ($relations as $r) {
                 $properties,
                 [
                     'person' => $etymology,
+                ]
+            );
+        }
+    } else {
+        $gender = getGender($streetsGender, $r['tags']['name:fr'] ?? $r['tags']['name'], $r['tags']['name:nl'] ?? $r['tags']['name']);
+
+        if (!is_null($gender)) {
+            $properties = array_merge(
+                $properties,
+                [
+                    'person' => [
+                        'gender' => $gender,
+                    ],
                 ]
             );
         }
@@ -101,6 +116,19 @@ foreach ($ways as $w) {
                     $properties,
                     [
                         'person' => $etymology,
+                    ]
+                );
+            }
+        } else {
+            $gender = getGender($streetsGender, $w['tags']['name:fr'] ?? $w['tags']['name'], $w['tags']['name:nl'] ?? $w['tags']['name']);
+
+            if (!is_null($gender)) {
+                $properties = array_merge(
+                    $properties,
+                    [
+                        'person' => [
+                            'gender' => $gender,
+                        ],
                     ]
                 );
             }
@@ -298,5 +326,56 @@ function extractGender(string $identifier): ?string
             printf('Undefined gender %s.%s', $identifier, PHP_EOL);
 
             return null;
+    }
+}
+
+function readStreetsGender(): array
+{
+    $streets = [];
+
+    if (($handle = fopen('data/event-2020-02-17/gender.csv', 'r')) !== false) {
+        while (($data = fgetcsv($handle)) !== false) {
+            $streets[] = $data;
+        }
+        fclose($handle);
+    }
+
+    return $streets;
+}
+
+function getGender(array $streets, string $nameFr, string $nameNl): ?string
+{
+    $filter = array_filter(
+        $streets,
+        function ($street) use ($nameFr, $nameNl) {
+            return $street[0] === $nameFr || $street[1] === $nameNl;
+        }
+    );
+
+    if (count($filter) === 0) {
+        return null;
+    } elseif (count($filter) === 1) {
+        $street = current($filter);
+
+        return $street[2];
+    } else {
+        // printf('Multiple records for street "%s - %s".%s', $nameFr, $nameNl, PHP_EOL);
+
+        $gender = [];
+        foreach ($filter as $street) {
+            if (!in_array($street[2], $gender)) {
+                $gender[] = $street[2];
+            }
+        }
+
+        if (count($gender) === 0) {
+            return null;
+        } elseif (count($gender) === 1) {
+            return current($gender);
+        } else {
+            printf('Ambiguous gender for street "%s - %s".%s', $nameFr, $nameNl, PHP_EOL);
+
+            return null;
+        }
     }
 }

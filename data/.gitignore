@@ -2,6 +2,7 @@
 !.gitignore
 !event-2020-02-17
 !event-2020-02-17/*.ods
+!event-2020-02-17/gender.csv
 !overpass
 !overpass/.gitkeep
 !wikidata

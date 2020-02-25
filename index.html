@@ -60,6 +60,15 @@
 
     <main class="flex-fill">
         <div id="map"></div>
+        <div id="chart-overlay" class="d-none d-sm-block">
+            <div id="gender-chart-legend" class="d-flex justify-content-around">
+                <div style="color: #C8C800;"><i class="fas fa-2x fa-mars"></i> Male</div>
+                <div style="color: #800080;"><i class="fas fa-2x fa-venus"></i> Female</div>
+                <div style="color: #008040;"><i class="fas fa-2x fa-transgender"></i> Other
+                </div>
+            </div>
+            <canvas id="gender-chart" width="250" height="150"></canvas>
+        </div>
     </main>
 
     <div id="about" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">

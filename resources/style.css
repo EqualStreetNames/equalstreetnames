@@ -25,3 +25,13 @@ body {
 .mapboxgl-popup-content > .popup-wikidata > .popup-links {
   margin-top: 10px;
 }
+
+#chart-overlay {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+}

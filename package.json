@@ -21,6 +21,7 @@
   "homepage": "https://github.com/geo6/equalstreetnames#readme",
   "devDependencies": {
     "@babel/core": "^7.8.4",
+    "@types/chart.js": "^2.9.14",
     "@types/mapbox-gl": "^1.7.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
@@ -30,6 +31,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
+    "chart.js": "^2.9.3",
     "mapbox-gl": "^1.7.0"
   }
 }

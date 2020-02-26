@@ -59,7 +59,7 @@ function updateLabels(
   });
 }
 
-export default function(element: HTMLCanvasElement) {
+export default function(element: HTMLCanvasElement): void {
   elementCanvas = element;
   elementDiv = elementCanvas.parentElement as HTMLDivElement;
 

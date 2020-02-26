@@ -9,14 +9,14 @@ export default {
     [
       "case",
       ["==", ["get", "gender", ["get", "person"]], "F"],
-      colors.female,
+      colors.f,
       ["==", ["get", "gender", ["get", "person"]], "M"],
-      colors.male,
+      colors.m,
       ["==", ["get", "gender", ["get", "person"]], "X"],
-      colors.other,
-      "#DDDDDD"
+      colors.x,
+      colors.o
     ],
-    "#DDDDDD"
+    colors.o
   ],
   "line-width": ["case", ["==", ["to-boolean", ["get", "person"]], true], 3, 1],
   "line-opacity": 0.8

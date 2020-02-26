@@ -1,7 +1,8 @@
 "use strict";
 
 export default {
-  female: "#800080",
-  male: "#C8C800",
-  other: "#008040"
+  f: "#800080", // female
+  m: "#C8C800", // male
+  x: "#008040", // transgender
+  o: "#DDDDDD" // other (not a person)
 };

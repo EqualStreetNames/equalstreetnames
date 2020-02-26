@@ -8,8 +8,8 @@ body {
 }
 
 #map {
-  height: 100%;
   background-color: #dddddd;
+  height: 100%;
 }
 
 .mapboxgl-popup-content {
@@ -30,9 +30,9 @@ body {
   background-color: rgba(255, 255, 255, 0.9);
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
+  bottom: 50px;
   padding: 10px;
   position: absolute;
   right: 0;
-  bottom: 50px;
   width: 250px;
 }

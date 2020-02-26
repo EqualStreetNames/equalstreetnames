@@ -18,7 +18,7 @@ export default function(lang: string): Map {
     container: "map",
     hash: true,
     style: "mapbox://styles/mapbox/dark-v10",
-    zoom: 10
+    zoom: 11
   });
 
   // Add controls.

@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geo6/equalstreetnames.git"
+    "url": "git+https://github.com/openknowledgebe/equalstreetnames.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/geo6/equalstreetnames/issues"
+    "url": "https://github.com/openknowledgebe/equalstreetnames/issues"
   },
-  "homepage": "https://github.com/geo6/equalstreetnames#readme",
+  "homepage": "https://github.com/openknowledgebe/equalstreetnames#readme",
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@types/chart.js": "^2.9.14",

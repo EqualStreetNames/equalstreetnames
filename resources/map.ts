@@ -39,6 +39,8 @@ export default function(lang: string): Map {
   map.addControl(geocoder);
 
   map.on("load", () => {
+    map.resize();
+
     // Add GeoJSON sources.
     addRelations(map);
     addWays(map);

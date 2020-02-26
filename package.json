@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "parcel build index.html --no-source-maps",
+    "build": "parcel build public/index.html public/*/index.html --no-source-maps",
     "serve": "parcel public/index.html public/*/index.html"
   },
   "repository": {

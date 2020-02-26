@@ -9,7 +9,7 @@ body {
 
 #map {
   background-color: #dddddd;
-  height: 100vh;
+  height: 100%;
 }
 
 .mapboxgl-popup-content {

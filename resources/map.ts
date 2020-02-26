@@ -9,6 +9,8 @@ import addEvents from "./map/events";
 
 export let map: Map;
 
+mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+
 export default function(lang: string): Map {
   // Initialize map.
   map = new mapboxgl.Map({

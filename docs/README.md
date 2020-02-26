@@ -25,7 +25,19 @@ Of course, not all the streets refer to a person (or an entity) and thus need a 
 To link all the streets that refer to a person to the equivalent _Wikidata_ item, we organized an event were we asked 100 people to manually find the _Wikidata_ item (or the _Wikipedia_ page) about the person from the streetname.
 
 To avoid any issue and to simplify the workflow, the 100 people didn't edit _Wikipedia_, _Wikidata_, or _OpenStreetMap_.  
-The result of there work has been tagged in _OpenStreetMap_ [...procedure still to define and document...]
+The result of their work has been tagged manually in _OpenStreetMap_ by [OpenStreetMap Belgium](https://openstreetmap.be/) volunteers. (**work in progress**).
+
+## Get the gender (and data about the person)
+
+### `name:etymology:wikidata` tag
+
+If there is a `name:etymology:wikidata` tag in _OpenStreetMap_, the process query that item from _Wikidata_.
+
+...
+
+### No `name:etymology:wikidata` tag
+
+...
 
 ## Documentation
 

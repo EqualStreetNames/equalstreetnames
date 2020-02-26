@@ -262,6 +262,21 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="./resources/index.ts"></script>
+    <!-- Fathom - simple website analytics - https://usefathom.com -->
+    <script>
+        (function(f, a, t, h, o, m){
+        a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+        };
+        o=f.createElement('script'),
+        m=f.getElementsByTagName('script')[0];
+        o.async=1; o.src=t; o.id='fathom-script';
+        m.parentNode.insertBefore(o,m)
+        })(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
+        fathom('set', 'siteId', 'PPWXMIWB');
+        fathom('trackPageview');
+    </script>
+    <!-- / Fathom -->
 </body>
 
 </html>

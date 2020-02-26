@@ -56,18 +56,26 @@
     <main class="flex-fill">
         <div id="map"></div>
         <div id="chart-overlay" class="d-none d-sm-block">
-            <div id="gender-chart-legend" class="d-flex justify-content-around">
-                <div style="color: #C8C800;">
-                    <i class="fas fa-2x fa-mars"></i> Male
-                </div>
-                <div style="color: #800080;">
-                    <i class="fas fa-2x fa-venus"></i> Female
-                </div>
-                <div style="color: #008040;">
-                    <i class="fas fa-2x fa-transgender"></i> Transgender
-                </div>
+            <div id="gender-chart">
+                <ul id="gender-chart-legend" class="list-unstyled fa-ul">
+                    <li class="gender-chart-label" data-gender="m">
+                        <span class="fa-li"><i class="fas fa-lg fa-mars"></i></span>
+                        Male:
+                        <span class="gender-chart-count"></span>
+                    </li>
+                    <li class="gender-chart-label" data-gender="f">
+                        <span class="fa-li"><i class="fas fa-lg fa-venus"></i></span>
+                        Female:
+                        <span class="gender-chart-count"></span>
+                    </li>
+                    <li class="gender-chart-label" data-gender="x">
+                        <span class="fa-li"><i class="fas fa-lg fa-transgender"></i></span>
+                        Transgender:
+                        <span class="gender-chart-count"></span>
+                    </li>
+                </ul>
+                <canvas width="250" height="100"></canvas>
             </div>
-            <canvas id="gender-chart" width="250" height="150"></canvas>
         </div>
     </main>
 
@@ -273,14 +281,14 @@
     <script src="./resources/index.ts"></script>
     <!-- Fathom - simple website analytics - https://usefathom.com -->
     <script>
-        (function(f, a, t, h, o, m){
-        a[h]=a[h]||function(){
-        (a[h].q=a[h].q||[]).push(arguments)
-        };
-        o=f.createElement('script'),
-        m=f.getElementsByTagName('script')[0];
-        o.async=1; o.src=t; o.id='fathom-script';
-        m.parentNode.insertBefore(o,m)
+        (function (f, a, t, h, o, m) {
+            a[h] = a[h] || function () {
+                (a[h].q = a[h].q || []).push(arguments)
+            };
+            o = f.createElement('script'),
+                m = f.getElementsByTagName('script')[0];
+            o.async = 1; o.src = t; o.id = 'fathom-script';
+            m.parentNode.insertBefore(o, m)
         })(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
         fathom('set', 'siteId', 'PPWXMIWB');
         fathom('trackPageview');

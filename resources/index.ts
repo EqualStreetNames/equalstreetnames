@@ -14,7 +14,9 @@ import addRelations from "./layers/relation";
 import addWays from "./layers/ways";
 import initChart from "./chart";
 
-initChart();
+initChart(
+  document.querySelector("#gender-chart > canvas") as HTMLCanvasElement
+);
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiamJlbGllbiIsImEiOiJjazZxa2t1OTUwYTc4M25xbGRsZWZ6bWhvIn0.h4pue9yL6pEYH8rjluftMw";

@@ -2,13 +2,13 @@
 
 import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from "mapbox-gl";
 
-import getName from "../wikidata/labels";
-import getBirth from "../wikidata/birth";
-import getDeath from "../wikidata/death";
-import getDescription from "../wikidata/descriptions";
-import getWikipedia from "../wikidata/sitelinks";
+import getName from "../../wikidata/labels";
+import getBirth from "../../wikidata/birth";
+import getDeath from "../../wikidata/death";
+import getDescription from "../../wikidata/descriptions";
+import getWikipedia from "../../wikidata/sitelinks";
 
-import popupContent from "../popup";
+import popupContent from "../../popup";
 
 interface Property {
   name: string;

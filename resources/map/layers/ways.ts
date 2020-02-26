@@ -5,22 +5,22 @@ import { Map } from "mapbox-gl";
 import layout from "../style/layout";
 import paint from "../style/paint";
 
-import relations from "../../data/relations.geojson";
+import ways from "../../../data/ways.geojson";
 
 const attribution =
   '© <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 export default function(map: Map): void {
-  map.addSource("geojson-relations", {
+  map.addSource("geojson-ways", {
     type: "geojson",
     attribution,
-    data: relations
+    data: ways
   });
 
   map.addLayer({
-    id: "layer-relations",
+    id: "layer-ways",
     type: "line",
-    source: "geojson-relations",
+    source: "geojson-ways",
     layout,
     paint
   });

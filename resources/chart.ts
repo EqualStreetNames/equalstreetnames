@@ -40,22 +40,31 @@ function createChart(data: number[]): Chart | null {
   return null;
 }
 
-function updateLabels(
-  count: { f: number; m: number; x: number; o: number },
-  total: number
-): void {
+function updateLabel(gender: string, count: number, total: number): void {
+  const labelElement = elementDiv.querySelector(
+    `.gender-chart-label[data-gender=${gender}]`
+  ) as HTMLDivElement;
+  const countElement = labelElement.querySelector(
+    ".gender-chart-count"
+  ) as HTMLSpanElement;
+
+  const percentage = Math.round((count / total) * 100 * 100) / 100;
+
+  labelElement.style.color = colors[gender];
+  countElement.innerText = `${count} (${percentage}%)`;
+}
+
+function updateLabels(count: {
+  f: number;
+  m: number;
+  x: number;
+  o: number;
+}): void {
+  const totalPerson = count.f + count.m + count.x;
+  const total = totalPerson + count.o;
+
   ["f", "m", "x"].forEach((gender: string) => {
-    const labelFemale = elementDiv.querySelector(
-      `.gender-chart-label[data-gender=${gender}]`
-    ) as HTMLDivElement;
-    const countFemale = labelFemale.querySelector(
-      ".gender-chart-count"
-    ) as HTMLSpanElement;
-
-    const percentage = Math.round((count[gender] / total) * 100 * 100) / 100;
-
-    labelFemale.style.color = colors[gender];
-    countFemale.innerText = `${count[gender]} (${percentage}%)`;
+    updateLabel(gender, count[gender], totalPerson);
   });
 }
 
@@ -69,8 +78,17 @@ export default function(element: HTMLCanvasElement): void {
     x: statistics["x"].length,
     o: statistics["-"].length
   };
-  const total = count["f"] + count["m"] + count["x"];
+  const totalPerson = count.f + count.m + count.x;
+  const total = totalPerson + count.o;
 
   createChart([count["m"], count["f"], count["x"]]);
-  updateLabels(count, total);
+  updateLabels(count);
+
+  const spanCount = document.getElementById("count-person") as HTMLSpanElement;
+  const spanTotal = document.getElementById("count-total") as HTMLSpanElement;
+
+  const percentage = Math.round((totalPerson / total) * 100 * 100) / 100;
+
+  spanCount.innerText = `${totalPerson} (${percentage}%)`;
+  spanTotal.innerText = total;
 }

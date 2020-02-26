@@ -34,7 +34,7 @@ foreach ($ways['features'] as $feature) {
     }
 }
 
-file_put_contents('data/statistics.json', json_encode($statistics));
+file_put_contents('static/statistics.json', json_encode($statistics));
 
 $total = count($statistics['f']) + count($statistics['m']) + count($statistics['x'])/* + count($statistics['-'])*/;
 

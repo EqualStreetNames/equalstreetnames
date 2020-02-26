@@ -84,7 +84,7 @@ foreach ($relations as $r) {
     ];
 }
 
-file_put_contents('data/relations.geojson', json_encode($geojson));
+file_put_contents('static/relations.geojson', json_encode($geojson));
 
 unset($json, $geojson);
 
@@ -145,7 +145,7 @@ foreach ($ways as $w) {
     }
 }
 
-file_put_contents('data/ways.geojson', json_encode($geojson));
+file_put_contents('static/ways.geojson', json_encode($geojson));
 
 exit(0);
 

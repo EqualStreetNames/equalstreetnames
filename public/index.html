@@ -36,11 +36,13 @@
         (function () {
             var language = navigator.language || navigator.browserLanguage;
 
-            switch (language.slice(0, 2)) {
-                case "en": document.location.href = "/en/index.html"; break;
-                // case "fr": document.location.href = "/fr/index.html"; break;
-                // case "nl": document.location.href = "/nl/index.html"; break;
-            }
+            document.location.href = "/en/index.html";
+
+            // switch (language.slice(0, 2)) {
+            //     case "en": document.location.href = "/en/index.html"; break;
+            //     case "fr": document.location.href = "/fr/index.html"; break;
+            //     case "nl": document.location.href = "/nl/index.html"; break;
+            // }
         })();
     </script>
 

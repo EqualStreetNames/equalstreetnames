@@ -1,5 +1,7 @@
 "use strict";
 
+import colors from "./colors";
+
 export default function(
   streetname: string,
   wikidata?: string | null,
@@ -7,18 +9,19 @@ export default function(
   birth?: number | null,
   death?: number | null,
   description?: string | null,
+  gender?: string | null,
   wikipedia?: { lang: string; url: string } | null
 ): string {
   let html = "";
-
   if (
     typeof wikidata !== "undefined" &&
     wikidata !== null &&
     // to-do: Find out why wikidata is a "null" string (instead of null)
     wikidata !== "null"
   ) {
+    const highlightColor = gender ? colors[gender.toLowerCase()] : "#fff";
     html += '<div class="popup-wikidata">';
-    html += `<div class="popup-name">${name}</div>`;
+    html += `<h2 class="popup-name highlight-low" style="background:linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, ${highlightColor} 65%);">${name}</h2>`;
     if (birth !== null || death !== null) {
       html +=
         '<div class="popup-life">' +

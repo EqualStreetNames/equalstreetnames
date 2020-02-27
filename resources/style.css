@@ -26,6 +26,9 @@ nav.navbar {
   width: 100%;
 }
 
+.mapboxgl-popup {
+  animation: fadein 0.2s;
+}
 .mapboxgl-popup-content {
   min-width: 200px;
 }
@@ -44,6 +47,7 @@ nav.navbar {
   white-space: nowrap;
   margin-bottom: 6px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
+  display: inline-block;
 }
 .mapboxgl-popup-content > .popup-wikidata > .popup-links {
   margin-top: 10px;
@@ -72,4 +76,13 @@ nav.navbar {
 
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.8) !important;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

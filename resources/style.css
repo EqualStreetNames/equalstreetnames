@@ -29,12 +29,21 @@ nav.navbar {
 .mapboxgl-popup-content {
   min-width: 200px;
 }
+.mapboxgl-popup-content > hr {
+  margin: 0.5rem 0 0.5rem;
+}
 .mapboxgl-popup-content > .popup-streetname {
   font-weight: bold;
+}
+.mapboxgl-popup-content > .popup-wikidata {
+  font-size: 0.8rem;
+  padding: 6px;
 }
 .mapboxgl-popup-content > .popup-wikidata > .popup-name {
   font-size: 1.3rem;
   white-space: nowrap;
+  margin-bottom: 6px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 .mapboxgl-popup-content > .popup-wikidata > .popup-links {
   margin-top: 10px;

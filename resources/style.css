@@ -74,7 +74,7 @@ nav.navbar {
 }
 
 #chart-overlay {
-  background-color: rgba(52, 51, 50, 0.9);
+  background: rgba(255,255,255,1);
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   bottom: 50px;
@@ -86,7 +86,6 @@ nav.navbar {
 
 #count-information {
   margin-top: 10px;
-  color: #fff;
 }
 
 .navbar-dark .navbar-nav .nav-link {

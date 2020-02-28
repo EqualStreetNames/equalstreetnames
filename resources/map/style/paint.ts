@@ -1,6 +1,6 @@
 "use strict";
 
-import { global as colors } from "../../colors";
+import colors from "../../colors";
 
 export default {
   "line-color": [

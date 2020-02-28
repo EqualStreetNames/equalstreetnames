@@ -1,6 +1,6 @@
 "use strict";
 
-import { popup as colors } from "./colors";
+import colors from "./colors";
 
 export default function(
   streetname: string,

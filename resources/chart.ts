@@ -2,7 +2,7 @@
 
 import Chart from "chart.js";
 
-import { global as colors } from "./colors";
+import colors from "./colors";
 
 import statistics from "../static/statistics.json";
 

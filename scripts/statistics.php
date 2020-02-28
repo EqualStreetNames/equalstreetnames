@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -41,6 +41,11 @@ file_put_contents('static/gender.json', json_encode($statistics));
 // CSV file
 
 $fp = fopen('static/gender.csv', 'w');
+
+fputcsv(
+    $fp,
+    ['streetname', 'gender']
+);
 
 foreach (['f', 'm', 'x'] as $gender) {
     foreach ($statistics[$gender] as $streetname) {

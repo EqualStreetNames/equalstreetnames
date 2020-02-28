@@ -19,7 +19,8 @@ export default function(
     // to-do: Find out why wikidata is a "null" string (instead of null)
     wikidata !== "null"
   ) {
-    const highlightColor = gender ? colors[gender.toLowerCase()] : "#fff";
+    let highlightColor = gender ? colors[gender.toLowerCase()] : "#fff";
+    if (gender === "F") highlightColor = colors.fDesaturated;
     html += '<div class="popup-wikidata">';
     html += `
     <div class="popup-name">

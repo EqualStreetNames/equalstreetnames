@@ -53,7 +53,6 @@ foreach (['f', 'm', 'x'] as $gender) {
 
 fclose($fp);
 
-
 $total = count($statistics['f']) + count($statistics['m']) + count($statistics['x'])/* + count($statistics['-'])*/;
 
 printf('Female: %d (%.2f %%)%s', count($statistics['f']), count($statistics['f']) / $total * 100, PHP_EOL);

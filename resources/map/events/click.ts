@@ -2,6 +2,7 @@
 
 import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from "mapbox-gl";
 
+import getGender from "../../wikidata/gender";
 import getName from "../../wikidata/labels";
 import getBirth from "../../wikidata/birth";
 import getDeath from "../../wikidata/death";
@@ -41,6 +42,7 @@ export default function(
     person !== null ? getBirth(person) : null,
     person !== null ? getDeath(person) : null,
     person !== null ? getDescription(person, lang) : null,
+    person !== null ? getGender(person) : null,
     person !== null ? getWikipedia(person, lang) : null
   );
 

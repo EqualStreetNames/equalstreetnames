@@ -6,8 +6,8 @@ chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 
-$relations = json_decode(file_get_contents('data/relations.geojson'), true);
-$ways = json_decode(file_get_contents('data/ways.geojson'), true);
+$relations = json_decode(file_get_contents('static/relations.geojson'), true);
+$ways = json_decode(file_get_contents('static/ways.geojson'), true);
 
 $statistics = [
     'f' => [],
@@ -15,6 +15,8 @@ $statistics = [
     'x' => [],
     '-' => [],
 ];
+
+// JSON file
 
 foreach ($relations['features'] as $feature) {
     $gender = isset($feature['properties']['person']) ? strtolower($feature['properties']['person']['gender']) ?? '-' : '-';
@@ -35,6 +37,22 @@ foreach ($ways['features'] as $feature) {
 }
 
 file_put_contents('static/statistics.json', json_encode($statistics));
+
+// CSV file
+
+$fp = fopen('static/gender.csv', 'w');
+
+foreach (['f', 'm', 'x'] as $gender) {
+    foreach ($statistics[$gender] as $streetname) {
+        fputcsv(
+            $fp,
+            [$streetname, strtoupper($gender)]
+        );
+    }
+}
+
+fclose($fp);
+
 
 $total = count($statistics['f']) + count($statistics['m']) + count($statistics['x'])/* + count($statistics['-'])*/;
 

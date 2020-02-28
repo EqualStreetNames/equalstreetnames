@@ -4,7 +4,7 @@
 
 ### Statistics
 
-Gender is defined based on _Wikidata_ and, if not available in or not linked to wikidata, based on a manual work during the event of the 17th February 2020 (see [documentation](../docs/scripts/statistics.md)).
+Gender is defined based on _Wikidata_ and, if not available in or not linked to wikidata, based on a manual work during the event of the 17th February 2020 (see [documentation](../docs/README.md#get-the-gender-and-data-about-the-person)).
 
 - `gender.csv`: street listing with gender (CSV format)
 - `gender.json`: street listing with gender (JSON format)

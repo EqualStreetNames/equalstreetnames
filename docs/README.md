@@ -31,13 +31,14 @@ The result of their work has been tagged manually in _OpenStreetMap_ by [OpenStr
 
 ### `name:etymology:wikidata` tag
 
-If there is a `name:etymology:wikidata` tag in _OpenStreetMap_, the process query that item from _Wikidata_.
+If there is a [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) in _OpenStreetMap_, the process follow that identifier to query that item from _Wikidata_.
 
-...
+In the _Wikidata_ object, the sex or gender is defined by the property [`P21`](https://www.wikidata.org/wiki/Property:P21).
 
 ### No `name:etymology:wikidata` tag
 
-...
+If there is no [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) in _OpenStreetMap_, we can't get the gender from _Wikidata_.  
+In this case, the gender is queried from the work done during the event of the 17th February 2020. That work is available as a [CSV file](../data/event-2020-02-17/gender.csv). Caution, that CSV file is **not** to be used for statistics (not cleaned)!
 
 ## Documentation
 

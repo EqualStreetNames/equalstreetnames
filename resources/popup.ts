@@ -1,6 +1,6 @@
 "use strict";
 
-import colors from "./colors";
+import { popup as colors } from "./colors";
 
 export default function(
   streetname: string,
@@ -19,8 +19,7 @@ export default function(
     // to-do: Find out why wikidata is a "null" string (instead of null)
     wikidata !== "null"
   ) {
-    let highlightColor = gender ? colors[gender.toLowerCase()] : "#fff";
-    if (gender === "F") highlightColor = colors.fDesaturated;
+    const highlightColor = gender ? colors[gender.toLowerCase()] : "#fff";
     html += '<div class="popup-wikidata">';
     html += `
     <div class="popup-name">

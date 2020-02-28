@@ -42,11 +42,14 @@ nav.navbar {
   padding: 6px;
 }
 .mapboxgl-popup-content > .popup-wikidata > .popup-name {
-  font-size: 1.3rem;
-  white-space: nowrap;
   margin-bottom: 6px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
   display: inline-block;
+  position: relative;
+}
+.popup-name > .popup-name__name {
+  white-space: nowrap;
+  font-size: 1.3rem;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 .mapboxgl-popup-content > .popup-wikidata > .popup-links {
   margin-top: 10px;
@@ -75,6 +78,15 @@ nav.navbar {
 
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.highlight-low {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
 }
 
 @keyframes fadein {

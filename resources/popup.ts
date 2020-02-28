@@ -21,7 +21,11 @@ export default function(
   ) {
     const highlightColor = gender ? colors[gender.toLowerCase()] : "#fff";
     html += '<div class="popup-wikidata">';
-    html += `<h2 class="popup-name highlight-low" style="background:linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, ${highlightColor} 65%);">${name}</h2>`;
+    html += `
+    <div class="popup-name">
+      <span class="popup-name__name">${name}</span>
+      <span class="highlight-low" style="background:linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, ${highlightColor} 65%);"></span>
+    </div>`;
     if (birth !== null || death !== null) {
       html +=
         '<div class="popup-life">' +

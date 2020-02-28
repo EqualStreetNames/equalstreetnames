@@ -13,8 +13,8 @@ import popupContent from "../../popup";
 
 interface Property {
   name: string;
-  "name:fr"?: string;
-  "name:nl"?: string;
+  "name:fr"?: string | null;
+  "name:nl"?: string | null;
   wikidata: string | null;
   etymology: string | null;
   person?: string;
@@ -54,14 +54,20 @@ export default function(
 
 function getStreetname(properties: {
   name: string;
-  "name:fr"?: string;
-  "name:nl"?: string;
+  "name:fr"?: string | null;
+  "name:nl"?: string | null;
 }): string {
   const streetname = properties.name;
-  const streetnameFr = properties["name:fr"] ?? null;
-  const streetnameNl = properties["name:nl"] ?? null;
+  const streetnameFr = properties["name:fr"] ?? "";
+  const streetnameNl = properties["name:nl"] ?? "";
 
-  if (streetnameFr !== null && streetnameNl !== null) {
+  // Bug in MapboxGL (see https://github.com/mapbox/mapbox-gl-js/issues/8497)
+  if (
+    streetnameFr !== null &&
+    streetnameNl !== null &&
+    streetnameFr !== "null" &&
+    streetnameNl !== "null"
+  ) {
     return `${streetnameFr}<br>${streetnameNl}`;
   } else {
     return streetname;

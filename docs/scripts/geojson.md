@@ -14,8 +14,8 @@ From the files downloaded from _OpenStreetMap_, we extract the following informa
   - `name` tag (bilingual) ;
   - `name:fr` tag (french) ;
   - `name:nl` tag (dutch) ;
-- `wikidata` tag ()
-- `name:etymology:wikidata` tag
+- `wikidata` tag (wikidata identifier for the street)
+- `name:etymology:wikidata` tag (wikidata identifier for the person)
 
 ### Extract data from _Wikidata_ objects
 

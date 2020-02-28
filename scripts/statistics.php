@@ -36,7 +36,7 @@ foreach ($ways['features'] as $feature) {
     }
 }
 
-file_put_contents('static/statistics.json', json_encode($statistics));
+file_put_contents('static/gender.json', json_encode($statistics));
 
 // CSV file
 

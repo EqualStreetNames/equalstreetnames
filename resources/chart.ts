@@ -4,7 +4,7 @@ import Chart from "chart.js";
 
 import { global as colors } from "./colors";
 
-import statistics from "../static/statistics.json";
+import statistics from "../static/gender.json";
 
 let elementCanvas: HTMLCanvasElement;
 let elementDiv: HTMLDivElement;

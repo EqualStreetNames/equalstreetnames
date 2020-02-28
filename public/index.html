@@ -24,25 +24,23 @@
         <a href="/en/index.html" class="list-group-item list-group-item-action">
             English
         </a>
-        <!-- <a href="/fr/index.html" class="list-group-item list-group-item-action">
+        <a href="/fr/index.html" class="list-group-item list-group-item-action">
             Français
         </a>
         <a href="/nl/index.html" class="list-group-item list-group-item-action">
             Nederlands
-        </a> -->
+        </a>
     </div>
 
     <script>
         (function () {
             var language = navigator.language || navigator.browserLanguage;
 
-            document.location.href = "/en/index.html";
-
-            // switch (language.slice(0, 2)) {
-            //     case "en": document.location.href = "/en/index.html"; break;
-            //     case "fr": document.location.href = "/fr/index.html"; break;
-            //     case "nl": document.location.href = "/nl/index.html"; break;
-            // }
+            switch (language.slice(0, 2)) {
+                case "en": document.location.href = "/en/index.html"; break;
+                case "fr": document.location.href = "/fr/index.html"; break;
+                case "nl": document.location.href = "/nl/index.html"; break;
+            }
         })();
     </script>
 

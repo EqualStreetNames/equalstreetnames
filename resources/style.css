@@ -7,6 +7,19 @@ body {
   height: 100vh;
 }
 
+.btn-cta {
+  color: #ffffff;
+  background-color: #800080;
+  border-color: #800080;
+}
+.btn-cta:active,
+.btn-cta:focus,
+.btn-cta:hover {
+  color: #fff;
+  background-color: #800080;
+  border-color: #800080;
+}
+
 nav.navbar {
   background-color: rgba(52, 51, 50, 0.9);
 }

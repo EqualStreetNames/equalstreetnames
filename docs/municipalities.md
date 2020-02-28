@@ -1,4 +1,4 @@
-# Equal Street Names (Brussels)
+# EqualStreetNames.Brussels
 
 ## List of municipalities in Brussels
 

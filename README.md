@@ -1,11 +1,11 @@
-# EqualStreetNames Brussels
+# EqualStreetNames.Brussels
 
 This project is coordinated by [Open Knowledge Belgium](https://openknowledge.be/) and [Noms Peut-Être](https://nomspeutetre.wordpress.com/)
 with the support of [OpenStreetMap Belgium](https://openstreetmap.be/) and [Wikimedia Belgium](https://wikimedia.be/).
 
 EqualStreetNames is made possible thanks to [equal.brussels](http://equal.brussels/).
 
-## Why EqualStreetNames Brussels?
+## Why EqualStreetNames.Brussels?
 
 The names of public spaces (streets, avenues, squares and others) define the identity of a city and how citizens interact with it. The region of Brussels suffers from a major inequality between male and female street names and we want to help fix this.
 
@@ -23,6 +23,11 @@ The Equal Street Names project is divided into two phases:
   Mapping the inequality of name attributions.
 - Phase 2:  
   Organizing one workshop per month in 2020 to provide a list of names that will be published on the platform and act as references for city councils. The names should represent the diversity of Brussels Region, which means with profiles of women; women from the immigration, women of color, transgender and LGBTQIA+
+
+## Data
+
+Data are available in the [`static/` directory](./static).  
+Documentation about those data is available in the same folder (see [`README.md`](./static/#readme)).
 
 ## Documentation
 

@@ -17,6 +17,7 @@ export default function(
     typeof wikidata !== "undefined" &&
     wikidata !== null &&
     // to-do: Find out why wikidata is a "null" string (instead of null)
+    // Bug in MapboxGL (see https://github.com/mapbox/mapbox-gl-js/issues/8497)
     wikidata !== "null"
   ) {
     const highlightColor = gender ? colors[gender.toLowerCase()] : "#fff";

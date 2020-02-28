@@ -38,6 +38,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" class="btn btn-primary" data-toggle="modal" href="#suggestions">
+                        <i class="fas fa-bullhorn"></i>
+                        Suggestions
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" class="btn btn-primary" data-toggle="modal" href="#contact">
                         <i class="fas fa-envelope"></i>
                         Contact
@@ -77,8 +83,8 @@
                 <canvas width="250" height="100"></canvas>
             </div>
             <div id="count-information" class="text-muted small">
-                There are <span id="count-person"></span> streetnames based on a person
-                on <span id="count-total"></span> streetnames.
+                <span id="count-person"></span> streetnames are based on a person
+                on a total of <span id="count-total"></span> streetnames.
             </div>
         </div>
     </main>
@@ -124,7 +130,7 @@
                     </p>
 
                     <p>
-                        The Equal Street Names project is divided into two phases:
+                        The EqualStreetNames.Brussels project is divided into two phases:
                         <ul>
                             <li>
                                 Phase 1: Mapping the inequality of name attributions.
@@ -173,7 +179,7 @@
                             </div>
                         </div>
 
-                        <h6>EqualStreetNames is made possible thanks to</h6>
+                        <h6>EqualStreetNames.Brussels is made possible thanks to</h6>
                         <div class="text-center">
                             <a target="_blank" href="http://equal.brussels/">
                                 <img alt="equal.brussels" src="../../resources/logos/equalbrussels.svg">
@@ -184,10 +190,12 @@
                     <hr>
 
                     <p class="mb-0 small">
-                        Website (and data process) built by
-                        <a target="_blank" href="https://geo6.be/">SPRL GEO-6 BVBA</a>.<br>
-                        Source code and documentation available on
-                        <a target="_blank" href="https://github.com/openknowledgebe/equalstreetnames/">GitHub</a>.
+                        <a target="_blank" href="https://github.com/openknowledgebe/equalstreetnames/tree/master/static">Datasets</a>,
+                        source code, and documentation available on
+                        <a target="_blank" href="https://github.com/openknowledgebe/equalstreetnames/#readme">GitHub</a>.<br>
+                        Website and data process built
+                        by <a target="_blank" href="https://openknowledge.be/">Open Knowledge Belgium</a>
+                        and <a target="_blank" href="https://geo6.be/">SPRL GEO-6 BVBA</a>.<br>
                     </p>
                 </div>
             </div>
@@ -211,22 +219,58 @@
                         <a target="_blank" href="https://openknowledge.be/">Open Knowledge Belgium</a> and the Feminist
                         Collective <a target="_blank" href="https://nomspeutetre.wordpress.com/">Noms Peut-Être</a>
                         have partnered up to organize 8 workshops to put together lists of name suggestions for the
-                        municipalities.<br>
-                        The names will be published in this section after each event and if their profile doesn’t exist
-                        on Wikipedia, we will add it to the open platform!
-                    </p>
-
-                    <h5>Where do I sign up to attend?</h5>
-                    <p>
-                        All practical information and registrations here
+                        municipalities. The names will be published in this section after each event and if their profile doesn’t exist
+                        on Wikipedia, we will add it to the open platform!<br>
+                        Workshops will take place once a month from March until December and will be organized each time in a different municipality.
+                        The first workshop will take place on <strong>23 March 2020</strong>
+                        at <a target="_blank" href="https://www.openstreetmap.org/node/5134811756">La Maison des Femmes de Schaerbeek</a>.
                     </p>
 
                     <h5>Interested in hosting us?</h5>
                     <p>
                         Each workshop will happen in a different municipality. If you are interested to host us or talk
                         to us about the workshops, please contact us via
-                        <a href="mailto:contact@openknowledge.be">contact@openknowledge.be</a>.
+                        <a href="mailto:equalstreetnames@openknowledge.be">equalstreetnames@openknowledge.be</a>.
                     </p>
+
+                    <h5>Where do I sign up to attend?</h5>
+                    <p>
+                        All practical information and registrations here
+                    </p>
+                    <div class="text-center">
+                        <a target="_blank" href="https://equalstreetnamesworkshop.eventbrite.co.uk/" class="btn btn-primary btn-cta">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="suggestions" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-bullhorn"></i>
+                        Suggestions
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Suggestions for new street names will be published here after each workshop.
+                    </p>
+
+                    <div>
+                        <strong>Where do I sign up to attend a workshop?</strong><br>
+                        <p>
+                            All practical information and registrations here
+                        </p>
+                        <div class="text-center">
+                            <a target="_blank" href="https://equalstreetnamesworkshop.eventbrite.co.uk/" class="btn btn-primary btn-cta">Sign up</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -255,7 +299,7 @@
                         <ul>
                             <li>
                                 Open Knowledge Belgium:
-                                <a href="mailto:contact@openknowledge.be">contact@openknowledge.be</a>
+                                <a href="mailto:equalstreetnames@openknowledge.be">equalstreetnames@openknowledge.be</a>
                             </li>
                             <li>
                                 Noms Peut-Être:
@@ -264,10 +308,15 @@
                         </ul>
                     </p>
 
-                    <p>
+                    <div>
                         <strong>Where do I sign up to attend a workshop?</strong><br>
-                        All practical information and registrations here
-                    </p>
+                        <p>
+                            All practical information and registrations here
+                        </p>
+                        <div class="text-center">
+                            <a target="_blank" href="https://equalstreetnamesworkshop.eventbrite.co.uk/" class="btn btn-primary btn-cta">Sign up</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

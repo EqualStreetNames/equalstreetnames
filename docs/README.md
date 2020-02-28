@@ -1,14 +1,14 @@
-# Equal Street Names (Brussels)
+# EqualStreetNames.Brussels
 
 ## Process
 
 1. Get all the streets in Brussels from _OpenStreetMap_
-2. Use the [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:wikidata) to query the information about the person mentionned in the streetname
+2. Use the [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) to query the information about the person mentionned in the streetname
 3. Use the data from _Wikidata_ to determine the gender (and more) of the person
 
 ## Data quality
 
-The process defined here above assume that we have all the streets of Brussels in _OpenStreetMap_ and that all the streets of Brussels in _OpenStreetMap_ have a `name:etymology:wikidata` tag if the streetname mentions a person.
+The process defined here above assume that we have all the streets of Brussels in _OpenStreetMap_ and that all the streets of Brussels in _OpenStreetMap_ have a [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) if the streetname mentions a person.
 
 ### All the streets
 
@@ -18,9 +18,9 @@ A few streets were missing and manually added to _OpenStreetMap_.
 
 ### All the streets tagged
 
-At the beginning of the project (February 2019), around 5% of the streets of Brussels in _OpenStreetMap_ had a `name:etymology:wikidata` tag.
+At the beginning of the project (February 2019), around 5% of the streets of Brussels in _OpenStreetMap_ had a [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata).
 
-Of course, not all the streets refer to a person (or an entity) and thus need a `name:etymology:wikidata` tag.
+Of course, not all the streets refer to a person (or an entity) and thus need a [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata).
 
 To link all the streets that refer to a person to the equivalent _Wikidata_ item, we organized an event were we asked 100 people to manually find the _Wikidata_ item (or the _Wikipedia_ page) about the person from the streetname.
 
@@ -42,4 +42,4 @@ If there is a `name:etymology:wikidata` tag in _OpenStreetMap_, the process quer
 ## Documentation
 
 - [List of municipalities in Brussels](./municipalities.md)
-- [How to get the streets in Brussels from _OpenStreetMap_ ?](./overpass.md)
+- [Scripts](./scripts/README.md)

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -28,13 +28,13 @@
                 <li class="nav-item">
                     <a class="nav-link" class="btn btn-primary" data-toggle="modal" href="#about">
                         <i class="fas fa-info-circle"></i>
-                        About
+                        À propos
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" class="btn btn-primary" data-toggle="modal" href="#workshops">
                         <i class="fas fa-users"></i>
-                        Workshops
+                        Ateliers
                     </a>
                 </li>
                 <li class="nav-item">
@@ -57,10 +57,10 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">English</a>
+                        aria-haspopup="true" aria-expanded="false">Français</a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="/fr/index.html">Français</a>
                         <a class="dropdown-item" href="/nl/index.html">Nederlands</a>
+                        <a class="dropdown-item" href="/en/index.html">English</a>
                     </div>
                 </li>
             </ul>
@@ -74,25 +74,25 @@
                 <ul id="gender-chart-legend" class="list-unstyled fa-ul">
                     <li class="gender-chart-label" data-gender="m">
                         <span class="fa-li"><i class="fas fa-lg fa-mars"></i></span>
-                        Male:
+                        Homme:
                         <span class="gender-chart-count"></span>
                     </li>
                     <li class="gender-chart-label" data-gender="f">
                         <span class="fa-li"><i class="fas fa-lg fa-venus"></i></span>
-                        Female:
+                        Femme:
                         <span class="gender-chart-count"></span>
                     </li>
                     <li class="gender-chart-label" data-gender="x">
                         <span class="fa-li"><i class="fas fa-lg fa-transgender-alt"></i></span>
-                        Transgender:
+                        Transgenre:
                         <span class="gender-chart-count"></span>
                     </li>
                 </ul>
                 <canvas width="250" height="100"></canvas>
             </div>
             <div id="count-information" class="small">
-                Out of <span id="count-total"></span> streetnames, <span id="count-person"></span> are based on a
-                person.
+                Sur les <span id="count-total"></span> noms de rue, <span id="count-person"></span> sont attribuées à
+                une personne.
             </div>
     </main>
 
@@ -102,53 +102,60 @@
                 <div class="modal-header">
                     <h5 class="modal-title">
                         <i class="fas fa-info-circle"></i>
-                        About
+                        À propos
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h5>Why EqualStreetNames.Brussels?</h5>
+                    <h5>Comment le projet est-il né ?</h5>
 
                     <p>
-                        The names of public spaces (streets, avenues, squares and others) define the identity of a city
-                        and how citizens interact with it. The region of Brussels suffers from a major inequality
-                        between male and female street names and we want to help fix this.
+                        Les noms des espaces publics (rues, avenues, places et autres) définissent l’identité d’une
+                        ville et l’usage qu’en fait sa population. Pourtant, les 19 communes de la Région Bruxelloise
+                        souffrent d’un déséquilibre : une écrasante majorité des noms attribués aux espaces publics sont
+                        des profils d’hommes non-racisés.
                     </p>
 
                     <p>
-                        There are several ways to approach the inequality of street names and leverage a positive change
-                        in our society. Ours is with the use of Open Data to create a
-                        <strong>map visualizing the streetnames of Brussels by gender.</strong>
+                        Il existe plusieurs manières d’approcher cette inégalité et de créer un changement positif pour
+                        notre société. La nôtre est d’utiliser les données ouvertes afin de créer
+                        <strong>une carte visualisant les noms des rues de Bruxelles par genre</strong>. Les noms
+                        masculins et féminins étant représentés par différentes couleurs, la plateforme permet de
+                        conscientiser le grand public sur le déséquilibre présent dans l’attribution des noms de
+                        l’espace public.
                     </p>
 
-                    <h5>How did we make this map?</h5>
+                    <h5>Comment avons-nous réalisé cette carte ?</h5>
 
                     <p>
-                        To make this happen, we used <a target="_blank" href="http://opendefinition.org/">open data</a>
-                        - data which can be freely used, modified, and shared by anyone for any purpose - from
-                        <a target="_blank" href="https://openstreetmap.org/">OpenStreetMap</a> and
-                        <a target="_blank" href="https://www.wikipedia.org/">Wikipedia</a>.
-                    </p>
-                    <p>
-                        On 17 February 2020, 60 volunteers gathered to add the Wikidata tags (a tag containing all the
-                        information from a Wikipedia page) to the streets on OpenStreetMap. Using Open Data has unlocked
-                        new opportunities, the project now being replicable for other cities and the analysis being
-                        fully transparent.
+                        Pour réaliser la carte, nous avons utilisé des
+                        <a target="_blank" href="http://opendefinition.org/">données ouvertes</a> - c’est à dire des
+                        données qui sont utilisées, modifiées et partagées pour n’importe quelle raison - de
+                        <a target="_blank" href="https://openstreetmap.org/">OpenStreetMap</a>
+                        et de <a target="_blank" href="https://www.wikipedia.org/">Wikipédia</a>.
                     </p>
 
                     <p>
-                        The EqualStreetNames.Brussels project is divided into two phases:
+                        Le 17 Février 2020, 60 bénévoles se sont rassemblé.e.s pour ajouter les tags Wikidata (des tags
+                        contenant toutes les informations de Wikipédia) sur les rues de OpenStreetMap. Utiliser les
+                        données ouvertes a permis de créer de nouvelles opportunités, le projet étant maintenant
+                        réplicable dans d’autres villes et l’analyse étant transparente.
+                    </p>
+
+                    <p>
+                        Le projet est divisé en deux phases:
                         <ul>
                             <li>
-                                Phase 1: Mapping the inequality of name attributions.
+                                Phase 1: Création de la plateforme de visualisation des noms des rues par genre.
                             </li>
                             <li>
-                                Phase 2: Organizing one workshop per month in 2020 to provide a list of names that will
-                                be published on the platform and act as references for city councils. The names should
-                                represent the diversity of Brussels Region, which means with profiles of women; women
-                                from the immigration, women of color, transgender and LGBTQIA+
+                                Phase 2: Organisation d’ateliers une fois par mois afin de créer une liste de
+                                suggestions de noms représentatives de la diversité de la Région Bruxelloise, c’est à
+                                dire avec des profils de femmes issues de l’immigration, de personnes racisées,
+                                transgenres et LGBTQIA+. Après chaque édition, la liste de profils sera publiée sur la
+                                plateforme et jouera un rôle de conseil pour les 19 communes.
                             </li>
                         </ul>
                     </p>
@@ -156,7 +163,7 @@
                     <hr>
 
                     <div>
-                        <h6>EqualStreetNames.Brussels is coordinated by</h6>
+                        <h6>EqualStreetNames.Brussels est coordonné par</h6>
                         <div class="row">
                             <div class="col text-center">
                                 <a target="_blank" href="https://openknowledge.be/">
@@ -172,7 +179,7 @@
                             </div>
                         </div>
 
-                        <h6>With the support of</h6>
+                        <h6>Avec le soutien de</h6>
                         <div class="row">
                             <div class="col text-center">
                                 <a target="_blank" href="https://openstreetmap.be/">
@@ -188,7 +195,7 @@
                             </div>
                         </div>
 
-                        <h6>EqualStreetNames.Brussels is made possible thanks to</h6>
+                        <h6>EqualStreetNames.Brussels est rendu possible grâce à</h6>
                         <div class="text-center">
                             <a target="_blank" href="http://equal.brussels/">
                                 <img alt="equal.brussels" src="../../resources/logos/equalbrussels.svg">
@@ -199,14 +206,14 @@
                     <hr>
 
                     <p class="mb-0 small">
-                        <a target="_blank"
-                            href="https://github.com/openknowledgebe/equalstreetnames/tree/master/static">Datasets</a>,
-                        source code, and documentation available on
+                        Les <a target="_blank"
+                            href="https://github.com/openknowledgebe/equalstreetnames/tree/master/static">données</a>,
+                        le code source, et la documentation sont disponibles sur
                         <a target="_blank"
                             href="https://github.com/openknowledgebe/equalstreetnames/#readme">GitHub</a>.<br>
-                        Website and data process built
-                        by <a target="_blank" href="https://openknowledge.be/">Open Knowledge Belgium</a>
-                        and <a target="_blank" href="https://geo6.be/">SPRL GEO-6 BVBA</a>.<br>
+                        Le site et le traitement des données ont été développés
+                        par <a target="_blank" href="https://openknowledge.be/">Open Knowledge Belgium</a>
+                        et <a target="_blank" href="https://geo6.be/">SPRL GEO-6</a>.<br>
                     </p>
                 </div>
             </div>
@@ -219,7 +226,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">
                         <i class="fas fa-users"></i>
-                        Workshops
+                        Ateliers
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -227,30 +234,30 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        <a target="_blank" href="https://openknowledge.be/">Open Knowledge Belgium</a> and the Feminist
-                        Collective <a target="_blank" href="https://nomspeutetre.wordpress.com/">Noms Peut-Être</a>
-                        have partnered up to organize 8 workshops to put together lists of name suggestions for the
-                        municipalities. The names will be published in this section after each event and if their
-                        profile doesn’t exist on Wikipedia, we will add it to the open platform!
+                        <a target="_blank" href="https://openknowledge.be/">Open Knowledge Belgium</a> et
+                        la Collective Féministe
+                        <a target="_blank" href="https://nomspeutetre.wordpress.com/">Noms Peut-Être</a> s’associent
+                        pour l’organisation de 8 ateliers visant à créer des listes de suggestions de noms pour les
+                        communes. Les participant.e.s écriront les biographies de femmes éligibles sur Wikipédia et ces
+                        noms seront ensuite publiés sur le site.
                     </p>
                     <p>
-                        Workshops will take place once a month from March until December and will be organized each time
-                        in a different municipality.
-                        The first workshop will take place on <strong>23 March 2020</strong>
-                        at <a target="_blank" href="https://www.openstreetmap.org/node/5134811756">La Maison des Femmes
+                        Les ateliers auront lieu une fois et seront à chaque fois organisés dans des communes
+                        différentes. Le premier atelier aura lieu le <strong>23 Mars 2020</strong> à
+                        <a target="_blank" href="https://www.openstreetmap.org/node/5134811756">La Maison des Femmes
                             de Schaerbeek</a>.
                     </p>
 
-                    <h5>Interested in hosting us?</h5>
+                    <h5>Intéressé.e.s d’accueillir un atelier?</h5>
                     <p>
-                        Each workshop will happen in a different municipality. If you are interested to host us or talk
-                        to us about the workshops, please contact us via
+                        Chaque atelier aura lieu dans une commune différente. Si vous êtes intéressé.e.s pour accueillir
+                        un atelier ou en discuter, merci de nous contacter via
                         <a href="mailto:equalstreetnames@openknowledge.be">equalstreetnames@openknowledge.be</a>.
                     </p>
 
                     <div class="text-center">
                         <a target="_blank" href="https://equalstreetnamesworkshop.eventbrite.co.uk/"
-                            class="btn btn-primary btn-cta">Sign up for the workshop</a>
+                            class="btn btn-primary btn-cta">Je m’inscris pour l’atelier</a>
                     </div>
                 </div>
             </div>
@@ -271,12 +278,12 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        Suggestions for new street names will be published here after each workshop.
+                        Des suggestions de nouveaux noms de rues seront publiées ici après chaque atelier.
                     </p>
 
                     <div class="text-center">
                         <a target="_blank" href="https://equalstreetnamesworkshop.eventbrite.co.uk/"
-                            class="btn btn-primary btn-cta">Sign up for the workshop</a>
+                            class="btn btn-primary btn-cta">Je m’inscris pour l’atelier</a>
                     </div>
                 </div>
             </div>
@@ -297,12 +304,12 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        Interested in replicating EqualStreetNames in another city?<br>
-                        Interested in hosting workshops or organizing a workshop in your municipality?<br>
+                        Intéressé.e.s de répliquer EqualStreetNames dans votre ville ?<br>
+                        Intéressé.e.s d’accueillir un atelier dans votre commune ?<br>
                     </p>
 
                     <p>
-                        Please contact us via
+                        Contactez-nous via:
                         <ul>
                             <li>
                                 Open Knowledge Belgium:
@@ -317,7 +324,7 @@
 
                     <div class="text-center">
                         <a target="_blank" href="https://equalstreetnamesworkshop.eventbrite.co.uk/"
-                            class="btn btn-primary btn-cta">Sign up for the workshop</a>
+                            class="btn btn-primary btn-cta">Je m’inscris pour l’atelier</a>
                     </div>
                 </div>
             </div>

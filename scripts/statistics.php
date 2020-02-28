@@ -36,11 +36,16 @@ foreach ($ways['features'] as $feature) {
     }
 }
 
-file_put_contents('static/statistics.json', json_encode($statistics));
+file_put_contents('static/gender.json', json_encode($statistics));
 
 // CSV file
 
 $fp = fopen('static/gender.csv', 'w');
+
+fputcsv(
+    $fp,
+    ['streetname', 'gender']
+);
 
 foreach (['f', 'm', 'x'] as $gender) {
     foreach ($statistics[$gender] as $streetname) {

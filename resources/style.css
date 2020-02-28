@@ -9,7 +9,6 @@ body {
 
 nav.navbar {
   background-color: rgba(52, 51, 50, 0.8);
-  position: fixed;
 }
 
 .nav-item {

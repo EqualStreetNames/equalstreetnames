@@ -35,14 +35,12 @@ foreach ($relations as $r) {
     if (!is_null($properties['etymology'])) {
         $etymology = extractWikidata($properties['etymology']);
 
-        if ($etymology['person'] === true) {
             $properties = array_merge(
                 $properties,
                 [
-                    'person' => $etymology,
+                'details' => $etymology,
                 ]
             );
-        }
     } else {
         $gender = getGender($streetsGender, $r['tags']['name:fr'] ?? $r['tags']['name'], $r['tags']['name:nl'] ?? $r['tags']['name']);
 
@@ -50,7 +48,8 @@ foreach ($relations as $r) {
             $properties = array_merge(
                 $properties,
                 [
-                    'person' => [
+                    'details' => [
+                        'person' => true,
                         'gender' => $gender,
                     ],
                 ]
@@ -113,14 +112,12 @@ foreach ($ways as $w) {
         if (!is_null($properties['etymology'])) {
             $etymology = extractWikidata($properties['etymology']);
 
-            if ($etymology['person'] === true) {
                 $properties = array_merge(
                     $properties,
                     [
-                        'person' => $etymology,
+                    'details' => $etymology,
                     ]
                 );
-            }
         } else {
             $gender = getGender($streetsGender, $w['tags']['name:fr'] ?? $w['tags']['name'], $w['tags']['name:nl'] ?? $w['tags']['name']);
 
@@ -128,7 +125,8 @@ foreach ($ways as $w) {
                 $properties = array_merge(
                     $properties,
                     [
-                        'person' => [
+                        'details' => [
+                            'person' => true,
                             'gender' => $gender,
                         ],
                     ]

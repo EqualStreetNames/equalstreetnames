@@ -10,7 +10,7 @@ interface Property {
   "name:nl"?: string | null;
   wikidata: string | null;
   etymology: string | null;
-  person?: string;
+  details?: string;
 }
 
 export default function(
@@ -19,9 +19,9 @@ export default function(
   lnglat: LngLat
 ): void {
   const properties = features[0].properties as Property;
-  const person =
-    typeof properties.person !== "undefined" && properties.person !== null
-      ? JSON.parse(properties.person)
+  const details =
+    typeof properties.details !== "undefined" && properties.details !== null
+      ? JSON.parse(properties.details)
       : null;
 
   const lang =
@@ -31,7 +31,7 @@ export default function(
   const html = popupContent(
     getStreetname(properties),
     properties.etymology ?? null,
-    person
+    details
   );
 
   new mapboxgl.Popup({ maxWidth: "none" })

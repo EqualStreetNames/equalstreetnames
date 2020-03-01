@@ -5,19 +5,38 @@ import colors from "../../colors";
 export default {
   "line-color": [
     "case",
-    ["==", ["to-boolean", ["get", "person"]], true],
+    [
+      "all",
+      ["==", ["to-boolean", ["get", "details"]], true],
+      ["==", ["get", "person", ["get", "details"]], true]
+    ],
     [
       "case",
-      ["==", ["get", "gender", ["get", "person"]], "F"],
+      ["==", ["get", "gender", ["get", "details"]], "F"],
       colors.f,
-      ["==", ["get", "gender", ["get", "person"]], "M"],
+      ["==", ["get", "gender", ["get", "details"]], "M"],
       colors.m,
-      ["==", ["get", "gender", ["get", "person"]], "X"],
+      ["==", ["get", "gender", ["get", "details"]], "X"],
       colors.x,
       colors.o
     ],
     colors.o
   ],
-  "line-width": ["case", ["==", ["to-boolean", ["get", "person"]], true], 3, 1],
+  "line-width": [
+    "case",
+    [
+      "all",
+      ["==", ["to-boolean", ["get", "details"]], true],
+      ["==", ["get", "person", ["get", "details"]], true]
+    ],
+    3,
+    [
+      "all",
+      ["==", ["to-boolean", ["get", "details"]], true],
+      ["==", ["get", "person", ["get", "details"]], false]
+    ],
+    2,
+    1
+  ],
   "line-opacity": 0.8
 };

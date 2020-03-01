@@ -35,10 +35,10 @@ foreach ($relations as $r) {
     if (!is_null($properties['etymology'])) {
         $etymology = extractWikidata($properties['etymology']);
 
-            $properties = array_merge(
+        $properties = array_merge(
                 $properties,
                 [
-                'details' => $etymology,
+                    'details' => $etymology,
                 ]
             );
     } else {
@@ -112,10 +112,10 @@ foreach ($ways as $w) {
         if (!is_null($properties['etymology'])) {
             $etymology = extractWikidata($properties['etymology']);
 
-                $properties = array_merge(
+            $properties = array_merge(
                     $properties,
                     [
-                    'details' => $etymology,
+                        'details' => $etymology,
                     ]
                 );
         } else {

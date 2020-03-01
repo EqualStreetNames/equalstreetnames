@@ -16,6 +16,8 @@ $waysInRelation = array_keys($ways);
 
 $streetsGender = readStreetsGender();
 
+$instances = include 'scripts/instances.php';
+
 $geojson = [
     'type'     => 'FeatureCollection',
     'features' => [],
@@ -33,7 +35,7 @@ foreach ($relations as $r) {
     if (!is_null($properties['etymology'])) {
         $etymology = extractWikidata($properties['etymology']);
 
-        if (!is_null($etymology['gender'])) {
+        if ($etymology['person'] === true) {
             $properties = array_merge(
                 $properties,
                 [
@@ -111,7 +113,7 @@ foreach ($ways as $w) {
         if (!is_null($properties['etymology'])) {
             $etymology = extractWikidata($properties['etymology']);
 
-            if (!is_null($etymology['gender'])) {
+            if ($etymology['person'] === true) {
                 $properties = array_merge(
                     $properties,
                     [
@@ -246,6 +248,8 @@ function makeGeometry(array $linestrings): ?array
 
 function extractWikidata(string $identifier): ?array
 {
+    global $instances;
+
     $path = sprintf('data/wikidata/%s.json', $identifier);
 
     if (!file_exists($path)) {
@@ -262,6 +266,23 @@ function extractWikidata(string $identifier): ?array
         printf('Entity %s missing in "%s".%s', $identifier, basename($path), PHP_EOL);
 
         return null;
+    }
+
+    $person = false;
+    if (!isset($entity['claims']['P31'])) {
+        printf('No instance for %s.%s', $identifier, PHP_EOL);
+    } else {
+        foreach ($entity['claims']['P31'] as $p) {
+            $value = $p['mainsnak']['datavalue']['value']['id'];
+            if (isset($instances[$value])) {
+                if ($instances[$value] === true) {
+                    $person = true;
+                    break;
+                }
+            } else {
+                printf('New instance (%s) for %s.%s', $value, $identifier, PHP_EOL);
+            }
+        }
     }
 
     $labels = array_filter(
@@ -296,6 +317,7 @@ function extractWikidata(string $identifier): ?array
     $dateOfDeath = $entity['claims']['P570'][0]['mainsnak']['datavalue']['value']['time'] ?? null;
 
     return [
+        'person'       => $person,
         'labels'       => $labels,
         'descriptions' => $descriptions,
         'gender'       => is_null($genderId) ? null : extractGender($genderId),

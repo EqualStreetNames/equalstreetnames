@@ -33,6 +33,14 @@ The result of their work has been tagged manually in _OpenStreetMap_ by [OpenStr
 
 If there is a [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) in _OpenStreetMap_, the process follow that identifier to query that item from _Wikidata_.
 
+We consider to be a person, the _Wikidata_ items that are "instance of" (property [`P31`](https://www.wikidata.org/wiki/Property:P31)):
+
+- human ([`Q5`](https://www.wikidata.org/wiki/Q5))
+- title of Mary ([`Q1509831`](https://www.wikidata.org/wiki/Q1509831))
+- mononymous person ([`Q2985549`](https://www.wikidata.org/wiki/Q2985549))
+- married couple ([`Q3046146`](https://www.wikidata.org/wiki/Q3046146))
+- human biblical figure ([`Q20643955`](https://www.wikidata.org/wiki/Q20643955))
+
 In the _Wikidata_ object, the sex or gender is defined by the property [`P21`](https://www.wikidata.org/wiki/Property:P21).
 
 ### No `name:etymology:wikidata` tag

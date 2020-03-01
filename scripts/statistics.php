@@ -19,7 +19,7 @@ $statistics = [
 // JSON file
 
 foreach ($relations['features'] as $feature) {
-    $gender = isset($feature['properties']['person']) ? strtolower($feature['properties']['person']['gender']) ?? '-' : '-';
+    $gender = isset($feature['properties']['person'], $feature['properties']['person']['gender']) && !is_null($feature['properties']['person']['gender']) ? strtolower($feature['properties']['person']['gender']) ?? '-' : '-';
     $name = $feature['properties']['name'];
 
     if (!in_array($name, $statistics[$gender])) {

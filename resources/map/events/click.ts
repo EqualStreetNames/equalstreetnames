@@ -2,13 +2,6 @@
 
 import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from "mapbox-gl";
 
-import getGender from "../../wikidata/gender";
-import getName from "../../wikidata/labels";
-import getBirth from "../../wikidata/birth";
-import getDeath from "../../wikidata/death";
-import getDescription from "../../wikidata/descriptions";
-import getWikipedia from "../../wikidata/sitelinks";
-
 import popupContent from "../../popup";
 
 interface Property {
@@ -38,12 +31,7 @@ export default function(
   const html = popupContent(
     getStreetname(properties),
     properties.etymology ?? null,
-    person !== null ? getName(person, lang) : null,
-    person !== null ? getBirth(person) : null,
-    person !== null ? getDeath(person) : null,
-    person !== null ? getDescription(person, lang) : null,
-    person !== null ? getGender(person) : null,
-    person !== null ? getWikipedia(person, lang) : null
+    person
   );
 
   new mapboxgl.Popup({ maxWidth: "none" })

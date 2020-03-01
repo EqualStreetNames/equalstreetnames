@@ -14,9 +14,6 @@ streetname,gender
 "Square Marie-José - Marie-Joséplein",F
 "Square Joséphine-Charlotte - Joséphine-Charlottesquare",F
 "Drève Louisa Chaudoir - Louisa Chaudoirdreef",F
-"Avenue Cassiopée - Cassiopealaan",F
-"Clos Cassiopée - Cassiopeagaarde",F
-"Avenue Andromède - Andromedalaan",F
 "Drève Soetkin - Soetkindreef",F
 "Rue Lola Bobesco - Lola Bobescostraat",F
 "Square Marie Curie - Marie Curiesquare",F
@@ -133,6 +130,7 @@ streetname,gender
 "Pont Suzan Daniel - Suzan Danielbrug",F
 "Rue Eliane Vogel-Polsky - Eliane Vogel-Polskystraat",F
 "Square Vergote - Vergotesquare",M
+"Rue Jules Lebrun - Jules Lebrunstraat",M
 "Rue Van Dyck - Van Dyckstraat",M
 "Rue Jean-Baptiste Serkeyn - Jean-Baptiste Serkeynstraat",M
 "Rue Honoré Longtin - Honoré Longtinstraat",M
@@ -277,7 +275,6 @@ streetname,gender
 "Rue Ferdinand Craps - Ferdinand Crapsstraat",M
 "Avenue Robert Dalechamp - Robert Dalechamplaan",M
 "Avenue Edouard Speeckaert - Edouard Speeckaertlaan",M
-"Rue du Zéphyr - Westenwindstraat",M
 "Rue de Gerlache - de Gerlachestraat",M
 "Avenue de Broqueville - de Broquevillelaan",M
 "Avenue Léon Tombu - Léon Tombulaan",M
@@ -394,7 +391,6 @@ streetname,gender
 "Rue Auguste Lambiotte - Auguste Lambiottestraat",M
 "Rue Joseph Coosemans - Joseph Coosemansstraat",M
 "Rue Léon Mignon - Léon Mignonstraat",M
-"Avenue Orion - Orionlaan",M
 "Avenue Clays - Clayslaan",M
 "Rue Alexandre Markelbach - Alexandre Markelbachstraat",M
 "Rue André Van Hasselt - André Van Hasseltstraat",M
@@ -416,7 +412,6 @@ streetname,gender
 "Rue Emmanuel Hiel - Emmanuel Hielstraat",M
 "Rue Abbé Jean Heymans - Priester Jean Heymansstraat",M
 "Boulevard Henri Simonet - Henri Simonetlaan",M
-"Drève Tyl Uylenspiegel - Tijl Uilenspiegeldreef",M
 "Rue Pierre Van Reymenant - Pierre Van Reymenantstraat",M
 "Place Jourdan - Jourdanplein",M
 "Avenue Gilbert Mullie - Gilbert Mullielaan",M
@@ -1826,6 +1821,7 @@ streetname,gender
 "Avenue Adolphe Dupuich - Adolphe Dupuichlaan",M
 "Avenue Brunard - Brunardlaan",M
 "Place Dailly - Daillyplein",M
+"Place Colonel Bremer - Kolonel Bremerplein",M
 "Avenue Dailly - Daillylaan",M
 "Rue Goossens - Goossensstraat",M
 "Avenue Joseph Divoort - Joseph Divoortlaan",M

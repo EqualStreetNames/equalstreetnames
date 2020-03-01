@@ -1,7 +1,6 @@
 streetname,gender
 "Place Reine Astrid - Koningin Astridplein",F
 "Rue Rosalie Uyttenhove - Rosalie Uyttenhovestraat",F
-"Avenue Notre-Dame de Lourdes - Onze-Lieve-Vrouw Van Lourdeslaan",F
 "Rue Amélie Gomand - Amélie Gomandstraat",F
 "Rue Fernande Volral - Fernande Volralstraat",F
 "Rue Decrée - Decréestraat",F
@@ -134,7 +133,6 @@ streetname,gender
 "Pont Suzan Daniel - Suzan Danielbrug",F
 "Rue Eliane Vogel-Polsky - Eliane Vogel-Polskystraat",F
 "Square Vergote - Vergotesquare",M
-"Rue Jules Lebrun - Jules Lebrunstraat",M
 "Rue Van Dyck - Van Dyckstraat",M
 "Rue Jean-Baptiste Serkeyn - Jean-Baptiste Serkeynstraat",M
 "Rue Honoré Longtin - Honoré Longtinstraat",M
@@ -279,6 +277,7 @@ streetname,gender
 "Rue Ferdinand Craps - Ferdinand Crapsstraat",M
 "Avenue Robert Dalechamp - Robert Dalechamplaan",M
 "Avenue Edouard Speeckaert - Edouard Speeckaertlaan",M
+"Rue du Zéphyr - Westenwindstraat",M
 "Rue de Gerlache - de Gerlachestraat",M
 "Avenue de Broqueville - de Broquevillelaan",M
 "Avenue Léon Tombu - Léon Tombulaan",M
@@ -296,7 +295,6 @@ streetname,gender
 "Place Saint-Antoine - Sint-Antoonplein",M
 "Rue Alex Marcette - Alex Marcettestraat",M
 "Rue Georges et Jacques Martin - Georges en Jacques Martinstraat",M
-"Rue Beckers - Beckersstraat",M
 "Avenue Antoine-Joseph Slegers - Antoine-Joseph Slegerslaan",M
 "Avenue Victor Gilsoul - Victor Gilsoullaan",M
 "Clos A.J. Slegers - A.J. Slegersgaarde",M

@@ -184,6 +184,7 @@ streetname,gender
 "Rue Steppé - Steppéstraat",M
 "Rue Ferdinand Lenoir - Ferdinand Lenoirstraat",M
 "Rue Pierre De Breuker - Pierre De Breukerstraat",M
+"Rue Léopold - Leopoldstraat",M
 "Rue Henri Werrie - Henri Werriestraat",M
 "Rue Gillebertus - Gillebertusstraat",M
 "Place Laneau - Laneauplein",M
@@ -305,6 +306,7 @@ streetname,gender
 "Avenue Jean Roch Collon - Jean Roch Collonlaan",M
 "Avenue Edgard Tytgat - Edgard Tytgatlaan",M
 "Avenue Guillaume Abeloos - Guillaume Abelooslaan",M
+"Boulevard Bischoffsheim - Bischoffsheimlaan",M
 "Avenue De Fré - De Frélaan",M
 "Square Docteur Jean Joly - Dokter Jean Jolyplein",M
 "Avenue Paul Stroobant - Paul Stroobantlaan",M
@@ -501,6 +503,7 @@ streetname,gender
 "Rue Portaels - Portaelsstraat",M
 "Rue Joseph Van Camp - Joseph Van Campstraat",M
 "Rue Henri-Joseph Genesse - Henri-Joseph Genessestraat",M
+"Rue Georges Garnir - Georges Garnirstraat",M
 "Rue Maurice Des Ombiaux - Maurice Des Ombiauxstraat",M
 "Avenue Jean Monnet - Jean Monnetlaan",M
 "Avenue Oscar Jespers - Oscar Jesperslaan",M
@@ -1924,7 +1927,6 @@ streetname,gender
 "Rue Zinner - Zinnerstraat",M
 "Avenue Charles d'Orjo de Marchovelette - Charles d'Orjo de Marchovelettelaan",M
 "Avenue Jacques Pastur - Jacques Pasturlaan",M
-"Boulevard Bischoffsheim - Bischoffsheimlaan",M
 "Place Louis Steens - Louis Steensplein",M
 "Avenue Paul Héger - Paul Hégerlaan",M
 "Rue Major Brück - Majoor Brückstraat",M

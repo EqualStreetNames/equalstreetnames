@@ -23,20 +23,28 @@ export default {
     colors.o
   ],
   "line-width": [
-    "case",
+    "interpolate",
+    ["linear"],
+    ["zoom"],
+    13,
     [
-      "all",
-      ["==", ["to-boolean", ["get", "details"]], true],
-      ["==", ["get", "person", ["get", "details"]], true]
+      "case",
+      [
+        "all",
+        ["==", ["to-boolean", ["get", "details"]], true],
+        ["==", ["get", "person", ["get", "details"]], true]
+      ],
+      3,
+      [
+        "all",
+        ["==", ["to-boolean", ["get", "details"]], true],
+        ["==", ["get", "person", ["get", "details"]], false]
+      ],
+      2,
+      1
     ],
-    3,
-    [
-      "all",
-      ["==", ["to-boolean", ["get", "details"]], true],
-      ["==", ["get", "person", ["get", "details"]], false]
-    ],
-    2,
-    1
+    22,
+    20
   ],
   "line-opacity": 0.8
 };

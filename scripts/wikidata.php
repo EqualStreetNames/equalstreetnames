@@ -23,13 +23,13 @@ foreach ($tagged as $element) {
     $wikidata = $element['tags']['wikidata'] ?? null;
     $etymology = $element['tags']['name:etymology:wikidata'] ?? null;
 
-    if (!is_null($wikidata)) {
-        $path = sprintf('data/wikidata/%s.json', $wikidata);
+    // if (!is_null($wikidata)) {
+    //     $path = sprintf('data/wikidata/%s.json', $wikidata);
 
-        if (!file_exists($path)) {
-            file_put_contents($path, get($wikidata));
-        }
-    }
+    //     if (!file_exists($path)) {
+    //         file_put_contents($path, get($wikidata));
+    //     }
+    // }
 
     if (!is_null($etymology)) {
         $path = sprintf('data/wikidata/%s.json', $etymology);

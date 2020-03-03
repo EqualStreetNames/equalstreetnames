@@ -1,24 +1,24 @@
 <?php
 
 /**
- * Get the associatedStreet relations from OpenStreetMap via Overpass API.
+ * Get the relevant relations from OpenStreetMap via Overpass API.
  */
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../../');
+chdir(__DIR__ . '/../../');
 
 require 'vendor/autoload.php';
 
 $municipalities = include 'scripts/municipalities.php';
 
-$directory = 'data/overpass/associatedStreet';
+$directory = 'data/overpass/relation';
 
 if (!file_exists($directory) || !is_dir($directory)) {
     mkdir($directory);
 }
 
-// Get all the associatedStreet relations in Brussels Region.
+// Get all the relevant relations in Brussels Region.
 file_put_contents(
     sprintf('%s/full.json', $directory),
     get()
@@ -33,7 +33,7 @@ exit(0);
  */
 function get(): string
 {
-    $query = file_get_contents('scripts/overpass/associatedStreet-full-json');
+    $query = file_get_contents('scripts/overpass/relation-full-json');
     $query = str_replace(["\r", "\n"], '', $query);
 
     $client = new \GuzzleHttp\Client();

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Get the associatedStreet relations from OpenStreetMap via Overpass API.
+ * Get the relevant relations from OpenStreetMap via Overpass API.
  */
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../../');
+chdir(__DIR__ . '/../../');
 
 require 'vendor/autoload.php';
 
@@ -18,7 +18,7 @@ if (!file_exists($directory) || !is_dir($directory)) {
     mkdir($directory);
 }
 
-// Get all the associatedStreet relations in Brussels Region.
+// Get all the relevant relations in Brussels Region.
 file_put_contents(
     sprintf('%s/full.json', $directory),
     get()

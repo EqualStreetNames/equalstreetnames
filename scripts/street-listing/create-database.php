@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Get the associatedStreet relations from OpenStreetMap via Overpass API.
+ * Get the relevant relations from OpenStreetMap via Overpass API.
  */
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -16,10 +16,10 @@ if (file_exists('data/equalstreetnames.db')) {
 
 $pdo = new PDO('sqlite:data/equalstreetnames.db');
 
-// associatedStreet relations
+// relevant relations
 $pdo->exec('CREATE TABLE relation (municipality VARCHAR, id INTEGER, name VARCHAR, name_fr VARCHAR, name_nl VARCHAR, wikidata VARCHAR, etymology VARCHAR)');
 
-$glob = glob('data/overpass/associatedStreet/*.csv');
+$glob = glob('data/overpass/relation/*.csv');
 
 foreach ($glob as $path) {
     $fname = pathinfo($path, PATHINFO_FILENAME);

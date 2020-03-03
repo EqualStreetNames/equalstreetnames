@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Get the associatedStreet relations from OpenStreetMap via Overpass API.
+ * Get the relevant relations from OpenStreetMap via Overpass API.
  */
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../../');
+chdir(__DIR__ . '/../../');
 
 require 'vendor/autoload.php';
 
@@ -18,7 +18,7 @@ if (!file_exists($directory) || !is_dir($directory)) {
     mkdir($directory);
 }
 
-// Get all the associatedStreet relations in all the municipalities in Brussels Region.
+// Get all the relevant relations in all the municipalities in Brussels Region.
 foreach ($municipalities as $nis5 => $municipality) {
     printf('%d - %s%s', $nis5, $municipality[0], PHP_EOL);
 

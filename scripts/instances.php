@@ -10,11 +10,12 @@ return [
     'Q486972'   => false, // human settlement
     'Q493522'   => false, // municipality of Belgium
     'Q507850'   => false, // Marian apparition
+    'Q511056'   => false, // solar deity
     'Q902814'   => false, // border town
     'Q1509831'  => false,  // title of Mary
     'Q1549591'  => false, // big city
     'Q2985549'  => true,  // mononymous person
-    'Q3046146'  => false,  // married couple
+    'Q3046146'  => false, // married couple
     'Q3658341'  => false, // literary character
     'Q14406742' => false, // comic book series
     'Q15273785' => false, // Belgian municipality with city privileges

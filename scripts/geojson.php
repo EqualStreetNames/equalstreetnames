@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
-$json = json_decode(file_get_contents('data/overpass/associatedStreet/full.json'), true);
+$json = json_decode(file_get_contents('data/overpass/relation/full.json'), true);
 
 $nodes = extractNodes($json['elements']);
 $ways = extractWays($json['elements']);
@@ -36,11 +36,11 @@ foreach ($relations as $r) {
         $etymology = extractWikidata($properties['etymology']);
 
         $properties = array_merge(
-                $properties,
-                [
-                    'details' => $etymology,
-                ]
-            );
+            $properties,
+            [
+                'details' => $etymology,
+            ]
+        );
     } else {
         $gender = getGender($streetsGender, $r['tags']['name:fr'] ?? $r['tags']['name'], $r['tags']['name:nl'] ?? $r['tags']['name']);
 
@@ -60,7 +60,7 @@ foreach ($relations as $r) {
     $streets = array_filter(
         $r['members'],
         function ($member) {
-            return $member['role'] === 'street';
+            return $member['role'] === 'street' || $member['role'] === 'outer';
         }
     );
 
@@ -113,11 +113,11 @@ foreach ($ways as $w) {
             $etymology = extractWikidata($properties['etymology']);
 
             $properties = array_merge(
-                    $properties,
-                    [
-                        'details' => $etymology,
-                    ]
-                );
+                $properties,
+                [
+                    'details' => $etymology,
+                ]
+            );
         } else {
             $gender = getGender($streetsGender, $w['tags']['name:fr'] ?? $w['tags']['name'], $w['tags']['name:nl'] ?? $w['tags']['name']);
 

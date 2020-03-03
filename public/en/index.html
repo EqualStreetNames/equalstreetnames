@@ -346,7 +346,6 @@
             m.parentNode.insertBefore(o, m)
         })(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
         if (process.env.FATHOM_TOKEN) {
-            console.log(process.env.FATHOM_TOKEN);
             fathom('set', 'siteId', process.env.FATHOM_TOKEN);
             fathom('trackPageview');
         }

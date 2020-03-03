@@ -53,6 +53,7 @@ streetname,gender
 "Rue Gabrielle Petit - Gabrielle Petitstraat",F
 "Rue Hélène Ryckmans - Hélène Ryckmansstraat",F
 "Rue Sainte-Marie - Sint-Mariastraat",F
+"Place de la Duchesse de Brabant - Hertogin van Brabantplaats",F
 "Rue Sainte-Elisabeth - Sint-Elisabethstraat",F
 "Rue de Sévigné - de Sévignéstraat",F
 "Avenue Impératrice Charlotte - Keizerin Charlottelaan",F
@@ -73,8 +74,10 @@ streetname,gender
 "Place Akarova - Akarovaplein",F
 "Parvis Sainte-Alix - Sinte-Aleidisvoorplein",F
 "Avenue Sainte-Alix - Sinte-Aleidislaan",F
-"Place Louise - Louizaplein",F
 "Place Sainte-Catherine - Sint-Katelijneplein",F
+"Place Marie Janson - Marie Jansonplein",F
+"Place Louise - Louizaplein",F
+"Allée Rosa Luxembourg - Rosa Luxemburgdreef",F
 "Allée Louise Van den Plas - Louise Van den Plasdreef",F
 "Tunnel Louise - Louizatunnel",F
 "Place Stéphanie - Stefaniaplein",F
@@ -1404,6 +1407,7 @@ streetname,gender
 "Rue Lacaille - Lacaillestraat",M
 "Rue Saint-Ghislain - Sint-Gisleinsstraat",M
 "Rue Sallaert - Sallaertstraat",M
+"Rue de Wynants - de Wynantsstraat",M
 "Place Poelaert - Poelaertplein",M
 "Clos Saint-Georges - Sint-Georgiousgaarde",M
 "Avenue Marquis de Villalobar - Markies de Villalobarlaan",M
@@ -1522,12 +1526,16 @@ streetname,gender
 "Rue Defacqz - Defacqzstraat",M
 "Avenue Besme - Besmelaan",M
 "Place Wappers - Wappersplein",M
+"Place Madou - Madouplein",M
 "Rue Blaes - Blaesstraat",M
 "Boulevard Maurice Lemonnier - Maurice Lemonnierlaan",M
 "Galerie Ravenstein - Ravensteingalerij",M
+"Place de Jamblinne de Meux - de Jamblinne de Meuxplein",M
 "Avenue Secrétin - Secrétinlaan",M
 "Cours Paul-Henri Spaak - Paul-Henri Spaak Promenade",M
+"Rue Baron Horta - Baron Hortastraat",M
 "Clos René Magritte - René Magrittegaarde",M
+"Square Jacques Franck - Jacques Francksquare",M
 "Rue Émile Lecomte - Émile Lecomtestraat",M
 "Avenue Oscar Van Goidtsnoven - Oscar Van Goidtsnovenlaan",M
 "Avenue Everard - Everardlaan",M
@@ -1604,7 +1612,6 @@ streetname,gender
 "Rue Saint-Géry - Sint-Goriksstraat",M
 "Rue Philippe de Champagne - Philippe de Champagnestraat",M
 "Rue Saint-Laurent - Sint-Laurensstraat",M
-"Rue Baron Horta - Baron Hortastraat",M
 "Boulevard Prince de Liège - Prins van Luikstraat",M
 "Place Henri De Smet - Henri De Smetplein",M
 "Avenue Ambassadeur Van Vollenhoven - Ambassadeur Van Vollenhovenlaan",M
@@ -1688,7 +1695,6 @@ streetname,gender
 "Drève de Saint-Hubert - Sint-Hubertusdreef",M
 "Place Hermann Dumont - Hermann Dumontplein",M
 "Place Louis Morichar - Louis Moricharplein",M
-"Place Madou - Madouplein",M
 "Rue Saint-Alphonse - Sint-Alfonsstraat",M
 "Rue Gineste - Ginestestraat",M
 "Place Saint-Lazare - Sint-Lazarusplein",M
@@ -1860,7 +1866,6 @@ streetname,gender
 "Avenue Albert Lancaster - Albert Lancasterlaan",M
 "Rue Jean Benaets - Jean Benaetsstraat",M
 "Avenue Louis-Léopold Vander Swaelmen - Louis-Léopold Vander Swaelmenlaan",M
-"Place de Jamblinne de Meux - de Jamblinne de Meuxplein",M
 "Rue Lincoln - Lincolnstraat",M
 "Rue Ernest Gossart - Ernest Gossartstraat",M
 "Avenue Hamoir - Hamoirlaan",M

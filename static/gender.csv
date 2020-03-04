@@ -10,6 +10,7 @@ streetname,gender
 "Clos Marilyn Monroe - Marilyn Monroegaarde",F
 "Clos Ingrid Bergman - Ingrid Bergmangaarde",F
 "Petite Rue Sainte-Anne - Kleine Sint-Annastraat",F
+"Avenue Marie-José - Marie-Josélaan",F
 "Place Séverine - Séverineplein",F
 "Square Marie-José - Marie-Joséplein",F
 "Square Joséphine-Charlotte - Joséphine-Charlottesquare",F
@@ -35,6 +36,9 @@ streetname,gender
 "Rue Clémentine - Clementinestraat",F
 "Petite Rue Malibran - Korte Malibranstraat",F
 "Avenue Marguerite Yourcenar - Marguerite Yourcenarlaan",F
+"Rue Élise - Elizastraat",F
+"Avenue Jeanne - Johannalaan",F
+"Avenue Ernestine - Ernestinelaan",F
 "Rue Juliette Wytsman - Juliette Wytsmanstraat",F
 "Place Marie-José - Marie-Joséplein",F
 "Rue Mercelis - Mercelisstraat",F
@@ -144,6 +148,8 @@ streetname,gender
 "Rue Vanderborght - Vanderborghtstraat",M
 "Avenue Jacques Sermon - Jacques Sermonlaan",M
 "Avenue Giele - Gielelaan",M
+"Rue de Moranville - de Moranvillestraat",M
+"Rue Herrewege - Herrewegestraat",M
 "Avenue Odon Warland - Odon Warlandlaan",M
 "Rue Aloïs Verstraeten - Aloïs Verstraetenstraat",M
 "Avenue Démosthène Poplimont - Démosthène Poplimontlaan",M

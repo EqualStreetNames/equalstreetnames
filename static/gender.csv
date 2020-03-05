@@ -27,7 +27,6 @@ streetname,gender
 "Square Marguerite - Margaretasquare",F
 "Square Marie-Louise - Maria-Louizasquare",F
 "Allée Clara Clairbert - Clara Clairbertdreef",F
-"Avenue Artémis - Artemislaan",F
 "Rue Marie de Bourgogne - Maria van Bourgondiëstraat",F
 "Square Elsa Frison - Elsa Frisonsquare",F
 "Rue Maria Malibran - Maria Malibranstraat",F
@@ -76,6 +75,7 @@ streetname,gender
 "Drève Aurélie Solvay - Aurélie Solvaydreef",F
 "Drève Aleyde De Brabant - Aleyde Van Brabantdreef",F
 "Place Akarova - Akarovaplein",F
+"Rue Christine - Kristinastraat",F
 "Parvis Sainte-Alix - Sinte-Aleidisvoorplein",F
 "Avenue Sainte-Alix - Sinte-Aleidislaan",F
 "Place Sainte-Catherine - Sint-Katelijneplein",F
@@ -583,7 +583,6 @@ streetname,gender
 "Place Ministre Wauters - Minister Wautersplein",M
 "Rue Hoorickx - Hoorickxstraat",M
 "Avenue Guillaume Melckmans - Guillaume Melckmanslaan",M
-"Clos Prométhée - Prometheusgaarde",M
 "Rue Baron Lambert - Baron Lambertstraat",M
 "Rue Georges Raeymaekers - Georges Raeymaekersstraat",M
 "Rue Henri Jacobs - Henri Jacobsstraat",M

@@ -47,9 +47,7 @@ streetname,gender
 "Place Marguerite d'Autriche - Margaretha van Oostenrijkplein",F
 "Place de la Reine Paola - Koningin Paolaplein",F
 "Parvis Sainte-Cécile - Sint-Ceciliavoorplein",F
-"Rue du Parc Elisabeth - Elisabethparkstraat",F
 "Rue Marie-Thérèse - Maria-Theresiastraat",F
-"Avenue Notre-Dame de Fatima - Onze Lieve-Vrouw van Fatimalaan",F
 "Square Victoria Régina - Victoria Reginaplantsoen",F
 "Avenue Éléonore - Eleonorelaan",F
 "Rue Marguerite Bervoets - Marguerite Bervoetsstraat",F
@@ -801,7 +799,6 @@ streetname,gender
 "Rue Pierre Marchant - Pierre Marchantstraat",M
 "Rue Georges Lorand - Georges Lorandstraat",M
 "Rue Goffart - Goffartstraat",M
-"Rue Maes - Maesstraat",M
 "Rue Jean Van Volsem - Jean Van Volsemstraat",M
 "Place Henri Conscience - Hendrik Conscienceplein",M
 "Rue Scarron - Scarronstraat",M
@@ -954,7 +951,6 @@ streetname,gender
 "Clos Louis Banken - Louis Bankengaarde",M
 "Clos Joseph Hendrickx - Joseph Hendrickxgaarde",M
 "Rue Nestor Martin - Nestor Martinstraat",M
-"Avenue de Rusatira - Rusatiralaan",M
 "Venelle Mozart - Mozartsteeg",M
 "Venelle Schubert - Schubertsteeg",M
 "Venelle Chopin - Chopinsteeg",M
@@ -2062,6 +2058,7 @@ streetname,gender
 "Drève Recteur Van Waeyenbergh - Rector Van Waeyenberghdreef",M
 "Rue de Witte de Haelen - De Witte de Haelenstraat",M
 "Avenue Alexandre Bertrand - Alexandre Bertrandlaan",M
+"Square Breughel l'Ancien - Breughel de Oudeplein",M
 "Avenue Hugo Van der Goes - Hugo Van der Goeslaan",M
 "Allée Nardo Lenaerts - Nardo Lenaertsdreef",M
 "Allée Jef Dutillieu - Jef Dutillieudreef",M

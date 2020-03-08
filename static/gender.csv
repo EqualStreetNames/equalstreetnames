@@ -1068,7 +1068,6 @@ streetname,gender
 "Rue Jean-Baptiste Vandendriesch - Jean Baptiste Vandendrieschstraat",M
 "Rue Joseph Mertens - Joseph Mertensstraat",M
 "Avenue Jean Dubrucq - Jean Dubrucqlaan",M
-"Avenue Van Volxem - Van Volxemlaan",M
 "Rue Alfred Orban - Alfred Orbanstraat",M
 "Rue Jef Devos - Jef Devosstraat",M
 "Rue Pierre Decoster - Pierre Decosterstraat",M
@@ -1173,7 +1172,6 @@ streetname,gender
 "Rue Jean-Baptiste Decock - Jean-Baptiste Decockstraat",M
 "Rue Van Malder - Van Malderstraat",M
 "Rue Albert Vanderkindere - Albert Vanderkinderestraat",M
-"Rue de Mérode - de Mérodestraat",M
 "Rue Isidoor Teirlinck - Isidoor Teirlinckstraat",M
 "Rue Vanderstraeten - Vanderstraetenstraat",M
 "Rue Henri De Saegher - Henri De Saegherstraat",M
@@ -1231,7 +1229,6 @@ streetname,gender
 "Rue Arnold Sohie - Arnold Sohiestraat",M
 "Rue Gustave Norga - Gustaaf Norgastraat",M
 "Rue Frans Léon - Frans Léonstraat",M
-"Rue Van Waeyenbergh - Van Waeyenberghstraat",M
 "Rue Saint-Vincent - Sint-Vincentiusstraat",M
 "Place Saint-Vincent - Sint-Vincentiusplaats",M
 "Rue Laurent Vandenhoven - Laurent Vandenhovenstraat",M
@@ -1239,6 +1236,7 @@ streetname,gender
 "Rue Servandoni - Servandonistraat",M
 "Rue d'Hannetaire - d'Hannetairestraat",M
 "Avenue Jean Josée - Jean Joséelaan",M
+"Rue Corneille - Corneillestraat",M
 "Rue Fénelon - Fenelonstraat",M
 "Rue Prosper Henri Devos - Prosper Henri Devosstraat",M
 "Rue Homère - Homerusstraat",M
@@ -1250,7 +1248,6 @@ streetname,gender
 "Avenue Jean de Bologne - Jean de Bolognelaan",M
 "Avenue Van Praet - Van Praetlaan",M
 "Avenue de Busleyden - de Busleydenlaan",M
-"Rue De Wand - De Wandstraat",M
 "Rue Gustave Demanet - Gustave Demanetstraat",M
 "Rue Paul Janson - Paul Jansonstraat",M
 "Avenue du Général de Ceuninck - Generaal de Ceunincklaan",M

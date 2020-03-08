@@ -25,6 +25,7 @@ return [
     'Q3046146'  => false, // married couple
     'Q3658341'  => false, // literary character
     'Q14406742' => false, // comic book series
+    'Q15054484' => false, // Belgian noble family
     'Q15273785' => false, // Belgian municipality with city privileges
     'Q20643955' => true,  // human biblical figure
     'Q20902363' => false, // mythical human-animal hybrid

@@ -628,7 +628,6 @@ streetname,gender
 "Clos André Lagasse - André Lagassegaarde",M
 "Clos André Rappe - André Rappegaarde",M
 "Clos Marcel Fonteyne - Marcel Fonteynegaarde",M
-"Rue Konkel - Konkelstraat",M
 "Avenue Louis Jasmin - Louis Jasminlaan",M
 "Mont Saint-Lambert - Sint-Lambertusberg",M
 "Rue André Crabbe - André Crabbestraat",M
@@ -1326,8 +1325,8 @@ streetname,gender
 "Avenue Don Bosco - Don Boscolaan",M
 "Avenue Charles Thielemans - Charles Thielemanslaan",M
 "Avenue Louis Ceusters - Louis Ceusterslaan",M
+"Avenue Jules De Trooz - Jules De Troozlaan",M
 "Rue Paul Lancsweert - Paul Lancsweertstraat",M
-"Rue Paul Wemaere - Paul Wemaerestraat",M
 "Rue Jean Wellens - Jean Wellensstraat",M
 "Rue de l'Éclusier Cogge - Sluismeester Coggestraat",M
 "Rue Henri Caron - Henri Caronstraat",M
@@ -1354,7 +1353,6 @@ streetname,gender
 "Rue Jules Broeren - Jules Broerenstraat",M
 "Rue Cyriel Buysse - Cyriel Buyssestraat",M
 "Rue Thiernesse - Thiernessestraat",M
-"Rue Jacques Manne - Jacques Mannestraat",M
 "Rue Commandant Charcot - Commandant Charcotstraat",M
 "Rue Jakob Smits - Jakob Smitsstraat",M
 "Boulevard Félix Paulsen - Félix Paulsenlaan",M
@@ -1437,8 +1435,6 @@ streetname,gender
 "Rue Docteur Kuborn - Dokter Kubornstraat",M
 "Avenue Prince Baudouin - Prins Boudewijnlaan",M
 "Avenue Alfred Madoux - Alfred Madouxlaan",M
-"Avenue du Manoir d'Anjou - Manoir d'Anjoulaan",M
-"Square De Guise - De Guiseplein",M
 "Rue Georges Moreau - Georges Moreaustraat",M
 "Rue Émile Carpentier - Emile Carpentierstraat",M
 "Avenue Jan Olieslagers - Jan Olieslagerslaan",M
@@ -1446,7 +1442,6 @@ streetname,gender
 "Square Albert Ier - Albert I-square",M
 "Place Bara - Baraplein",M
 "Rue Bara - Barastraat",M
-"Avenue Montgolfier - Montgolfierlaan",M
 "Avenue Antoine de Saint-Exupéry - Antoine de Saint-Exupérylaan",M
 "Clos Comte De Ferraris - Graaf De Ferrarisgaarde",M
 "Rue Charles Parenté - Charles Parentéstraat",M
@@ -1463,7 +1458,6 @@ streetname,gender
 "Rue Ruysdael - Ruysdaelstraat",M
 "Rue Jules Ruhl - Jules Ruhlstraat",M
 "Rue Ropsy Chaudron - Ropsy Chaudronstraat",M
-"Rue Bissé - Bisséstraat",M
 "Rue Gheude - Gheudestraat",M
 "Rue Memling - Memlingstraat",M
 "Rue Sergent De Bruyne - Sergeant De Bruynestraat",M
@@ -1491,17 +1485,14 @@ streetname,gender
 "Rue Jean Lambotte - Jean Lambottestraat",M
 "Rue Leopold Rom - Leopold Romstraat",M
 "Rue Alexis Mousin - Alexis Mousinstraat",M
-"Place Dewandre - Dewandreplein",M
 "Rue Alphonse Balis - Alphonse Balisstraat",M
 "Avenue Jacques De Meurers - Jacques De Meurerslaan",M
 "Avenue Van Crombrugghe - Van Crombrugghelaan",M
 "Avenue van der Meerschen - van der Meerschenlaan",M
-"Avenue De Biolley - De Biolleylaan",M
 "Avenue Joseph Rutten - Joseph Ruttenlaan",M
 "Avenue Crokaert - Crokaertlaan",M
 "Avenue Jean Volders - Jean Volderslaan",M
 "Rue Vanderschrick - Vanderschrickstraat",M
-"Avenue Orban - Orbanlaan",M
 "Avenue Jules Du Jardin - Jules Du Jardinlaan",M
 "Avenue François Peeters - François Peeterslaan",M
 "Avenue Baron Albert d'Huart - Baron Albert d'Huartlaan",M
@@ -1877,6 +1868,7 @@ streetname,gender
 "Avenue Hippolyte Boulenger - Hippolyte Boulengerlaan",M
 "Avenue Pierre d'Union - Pierre d'Unionlaan",M
 "Avenue Wellington - Wellingtonlaan",M
+"Avenue Orban - Orbanlaan",M
 "Avenue Joseph Wybran - Joseph Wybranlaan",M
 "Rue Tielemans - Tielemansstraat",M
 "Place Julien Dillens - Julien Dillensplein",M
@@ -2132,6 +2124,7 @@ streetname,gender
 "Allée Pierre Culliford dit Peyo - Pierre Culliford dit Peyodreef",M
 "Allée Bob De Moor - Bob De Moordreef",M
 "Allée Victor Hubinon - Victor Hubinondreef",M
+"Rue Jacques Manne - Jacques Mannestraat",M
 "Place Olivier Strebelle - Olivier Strebelleplein",M
 "Venelle Robert Brout - Robert Broutsteeg",M
 "Avenue François Englert - François Englertlaan",M

@@ -7,10 +7,12 @@ return [
     'Q532'      => false, // village
     'Q3957'     => false, // town
     'Q22698'    => false, // park
+    'Q23413'    => false, // castle
     'Q45713'    => false, // titan
     'Q47521'    => false, // stream
     'Q133311'   => false, // tribe
     'Q188055'   => false, // siege
+    'Q327245'   => false, // team
     'Q476682'   => false, // anemoi
     'Q486972'   => false, // human settlement
     'Q493522'   => false, // municipality of Belgium
@@ -24,11 +26,14 @@ return [
     'Q2985549'  => true,  // mononymous person
     'Q3046146'  => false, // married couple
     'Q3658341'  => false, // literary character
+    'Q13417114' => false, // noble family
+    'Q14073567' => false, // sibling duo
     'Q14406742' => false, // comic book series
     'Q15054484' => false, // Belgian noble family
     'Q15273785' => false, // Belgian municipality with city privileges
     'Q20643955' => true,  // human biblical figure
     'Q20902363' => false, // mythical human-animal hybrid
+    'Q21070568' => true,  // human who may be fictional
     'Q22988604' => false, // mythological Greek character
     'Q22989102' => false, // Greek deity
     'Q24434794' => false, // king in Greek mythology

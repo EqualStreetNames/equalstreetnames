@@ -10,7 +10,7 @@ We used the [Overpass API](https://overpass-api.de/) to query the _OpenStreetMap
 
 This is not the case everywhere in the world, but in Brussels most of the streets have an [`associatedStreet` relation](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet).
 
-We queried from _OpenStreetMap_ all the objects of [type `relation`](https://wiki.openstreetmap.org/wiki/Relation) tagged with [`type=associatedStreet`](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet) that are in Brussels Region ([INS-NIS](https://statbel.fgov.be/) code `04000` & _Wikidata_ identifier [`Q240`](https://www.wikidata.org/wiki/Q240)).
+We queried from _OpenStreetMap_ all the objects of [type `relation`](https://wiki.openstreetmap.org/wiki/Relation) tagged with [`type=associatedStreet`](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet) or [`type=street`](https://wiki.openstreetmap.org/wiki/Relation:street) that are in Brussels Region ([INS-NIS](https://statbel.fgov.be/) code `04000` & _Wikidata_ identifier [`Q240`](https://www.wikidata.org/wiki/Q240)).
 
 We also queried from _OpenStreetMap_ all the objects of [type `multipolygon`](https://wiki.openstreetmap.org/wiki/Relation) tagged with [`place`](https://wiki.openstreetmap.org/wiki/Key:place) or [`highway`](https://wiki.openstreetmap.org/wiki/Key:highway) that have a [name](https://wiki.openstreetmap.org/wiki/Key:highway) and are in Brussels Region ([INS-NIS](https://statbel.fgov.be/) code `04000` & _Wikidata_ identifier [`Q240`](https://www.wikidata.org/wiki/Q240)).
 
@@ -19,6 +19,7 @@ We also queried from _OpenStreetMap_ all the objects of [type `multipolygon`](ht
 ( area["admin_level"="4"]["ref:INS"="04000"]["wikidata"="Q240"]; )->.a;
 (
     relation["type"="associatedStreet"](area.a);
+    relation["type"="street"](area.a);
     relation["type"="multipolygon"]["place"]["name"](area.a);
     relation["type"="multipolygon"]["highway"]["name"](area.a);
 );
@@ -27,7 +28,7 @@ out body;
 out skel qt;
 ```
 
-[Open this query in Overpass-Turbo](http://overpass-turbo.eu/s/R95)
+[Open this query in Overpass-Turbo](http://overpass-turbo.eu/s/RO6)
 
 ### Ways `highway`
 

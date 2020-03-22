@@ -81,20 +81,20 @@ streetname,gender
 "Place Louise - Louizaplein",F
 "Allée Rosa Luxembourg - Rosa Luxemburgdreef",F
 "Allée Louise Van den Plas - Louise Van den Plasdreef",F
-"Tunnel Louise - Louizatunnel",F
+"Rue Akarova - Akarovastraat",F
 "Place Stéphanie - Stefaniaplein",F
+"Rue Marie Depage - Marie Depagestraat",F
+"Tunnel Louise - Louizatunnel",F
 "Avenue Louise - Louizalaan",F
 "Avenue Reine Marie-Henriette - Koningin Maria-Hendrikalaan",F
 "Place Sainte-Gudule - Sinter-Goedeleplein",F
 "Rue Sainte-Catherine - Sint-Katelijnestraat",F
 "Avenue Victoria Regina - Victoria Reginalaan",F
-"Rue Marie Depage - Marie Depagestraat",F
 "Rue Gatti de Gamond - Gatti de Gamondstraat",F
 "Avenue de la Princesse Paola - Prinses Paolalaan",F
 "Avenue Clémentine - Clementinalaan",F
 "Carrefour Sainte-Anne - Sint-Annakruispunt",F
 "Avenue Sainte-Anne - Sint-Annalaan",F
-"Avenue de Flore - Floralaan",F
 "Quai Reine Astrid - Kw Koningin Astrid",F
 "Rue Edith Cavell - Edith Cavellstraat",F
 "Koningin Astridlaan - Avenue Reine Astrid",F
@@ -126,13 +126,14 @@ streetname,gender
 "Allée Louisa Haerens - Louisa Haerensdreef",F
 "Allée Estelle Juste - Estelle Justedreef",F
 "Place Jo Cox - Jo Coxplein",F
-"Clos Andrée Dumont -  Andrée Dumontgaarde",F
+"Clos Andrée Dumont - Andrée Dumontgaarde",F
 "Clos Andrée De Jongh - Andrée de Jonghgaarde",F
 "Rue Andrée de Jongh - Andrée de Jonghstraat",F
 "Rue Yvonne Nèvejean - Yvonne Nèvejeanstraat",F
 "Pont Suzan Daniel - Suzan Danielbrug",F
 "Rue Eliane Vogel-Polsky - Eliane Vogel-Polskystraat",F
 "Square Vergote - Vergotesquare",M
+"Place Rouppe - Rouppeplein",M
 "Rue Jules Lebrun - Jules Lebrunstraat",M
 "Rue Van Dyck - Van Dyckstraat",M
 "Rue Jean-Baptiste Serkeyn - Jean-Baptiste Serkeynstraat",M
@@ -1546,6 +1547,59 @@ streetname,gender
 "Rue Brederode - Brederodestraat",M
 "Avenue Lloyd George - Lloyd Georgelaan",M
 "Place Eugène Verboekhoven - Eugène Verboekhovenplein",M
+"Rue Jenneval - Jennevalstraat",M
+"Avenue Henri Jaspar - Henri Jasparlaan",M
+"Avenue Victor-Emmanuel III - Victor-Emmanuel III laan",M
+"Avenue Ilya Prigogine - Ilya Prigoginelaan",M
+"Rue Ernest Laude - Ernest Laudestraat",M
+"Avenue Ernest Renan - Ernest Renanlaan",M
+"Avenue Adolphe Demeur - Adolphe Demeurlaan",M
+"Rue Gustave Defnet - Gustave Defnetstraat",M
+"Avenue Casalta - Casaltalaan",M
+"Drève Saint-Hubert - Sint-Hubertusdreef",M
+"Rue Saint-Hubert - Sint-Huibrechtsstraat",M
+"Rue Albert Meunier - Albert Meunierstraat",M
+"Square Lainé - Lainésquare",M
+"Avenue Hippolyte Boulenger - Hippolyte Boulengerlaan",M
+"Avenue Maxime Van Praag - Maxime Van Praaglaan",M
+"Rue Simons - Simonsstraat",M
+"Rue Willy Coppens - Willy Coppensstraat",M
+"Rue Franz Merjay - Franz Merjaystraat",M
+"Avenue Charles Schaller - Charles Schallerlaan",M
+"Square Georges Golinvaux - Georges Golinvauxsquare",M
+"Avenue Victor Moreau - Victor Moreaulaan",M
+"Avenue Guillaume Van Nerom - Guillaume Van Neromlaan",M
+"Clos Joseph Hanse - Joseph Hanse hof",M
+"Rue Joseph Stevens - Joseph Stevensstraat",M
+"Place Julien Dillens - Julien Dillensplein",M
+"Rue Stanley - Stanleystraat",M
+"Rue Léon Lepage - Léon Lepagestraat",M
+"Avenue André Ryckmans - André Ryckmanslaan",M
+"Rue Gustave Timmermans - Gustave Timmermansstraat",M
+"Rue Henri Simons - Henri Simonsstraat",M
+"Rue Paul Emile Lessire - Paul Emile Lessirestraat",M
+"Place Eugène Keym - Eugène Keymplein",M
+"Avenue Alphonse XIII - Alphonse XIII laan",M
+"Avenue Adolphe Wansart - Adolphe Wansartlaan",M
+"Rue Général Patton - Generaal Pattonstraat",M
+"Rue Théodore Verhaegen - Théodore Verhaegenstraat",M
+"Avenue Léo Errera - Léo Erreralaan",M
+"Rue Paul Devaux - Paul Devauxstraat",M
+"Rue Maurice Wilmotte - Maurice Wilmottestraat",M
+"Place Guy d'Arezzo - Guido van Arezzoplein",M
+"Avenue Massenet - Massenetlaan",M
+"Rue Auguste Danse - Auguste Dansestraat",M
+"Rue Tasson-Snel - Tasson-Snelstraat",M
+"Rue Rouppe - Rouppestraat",M
+"Rue Auguste Beernaert - Auguste Beernaertstraat",M
+"Avenue Jacques Dormont - Jacques Dormontlaan",M
+"Rue Maurice Poedts - Maurice Poedtsstraat",M
+"Rue Charles Lemaire - Charles Lemairestraat",M
+"Avenue Ernest Claes - Ernest Claeslaan",M
+"Rue Gisbert Combaz - Gisbert Combazstraat",M
+"Rue Grétry - Grétrystraat",M
+"Rue Félix Delhasse - Félix Delhassestraat",M
+"Avenue Dolez - Dolezlaan",M
 "Place Saint-Géry - Sint-Goriksplein",M
 "Square Albert Devèze - Albert Devèzesquare",M
 "Rue Lambermont - Lambermontstraat",M
@@ -1558,17 +1612,13 @@ streetname,gender
 "Rue Veydt - Veydtstraat",M
 "Rue Blanche - Blanchestraat",M
 "Rue Bosquet - Bosquetstraat",M
-"Rue Tasson-Snel - Tasson-Snelstraat",M
 "Avenue Brugmann - Brugmannlaan",M
 "Rue Moris - Morisstraat",M
-"Rue Maurice Wilmotte - Maurice Wilmottestraat",M
 "Rue Louis Coenen - Louis Coenenstraat",M
 "Avenue Paul Dejaer - Paul Dejaerlaan",M
-"Avenue Adolphe Demeur - Adolphe Demeurlaan",M
 "Rue Capouillet - Capouilletstraat",M
 "Rue Lebeau - Lebeaustraat",M
 "Square Charles Lagrange - Charles Lagrangesquare",M
-"Rue Joseph Stevens - Joseph Stevensstraat",M
 "Avenue Léopold III - Leopold III-laan",M
 "Rond-Point Jean Offenberg - Jean Offenbergplein",M
 "Avenue du Compte Moens De Fernig - Graaf Moens De Ferniglaan",M
@@ -1579,7 +1629,6 @@ streetname,gender
 "Square Émile Vander Bruggen - Émile Vander Bruggensquare",M
 "Rue Berckmans - Berckmansstraat",M
 "Place Loix - Loixplein",M
-"Avenue Henri Jaspar - Henri Jasparlaan",M
 "Boulevard Barthélémy - Barthelemylaan",M
 "Rue Ernest Blerot - Ernest Blerotstraat",M
 "Pont Fernand Demany - Fernand Demanybrug",M
@@ -1589,7 +1638,6 @@ streetname,gender
 "Rond Point Henri Simonet - Henri Simonetplein",M
 "Avenue Rogier - Rogierlaan",M
 "Boulevard Charlemagne - Karel de Grotelaan",M
-"Rue Jenneval - Jennevalstraat",M
 "Rue Philippe le Bon - Filips de Goedestraat",M
 "Rue Roger van der Weyden - Rogier van der Weydenstraat",M
 "Rue Archimède - Archimedesstraat",M
@@ -1599,7 +1647,6 @@ streetname,gender
 "Square Albert Verhaeren - Albert Verhaerensquare",M
 "Rue Lambert Vandervelde - Lambert Vanderveldestraat",M
 "Rue Edouard Olivier - Edouard Olivierstraat",M
-"Rue Grétry - Grétrystraat",M
 "Rue d'Accolay - Accolaystraat",M
 "Rue Saint-Jean - Sint-Jansstraat",M
 "Place de l'Albertine - Albertinaplein",M
@@ -1612,14 +1659,11 @@ streetname,gender
 "Rue Saint-Géry - Sint-Goriksstraat",M
 "Rue Philippe de Champagne - Philippe de Champagnestraat",M
 "Rue Saint-Laurent - Sint-Laurensstraat",M
-"Boulevard Prince de Liège - Prins van Luikstraat",M
 "Place Henri De Smet - Henri De Smetplein",M
 "Avenue Ambassadeur Van Vollenhoven - Ambassadeur Van Vollenhovenlaan",M
-"Avenue de Saint-Job - Sint-Jobselaan",M
 "Square Jef Dillen - Jef Dillensquare",M
 "Square Égide Rombaux - Égide Rombauxsquare",M
 "Rond-Point Pierre de Tollenaere - Pierre de Tollenaereplein",M
-"Rue Simons - Simonsstraat",M
 "Tunnel Léopold II - Leopold II-tunnel",M
 "Boulevard Emile Jacqmain - Emile Jacqmainlaan",M
 "Place De Brouckère - De Brouckèreplein",M
@@ -1627,11 +1671,9 @@ streetname,gender
 "Rue Saint-Michel - Sint-Michielsstraat",M
 "Rue Antoine Dansaert - Antoine Dansaertstraat",M
 "Boulevard Anspach - Anspachlaan",M
-"Rue Paul Devaux - Paul Devauxstraat",M
 "Rue Marcq - Marcqstraat",M
 "Rue Saint-Jean Népomucène - Sint-Jan Nepomucenusstraat",M
 "Rue Saint-Roch - Sint-Rochusstraat",M
-"Rue Léon Lepage - Léon Lepagestraat",M
 "Rue Saint-Pierre - Sint-Pietersstraat",M
 "Rue Saint-André - Sint-Andriesstraat",M
 "Rue Camusel - Camuselstraat",M
@@ -1649,7 +1691,6 @@ streetname,gender
 "Place Georges Brugmann - Georges Brugmannplein",M
 "Rue Général Lotz - Generaal Lotzstraat",M
 "Rue Louis Hymans - Louis Hymansstraat",M
-"Place Guy d'Arezzo - Guido van Arezzoplein",M
 "Rue Jules Lejeune - Jules Lejeunestraat",M
 "Avenue Molière - Molièrelaan",M
 "Rue Jean Chapelié - Jean Chapeliéstraat",M
@@ -1660,12 +1701,9 @@ streetname,gender
 "Avenue Ducpétiaux - Ducpétiauxlaan",M
 "Avenue Jef Lambeaux - Jef Lambeauxlaan",M
 "Square Larousse - Laroussesquare",M
-"Rue Félix Delhasse - Félix Delhassestraat",M
 "Rue Saint-Georges - Sint-Jorisstraat",M
 "Rue De Praetere - De Praeterestraat",M
 "Rue Paul Lauters - Paul Lautersstraat",M
-"Rue Général Patton - Generaal Pattonstraat",M
-"Rue Stanley - Stanleystraat",M
 "Rue Bodeghem - Bodegemsestraat",M
 "Rue Joseph Hazard - Joseph Hazardstraat",M
 "Place Constantin Meunier - Constantin Meunierplein",M
@@ -1673,12 +1711,9 @@ streetname,gender
 "Place Anneessens - Anneessensplein",M
 "Rue Jean Robie - Jean Robiestraat",M
 "Rue Garibaldi - Garibaldistraat",M
-"Rue Théodore Verhaegen - Théodore Verhaegenstraat",M
 "Rue Crickx - Crickxstraat",M
-"Rue Gustave Defnet - Gustave Defnetstraat",M
 "Rue Guillaume Tell - Willem Tellstraat",M
 "Rue Van Helmont - Van Helmontstraat",M
-"Rue Rouppe - Rouppestraat",M
 "Place Fontainas - Fontainasplein",M
 "Place Alexandre Pouchkine - Alexander Poesjkinplein",M
 "Rue Jean de Brouchoven de Bergeyck - Jean de Brouchoven de Bergeyckstraat",M
@@ -1688,7 +1723,6 @@ streetname,gender
 "Rue Vandermeulen - Vandermeulenstraat",M
 "Avenue Roger Vandendriessche - Roger Vandendriesschelaan",M
 "Place Marcel Broodthaers - Marcel Broodthaersplein",M
-"Drève de Saint-Hubert - Sint-Hubertusdreef",M
 "Place Hermann Dumont - Hermann Dumontplein",M
 "Place Louis Morichar - Louis Moricharplein",M
 "Rue Saint-Alphonse - Sint-Alfonsstraat",M
@@ -1698,7 +1732,7 @@ streetname,gender
 "Avenue Livingstone - Livingstonelaan",M
 "Rue Bordiau - Bordiaustraat",M
 "Avenue Victor Rousseau - Victor Rousseaulaan",M
-"Avenue Massenet - Massenetlaan",M
+"Tunnel Belliard - Belliardtunnel",M
 "Avenue Charbo - Charbolaan",M
 "Avenue Félix Marchal - Félix Marchallaan",M
 "Avenue Saint-Augustin - Sint-Augustinuslaan",M
@@ -1707,16 +1741,13 @@ streetname,gender
 "Rue Joseph Bens - Joseph Bensstraat",M
 "Place Jean Vander Elst - Jean Vander Elstplein",M
 "Rue Henri Maubel - Henri Maubelstraat",M
-"Avenue Léo Errera - Léo Erreralaan",M
 "Rue Joseph Stallaert - Joseph Stallaertstraat",M
 "Avenue René Gobert - René Gobertlaan",M
 "Rue Dodonée - Dodonéestraat",M
 "Rue Roberts Jones - Roberts Jonesstraat",M
 "Rue Prosper Matthys - Prosper Matthysstraat",M
 "Rue Baron Guillaume Van Hamme - Baron Guillaume Van Hammestraat",M
-"Rue Auguste Danse - Auguste Dansestraat",M
 "Rue Victor Allard - Victor Allardstraat",M
-"Avenue Adolphe Wansart - Adolphe Wansartlaan",M
 "Avenue Joseph Jongen - Joseph Jongenlaan",M
 "Avenue Arnold Delvaux - Arnold Delvauxlaan",M
 "Rue Charles Bernaerts - Charles Bernaertsstraat",M
@@ -1724,12 +1755,9 @@ streetname,gender
 "Chaussée de Saint-Job - Sint-Jobsesteenweg",M
 "Avenue Groelstveld - Groelstveldlaan",M
 "Rue Copernic - Copernicusstraat",M
-"Avenue Victor-Emmanuel III - Victor-Emmanuel III laan",M
 "Rue de Wansijn - de Wansijnstraat",M
-"Avenue Alphonse XIII - Alphonse XIII laan",M
 "Square Baron Alfred Bouvier - Baron Alfred Bouviersquare",M
 "Rue André Fauchille - André Fauchillestraat",M
-"Rue Saint-Hubert - Sint-Huibrechtsstraat",M
 "Place Thomas Balis - Thomas Balisplein",M
 "Square Jean-Baptiste De Greef - Jean-Baptiste De Greefsquare",M
 "Rue Maurice Charlent - Maurice Charlentstraat",M
@@ -1751,7 +1779,6 @@ streetname,gender
 "Avenue Jean Vanhaelen - Jean Vanhaelenlaan",M
 "Avenue François-Bernard Verboven - François-Bernard Verbovenlaan",M
 "Avenue Gustave Demey - Gustave Demeylaan",M
-"Avenue Ernest Claes - Ernest Claeslaan",M
 "Avenue Gaston De Gryse - Gaston De Gryselaan",M
 "Avenue Charles Dierickx - Charles Dierickxlaan",M
 "Avenue Daniel Boon - Daniel Boonlaan",M
@@ -1763,10 +1790,8 @@ streetname,gender
 "Avenue René Stevens - René Stevenslaan",M
 "Rue Emile Rotiers - Emile Rotiersstraat",M
 "Avenue Jean Van Horenbeeck - Jean Van Horenbeecklaan",M
-"Avenue Charles Schaller - Charles Schallerlaan",M
 "Rue Jean Ekelmans - Jean Ekelmansstraat",M
 "Rue Franciscus Vandevelde - Franciscus Vandeveldestraat",M
-"Avenue Victor Moreau - Victor Moreaulaan",M
 "Rue François Bekaert - François Bekaertstraat",M
 "Avenue Léopold Florent Lambin - Leopold Florent Lambinlaan",M
 "Rue Henri Van Antwerpen - Henri Van Antwerpenstraat",M
@@ -1774,7 +1799,6 @@ streetname,gender
 "Rue Jean-Baptiste Vandercammen - Jean-Baptiste Vandercammenstraat",M
 "Rue Firmin Martin - Firmin Martinstraat",M
 "Rue Léon Vande Woesteyne - Léon Vande Woesteynestraat",M
-"Rue Paul Emile Lessire - Paul Emile Lessirestraat",M
 "Rue Antonius Dewinter - Antonius Dewinterstraat",M
 "Rue René Christiaens - René Christiaensstraat",M
 "Rue Jean-Baptiste Vannypen - Jean-Baptiste Vannypenstraat",M
@@ -1807,14 +1831,12 @@ streetname,gender
 "Avenue Edouard Keilig - Edouard Keiliglaan",M
 "Avenue Louis Fuchs - Louis Fuchslaan",M
 "Avenue A. J. Slegers - A. J. Slegerslaan",M
-"Avenue Dolez - Dolezlaan",M
 "Avenue Bonaparte - Bonapartelaan",M
 "Avenue Napoléon - Napoléonlaan",M
 "Avenue Maréchal Ney - Maarschalk Neylaan",M
 "Avenue Blücher - Blücherlaan",M
 "Avenue d'Orbaix - D'Orbaixlaan",M
 "Avenue Jean Burgers - Jean Burgerslaan",M
-"Avenue Maxime Van Praag - Maxime Van Praaglaan",M
 "Avenue Henri Elleboudt - Henri Elleboudtlaan",M
 "Avenue Adolphe Dupuich - Adolphe Dupuichlaan",M
 "Avenue Brunard - Brunardlaan",M
@@ -1825,29 +1847,25 @@ streetname,gender
 "Avenue Joseph Divoort - Joseph Divoortlaan",M
 "Allée Jean de La Fontaine - Jean de la Fontainelaan",M
 "Rond Point Charles Solau - Charles Solauplein",M
-"Avenue du Prince de Ligne - Prins de Lignelaan",M
 "Rue Sterckx - Sterckxstraat",M
 "Rue Ortélius - Orteliusstraat",M
 "Avenue Frans Courtens - Frans Courtenslaan",M
-"Rue Willy Coppens - Willy Coppensstraat",M
 "Avenue Delleur - Delleurlaan",M
 "Avenue Jacques Georgin - Jacques Georginlaan",M
 "Rue De Crayer - De Crayerstraat",M
 "Rue Jacques Jordaens - Jakob Jordaensstraat",M
 "Square Van Bever - Van Beversquare",M
-"Avenue André Ryckmans - André Ryckmanslaan",M
 "Avenue René Coulbaut - René Coulbautlaan",M
 "Avenue Louis Vercauteren - Louis Vercauterenlaan",M
 "Avenue Roger Hainaut - Roger Hainautlaan",M
 "Avenue Isidore Gérard - Isidore Gérardlaan",M
 "Rue Albert Krings - Albert Kringsstraat",M
-"Rue Auguste Beernaert - Auguste Beernaertstraat",M
 "Place Rik Wouters - Rik Woutersplein",M
 "Rue Kindermans - Kindermansstraat",M
 "Rue Joseph Cuylits - Joseph Cuylitsstraat",M
 "Avenue Henri Pirenne - Henri Pirennelaan",M
+"Square Coghen - Coghensquare",M
 "Rue Van Maerlant - Van Maerlantstraat",M
-"Square Lainé - Lainésquare",M
 "Rue Victor Gambier - Victor Gambierstraat",M
 "Rue Emile Regard - Emile Regardstraat",M
 "Clos Dandoy - Dandoygaarde",M
@@ -1860,14 +1878,11 @@ streetname,gender
 "Rue François Vervloet - François Vervloetstraat",M
 "Square Baron Robert Hankar - Baron Robert Hankarsquare",M
 "Avenue de Foestraets - de Foestraetslaan",M
-"Drève Saint-Hubert - Sint-Hubertusdreef",M
 "Avenue Zaman - Zamanlaan",M
 "Rue d'Huart - d'Huartstraat",M
-"Avenue Hippolyte Boulenger - Hippolyte Boulengerlaan",M
 "Avenue Pierre d'Union - Pierre d'Unionlaan",M
 "Avenue Joseph Wybran - Joseph Wybranlaan",M
 "Rue Tielemans - Tielemansstraat",M
-"Place Julien Dillens - Julien Dillensplein",M
 "Chemin Alfred Hitchcock - Alfred Hitchcockweg",M
 "Chemin Luis Bunuel - Luis Bunuelweg",M
 "Passage Stan Laurel - Stan Laurel Doorgang",M
@@ -1878,7 +1893,6 @@ streetname,gender
 "Chemin François Truffaut - François Truffautweg",M
 "Passage Oliver Hardy - Oliver Hardydoorgang",M
 "Rue Saint-Lazare - Sint-Lazarusstraat",M
-"Rue Franz Merjay - Franz Merjaystraat",M
 "Rue Mignot Delstanche - Mignot Delstanchestraat",M
 "Avenue Alfred Solvay - Alfred Solvaylaan",M
 "Passage Joe Van Holsbeeck - Joe Van Holsbeeckpassage",M
@@ -1923,7 +1937,6 @@ streetname,gender
 "Rue Major Brück - Majoor Brückstraat",M
 "Avenue Émile Van Becelaere - Émile Van Becelaerelaan",M
 "Place Jean Rey - Jean Reyplein",M
-"Rue Charles Lemaire - Charles Lemairestraat",M
 "Rue Alphonse Asselbergs - Alphonse Asselbergsstraat",M
 "Place Antoine Gilson - Antoine Gilsonplein",M
 "Rue Geefs - Geefsstraat",M
@@ -1948,18 +1961,13 @@ streetname,gender
 "Avenue Docteur Decroly - Dokter Decrolylaan",M
 "Rue Ter Elst - Ter Elststraat",M
 "Square Maréchal Montgomery - Maarschalk Montgomeryplein",M
-"Clos Joseph Hanse - Joseph Hanse hof",M
-"Rue Maurice Poedts - Maurice Poedtsstraat",M
 "Rue Hubert-Jean Coenen - Hubert-Jean Coenenstraat",M
 "Rue Guy-Jean Verachtert - Guy-Jean Verachtertstraat",M
 "Avenue Jean Charlier - Jean Charlierlaan",M
-"Rue Gustave Timmermans - Gustave Timmermansstraat",M
-"Rue Henri Simons - Henri Simonsstraat",M
 "Place François Bossuet - François Bossuetplein",M
 "Place Hervé Brouhon - Hervé Brouhonplein",M
 "Rue Jean Ballegeer - Jean Ballegeerstraat",M
 "Square Félix Delhaye - Félix Delhayesquare",M
-"Rue Albert Meunier - Albert Meunierstraat",M
 "Rue Alexis Willem - Alexis Willemstraat",M
 "Rue Philippe Dewolfs - Philippe Dewolfsstraat",M
 "Rue du Lieutenant Lotin - Luitenant Lotinstraat",M
@@ -1981,11 +1989,9 @@ streetname,gender
 "Impasse Saint-Jacques - Sint-Jakobsgang",M
 "Avenue Émile De Mot - Émile De Motlaan",M
 "Square Léon Jacquet - Léon Jacquetsquare",M
-"Rue Ernest Laude - Ernest Laudestraat",M
 "Place Pogge - Poggeplein",M
 "Place Félix Govaert - Félix Govaertplein",M
 "Place Vanhuffel - Vanhuffelplein",M
-"Avenue Ilya Prigogine - Ilya Prigoginelaan",M
 "Dr. A. Schweitzerlaan - Avenue Dr. A. Schweitzer",M
 "Rue Emile Pathé - Emile Pathéstraat",M
 "Allée Peyo - Peyodreef",M
@@ -2007,8 +2013,6 @@ streetname,gender
 "Froebelstraat - Rue Froebel",M
 "Rue Léopold Lenders - Léopold Lendersstraat",M
 "Impasse Ronsmans - Ronsmansgang",M
-"Avenue Guillaume Van Nerom - Guillaume Van Neromlaan",M
-"Square Georges Golinvaux - Georges Golinvauxsquare",M
 "Square Louis Van Simaey - Louis Van Simaeysquare",M
 "Chemin Pierre Vereman - Pierre Veremanweg",M
 "Avenue Léopold Wiener - Léopold Wienerlaan",M
@@ -2018,10 +2022,8 @@ streetname,gender
 "Rue Van Bemmel - Van Bemmelstraat",M
 "Rue Dethy - Dethystraat",M
 "Avenue Émile van Becelaere - Émile Van Becelaerelaan",M
-"Place Eugène Keym - Eugène Keymplein",M
 "Square Léopold II - Leopold II Plein",M
 "Rue Max Roos - Max Roosstraat",M
-"Avenue Ernest Renan - Ernest Renanlaan",M
 "Rue Anneessens - Anneessensstraat",M
 "Rue Cervantès - Cervantesstraat",M
 "Rue Rodenbach - Rodenbachstraat",M
@@ -2032,7 +2034,6 @@ streetname,gender
 "Rue Charlie Chaplin - Charlie Chaplinstraat",M
 "Rue Guillaume Kennis - Guillaume Kennisstraat",M
 "Cours Gordon Bennett - Gordon Bennettwarande",M
-"Rue Gisbert Combaz - Gisbert Combazstraat",M
 "Rue Jules Van Praet - Jules van Praetstraat",M
 "Drève Recteur Van Waeyenbergh - Rector Van Waeyenberghdreef",M
 "Rue de Witte de Haelen - De Witte de Haelenstraat",M
@@ -2046,6 +2047,7 @@ streetname,gender
 "Avenue Jean Accent - Jean Accentlaan",M
 "Square Joseph Hanse - Joseph Hansesquare",M
 "Carré Stevens - Stevensblok",M
+"Avenue du Prince de Ligne - Prins de Lignelaan",M
 "Carré Pauwels - Pauwelsblok",M
 "Rue Baron Roger Vander Noot - Baron Roger Vander Nootstraat",M
 "Drève Joseph Vanderborght - Joseph Vanderborghtdreef",M
@@ -2057,7 +2059,6 @@ streetname,gender
 "Place André Duchêne - André Duchêneplein",M
 "Rue Jean d'Osta - Jean d'Ostastraat",M
 "Avenue Hoche - Hochelaan",M
-"Avenue Jacques Dormont - Jacques Dormontlaan",M
 "Avenue Albert Desenfans - Albert Desenfanslaan",M
 "Rue François Van Assche - Frans Van Asschestraat",M
 "Rue Pierre de Puysselaer - Pierre de Puysselaerstraat",M
@@ -2073,13 +2074,11 @@ streetname,gender
 "Rue Eugène Denis - Eugène Denisstraat",M
 "Rue Félicien Delince - Félicien Delincestraat",M
 "Rue Léon Savoir - Léon Savoirstraat",M
-"Avenue Casalta - Casaltalaan",M
 "Rue Léopold Van Asbroeck - Léopold Van Asbroeckstraat",M
 "Avenue Edmond Galoppin - Edmond Galoppinlaan",M
 "Place Léon Vanderkindere - Léon Vanderkindereplein",M
 "Paul Gilsonlaan - Avenue Paul Gilson",M
 "Clos Jean-Pierre De Launoit - Jean-Pierre De Launoitgaarde",M
-"Place Rouppe - Rouppeplein",M
 "Rue Louis Isidore Lamey - Louis Isidore Lameystraat",M
 "Allée John Wiggin - John Wiggindreef",M
 "Rue Vésale - Vesaliusstraat",M
@@ -2101,7 +2100,6 @@ streetname,gender
 "Place Léopold Rosy - Léopold Rosyplein",M
 "Allée Léandre Grandmoulin - Léandre Grandmoulindreef",M
 "Allée Nicolas de Staël - Nicolas de Staëldreef",M
-"Allée Jos Albert — Jos Albertdreef",M
 "Allée José Dierickx - José Dierickxdreef",M
 "Allée Gaston Bertrand - Gaston Bertranddreef",M
 "Allée John Cluysenaar - John Cluysenaardreef",M

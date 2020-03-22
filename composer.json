@@ -2,7 +2,7 @@
     "require": {
         "php": "^7.2",
         "ext-pdo": "*",
-        "ext-pdo-sqlite": "*",
+        "ext-sqlite3": "*",
         "guzzlehttp/guzzle": "^6.5"
     }
 }

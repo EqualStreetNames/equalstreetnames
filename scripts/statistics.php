@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__ . '/../');
+chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 
@@ -135,7 +135,7 @@ fclose($fp);
 
 file_put_contents('static/statistics.json', json_encode($count));
 
-print(PHP_EOL);
+echo PHP_EOL;
 
 $total = $count['F'] + $count['M'] + $count['X'];
 
@@ -144,7 +144,7 @@ printf('Female: %d (%.2f %%)%s', $count['F'], $count['F'] / $total * 100, PHP_EO
 printf('Male: %d (%.2f %%)%s', $count['M'], $count['M'] / $total * 100, PHP_EOL);
 printf('Other: %d (%.2f %%)%s', $count['X'], $count['X'] / $total * 100, PHP_EOL);
 
-print(PHP_EOL);
+echo PHP_EOL;
 
 printf('Not a person: %d%s', $count['-'], PHP_EOL);
 

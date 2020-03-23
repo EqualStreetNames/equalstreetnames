@@ -4,7 +4,7 @@ import Chart from "chart.js";
 
 import colors from "./colors";
 
-import statistics from "../static/gender.json";
+import statistics from "../static/statistics.json";
 
 let elementCanvas: HTMLCanvasElement;
 let elementDiv: HTMLDivElement;
@@ -73,10 +73,10 @@ export default function(element: HTMLCanvasElement): void {
   elementDiv = elementCanvas.parentElement as HTMLDivElement;
 
   const count = {
-    f: statistics["f"].length,
-    m: statistics["m"].length,
-    x: statistics["x"].length,
-    o: statistics["-"].length
+    f: statistics["F"],
+    m: statistics["M"],
+    x: statistics["X"],
+    o: statistics["-"]
   };
   const totalPerson = count.f + count.m + count.x;
   const total = totalPerson + count.o;

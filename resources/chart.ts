@@ -16,11 +16,23 @@ function createChart(data: number[]): Chart | null {
     return new Chart(context, {
       type: "doughnut",
       data: {
-        labels: ["Male", "Female", "Transgender"],
+        labels: [
+          "Male (cis)",
+          "Female (cis)",
+          "Male (transgender)",
+          "Female (transgender)",
+          "Intersex"
+        ],
         datasets: [
           {
             data,
-            backgroundColor: [colors.m, colors.f, colors.x]
+            backgroundColor: [
+              colors.m,
+              colors.f,
+              colors.mx,
+              colors.fx,
+              colors.x
+            ]
           }
         ]
       },
@@ -57,13 +69,15 @@ function updateLabel(gender: string, count: number, total: number): void {
 function updateLabels(count: {
   f: number;
   m: number;
+  fx: number;
+  mx: number;
   x: number;
   o: number;
 }): void {
-  const totalPerson = count.f + count.m + count.x;
+  const totalPerson = count.f + count.m + count.fx + count.mx + count.x;
   const total = totalPerson + count.o;
 
-  ["f", "m", "x"].forEach((gender: string) => {
+  ["f", "m" /*, "fx"*/, "mx" /*, "x"*/].forEach((gender: string) => {
     updateLabel(gender, count[gender], totalPerson);
   });
 }
@@ -75,13 +89,15 @@ export default function(element: HTMLCanvasElement): void {
   const count = {
     f: statistics["F"],
     m: statistics["M"],
+    fx: statistics["FX"],
+    mx: statistics["MX"],
     x: statistics["X"],
     o: statistics["-"]
   };
-  const totalPerson = count.f + count.m + count.x;
+  const totalPerson = count.f + count.m + count.fx + count.mx + count.x;
   const total = totalPerson + count.o;
 
-  createChart([count["m"], count["f"], count["x"]]);
+  createChart([count["m"], count["f"], count["mx"], count["fx"], count["x"]]);
   updateLabels(count);
 
   const spanCount = document.getElementById("count-person") as HTMLSpanElement;

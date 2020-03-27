@@ -16,6 +16,10 @@ export default {
       colors.f,
       ["==", ["get", "gender", ["get", "details"]], "M"],
       colors.m,
+      ["==", ["get", "gender", ["get", "details"]], "FX"],
+      colors.fx,
+      ["==", ["get", "gender", ["get", "details"]], "MX"],
+      colors.mx,
       ["==", ["get", "gender", ["get", "details"]], "X"],
       colors.x,
       colors.o

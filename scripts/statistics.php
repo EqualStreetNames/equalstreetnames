@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -13,6 +13,8 @@ $streets = [];
 $count = [
     'F' => 0,
     'M' => 0,
+    'FX' => 0,
+    'MX' => 0,
     'X' => 0,
     '-' => 0,
 ];
@@ -124,7 +126,7 @@ fputcsv($fp, ['name_fr', 'name_nl', 'gender', 'wikidata', 'type']);
 fputcsv($fp2, ['name_fr', 'name_nl', 'gender', 'wikidata', 'type']);
 
 foreach ($streets as $street) {
-    if (in_array($street['gender'], ['F', 'M', 'X'])) {
+    if (in_array($street['gender'], ['F', 'M', 'FX', 'MX', 'X'])) {
         if (!is_null($previous) && ($previous['name_fr'] == $street['name_fr'] || $previous['name_nl'] == $street['name_nl'])) {
             printf('Duplicate: %s - %s <> %s - %s%s', $previous['name_fr'], $previous['name_nl'], $street['name_fr'], $street['name_nl'], PHP_EOL);
         }
@@ -146,12 +148,14 @@ file_put_contents('static/statistics.json', json_encode($count));
 
 echo PHP_EOL;
 
-$total = $count['F'] + $count['M'] + $count['X'];
+$total = $count['F'] + $count['M'] + $count['FX'] + $count['MX'] + $count['X'];
 
 printf('Person: %d%s', $total, PHP_EOL);
-printf('Female: %d (%.2f %%)%s', $count['F'], $count['F'] / $total * 100, PHP_EOL);
-printf('Male: %d (%.2f %%)%s', $count['M'], $count['M'] / $total * 100, PHP_EOL);
-printf('Other: %d (%.2f %%)%s', $count['X'], $count['X'] / $total * 100, PHP_EOL);
+printf('Female (cis): %d (%.2f %%)%s', $count['F'], $count['F'] / $total * 100, PHP_EOL);
+printf('Male (cis): %d (%.2f %%)%s', $count['M'], $count['M'] / $total * 100, PHP_EOL);
+printf('Female (transgender): %d (%.2f %%)%s', $count['FX'], $count['FX'] / $total * 100, PHP_EOL);
+printf('Male (transgender): %d (%.2f %%)%s', $count['MX'], $count['MX'] / $total * 100, PHP_EOL);
+printf('Intersex: %d (%.2f %%)%s', $count['X'], $count['X'] / $total * 100, PHP_EOL);
 
 echo PHP_EOL;
 

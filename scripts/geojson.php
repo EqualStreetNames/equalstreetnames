@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -337,9 +337,13 @@ function extractGender(string $identifier): ?string
         case 'Q6581072': // female
             return 'F';
 
-        case 'Q1097630': // intersex
         case 'Q1052281': // transgender female
+            return 'FX';
+
         case 'Q2449503': // transgender male
+            return 'MX';
+
+        case 'Q1097630': // intersex
             return 'X';
 
         default:

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__ . '/../');
+chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 
@@ -11,12 +11,12 @@ $ways = json_decode(file_get_contents('static/ways.geojson'), true);
 
 $streets = [];
 $count = [
-    'F' => 0,
-    'M' => 0,
+    'F'  => 0,
+    'M'  => 0,
     'FX' => 0,
     'MX' => 0,
-    'X' => 0,
-    '-' => 0,
+    'X'  => 0,
+    '-'  => 0,
 ];
 
 function wd_remove_accents($str, $charset = 'utf-8')

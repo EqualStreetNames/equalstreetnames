@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -116,8 +116,13 @@ array_multisort(
 // CSV file
 
 $previous = null;
+
 $fp = fopen('static/gender.csv', 'w');
+$fp2 = fopen('static/other.csv', 'w');
+
 fputcsv($fp, ['name_fr', 'name_nl', 'gender', 'wikidata', 'type']);
+fputcsv($fp2, ['name_fr', 'name_nl', 'gender', 'wikidata', 'type']);
+
 foreach ($streets as $street) {
     if (in_array($street['gender'], ['F', 'M', 'X'])) {
         if (!is_null($previous) && ($previous['name_fr'] == $street['name_fr'] || $previous['name_nl'] == $street['name_nl'])) {
@@ -125,11 +130,15 @@ foreach ($streets as $street) {
         }
 
         fputcsv($fp, $street);
+    } else {
+        fputcsv($fp2, $street);
     }
 
     $previous = $street;
 }
+
 fclose($fp);
+fclose($fp2);
 
 // JSON file
 

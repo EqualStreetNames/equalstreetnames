@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../../');
+chdir(__DIR__ . '/../../');
 
 require 'vendor/autoload.php';
 
 $municipalities = include 'scripts/municipalities.php';
 
-$directory = 'data/overpass/highway';
+$directory = 'data/overpass/way';
 
 if (!file_exists($directory) || !is_dir($directory)) {
     mkdir($directory);
@@ -41,7 +41,7 @@ exit(0);
  */
 function get(int $nis5): string
 {
-    $query = file_get_contents('scripts/overpass/highway-municipality-csv');
+    $query = file_get_contents('scripts/overpass/way-municipality-csv');
     $query = str_replace('#####', $nis5, $query);
     $query = str_replace(["\r", "\n"], '', $query);
 

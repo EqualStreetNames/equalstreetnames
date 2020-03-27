@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -89,7 +89,7 @@ file_put_contents('static/relations.geojson', json_encode($geojson));
 
 unset($json, $geojson);
 
-$json = json_decode(file_get_contents('data/overpass/highway/full.json'), true);
+$json = json_decode(file_get_contents('data/overpass/way/full.json'), true);
 
 $nodes = extractNodes($json['elements']);
 $ways = extractWays($json['elements']);

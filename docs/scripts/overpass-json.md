@@ -1,6 +1,6 @@
 # EqualStreetNames.Brussels - Scripts
 
-Scripts: [`relation.php`](../../scripts/overpass/relation.php) + [`highway.php`](../../scripts/overpass/highway.php)
+Scripts: [`relation.php`](../../scripts/overpass/relation.php) + [`way.php`](../../scripts/overpass/way.php)
 
 ## Download data from [_OpenStreetMap_](https://openstreetmap.org/) (overpass)
 
@@ -30,9 +30,9 @@ out skel qt;
 
 [Open this query in Overpass-Turbo](http://overpass-turbo.eu/s/RO6)
 
-### Ways `highway`
+### Ways `highway` + `place=square`
 
-Just to be sure we have all the streets (including the streets that do not have [`associatedStreet` relation](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet)), we also requested from _OpenStreetMap_ all the objects of [type `way`](https://wiki.openstreetmap.org/wiki/Way) tagged with [`highway`](https://wiki.openstreetmap.org/wiki/Key:highway) and [`name`](https://wiki.openstreetmap.org/wiki/Key:name) (except [`highway=bus_stop`](https://wiki.openstreetmap.org/wiki/Tag:highway=bus_stop) and [`highway=service`](https://wiki.openstreetmap.org/wiki/Tag:highway=service)) that are in Brussels Region ([INS-NIS](https://statbel.fgov.be/) code `04000` & _Wikidata_ identifier [`Q240`](https://www.wikidata.org/wiki/Q240)).
+Just to be sure we have all the streets (including the streets that do not have [`associatedStreet` relation](https://wiki.openstreetmap.org/wiki/Relation:associatedStreet)), we also requested from _OpenStreetMap_ all the objects of [type `way`](https://wiki.openstreetmap.org/wiki/Way) tagged with [`highway`](https://wiki.openstreetmap.org/wiki/Key:highway) and [`name`](https://wiki.openstreetmap.org/wiki/Key:name) (except [`highway=bus_stop`](https://wiki.openstreetmap.org/wiki/Tag:highway=bus_stop) and [`highway=service`](https://wiki.openstreetmap.org/wiki/Tag:highway=service)) and [`place=square`](https://wiki.openstreetmap.org/wiki/Tag:place=square) that are in Brussels Region ([INS-NIS](https://statbel.fgov.be/) code `04000` & _Wikidata_ identifier [`Q240`](https://www.wikidata.org/wiki/Q240)).
 
 ```
 [out:json][timeout:300];
@@ -51,8 +51,8 @@ out skel qt;
 composer install
 
 php scripts/overpass/relation.php
-php scripts/overpass/highway.php
+php scripts/overpass/way.php
 ```
 
 The `full.json` file containing all the `associatedStreet` relations will be stored in `data/overpass/relation/` directory.  
-The `full.json` file containing all the `highway` ways will be stored in `data/overpass/highway/` directory.
+The `full.json` file containing all the `highway` ways will be stored in `data/overpass/way/` directory.

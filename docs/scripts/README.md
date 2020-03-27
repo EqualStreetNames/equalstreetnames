@@ -13,7 +13,7 @@
 
 1. `composer install`
 1. `php scripts/overpass/relation.php` ([documentation](./overpass-json.md))
-1. `php scripts/overpass/highway.php` ([documentation](./overpass-json.md))
+1. `php scripts/overpass/way.php` ([documentation](./overpass-json.md))
 1. `php scripts/wikidata.php` ([documentation](./wikidata.md))
 1. `php scripts/geojson.php` ([documentation](./geojson.md))
 1. `php scripts/statistics.php` ([documentation](./statistics.md))

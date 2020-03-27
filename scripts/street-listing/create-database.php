@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -59,7 +59,7 @@ printf('%d relations with `name:etymology:wikidata` tag%s', $countEtymology, PHP
 // highway ways
 $pdo->exec('CREATE TABLE way (municipality VARCHAR, id INTEGER, name VARCHAR, name_fr VARCHAR, name_nl VARCHAR, wikidata VARCHAR, etymology VARCHAR)');
 
-$glob = glob('data/overpass/highway/*.csv');
+$glob = glob('data/overpass/way/*.csv');
 
 foreach ($glob as $path) {
     $fname = pathinfo($path, PATHINFO_FILENAME);

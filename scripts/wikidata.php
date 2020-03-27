@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
 $associatedStreets = json_decode(file_get_contents('data/overpass/relation/full.json'), true);
-$highways = json_decode(file_get_contents('data/overpass/highway/full.json'), true);
+$highways = json_decode(file_get_contents('data/overpass/way/full.json'), true);
 
 $elements = array_merge($associatedStreets['elements'], $highways['elements']);
 

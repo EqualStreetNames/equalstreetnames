@@ -9,10 +9,12 @@ return [
     'Q16521'    => false, // taxon
     'Q22698'    => false, // park
     'Q23413'    => false, // castle
+    'Q23691'    => false, // national anthem
     'Q45713'    => false, // titan
     'Q47521'    => false, // stream
     'Q123705'   => false, // neighborhood
     'Q133311'   => false, // tribe
+    'Q176799'   => false, // military unit
     'Q188055'   => false, // siege
     'Q205985'   => false, // goddess
     'Q207174'   => false, // personification
@@ -48,9 +50,11 @@ return [
     'Q22675015' => false, // type of quantum particle
     'Q22988604' => false, // mythological Greek character
     'Q22989102' => false, // Greek deity
+    'Q24284226' => false, // agricultural deity
     'Q24434794' => false, // king in Greek mythology
     'Q25810847' => false, // folkloristic character
     'Q41863069' => false, // war deity
+    'Q50386450' => false, // operatic character
     'Q55983715' => false, // polyphyletic common name
     'Q56884562' => false, // animated film series
 ];

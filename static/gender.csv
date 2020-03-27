@@ -20,21 +20,33 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Marie la Misérable","Lenneke Marelaan",F,Q13815118,relation
 "Avenue Marie-José",Marie-Josélaan,F,Q72919,relation
 "Avenue Nellie Melba","Nellie Melbalaan",F,Q237607,relation
+"Avenue Notre-Dame","Onze Lieve Vrouwlaan",F,Q345,way
 "Avenue Princesse Elisabeth","Prinses Elisabethlaan",F,Q235186,relation
 "Avenue Reine Astrid","Koningin Astridlaan",F,Q230238,way
+"Avenue Reine Elisabeth","Koningin Elisabethlaan",F,Q235186,way
 "Avenue Reine Marie-Henriette","Koningin Maria-Hendrikalaan",F,Q234047,way
 "Avenue Sainte-Alix",Sinte-Aleidislaan,F,Q1860408,relation
+"Avenue Sainte-Anne",Sint-Annalaan,F,Q164294,way
+"Avenue Simone Veil","Simone Veillaan",F,Q298180,way
+"Avenue de Castonier","de Castonierlaan",F,Q88385819,way
+"Avenue de la Princesse Paola","Prinses Paolalaan",F,Q31129,way
+"Carrefour Sainte-Anne",Sint-Annakruispunt,F,Q164294,way
+"Clos Andrée De Jongh","Andrée de Jonghgaarde",F,Q461027,way
 "Clos Andrée Dumont","Andrée Dumontgaarde",F,Q16262799,way
 "Clos Ingrid Bergman","Ingrid Bergmangaarde",F,Q43247,relation
 "Clos Marilyn Monroe","Marilyn Monroegaarde",F,Q4616,relation
 "Drève Sainte-Anne",Sint-Annadreef,F,Q164294,relation
+"Impasse Sainte-Pétronille",Sint-Petronillagang,F,Q463600,way
 "Parvis Notre-Dame",Onze-Lieve-Vrouwvoorplein,F,Q345,relation
 "Parvis Sainte-Alix",Sinte-Aleidisvoorplein,F,Q1860408,relation
+"Parvis Sainte-Gudule",Sint-Goedelevoorplein,F,Q267660,way
 "Passage Marguerite Yourcenar","Marguerite Yourcenar doorgang",F,Q163118,way
 "Passage Simone Signoret","Simone Signoretdoorgang",F,Q106126,way
 "Petite Rue Malibran","Korte Malibranstraat",F,Q232783,relation
+"Petite Rue Sainte-Anne","Kleine Sint-Annastraat",F,Q164294,relation
 "Petite rue Anna Magnani","Kleine Anna Magnanistraat",F,Q56011,way
 "Place Akarova",Akarovaplein,F,Q2828943,relation
+"Place Andrée Payfa-Fosseprez","Andrée Payfa-Fosseprezplein",F,Q88443623,way
 "Place Jo Cox","Jo Coxplein",F,Q19872361,way
 "Place Louise",Louizaplein,F,Q237318,relation
 "Place Marguerite d'Autriche","Margaretha van Oostenrijkplein",F,Q157100,relation
@@ -44,6 +56,7 @@ name_fr,name_nl,gender,wikidata,type
 "Place Reine Astrid","Koningin Astridplein",F,Q230238,relation
 "Place Reine Fabiola","Koningin Fabiolaplein",F,Q231171,relation
 "Place Sainte-Catherine",Sint-Katelijneplein,F,Q179718,relation
+"Place Sainte-Gudule",Sinter-Goedeleplein,F,Q267660,way
 "Place Stéphanie",Stefaniaplein,F,Q170197,relation
 "Place de la Duchesse de Brabant","Hertogin van Brabantplaats",F,Q234047,relation
 "Place de la Reine Paola","Koningin Paolaplein",F,Q31129,relation
@@ -59,11 +72,13 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Fernande Volral","Fernande Volralstraat",F,Q16262717,relation
 "Rue Gabrielle Petit","Gabrielle Petitstraat",F,Q468263,relation
 "Rue Gatti de Gamond","Gatti de Gamondstraat",F,Q2407913,way
+"Rue Hélène Ryckmans","Hélène Ryckmansstraat",F,Q88580726,relation
 "Rue Juliette Wytsman","Juliette Wytsmanstraat",F,Q3189783,relation
 "Rue Lola Bobesco","Lola Bobescostraat",F,Q2370033,relation
 "Rue Marguerite Bervoets","Marguerite Bervoetsstraat",F,Q3290678,relation
 "Rue Marguerite Van de Wiele","Marguerite Van de Wielestraat",F,Q3290746,relation
 "Rue Maria Malibran","Maria Malibranstraat",F,Q232783,relation
+"Rue Maria Tillmans","Maria Tillmansstraat",F,Q88466498,relation
 "Rue Marie Depage","Marie Depagestraat",F,Q1897303,relation
 "Rue Marie Popelin","Marie Popelinstraat",F,Q2627259,way
 "Rue Marie de Bourgogne","Maria van Bourgondiëstraat",F,Q157073,relation
@@ -72,12 +87,17 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Marie-Thérèse",Maria-Theresiastraat,F,Q131706,relation
 "Rue Marlène Dietrich","Marlène Dietrichstraat",F,Q4612,relation
 "Rue Médori",Médoristraat,F,Q86971541,relation
+"Rue Notre-Dame",Onze-Lieve-Vrouwstraat,F,Q345,relation
 "Rue Princesse Clémentine","Prinses Clementinastraat",F,Q261129,relation
+"Rue Romanie Van Dyck","Romanie Van Dyckstraat",F,Q88581278,relation
 "Rue Rosalie Uyttenhove","Rosalie Uyttenhovestraat",F,Q85540711,relation
 "Rue Royale-Sainte-Marie","Koninklijke Sinte-Mariastraat",F,Q345,relation
 "Rue Sainte-Anne",Sint-Annastraat,F,Q164294,way
+"Rue Sainte-Catherine",Sint-Katelijnestraat,F,Q179718,way
+"Rue Sainte-Elisabeth",Sint-Elisabethstraat,F,Q235849,relation
 "Rue Sainte-Gertrude",Sint-Geertruidestraat,F,Q235619,relation
 "Rue Sainte-Marie",Sint-Mariastraat,F,Q345,relation
+"Rue Sainte-Thérèse",Sint-Theresiastraat,F,Q174880,relation
 "Rue Stéphanie",Stefaniastraat,F,Q170197,relation
 "Rue Virginie Plas","Virginie Plasstraat",F,Q84347503,way
 "Rue Yvonne Jospa","Yvonne Jospastraat",F,Q3574207,way
@@ -90,6 +110,7 @@ name_fr,name_nl,gender,wikidata,type
 "Square Marie Curie","Marie Curiesquare",F,Q7186,relation
 "Square Marie-José",Marie-Joséplein,F,Q72919,relation
 "Square Marie-Louise",Maria-Louizasquare,F,Q157491,relation
+"Square Princesse Jean de Mérode","Prinses Jean de Mérodeplein",F,Q88582478,way
 "Square Victoria Régina","Victoria Reginaplantsoen",F,Q9439,relation
 "Tunnel Louise",Louizatunnel,F,Q237318,way
 "Allée Albert Dasnoy","Albert Dasnoydreef",M,Q2831077,way
@@ -467,6 +488,7 @@ name_fr,name_nl,gender,wikidata,type
 "Place Docteur Schweitzer","Dokter Schweitzerplein",M,Q49325,relation
 "Place Émile Bockstael","Emile Bockstaelplein",M,Q19951885,relation
 "Place Émile Danco","Émile Dancoplein",M,Q3588445,relation
+"Place Émile Vandervelde","Émile Vanderveldeplein",M,Q286556,way
 "Place Ernest S'Jonghers","Ernest S'Jonghersplein",M,Q85425215,relation
 "Place Eugène Flagey","Eugène Flageyplein",M,Q1978611,relation
 "Place Eugène Keym","Eugène Keymplein",M,Q18061002,relation
@@ -481,6 +503,7 @@ name_fr,name_nl,gender,wikidata,type
 "Place Henri Conscience","Hendrik Conscienceplein",M,Q378133,relation
 "Place Henri De Smet","Henri De Smetplein",M,Q27272720,way
 "Place Hervé Brouhon","Hervé Brouhonplein",M,Q3134439,way
+"Place Jean Capart","Jean Capartplein",M,Q2373298,way
 "Place Jean Gabin","Jean Gabinplein",M,Q23842,relation
 "Place Jean Jacobs","Jan Jacobsplein",M,Q2458031,relation
 "Place Jean Rey","Jean Reyplein",M,Q378289,way
@@ -501,6 +524,7 @@ name_fr,name_nl,gender,wikidata,type
 "Place Ministre Wauters","Minister Wautersplein",M,Q585785,relation
 "Place Olivier Strebelle","Olivier Strebelleplein",M,Q2532822,way
 "Place Paul Craps","Paul Crapsplein",M,Q14655027,way
+"Place Paul Janson","Paul Jansonplein",M,Q730367,way
 "Place Peter Benoit","Peter Benoitplein",M,Q733063,relation
 "Place Poelaert",Poelaertplein,M,Q740717,relation
 "Place Quetelet",Queteletplein,M,Q20012,relation
@@ -925,6 +949,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Paul Michiels","Paul Michielsstraat",M,Q2356419,relation
 "Rue Paul Segers","Paul Segersstraat",M,Q1247146,relation
 "Rue Paul Spaak","Paul Spaakstraat",M,Q999128,relation
+"Rue Paul Wemaere","Paul Wemaerestraat",M,Q72809953,relation
 "Rue Père Damien","Pater Damiaanstraat",M,Q232785,relation
 "Rue Père Eudore Devroye","Pater Eudore Devroyestraat",M,Q3059517,relation
 "Rue Père de Deken","Pater de Dekenstraat",M,Q772025,relation
@@ -1127,44 +1152,22 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Willy De Bruyn","Willy De Bruynstraat",X,Q15807938,relation
 "Allée Louisa Haerens","Louisa Haerensdreef",F,,way
 "Avenue Jeanne",Johannalaan,F,,relation
-"Avenue Notre-Dame","Onze Lieve Vrouwlaan",F,,way
-"Avenue Reine Elisabeth","Koningin Elisabethlaan",F,,way
-"Avenue Sainte-Anne",Sint-Annalaan,F,,way
-"Avenue Simone Veil","Simone Veillaan",F,,way
 "Avenue Victoria",Victorialaan,F,,way
-"Avenue Victoria Regina","Victoria Reginalaan",F,,way
-"Avenue de Castonier","de Castonierlaan",F,,way
-"Avenue de Cérès",Cereslaan,F,,way
-"Avenue de la Princesse Paola","Prinses Paolalaan",F,,way
 "Boulevard Maria Groeninckx-De May","Maria Groeninckx-De Maylaan",F,,relation
-"Carrefour Sainte-Anne",Sint-Annakruispunt,F,,way
-"Clos Andrée De Jongh","Andrée de Jonghgaarde",F,,way
 "Drève Aleyde De Brabant","Aleyde Van Brabantdreef",F,,relation
 "Drève Aurélie Solvay","Aurélie Solvaydreef",F,,relation
 "Drève Louisa Chaudoir","Louisa Chaudoirdreef",F,,relation
 "Drève Soetkin",Soetkindreef,F,,relation
-"Impasse Sainte-Pétronille",Sint-Petronillagang,F,,way
 "Parvis Sainte-Cécile",Sint-Ceciliavoorplein,F,,relation
-"Petite Rue Sainte-Anne","Kleine Sint-Annastraat",F,,relation
-"Place Andrée Payfa-Fosseprez","Andrée Payfa-Fosseprezplein",F,,way
-"Place Sainte-Gudule",Sinter-Goedeleplein,F,,way
 "Place Séverine",Séverineplein,F,,relation
 "Rue Amélie Gomand","Amélie Gomandstraat",F,,relation
 "Rue Decrée",Decréestraat,F,,relation
 "Rue Élise",Elizastraat,F,,relation
-"Rue Hélène Ryckmans","Hélène Ryckmansstraat",F,,relation
-"Rue Maria Tillmans","Maria Tillmansstraat",F,,relation
 "Rue Marianne",Mariannestraat,F,,way
 "Rue Mercelis",Mercelisstraat,F,,relation
-"Rue Romanie Van Dyck","Romanie Van Dyckstraat",F,,relation
-"Rue Sainte-Catherine",Sint-Katelijnestraat,F,,way
-"Rue Sainte-Elisabeth",Sint-Elisabethstraat,F,,relation
-"Rue Sainte-Thérèse",Sint-Theresiastraat,F,,relation
 "Rue Van Gulick","Van Gulickstraat",F,,relation
 "Rue de Ciplet","de Cipletstraat",F,,relation
 "Square Elsa Frison","Elsa Frisonsquare",F,,relation
-"Square Princesse Jean de Mérode","Prinses Jean de Mérodeplein",F,,way
-"Square Toinon",Toinonsquare,F,,way
 "Allée Charles Viane","Charles Vianedreef",M,,way
 "Allée Jacques Wiener","Jacques Wienerdreef",M,,way
 "Allée Jean de La Fontaine","Jean de la Fontainelaan",M,,way

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -328,19 +328,19 @@ function extractWikidata(string $identifier): ?array
 
 function extractGender(string $identifier): ?string
 {
-    $gender = null;
-
     switch ($identifier) {
         case 'Q6581097': // male
+        case 'Q1052281': // male (cis)
             return 'M';
 
         case 'Q6581072': // female
+        case 'Q15145779': // female (cis)
             return 'F';
 
-        case 'Q1052281': // transgender female
+        case 'Q1052281': // female (trans)
             return 'FX';
 
-        case 'Q2449503': // transgender male
+        case 'Q2449503': // male (trans)
             return 'MX';
 
         case 'Q1097630': // intersex

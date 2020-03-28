@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 return [
     'Q5'        => true,  // human
+    'Q2985549'  => true,  // mononymous person
+    'Q20643955' => true,  // human biblical figure
+
     'Q532'      => false, // village
+    'Q699'      => false, // fairy tale
     'Q3957'     => false, // town
     'Q16521'    => false, // taxon
     'Q22698'    => false, // park
@@ -33,7 +37,6 @@ return [
     'Q1549591'  => false, // big city
     'Q1916821'  => false, // water deity
     'Q2785216'  => false, // municipality section
-    'Q2985549'  => true,  // mononymous person
     'Q3046146'  => false, // married couple
     'Q3658341'  => false, // literary character
     'Q4164871'  => false, // position
@@ -44,7 +47,7 @@ return [
     'Q15054484' => false, // Belgian noble family
     'Q15273785' => false, // Belgian municipality with city privileges
     'Q15632617' => false, // fictional human
-    'Q20643955' => true,  // human biblical figure
+    'Q19594662' => false, // fictional fox
     'Q20902363' => false, // mythical human-animal hybrid
     'Q21070568' => false,  // human who may be fictional
     'Q22675015' => false, // type of quantum particle
@@ -53,6 +56,7 @@ return [
     'Q24284226' => false, // agricultural deity
     'Q24434794' => false, // king in Greek mythology
     'Q25810847' => false, // folkloristic character
+    'Q27921916' => false, // anthropomorphic character
     'Q41863069' => false, // war deity
     'Q50386450' => false, // operatic character
     'Q55983715' => false, // polyphyletic common name

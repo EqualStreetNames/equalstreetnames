@@ -23,6 +23,7 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Orion",Orionlaan,,Q201261,relation
 "Avenue Pénélope",Penelopelaan,,Q165769,relation
 "Avenue Pierre et Marie Curie","Pierre en Marie Curielaan",,Q11297474,relation
+"Avenue Reinaert de Vos","Reinaert de Voslaan",,Q25400539,way
 "Avenue Télémaque",Telemachuslaan,,Q192482,relation
 "Avenue Ulysse",Ulysselaan,,Q47231,relation
 "Avenue Van Volxem","Van Volxemlaan",,Q3065560,relation
@@ -61,6 +62,7 @@ name_fr,name_nl,gender,wikidata,type
 "Place de Dinant",Dinantplein,,Q108247,way
 "Place de Louvain",Leuvenseplein,,Q118958,way
 "Place des Tulipes",Tulpenplein,,Q93201,way
+"Place du Chat Botté","Gelaarsde Katplein",,Q11834,way
 "Pont Borée",Boreabrug,,Q109220,way
 "Porte de Tervueren",Tervuursepoort,,Q456544,way
 Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
@@ -83,6 +85,7 @@ Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
 "Square Lison",Lisonsquare,,Q88583938,relation
 "Square Manon",Manonsquare,,Q88583708,relation
 "Square Toinon",Toinonsquare,,Q88583488,way
+"Square Victoria Régina","Victoria Reginaplantsoen",,Q162070,relation
 "Square de Noville",Novillesquare,,Q3247695,relation
 "Square de la Madelon",Madelonsquare,,Q88584349,relation
 "Venelle du Boson",Bosonsteeg,,Q43101,way
@@ -1420,7 +1423,6 @@ Pannenhuisplein,Pannenhuisplein,,,way
 "Place du Campanile",Campanileplein,,,relation
 "Place du Champ de Mars",Marsveldplein,,,relation
 "Place du Chant d'Alouette",Leeuweriksliedplaats,,,relation
-"Place du Chat Botté","Gelaarsde Katplein",,,way
 "Place du Châtelain",Kasteleinsplein,,,way
 "Place du Cheval Noir","Zwart Paardplein",,,way
 "Place du Colibri",Kolibrieplein,,,way

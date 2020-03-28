@@ -86,6 +86,10 @@ nav.navbar {
   right: 0;
   width: 300px;
 }
+#gender-chart-legend td {
+  padding-bottom: 0;
+  padding-top: 0;
+}
 
 #count-information {
   margin-top: 10px;

@@ -19,8 +19,8 @@ function createChart(data: number[]): Chart | null {
         labels: [
           "Male (cis)",
           "Female (cis)",
-          "Male (transgender)",
-          "Female (transgender)",
+          "Male (trans)",
+          "Female (trans)",
           "Intersex"
         ],
         datasets: [
@@ -55,15 +55,19 @@ function createChart(data: number[]): Chart | null {
 function updateLabel(gender: string, count: number, total: number): void {
   const labelElement = elementDiv.querySelector(
     `.gender-chart-label[data-gender=${gender}]`
-  ) as HTMLDivElement;
+  ) as HTMLTableRowElement;
   const countElement = labelElement.querySelector(
     ".gender-chart-count"
-  ) as HTMLSpanElement;
+  ) as HTMLTableCellElement;
+  const pctElement = labelElement.querySelector(
+    ".gender-chart-pct"
+  ) as HTMLTableCellElement;
 
   const percentage = Math.round((count / total) * 100 * 100) / 100;
 
   labelElement.style.color = colors[gender];
-  countElement.innerText = `${count} (${percentage}%)`;
+  countElement.innerText = `${count}`;
+  pctElement.innerText = `${percentage} %`;
 }
 
 function updateLabels(count: {
@@ -77,7 +81,7 @@ function updateLabels(count: {
   const totalPerson = count.f + count.m + count.fx + count.mx + count.x;
   const total = totalPerson + count.o;
 
-  ["f", "m" /*, "fx"*/, "mx" /*, "x"*/].forEach((gender: string) => {
+  ["f", "m", "fx", "mx" /*, "x"*/].forEach((gender: string) => {
     updateLabel(gender, count[gender], totalPerson);
   });
 }

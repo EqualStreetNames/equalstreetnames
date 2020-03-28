@@ -71,23 +71,34 @@
         <div id="map"></div>
         <div id="chart-overlay" class="d-none d-sm-block">
             <div id="gender-chart">
-                <ul id="gender-chart-legend" class="list-unstyled fa-ul">
-                    <li class="gender-chart-label" data-gender="m">
-                        <span class="fa-li"><i class="fas fa-lg fa-mars"></i></span>
-                        Man (cis):
-                        <span class="gender-chart-count"></span>
-                    </li>
-                    <li class="gender-chart-label" data-gender="f">
-                        <span class="fa-li"><i class="fas fa-lg fa-venus"></i></span>
-                        Vrouw (cis):
-                        <span class="gender-chart-count"></span>
-                    </li>
-                    <li class="gender-chart-label" data-gender="mx">
-                        <span class="fa-li"><i class="fas fa-lg fa-transgender-alt"></i></span>
-                        Man (transgender):
-                        <span class="gender-chart-count"></span>
-                    </li>
-                </ul>
+                <table id="gender-chart-legend" class="table table-borderless table-sm">
+                    <tbody>
+                        <tr class="gender-chart-label" data-gender="m">
+                            <td class="text-center"><i class="fas fa-lg fa-mars"></i></td>
+                            <td>Man (cis)</td>
+                            <td class="text-right gender-chart-count"></td>
+                            <td class="text-right gender-chart-pct"></td>
+                        </tr>
+                        <tr class="gender-chart-label" data-gender="f">
+                            <td class="text-center"><i class="fas fa-lg fa-venus"></i></td>
+                            <td>Vrouw (cis)</td>
+                            <td class="text-right gender-chart-count"></td>
+                            <td class="text-right gender-chart-pct"></td>
+                        </tr>
+                        <tr class="gender-chart-label" data-gender="mx">
+                            <td class="text-center"><i class="fas fa-lg fa-transgender-alt"></i></td>
+                            <td>Man (trans)</td>
+                            <td class="text-right gender-chart-count"></td>
+                            <td class="text-right gender-chart-pct"></td>
+                        </tr>
+                        <tr class="gender-chart-label" data-gender="fx">
+                            <td class="text-center"><i class="fas fa-lg fa-transgender-alt"></i></td>
+                            <td>Vrouw (trans)</td>
+                            <td class="text-right gender-chart-count"></td>
+                            <td class="text-right gender-chart-pct"></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <canvas width="250" height="100"></canvas>
             </div>
             <div id="count-information" class="small">

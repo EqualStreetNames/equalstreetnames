@@ -35,11 +35,25 @@ See [`docs/README.md`](./docs/README.md)
 
 ## Run locally
 
-```
-git clone https://github.com/openknowledgebe/equalstreetnames.git
-cd equalstreetnames
-npm install
-npm run serve
-```
+1. Clone the repository
 
-Once installed and running, go to <http://localhost:1234/index.html>
+   ```
+   git clone https://github.com/openknowledgebe/equalstreetnames.git
+   cd equalstreetnames
+   ```
+
+1. Install dependencies
+
+   ```
+   npm install
+   ```
+
+1. Create a [Mapbox token](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/) and add `MAPBOX_TOKEN` with your Mapbox token to `.env` file
+
+1. Run
+
+   ```
+   npm run serve
+   ```
+
+1. Once installed and running, go to <http://localhost:1234/index.html>

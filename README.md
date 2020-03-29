@@ -36,7 +36,8 @@ See [`docs/README.md`](./docs/README.md)
 ## Run locally
 
 ```
-git clone git@github.com:openknowledgebe/equalstreetnames.git
+git clone https://github.com/openknowledgebe/equalstreetnames.git
+cd equalstreetnames
 npm install
 npm run serve
 ```

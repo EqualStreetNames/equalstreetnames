@@ -42,12 +42,15 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue des Vestales",Vestalenlaan,,Q188761,relation
 "Avenue du Manoir d'Anjou","Manoir d'Anjoulaan",,Q60853950,relation
 "Avenue du Prince de Ligne","Prins de Lignelaan",,Q3922015,relation
+"Boulevard Saint-Michel",Sint-Michielslaan,,Q45581,relation
+"Ceci n'est pas une rue","Ceci n'est pas une rue",,Q1061035,way
 "Chaussée Romaine",Romeinsesteenweg,,Q194029,relation
 "Chaussée de Jette","Jetse Steenweg",,Q241918,relation
 "Chaussée de Jette",Jetsesteenweg,,Q241918,relation
 "Chaussée de Louvain","Leuvense Steenweg",,Q118958,way
 "Chaussée de Louvain",Leuvensesteenweg,,Q118958,relation
 "Chaussée de Ninove",Ninoofsesteenweg,,Q385026,relation
+"Chaussée de Saint-Job",Sint-Jobsesteenweg,,Q1927235,way
 "Chaussée de Tervueren",Tervurensteenweg,,Q456544,way
 "Chaussée de Tervueren",Tervuursesteenweg,,Q456544,way
 "Clos Cassiopée",Cassiopeagaarde,,Q207681,relation
@@ -58,9 +61,20 @@ name_fr,name_nl,gender,wikidata,type
 "Clos des Morilles",Morieltjeshoek,,Q371101,way
 "Clos des Pleurotes",Oesterzwammenhoek,,Q852065,way
 "Clos du Bolet",Boleethoek,,Q1969349,way
+"Cours Saint-Michel",Sint-Michielswarande,,Q45581,relation
 "Drève Tyl Uylenspiegel","Tijl Uilenspiegeldreef",,Q164083,relation
+"Galerie Ravenstein",Ravensteingalerij,,Q3145650,relation
+"Passage de la Caricole",Caricolegang,,Q2938776,way
+"Passage de la Frite",Frietgang,,Q152088,way
+"Passage de la Kriek",Kriekgang,,Q1756073,way
+"Passage de la Praline",Pralinegang,,Q851428,way
+"Passage du Chicon",Chicongang,,Q1474,way
+"Passage du Cuberdon",Cuberdongang,,Q1142939,way
+"Passage du Speculoos",Speculoosgang,,Q6591,way
+"Passage du Stoemp",Stoempgang,,Q305329,way
 "Place de Dinant",Dinantplein,,Q108247,way
 "Place de Louvain",Leuvenseplein,,Q118958,way
+"Place de Saint-Job",Sint-Jobsplein,,Q1927235,way
 "Place des Tulipes",Tulpenplein,,Q93201,way
 "Place du Chat Botté","Gelaarsde Katplein",,Q11834,way
 "Pont Borée",Boreabrug,,Q109220,way
@@ -70,6 +84,7 @@ Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
 "Rue Guillaume Tell","Willem Tellstraat",,Q30908,relation
 "Rue Jacques Manne","Jacques Mannestraat",,Q63160171,relation
 "Rue Maes",Maesstraat,,Q49619000,relation
+"Rue Ravenstein",Ravensteinstraat,,Q3145650,way
 "Rue d'Anderlecht",Anderlechtsesteenweg,,Q12886,way
 "Rue d'Arlon",Aarlenstraat,,Q675960,relation
 "Rue d'Ophem",Oppemstraat,,Q2520768,way
@@ -88,6 +103,7 @@ Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
 "Square Victoria Régina","Victoria Reginaplantsoen",,Q162070,relation
 "Square de Noville",Novillesquare,,Q3247695,relation
 "Square de la Madelon",Madelonsquare,,Q88584349,relation
+"Venelle de Saint-Job",Sint-Jobsteeg,,Q1927235,way
 "Venelle du Boson",Bosonsteeg,,Q43101,way
 "'t Hof te Overbeke","'t Hof te Overbeke",,,relation
 "36 kV","36 kV",,,way
@@ -797,7 +813,6 @@ Cantersteen,Kantersteen,,,way
 Cauter,Cauter,,,way
 "Champ du Tilleul",Lindeveld,,,relation
 "Champ du Vert Chasseur","Groene Jagersveld",,,way
-"Chaussée Saint-Pierre",Sint-Pieterssteenweg,,,relation
 "Chaussée d'Alsemberg","Alsembergse Steenweg",,,way
 "Chaussée d'Alsemberg",Alsembergsesteenweg,,,way
 "Chaussée d'Anvers",Antwerpsesteenweg,,,relation
@@ -1076,6 +1091,7 @@ Donderberg,Donderberg,,,relation
 "Drève Grange aux Dîmes",Tiendenschuurdreef,,,way
 "Drève Hendrickx",Hendrickxdreef,,,way
 "Dreve Hof Ter Musschen","Hof Ter Musschendreef",,,relation
+"Drêve Maritime",Maritiemdreef,,,way
 "Drève Olympique","Olympische Dreef",,,relation
 "Drève Pittoresque",Schilderachtigedreef,,,relation
 "Drève Van Kerm","Van Kermdreef",,,way
@@ -1123,6 +1139,7 @@ Donderberg,Donderberg,,,relation
 "Dreve des Mustangs",Mustangdreef,,,way
 "Drève des Quatre Frênes",Vieressendreef,,,way
 "Drève des Renards",Vossendreef,,,way
+"Drêve des Rêves",Dromendreef,,,way
 "Drève des Rhododendrons",Rododendronsdreef,,,way
 "Drève des Saules",Wilgendreef,,,relation
 "Drève des Shetlands",Shetlanderdreef,,,relation
@@ -1355,7 +1372,6 @@ Pannenhuisplein,Pannenhuisplein,,,way
 "Place de Mexico",Mexicoplein,,,way
 "Place de Ninove",Ninoofseplein,,,relation
 "Place de Rochefort",Rochefortplein,,,relation
-"Place de Saint-Job",Sint-Jobsplein,,,way
 "Place de Sainte-Adresse",Sainte-Adresseplein,,,relation
 "Place de l'Alma",Almaplein,,,relation
 "Place de l'Altitude Cent","Hoogte Honderdplein",,,way
@@ -1384,6 +1400,7 @@ Pannenhuisplein,Pannenhuisplein,,,way
 "Place de la Maison Rouge",Roodhuisplein,,,relation
 "Place de la Minoterie",Meelfabrieksplein,,,relation
 "Place de la Monnaie",Muntplein,,,relation
+"Place de la Musique",Muziekplein,,,way
 "Place de la Nation",Natieplein,,,relation
 "Place de la Paix",Vredeplein,,,relation
 "Place de la Patrie",Vaderlandsplein,,,relation
@@ -1538,6 +1555,7 @@ Roeierspad,Roeierspad,,,way
 "Rue Bouré",Bouréstraat,,,relation
 "Rue Broyère",Broyèrestraat,,,relation
 "Rue Brune",Bruinstraat,,,relation
+"Rue Bruylants",Bruylantsstraat,,,relation
 "Rue Bruyn",Bruynstraat,,,relation
 "Rue Bulins",Bulinsstraat,,,relation
 "Rue Calliope",Calliopestraat,,,relation
@@ -3032,7 +3050,6 @@ Sparrenweg,Sparrenweg,,,way
 "Square Herschel Grynszpan","Herschel Grynszpansquare",,,way
 "Square Jules De Trooz","Jules De Troozsquare",,,way
 "Square Louisa",Louisaplantsoen,,,relation
-"Square Masséna",Massénasquare,,,way
 "Square Omer Denis","Omer Denissquare",,,way
 "Square Patrice Lumumba","Patrice Lumumbasquare",,,way
 "Square Velghe",Velghesquare,,,way
@@ -3121,7 +3138,6 @@ Tuinbouw,Tuinbouw,,,relation
 "Venelle aux Coins de Terre",Moestuinsteeg,,,relation
 "Venelle aux Jeux",Speeltuindreveken,,,relation
 "Venelle aux Quatre Nœuds",Vier-Knopensteeg,,,relation
-"Venelle de Saint-Job",Sint-Jobsteeg,,,way
 "Venelle du Champ du Moulin",Molenveldsteeg,,,relation
 "Venelle en Boucle",Lussteeg,,,relation
 "Viaduct Zeekanaal Brussel-Schelde","Viaduct Zeekanaal Brussel-Schelde",,,way
@@ -3129,6 +3145,8 @@ Tuinbouw,Tuinbouw,,,relation
 "Vieux Chemin","Oude Weg",,,way
 "Vieux Marché aux Grains","Oude Graanmarkt",,,way
 Vlieraardeweg,Vlieraardeweg,,,way
+"Voie 1","Spoor 1",,,way
+"Voie 2","Spoor 2",,,way
 Windmolenberg,Windmolenberg,,,relation
 Woluwelaan,Woluwelaan,,,way
 Woluweweg,Woluweweg,,,way

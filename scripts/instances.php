@@ -16,7 +16,7 @@ return [
     'Q23691'    => false, // national anthem
     'Q45713'    => false, // titan
     'Q47521'    => false, // stream
-    'Q81799'    => false, // Q81799
+    'Q81799'    => false, // fast food
     'Q123705'   => false, // neighborhood
     'Q133311'   => false, // tribe
     'Q178342'   => false, // archangel

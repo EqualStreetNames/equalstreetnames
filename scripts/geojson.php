@@ -266,11 +266,13 @@ function extractWikidata(string $identifier): ?array
         return null;
     }
 
+    $instance = $entity['claims']['P31'] ?? $entity['claims']['P279'] ?? null;
+
     $person = false;
-    if (!isset($entity['claims']['P31'])) {
-        printf('No instance for %s.%s', $identifier, PHP_EOL);
+    if (is_null($instance)) {
+        printf('No instance or subclass for %s.%s', $identifier, PHP_EOL);
     } else {
-        foreach ($entity['claims']['P31'] as $p) {
+        foreach ($instance as $p) {
             $value = $p['mainsnak']['datavalue']['value']['id'];
             if (isset($instances[$value])) {
                 if ($instances[$value] === true) {

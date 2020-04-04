@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -24,38 +24,7 @@ $geojson = [
 ];
 
 foreach ($relations as $r) {
-    $properties = [
-        'name'      => $r['tags']['name'] ?? null,
-        'name:fr'   => $r['tags']['name:fr'] ?? null,
-        'name:nl'   => $r['tags']['name:nl'] ?? null,
-        'wikidata'  => $r['tags']['wikidata'] ?? null,
-        'etymology' => $r['tags']['name:etymology:wikidata'] ?? null,
-    ];
-
-    if (!is_null($properties['etymology'])) {
-        $etymology = extractWikidata($properties['etymology']);
-
-        $properties = array_merge(
-            $properties,
-            [
-                'details' => $etymology,
-            ]
-        );
-    } else {
-        $gender = getGender($streetsGender, $r['tags']['name:fr'] ?? $r['tags']['name'], $r['tags']['name:nl'] ?? $r['tags']['name']);
-
-        if (!is_null($gender)) {
-            $properties = array_merge(
-                $properties,
-                [
-                    'details' => [
-                        'person' => true,
-                        'gender' => $gender,
-                    ],
-                ]
-            );
-        }
-    }
+    $properties = extractTags('relation', $r, $streetsGender);
 
     $streets = array_filter(
         $r['members'],
@@ -101,38 +70,7 @@ $geojson = [
 
 foreach ($ways as $w) {
     if (!in_array($w['id'], $waysInRelation)) {
-        $properties = [
-            'name'      => $w['tags']['name'] ?? null,
-            'name:fr'   => $w['tags']['name:fr'] ?? null,
-            'name:nl'   => $w['tags']['name:nl'] ?? null,
-            'wikidata'  => $w['tags']['wikidata'] ?? null,
-            'etymology' => $w['tags']['name:etymology:wikidata'] ?? null,
-        ];
-
-        if (!is_null($properties['etymology'])) {
-            $etymology = extractWikidata($properties['etymology']);
-
-            $properties = array_merge(
-                $properties,
-                [
-                    'details' => $etymology,
-                ]
-            );
-        } else {
-            $gender = getGender($streetsGender, $w['tags']['name:fr'] ?? $w['tags']['name'], $w['tags']['name:nl'] ?? $w['tags']['name']);
-
-            if (!is_null($gender)) {
-                $properties = array_merge(
-                    $properties,
-                    [
-                        'details' => [
-                            'person' => true,
-                            'gender' => $gender,
-                        ],
-                    ]
-                );
-            }
-        }
+        $properties = extractTags('way', $w, $streetsGender);
 
         $linestring = appendCoordinates($nodes, $w);
 
@@ -148,6 +86,65 @@ foreach ($ways as $w) {
 file_put_contents('static/ways.geojson', json_encode($geojson));
 
 exit(0);
+
+function extractTags(string $type, array $object, array $gender): array
+{
+    $properties = [
+        'name'      => $object['tags']['name'] ?? null,
+        'name:fr'   => $object['tags']['name:fr'] ?? null,
+        'name:nl'   => $object['tags']['name:nl'] ?? null,
+        'wikidata'  => $object['tags']['wikidata'] ?? null,
+        'gender'    => null,
+        'details'   => null,
+    ];
+
+    if (isset($object['tags']['name:etymology:wikidata'])) {
+        $etymology = explode(';', $object['tags']['name:etymology:wikidata']);
+        $etymology = array_map('trim', $etymology);
+
+        if (count($etymology) === 1) {
+            $etymology = current($etymology);
+        }
+
+        if (is_array($etymology)) {
+            printf('Multiple instances for %s(%d).%s', $type, $object['id'], PHP_EOL);
+
+            $details = [];
+            foreach ($etymology as $e) {
+                $details[] = extractWikidata($e);
+            }
+
+            $properties = array_merge(
+                $properties,
+                [
+                    'details' => $details,
+                ]
+            );
+
+            $person = array_unique(array_column($properties['details'], 'person'));
+            $gender = array_unique(array_column($properties['details'], 'gender'));
+
+            $properties['gender'] = (count($person) === 1 && current($person) === true) ? (count($gender) === 1 ? current($gender) : '+') : null;
+        } else {
+            $properties = array_merge(
+                $properties,
+                [
+                    'details' => extractWikidata($etymology),
+                ]
+            );
+
+            $properties['gender'] = $properties['details']['person'] === true ? $properties['details']['gender'] : null;
+        }
+    } else {
+        $properties['gender'] = getGender(
+            $gender,
+            $object['tags']['name:fr'] ?? $object['tags']['name'],
+            $object['tags']['name:nl'] ?? $object['tags']['name']
+        );
+    }
+
+    return $properties;
+}
 
 function extractNodes(array $elements): array
 {
@@ -280,7 +277,7 @@ function extractWikidata(string $identifier): ?array
                     break;
                 }
             } else {
-                printf('New instance (%s) for %s.%s', $value, $identifier, PHP_EOL);
+                printf('New instance %s for %s.%s', $value, $identifier, PHP_EOL);
             }
         }
     }
@@ -311,19 +308,20 @@ function extractWikidata(string $identifier): ?array
 
     $genderId = $entity['claims']['P21'][0]['mainsnak']['datavalue']['value']['id'] ?? null;
 
-    $image = $entity['claims']['P18'][0]['mainsnak']['datavalue']['value'] ?? null;
+    // $image = $entity['claims']['P18'][0]['mainsnak']['datavalue']['value'] ?? null;
 
     $dateOfBirth = $entity['claims']['P569'][0]['mainsnak']['datavalue']['value']['time'] ?? null;
     $dateOfDeath = $entity['claims']['P570'][0]['mainsnak']['datavalue']['value']['time'] ?? null;
 
     return [
+        'wikidata'     => $identifier,
         'person'       => $person,
         'labels'       => $labels,
         'descriptions' => $descriptions,
         'gender'       => is_null($genderId) ? null : extractGender($genderId),
         'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 1, 4)),
         'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 1, 4)),
-        'image'        => is_null($image) ? null : sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
+        // 'image'        => is_null($image) ? null : sprintf('https://commons.wikimedia.org/wiki/File:%s', $image),
         'sitelinks'    => $sitelinks,
     ];
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -32,10 +32,15 @@ foreach ($tagged as $element) {
     // }
 
     if (!is_null($etymology)) {
-        $path = sprintf('data/wikidata/%s.json', $etymology);
+        $etymology = explode(';', $etymology);
+        $etymology = array_map('trim', $etymology);
 
-        if (!file_exists($path)) {
-            file_put_contents($path, get($etymology));
+        foreach ($etymology as $e) {
+            $path = sprintf('data/wikidata/%s.json', $e);
+
+            if (!file_exists($path)) {
+                file_put_contents($path, get($e));
+            }
         }
     }
 }

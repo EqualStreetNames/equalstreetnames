@@ -13,26 +13,20 @@ interface Property {
   details?: string;
 }
 
-export default function(
+export default function (
   map: Map,
   features: MapboxGeoJSONFeature[],
   lnglat: LngLat
 ): void {
   const properties = features[0].properties as Property;
+
+  const streetname = getStreetname(properties);
   const details =
     typeof properties.details !== "undefined" && properties.details !== null
       ? JSON.parse(properties.details)
       : null;
 
-  const lang =
-    (document.querySelector("html") as HTMLElement).getAttribute("lang") ??
-    "en";
-
-  const html = popupContent(
-    getStreetname(properties),
-    properties.etymology ?? null,
-    details
-  );
+  const html = popupContent(streetname, details);
 
   new mapboxgl.Popup({ maxWidth: "none" })
     .setLngLat(lnglat)

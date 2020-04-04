@@ -76,12 +76,14 @@ function updateLabels(count: {
   fx: number;
   mx: number;
   x: number;
-  o: number;
+  o: number; // not a person
+  p: number; // multiple
 }): void {
-  const totalPerson = count.f + count.m + count.fx + count.mx + count.x;
+  const totalPerson =
+    count.f + count.m + count.fx + count.mx + count.x + count.p;
   const total = totalPerson + count.o;
 
-  ["f", "m", "fx", "mx" /*, "x"*/].forEach((gender: string) => {
+  ["f", "m", "fx", "mx"].forEach((gender: string) => {
     updateLabel(gender, count[gender], totalPerson);
   });
 }
@@ -96,9 +98,11 @@ export default function(element: HTMLCanvasElement): void {
     fx: statistics["FX"],
     mx: statistics["MX"],
     x: statistics["X"],
-    o: statistics["-"]
+    o: statistics["-"], // not a person
+    p: statistics["+"], // multiple
   };
-  const totalPerson = count.f + count.m + count.fx + count.mx + count.x;
+  const totalPerson =
+    count.f + count.m + count.fx + count.mx + count.x + count.p;
   const total = totalPerson + count.o;
 
   createChart([count["m"], count["f"], count["mx"], count["fx"], count["x"]]);

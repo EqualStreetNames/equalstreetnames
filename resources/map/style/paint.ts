@@ -5,50 +5,26 @@ import colors from "../../colors";
 export default {
   "line-color": [
     "case",
-    [
-      "all",
-      ["==", ["to-boolean", ["get", "details"]], true],
-      ["==", ["get", "person", ["get", "details"]], true]
-    ],
-    [
-      "case",
-      ["==", ["get", "gender", ["get", "details"]], "F"],
-      colors.f,
-      ["==", ["get", "gender", ["get", "details"]], "M"],
-      colors.m,
-      ["==", ["get", "gender", ["get", "details"]], "FX"],
-      colors.fx,
-      ["==", ["get", "gender", ["get", "details"]], "MX"],
-      colors.mx,
-      ["==", ["get", "gender", ["get", "details"]], "X"],
-      colors.x,
-      colors.o
-    ],
-    colors.o
+    ["==", ["get", "gender"], "F"],
+    colors.f,
+    ["==", ["get", "gender"], "M"],
+    colors.m,
+    ["==", ["get", "gender"], "FX"],
+    colors.fx,
+    ["==", ["get", "gender"], "MX"],
+    colors.mx,
+    ["==", ["get", "gender"], "X"],
+    colors.x,
+    colors.o,
   ],
   "line-width": [
     "interpolate",
     ["linear"],
     ["zoom"],
     13,
-    [
-      "case",
-      [
-        "all",
-        ["==", ["to-boolean", ["get", "details"]], true],
-        ["==", ["get", "person", ["get", "details"]], true]
-      ],
-      3,
-      [
-        "all",
-        ["==", ["to-boolean", ["get", "details"]], true],
-        ["==", ["get", "person", ["get", "details"]], false]
-      ],
-      2,
-      1
-    ],
+    1,
     22,
-    20
+    ["case", ["==", ["typeof", ["get", "gender"]], "string"], 20, 10],
   ],
-  "line-opacity": 0.8
+  "line-opacity": 0.8,
 };

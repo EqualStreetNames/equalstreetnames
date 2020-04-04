@@ -6,7 +6,7 @@ const colors: Record<string, string> = {
   fx: "#00a050", // female (transgender)
   mx: "#00a050", // male (transgender)
   x: "#00a050", // intersex
-  o: "#DDDDDD" // other (not a person)
+  o: "#DDDDDD", // other (not a person or multiple)
 };
 
 export default colors;

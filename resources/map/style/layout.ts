@@ -5,12 +5,8 @@ export default {
   "line-join": "round",
   "line-sort-key": [
     "case",
-    [
-      "all",
-      ["==", ["to-boolean", ["get", "details"]], true],
-      ["==", ["get", "person", ["get", "details"]], true]
-    ],
+    ["==", ["typeof", ["get", "gender"]], "string"],
     10,
-    5
-  ]
+    5,
+  ],
 };

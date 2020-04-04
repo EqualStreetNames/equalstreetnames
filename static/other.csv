@@ -22,7 +22,6 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Notre-Dame de Lourdes","Onze-Lieve-Vrouw Van Lourdeslaan",,Q21532387,relation
 "Avenue Orion",Orionlaan,,Q201261,relation
 "Avenue Pénélope",Penelopelaan,,Q165769,relation
-"Avenue Pierre et Marie Curie","Pierre en Marie Curielaan",,Q11297474,relation
 "Avenue Reinaert de Vos","Reinaert de Voslaan",,Q25400539,way
 "Avenue Télémaque",Telemachuslaan,,Q192482,relation
 "Avenue Ulysse",Ulysselaan,,Q47231,relation
@@ -96,6 +95,8 @@ Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
 "Rue des Éburons",Eburonenstraat,,Q323500,relation
 "Rue du Parc Elisabeth",Elisabethparkstraat,,Q22443719,relation
 "Rue du Zéphyr",Westenwindstraat,,Q467515,relation
+"Sentier des Aubépines",Hagedoornpad,,Q132557,way
+"Sentier des Lilas",Seringenpad,,Q6565319,way
 "Square Apollo",Apollosquare,,Q37340,relation
 "Square Lison",Lisonsquare,,Q88583938,relation
 "Square Manon",Manonsquare,,Q88583708,relation
@@ -143,7 +144,6 @@ Abbaye,Abdij,,,relation
 Antwerpselaan,Antwerpselaan,,,way
 "Avenue 's Heren Huys","'s Herenhuislaan",,,way
 "Avenue Achille Reisdorff","Achille Reisdorfflaan",,,way
-"Avenue Albert-Elisabeth",Albert-Elisabethlaan,,,relation
 "Avenue Beau-Séjour","Schoon Verblijflaan",,,way
 "Avenue Bel-Air","Schoon Uitzichtlaan",,,way
 "Avenue Boesdaal",Boesdaallaan,,,way
@@ -1534,7 +1534,6 @@ Roeierspad,Roeierspad,,,way
 "Route de Lennik",Lenniksebaan,,,way
 "Rue Aerdeberg",Aardebergstraat,,,way
 "Rue Africaine",Afrikastraat,,,way
-"Rue Albert et Marie-Louise Servais-Kinet","Albert en Marie-Louise Servais-Kinetstraat",,,relation
 "Rue Américaine","Amerikaanse straat",,,way
 "Rue Américaine",Amerikastraat,,,way
 "Rue Anglaise",Engelsestraat,,,relation
@@ -2988,7 +2987,6 @@ Schoolgat,Schoolgat,,,way
 "Sentier de la Source Laineuse",Wollenborrepad,,,way
 "Sentier de la Turquoise",Turkooispad,,,way
 "Sentier des Adonides",Adonissenpad,,,way
-"Sentier des Aubépines",Hagedoornpad,,,way
 "Sentier des Bergeronnettes",Kwikstaartenpad,,,way
 "Sentier des Bouleaux",Berkenvoetpad,,,way
 "Sentier des Canotiers",Canoerspad,,,way
@@ -2998,7 +2996,6 @@ Schoolgat,Schoolgat,,,way
 "Sentier des Églantiers",Egelantierpad,,,way
 "Sentier des Endymions",Boshyacintenvoetpad,,,way
 "Sentier des Fougères",Varensvoetpad,,,way
-"Sentier des Lilas",Seringenpad,,,way
 "Sentier des Maraudeurs",Plunderaarspad,,,way
 "Sentier des Merles",Merelspad,,,way
 "Sentier des Mésanges",Mezenpad,,,way

@@ -1,4 +1,7 @@
 name_fr,name_nl,gender,wikidata,type
+"Avenue Albert-Elisabeth",Albert-Elisabethlaan,+,Q55008046;Q235186,relation
+"Avenue Pierre et Marie Curie","Pierre en Marie Curielaan",+,Q37463;Q7186,relation
+"Rue Albert et Marie-Louise Servais-Kinet","Albert en Marie-Louise Servais-Kinetstraat",+,Q89366028;Q89366128,relation
 "Allée Clara Clairbert","Clara Clairbertdreef",F,Q5125964,relation
 "Allée Estelle Juste","Estelle Justedreef",F,Q38031104,way
 "Allée Irène Vanderlinden","Irène Vanderlindendreef",F,Q86199370,way
@@ -116,6 +119,7 @@ name_fr,name_nl,gender,wikidata,type
 "Square Marie Curie","Marie Curiesquare",F,Q7186,relation
 "Square Marie-José",Marie-Joséplein,F,Q72919,relation
 "Square Marie-Louise",Maria-Louizasquare,F,Q157491,relation
+"Square Maurane",Mauranesquare,F,Q509029,way
 "Square Princesse Jean de Mérode","Prinses Jean de Mérodeplein",F,Q88582478,way
 "Tunnel Louise",Louizatunnel,F,Q237318,way
 "Allée Albert Dasnoy","Albert Dasnoydreef",M,Q2831077,way
@@ -574,7 +578,7 @@ name_fr,name_nl,gender,wikidata,type
 "Place Joseph Wauters","Joseph Wautersplein",M,Q585785,way
 "Place Julien Dillens","Julien Dillensplein",M,Q1712238,relation
 "Place Laneau",Laneauplein,M,Q86064930,relation
-"Place Lehon",Lehonplein,M,Q2387268,way
+"Place Lehon",Lehonplein,M,Q2387268,relation
 "Place Léon Vanderkindere","Léon Vanderkindereplein",M,Q978025,way
 "Place Léopold Wiener","Léopold Wienerplein",M,Q2519413,way
 "Place Liedts",Liedtsplein,M,Q358626,way
@@ -849,6 +853,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Général Tombeur","Generaal Tombeurstraat",M,Q2960333,relation
 "Rue Général Wangermée","Generaal Wangerméestraat",M,Q8078321,relation
 "Rue Georges Garnir","Georges Garnirstraat",M,Q3101589,relation
+"Rue Georges Huygens","Georges Huygensstraat",M,Q3102902,way
 "Rue Georges Leclercq","Georges Leclercqstraat",M,Q3103063,relation
 "Rue Georges Lorand","Georges Lorandstraat",M,Q3103110,relation
 "Rue Georges Remy","Georges Remystraat",M,Q52985,relation
@@ -858,6 +863,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Godefroid Devreese","Godefroid Devreesestraat",M,Q2372821,relation
 "Rue Godefroid Guffens","Godefroid Guffensstraat",M,Q323902,relation
 "Rue Godefroid Kurth","Godfroid Kurthstraat",M,Q710649,relation
+"Rue Godefroid de Bouillon","Godfried van Bouillonstraat",M,Q76721,way
 "Rue Goossens",Goossensstraat,M,Q2847864,way
 "Rue Gray",Graystraat,M,Q7790154,relation
 "Rue Grégoire Leroy","Grégoire Leroystraat",M,Q1817422,relation
@@ -872,8 +878,11 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Gustave Gilson","Gustave Gilsonstraat",M,Q3479581,relation
 "Rue Gustave Huberti","Gustave Hubertistraat",M,Q3121215,relation
 "Rue Gustave Van Huynegem","Gustave Van Huynegemstraat",M,Q86065221,relation
+"Rue Hector Denis","Hector Denisstraat",M,Q3129235,way
+"Rue Héger-Bordet",Héger-Bordetstraat,M,Q2387278;Q211787,relation
 "Rue Henri Bergé","Henri Bergéstraat",M,Q3130666,relation
 "Rue Henri Deleers","Henri Deleersstraat",M,Q85427657,relation
+"Rue Henri Deraedt","Henri Deraedtstraat",M,Q3130957,way
 "Rue Henri Evenepoel","Henri Evenepoelstraat",M,Q2980574,relation
 "Rue Henri Jacobs","Henri Jacobsstraat",M,Q3104623,relation
 "Rue Henri Marichal","Henri Marichalstraat",M,Q85429116,relation
@@ -900,6 +909,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Iwan Gilkin","Iwan Gilkinstraat",M,Q2243172,relation
 "Rue Jacobs Fontaine","Jacobs Fontainestraat",M,Q3380316,relation
 "Rue Jacobs-Fontaine",Jacobs-Fontainestraat,M,Q3380316,relation
+"Rue Jacques Bassem","Jacques Bassemstraat",M,Q3158201,way
 "Rue Jacques Jordaens","Jakob Jordaensstraat",M,Q270658,way
 "Rue Jacques Vandervleet","Jacques Vandervleetstraat",M,Q85472462,relation
 "Rue Jacques de Lalaing","Jacques de Lalaingstraat",M,Q2130178,relation
@@ -910,6 +920,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Jan Blockx","Jan Blockxstraat",M,Q1681637,relation
 "Rue Jan Bollen","Jan Bollenstraat",M,Q20006818,relation
 "Rue Jan Van Ruusbroeck","Jan Van Ruusbroeckstraat",M,Q920312,relation
+"Rue Jean Chapelié","Jean Chapeliéstraat",M,Q3171220,way
 "Rue Jean Lambotte","Jean Lambottestraat",M,Q17361894,relation
 "Rue Jean Massart","Jean Massartstraat",M,Q2482340,relation
 "Rue Jean Noté","Jean Notéstraat",M,Q1685726,relation
@@ -919,6 +930,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Jean Van Volsem","Jean Van Volsemstraat",M,Q55129227,relation
 "Rue Jean Vandeuren","Jean Vandeurenstraat",M,Q84770641,relation
 "Rue Jean d'Ardenne","Jean d'Ardennestraat",M,Q85429628,relation
+"Rue Jean d'Osta","Jean d'Ostastraat",M,Q3175237,way
 "Rue Jean de Brouchoven de Bergeyck","Jean de Brouchoven de Bergeyckstraat",M,Q1814651,way
 "Rue Jean-Baptiste Janssen","Jean-Baptiste Janssenstraat",M,Q918726,relation
 "Rue Jean-Baptiste Mosselmans","Jan-Baptist Mosselmansstraat",M,Q60446195,relation
@@ -984,6 +996,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Lieutenant Lippens","Luitenant Lippensstraat",M,Q19835682,relation
 "Rue Liévin Verstraeten","Liévin Verstraetenstraat",M,Q3257405,relation
 "Rue Limnander",Limnanderstraat,M,Q4792681,relation
+"Rue Lincoln",Lincolnstraat,M,Q91,way
 "Rue Locquenghien",Locquenghienstraat,M,Q3175532,way
 "Rue Lodewijk Van Boeckel","Lodewijk Van Boeckelstraat",M,Q41884515,relation
 "Rue Louis Braille","Louis Braillestraat",M,Q93182,relation
@@ -1700,7 +1713,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Général Ruquoy","Generaal Ruquoystraat",M,,relation
 "Rue Général Thys","Generaal Thysstraat",M,,relation
 "Rue Georges De Lombaerde","Georges De Lombaerdestraat",M,,relation
-"Rue Georges Huygens","Georges Huygensstraat",M,,way
 "Rue Georges Matheus","Georges Matheusstraat",M,,relation
 "Rue Georges Moreau","Georges Moreaustraat",M,,relation
 "Rue Georges Raeymaekers","Georges Raeymaekersstraat",M,,relation
@@ -1714,14 +1726,12 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Gineste",Ginestestraat,M,,way
 "Rue Glibert",Glibertstraat,M,,relation
 "Rue Godecharle",Godecharlestraat,M,,relation
-"Rue Godefroid de Bouillon","Godfried van Bouillonstraat",M,,way
 "Rue Goffart",Goffartstraat,M,,relation
 "Rue Gouverneur Nens","Gouverneur Nensstraat",M,,relation
 "Rue Grisar",Grisarstraat,M,,relation
 "Rue Guillaume Beliën","Guillaume Beliënstraat",M,,relation
 "Rue Guillaume Dekelver","Guillaume Dekelverstraat",M,,relation
 "Rue Guillaume Demuylder","Guillaume Demuylderstraat",M,,relation
-"Rue Guillaume Tell","Willem Tellstraat",M,,way
 "Rue Guillaume Van Laethem","Guillaume Van Laethemstraat",M,,relation
 "Rue Gustaaf Vanden Berghe","Gustaaf Vanden Berghestraat",M,,relation
 "Rue Gustave Delathouwer","Gustave Delathouwerstraat",M,,relation
@@ -1735,13 +1745,10 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Guy-Jean Verachtert","Guy-Jean Verachtertstraat",M,,way
 "Rue Haeck",Haeckstraat,M,,relation
 "Rue Hancart",Hancartstraat,M,,way
-"Rue Hector Denis","Hector Denisstraat",M,,way
 "Rue Hector Genard","Hector Genardstraat",M,,relation
-"Rue Héger-Bordet",Héger-Bordetstraat,M,,relation
 "Rue Henri Caron","Henri Caronstraat",M,,relation
 "Rue Henri Chomé","Henri Choméstraat",M,,relation
 "Rue Henri De Saegher","Henri De Saegherstraat",M,,relation
-"Rue Henri Deraedt","Henri Deraedtstraat",M,,way
 "Rue Henri Huybreghts","Henri Huybreghtsstraat",M,,relation
 "Rue Henri Maes","Henri Maesstraat",M,,relation
 "Rue Henri Maubel","Henri Maubelstraat",M,,way
@@ -1768,12 +1775,10 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Hubert-Jean Coenen","Hubert-Jean Coenenstraat",M,,way
 "Rue J. B. Moyens","J. B. Moyensstraat",M,,way
 "Rue Jacques Ballings","Jaak Ballingsstraat",M,,relation
-"Rue Jacques Bassem","Jacques Bassemstraat",M,,way
 "Rue Jacques Boon","Jacques Boonstraat",M,,relation
 "Rue Jacques Hoton","Jacques Hotonstraat",M,,relation
 "Rue Jacques Houtmeyers","Jaak Houtmeyersstraat",M,,relation
 "Rue Jacques Jansen","Jacques Jansenstraat",M,,relation
-"Rue Jacques Manne","Jacques Mannestraat",M,,way
 "Rue Jacques Rayé","Jacques Rayéstraat",M,,relation
 "Rue Jan Frans De Craen","Jan Frans De Craenstraat",M,,relation
 "Rue Jan Verbesselt","Jan Verbesseltstraat",M,,way
@@ -1781,7 +1786,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Jean Baptiste François Denys","Jean Baptiste François Denysstraat",M,,relation
 "Rue Jean Baudoux","Jean Baudouxstraat",M,,relation
 "Rue Jean Benaets","Jean Benaetsstraat",M,,way
-"Rue Jean Chapelié","Jean Chapeliéstraat",M,,way
 "Rue Jean De Greef","Jean De Greefstraat",M,,relation
 "Rue Jean Deraeck","Jean Deraeckstraat",M,,relation
 "Rue Jean Ekelmans","Jean Ekelmansstraat",M,,way
@@ -1795,7 +1799,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Jean Tiebackx","Jan Tiebackxstraat",M,,relation
 "Rue Jean Verbiest","Jean Verbieststraat",M,,relation
 "Rue Jean Wellens","Jean Wellensstraat",M,,relation
-"Rue Jean d'Osta","Jean d'Ostastraat",M,,way
 "Rue Jean-Baptiste Baeck","Jean-Baptiste Baeckstraat",M,,relation
 "Rue Jean-Baptiste Bauwens","Jan-Baptist Bauwensstraat",M,,relation
 "Rue Jean-Baptiste Brems","Jean-Baptiste Bremsstraat",M,,relation
@@ -1883,7 +1886,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Liedts",Liedtsstraat,M,,way
 "Rue Lieutenant Freddy Wampach","Luitenant Freddy Wampachstraat",M,,relation
 "Rue Limauge",Limaugestraat,M,,relation
-"Rue Lincoln",Lincolnstraat,M,,way
 "Rue Linné",Linnéstraat,M,,relation
 "Rue Louis Coenen","Louis Coenenstraat",M,,way
 "Rue Louis Corhay","Louis Corhaystraat",M,,relation

@@ -48,7 +48,11 @@ See [`docs/README.md`](./docs/README.md)
    npm install
    ```
 
-1. Create a [Mapbox token](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/) and add `MAPBOX_TOKEN` with your Mapbox token to `.env` file
+1. Create a [Mapbox token](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/) 
+
+1. Create a file named `.env` in the root directory of the project
+
+1. Add the following line to the `.env` file: `MAPBOX_TOKEN=[your Mapbox token]` replacing `[your Mapbox token]` with the token you created
 
 1. Run
 

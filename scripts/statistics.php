@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__ . '/../');
+chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 
@@ -61,6 +61,7 @@ function extractData(string $type, object $feature, array $streets)
         return $data;
     } elseif (!is_null($street['wikidata']) && !is_null($data['wikidata']) && $street['wikidata'] !== $data['wikidata']) {
         printf('Wikidata mismatch: %s - %s : %s <> %s%s', $data['name_fr'], $data['name_nl'], $data['wikidata'], $street['wikidata'], PHP_EOL);
+
         return false;
     }
 

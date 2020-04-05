@@ -1192,7 +1192,9 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Verhas",Verhasstraat,M,Q2036536,relation
 "Rue Verheyleweghen",Verheyleweghenstraat,M,Q3372356,relation
 "Rue Véronèse",Veronesestraat,M,Q9440,relation
+"Rue Verwée",Verwéestraat,M,Q2835508,way
 "Rue Vésale",Vesaliusstraat,M,Q170267,way
+"Rue Veydt",Veydtstraat,M,Q85436592,way
 "Rue Victor Greyson","Victor Greysonstraat",M,Q85421688,relation
 "Rue Victor Hugo","Victor Hugostraat",M,Q535,relation
 "Rue Victor Lefèvre","Victor Lefèvrestraat",M,Q3557414,relation
@@ -1235,16 +1237,22 @@ name_fr,name_nl,gender,wikidata,type
 "Rue de l'Éclusier Cogge","Sluismeester Coggestraat",M,Q2182432,relation
 "Rue du Cardinal",Kardinaalstraat,M,Q451178,relation
 "Rue du Cardinal Mercier","Kardinaal Mercierstraat",M,Q468097,way
+"Rue du Lieutenant Lotin","Luitenant Lotinstraat",M,Q62418645,way
 "Rue du Prince Albert","Prins Albertstraat",M,Q55008046,relation
 "Rue du Taciturne","Willem de Zwijgerstraat",M,Q78454,relation
 "Rue t'Serclaes",t'Serclaesstraat,M,Q898342,relation
+"Square Albert Devèze","Albert Devèzesquare",M,Q457695,way
 "Square Albert Ier","Albert I-square",M,Q55008046,relation
+"Square Albert Verhaeren","Albert Verhaerensquare",M,Q85426329,way
 "Square Ambiorix",Ambiorixsquare,M,Q12847,relation
 "Square Armand Steurs","Armand Steurssquare",M,Q2445376,relation
 "Square Breughel l'Ancien","Breughel de Oudeplein",M,Q43270,way
 "Square Charles Jordens","Charles Jordenssquare",M,Q47513726,way
+"Square Charles Lagrange","Charles Lagrangesquare",M,Q2959343,way
 "Square Coghen",Coghensquare,M,Q2412466,way
 "Square Edmond Machtens","Edmond Machtenssquare",M,Q2509847,relation
+"Square Égide Rombaux","Égide Rombauxsquare",M,Q3580163,way
+"Square Émile Vander Bruggen","Émile Vander Bruggensquare",M,Q85422595,way
 "Square Eugène Plasky","Eugène Plaskysquare",M,Q3060103,way
 "Square François Riga","François Rigasquare",M,Q3385072,relation
 "Square Frans Hals","Frans Halssquare",M,Q167654,relation
@@ -1254,15 +1262,21 @@ name_fr,name_nl,gender,wikidata,type
 "Square Henri Michaux","Henri Michauxsquare",M,Q160780,way
 "Square Jacques Franck","Jacques Francksquare",M,Q2157395,relation
 "Square James Dean","James Deanplein",M,Q83359,relation
+"Square Jean Absil","Jean Absilsquare",M,Q364121,way
 "Square Jean Hayet","Jean Hayetsquare",M,Q678157,relation
+"Square Jean-Baptiste De Greef","Jean-Baptiste De Greefsquare",M,Q3164007,way
 "Square Joseph Hanse","Joseph Hansesquare",M,Q1707180,way
 "Square Jules De Trooz","Jules De Troozsquare",M,Q721798,way
 "Square Jules de Burlet","Jules de Burletplein",M,Q569138,relation
 "Square Lainé",Lainésquare,M,Q16043742,relation
+"Square Larousse",Laroussesquare,M,Q313709,way
+"Square Léon Jacquet","Léon Jacquetsquare",M,Q85425855,way
 "Square Léopold II","Leopold II Plein",M,Q12967,way
 "Square Levie",Levieplein,M,Q117374,relation
 "Square Maréchal Montgomery","Maarschalk Montgomeryplein",M,Q152025,way
 "Square Masséna",Massénasquare,M,Q242609,way
+"Square Prince Charles","Prins Karelsquare",M,Q445553,relation
+"Square Prince Léopold","Prins Leopoldsquare",M,Q690327,relation
 "Square Robert Allein","Robert Alleinsquare",M,Q86087218,relation
 "Square Robert Goldschmidt","Robert Goldschmidtsquare",M,Q1185434,relation
 "Square Robert Pequeur","Robert Pequeursquare",M,Q85423877,relation
@@ -1274,6 +1288,7 @@ name_fr,name_nl,gender,wikidata,type
 "Tunnel Belliard",Belliardtunnel,M,Q767534,way
 "Tunnel Léopold II","Leopold II-tunnel",M,Q12967,way
 "Tunnel Montgomery",Montgomerytunnel,M,Q152025,way
+"Tunnel Reyers",Reyerstunnel,M,Q2871374,way
 "Venelle Chopin",Chopinsteeg,M,Q1268,relation
 "Venelle Mozart",Mozartsteeg,M,Q254,relation
 "Venelle Robert Brout","Robert Broutsteeg",M,Q151833,way
@@ -1295,6 +1310,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Marianne",Mariannestraat,F,,way
 "Rue Mercelis",Mercelisstraat,F,,relation
 "Rue Van Gulick","Van Gulickstraat",F,,relation
+"Rue de Beughem","de Beughemstraat",F,,relation
 "Rue de Ciplet","de Cipletstraat",F,,relation
 "Square Elsa Frison","Elsa Frisonsquare",F,,relation
 "Allée Charles Viane","Charles Vianedreef",M,,way
@@ -2051,8 +2067,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Verhoeven",Verhoevenstraat,M,,relation
 "Rue Verhulst",Verhulststraat,M,,relation
 "Rue Vervloesem",Vervloesemstraat,M,,relation
-"Rue Verwée",Verwéestraat,M,,way
-"Rue Veydt",Veydtstraat,M,,way
 "Rue Victor Allard","Victor Allardstraat",M,,way
 "Rue Victor Gambier","Victor Gambierstraat",M,,way
 "Rue Victor Lowet","Victor Lowetstraat",M,,relation
@@ -2066,7 +2080,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Willebrord Van Perck","Willebrord Van Perckstraat",M,,relation
 "Rue Willem Kuhnen","Willem Kuhnenstraat",M,,relation
 "Rue d'Accolay",Accolaystraat,M,,way
-"Rue de Beughem",Beughemstraat,M,,relation
 "Rue de Bruyn","de Bruynstraat",M,,relation
 "Rue de Fiennes","de Fiennesstraat",M,,relation
 "Rue de Fierlant","de Fierlantstraat",M,,relation
@@ -2079,39 +2092,25 @@ name_fr,name_nl,gender,wikidata,type
 "Rue de Robiano","de Robianostraat",M,,relation
 "Rue de Wansijn","de Wansijnstraat",M,,way
 "Rue de Wautier","de Wautierstraat",M,,relation
-"Rue des Quatre Fils Aymon",Vierheemskinderenstraat,M,,relation
-"Rue du Lieutenant Lotin","Luitenant Lotinstraat",M,,way
 "Sentier Guy Demanet","Guy Demanetpad",M,,way
-"Square Albert Devèze","Albert Devèzesquare",M,,way
-"Square Albert Verhaeren","Albert Verhaerensquare",M,,way
 "Square Antoine Vanlindt","Antoine Vanlindtsquare",M,,way
 "Square Baron Alfred Bouvier","Baron Alfred Bouviersquare",M,,way
 "Square Baron Robert Hankar","Baron Robert Hankarsquare",M,,way
 "Square Camille Paulsen","Camille Paulsensquare",M,,relation
-"Square Charles Lagrange","Charles Lagrangesquare",M,,way
 "Square Charles-Maurice Wiser","Charles-Maurice Wiserplein",M,,relation
 "Square Docteur Jean Joly","Dokter Jean Jolyplein",M,,relation
-"Square Égide Rombaux","Égide Rombauxsquare",M,,way
 "Square Emile Duployé","Emile Duployésquare",M,,relation
-"Square Émile Vander Bruggen","Émile Vander Bruggensquare",M,,way
 "Square Émile Vandervelde","Émile Vanderveldesquare",M,,relation
 "Square Emile des Grées du Loû","Emile des Grées du Loû Square",M,,relation
 "Square Félix Delhaye","Félix Delhayesquare",M,,way
 "Square Félix Vande Sande","Félix Vande Sandesquare",M,,relation
 "Square Gérard Van Caulaert","Gérard Van Caulaertsquare",M,,way
 "Square Henri Rey","Henri Reysquare",M,,relation
-"Square Jean Absil","Jean Absilsquare",M,,way
-"Square Jean-Baptiste De Greef","Jean-Baptiste De Greefsquare",M,,way
 "Square Jef Dillen","Jef Dillensquare",M,,way
 "Square Jules Algoet","Jules Algoetsquare",M,,relation
 "Square Jules Lorge","Jules Lorgesquare",M,,relation
-"Square Larousse",Laroussesquare,M,,way
-"Square Léon Jacquet","Léon Jacquetsquare",M,,way
 "Square Louis Van Simaey","Louis Van Simaeysquare",M,,way
 "Square Pieter Hauwaerts","Pieter Hauwaertssquare",M,,relation
-"Square Prince Charles","Prins Karelsquare",M,,relation
-"Square Prince Léopold","Prins Leopoldsquare",M,,relation
 "Square Raymond Volckerick","Raymond Volckericksquare",M,,way
 "Square Servaes Hoedemaekers","Servaas Hoedemaekerssquare",M,,relation
 "Square Van Bever","Van Beversquare",M,,way
-"Tunnel Reyers",Reyerstunnel,M,,way

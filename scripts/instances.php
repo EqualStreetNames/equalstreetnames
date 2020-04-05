@@ -60,6 +60,7 @@ return [
     'Q4306757'  => false, // Mukarrabun
     'Q5200157'  => false, // confections
     'Q6857854'  => false, // military road
+    'Q7832362'  => false, // traditional story
     'Q10822464' => false, // angel in Christianity
     'Q11688446' => false, // Roman deity
     'Q14073567' => false, // sibling duo
@@ -81,6 +82,7 @@ return [
     'Q25810847' => false, // folkloristic character
     'Q27921916' => false, // anthropomorphic character
     'Q41863069' => false, // war deity
+    'Q42109240' => false, // literary theme
     'Q50386450' => false, // operatic character
     'Q55983715' => false, // polyphyletic common name
     'Q56884562' => false, // animated film series

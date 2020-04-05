@@ -84,6 +84,7 @@ Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
 "Rue Jacques Manne","Jacques Mannestraat",,Q63160171,relation
 "Rue Maes",Maesstraat,,Q49619000,relation
 "Rue Ravenstein",Ravensteinstraat,,Q3145650,way
+"Rue Saint-Michel",Sint-Michielsstraat,,Q45581,way
 "Rue d'Anderlecht",Anderlechtsesteenweg,,Q12886,way
 "Rue d'Arlon",Aarlenstraat,,Q675960,relation
 "Rue d'Ophem",Oppemstraat,,Q2520768,way
@@ -1709,6 +1710,7 @@ Roeierspad,Roeierspad,,,way
 "Rue Steenvelt",Steenveltstraat,,,way
 "Rue Stevens-Delannoy",Stevens-Delannoystraat,,,relation
 "Rue Stuyvenbergh",Stuivenbergstraat,,,relation
+"Rue Ter Elst","Ter Elststraat",,,way
 "Rue Terarken",Terarkenstraat,,,way
 "Rue Terre-Neuve",Nieuwland,,,way
 "Rue Thérésienne",Theresianenstraat,,,relation

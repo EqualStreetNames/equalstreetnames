@@ -449,7 +449,7 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue du Roi-Soldat",Koning-Soldaatlaan,M,Q55008046,relation
 "Avenue van der Meerschen","van der Meerschenlaan",M,Q27894060,relation
 "Boulevard Adolphe Max","Adolphe Maxlaan",M,Q2535128,way
-"Boulevard Anspach",Anspachlaan,M,Q462143,way
+"Boulevard Anspach",Anspachlaan,M,Q462143,relation
 "Boulevard Aristide Briand","Aristide Briandlaan",M,Q179888,relation
 "Boulevard Auguste Reyers","Auguste Reyerslaan",M,Q2871374,relation
 "Boulevard Barthélémy",Barthelemylaan,M,Q2361218,way
@@ -1080,9 +1080,11 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Pierre Dupont","Pieter Dupontstraat",M,Q2164212,relation
 "Rue Pierre Marchant","Pierre Marchantstraat",M,Q7175653,relation
 "Rue Pierre Schlosser","Pierre Schlosserstraat",M,Q16027247,relation
+"Rue Pierre Schoonejans","Pierre Schoonejansstraat",M,Q3386956,way
 "Rue Pierre Strauwen","Pierre Strauwenstraat",M,Q2089962,relation
 "Rue Pierre Theunis","Pierre Theunisstraat",M,Q3387089,relation
 "Rue Pierre Timmermans","Pierre Timmermansstraat",M,Q85473023,relation
+"Rue Pierre Van Humbeek","Pierre Van Humbeekstraat",M,Q2682675,relation
 "Rue Pierre Van Reymenant","Pierre Van Reymenantstraat",M,Q85420740,relation
 "Rue Pierre Vandevoorde","Pierre Vandevoordestraat",M,Q23901052,relation
 "Rue Pierre Verschelden","Pierre Verscheldenstraat",M,Q86066578,relation
@@ -1104,6 +1106,8 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Révérend Père Pire","Eerwaarde Pater Pirestraat",M,Q158850,relation
 "Rue Robert Bosch","Robert Boschstraat",M,Q71032,relation
 "Rue Robert Scott","Robert Scottstraat",M,Q102527,relation
+"Rue Roberts Jones","Roberts Jonesstraat",M,Q64683392,way
+"Rue Rodenbach",Rodenbachstraat,M,Q378240,way
 "Rue Roelandts",Roelandtsstraat,M,Q1899867,relation
 "Rue Roger van der Weyden","Rogier van der Weydenstraat",M,Q68631,way
 "Rue Rogier",Rogierstraat,M,Q468109,relation
@@ -1113,13 +1117,18 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Rouppe",Rouppestraat,M,Q2009106,relation
 "Rue Rubens",Rubensstraat,M,Q5599,relation
 "Rue Ruysdael",Ruysdaelstraat,M,Q213612,relation
+"Rue Saint Guidon",Sint-Guidostraat,M,Q1553720,relation
 "Rue Saint-Ghislain",Sint-Gisleinsstraat,M,Q740017,relation
 "Rue Saint-Hubert",Sint-Huibrechtsstraat,M,Q159834,relation
+"Rue Saint-Jean Népomucène","Sint-Jan Nepomucenusstraat",M,Q221522,way
 "Rue Saint-Joseph",Sint-Jozefstraat,M,Q128267,relation
 "Rue Saint-Lambert",Sint-Lambrechtsstraat,M,Q283447,relation
 "Rue Saint-Nicolas",Sint-Nikolaasstraat,M,Q44269,relation
 "Rue Saint-Norbert",Sint-Norbertusstraat,M,Q160374,relation
+"Rue Saint-Pierre",Sint-Pietersstraat,M,Q33923,way
 "Rue Saint-Quentin",Saint-Quentinstraat,M,Q1293541,relation
+"Rue Saint-Roch",Sint-Rochusstraat,M,Q152457,way
+"Rue Saints-Pierre et Paul","Sint-Pieter en Pauwelsstraat",M,Q33923;Q9200,relation
 "Rue Sallaert",Sallaertstraat,M,Q2339877,relation
 "Rue Sander Pierron","Sander Pierronstraat",M,Q3471826,relation
 "Rue Scailquin",Scailquinstraat,M,Q3354443,relation
@@ -1128,6 +1137,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Sergent De Bruyne","Sergeant De Bruynestraat",M,Q48658520,relation
 "Rue Servandoni",Servandonistraat,M,Q3010923,relation
 "Rue Seutin",Seutinstraat,M,Q1641946,relation
+"Rue Simonau",Simonaustraat,M,Q28927557;Q21396067,relation
 "Rue Simonis",Simonisstraat,M,Q585463,way
 "Rue Simons",Simonsstraat,M,Q16670070,relation
 "Rue Stanley",Stanleystraat,M,Q171421,relation
@@ -1152,6 +1162,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Toots Thielemans","Toots Thielemansstraat",M,Q365567,relation
 "Rue Valère Broekaert","Valère Broekaertstraat",M,Q86067476,relation
 "Rue Van Artevelde",Arteveldestraat,M,Q359165,way
+"Rue Van Bemmel","Van Bemmelstraat",M,Q3060206,way
 "Rue Van Campenhout","Van Campenhoutstraat",M,Q1363402,relation
 "Rue Van Droogenbroeck","Van Droogenbroeckstraat",M,Q2266893,relation
 "Rue Van Dyck","Van Dyckstraat",M,Q150679,relation
@@ -1949,8 +1960,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Pierre Hap Lemaître","Pierre Hap Lemaîtrestraat",M,,relation
 "Rue Pierre Longin","Pierre Longinstraat",M,,relation
 "Rue Pierre Mattheussens","Pieter Mattheussensstraat",M,,relation
-"Rue Pierre Schoonejans","Pierre Schoonejansstraat",M,,way
-"Rue Pierre Van Humbeek","Pierre Van Humbeekstraat",M,,relation
 "Rue Pierre Van Obberghen","Pieter Van Obberghenstraat",M,,relation
 "Rue Pierre Vereman","Pierre Veremanstraat",M,,way
 "Rue Pierre de Puysselaer","Pierre de Puysselaerstraat",M,,way
@@ -1965,7 +1974,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Prosper Préser","Prosper Préserstraat",M,,relation
 "Rue Raphaël",Raphaëlstraat,M,,relation
 "Rue Rasson",Rassonstraat,M,,way
-"Rue Ravenstein",Ravensteinstraat,M,,way
 "Rue Remi Fraeyman","Remi Fraeymanstraat",M,,relation
 "Rue Remy Soetens","Remy Soetensstraat",M,,relation
 "Rue René Christiaens","René Christiaensstraat",M,,way
@@ -1979,12 +1987,9 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Robert Buyck","Robert Buyckstraat",M,,relation
 "Rue Robert Thoreau","Robert Thoreaustraat",M,,relation
 "Rue Robert Willame","Robert Willamestraat",M,,relation
-"Rue Roberts Jones","Roberts Jonesstraat",M,,way
-"Rue Rodenbach",Rodenbachstraat,M,,way
 "Rue Roger Abeels","Roger Abeelsstraat",M,,relation
 "Rue Ropsy Chaudron","Ropsy Chaudronstraat",M,,relation
 "Rue Rouen-Bovie","Rouen Boviestraat",M,,relation
-"Rue Saint Guidon",Sint-Guidostraat,M,,relation
 "Rue Saint-Alphonse",Sint-Alfonsstraat,M,,way
 "Rue Saint-André",Sint-Andriesstraat,M,,way
 "Rue Saint-Bernard",Sint-Bernardusstraat,M,,way
@@ -1995,20 +2000,13 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Saint-Géry",Sint-Goriksstraat,M,,way
 "Rue Saint-Henri",Sint-Hendrikstraat,M,,relation
 "Rue Saint-Jean",Sint-Jansstraat,M,,way
-"Rue Saint-Jean Népomucène","Sint-Jan Nepomucenusstraat",M,,way
 "Rue Saint-Joseph","Sint Jozefstraat",M,,relation
 "Rue Saint-Julien",Sint-Juliaanstraat,M,,relation
 "Rue Saint-Laurent",Sint-Laurensstraat,M,,way
 "Rue Saint-Lazare",Sint-Lazarusstraat,M,,way
 "Rue Saint-Martin",Sint-Maartenstraat,M,,relation
-"Rue Saint-Michel",Sint-Michielsstraat,M,,way
-"Rue Saint-Pierre",Sint-Pietersstraat,M,,way
-"Rue Saint-Roch",Sint-Rochusstraat,M,,way
 "Rue Saint-Vincent",Sint-Vincentiusstraat,M,,relation
-"Rue Saints Pierre et Paul",Sint-Pieter-en-Pauwelstraat,M,,way
-"Rue Saints-Pierre et Paul","Sint-Pieter en Pauwelsstraat",M,,relation
 "Rue Sergent Sorensen","Sergeant Sorensenstraat",M,,relation
-"Rue Simonau",Simonaustraat,M,,relation
 "Rue Sneessens",Sneessensstraat,M,,relation
 "Rue Stanislas Legrelle","Stanislas Legrellestraat",M,,relation
 "Rue Steens",Steensstraat,M,,way
@@ -2017,7 +2015,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Stroobants",Stroobantsstraat,M,,relation
 "Rue Sylvain Denayer","Sylvain Denayerstraat",M,,relation
 "Rue Tazieaux",Tazieauxstraat,M,,relation
-"Rue Ter Elst","Ter Elststraat",M,,way
 "Rue Théodore Bekaert","Théodore Bekaertstraat",M,,relation
 "Rue Théodore De Cuyper","Théodore De Cuyperstraat",M,,relation
 "Rue Théophile Vander Elst","Théophile Vander Elststraat",M,,way
@@ -2025,7 +2022,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Thys-Vanham",Thys-Vanhamstraat,M,,relation
 "Rue Timmermans",Timmermansstraat,M,,way
 "Rue Ulens",Ulensstraat,M,,relation
-"Rue Van Bemmel","Van Bemmelstraat",M,,way
 "Rue Van Bergen","Van Bergenstraat",M,,relation
 "Rue Van Elewyck","Van Elewyckstraat",M,,relation
 "Rue Van Gaver","Van Gaverstraat",M,,way

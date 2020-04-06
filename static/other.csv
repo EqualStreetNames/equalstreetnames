@@ -843,6 +843,7 @@ Cauter,Cauter,,,way
 "Chaussée de Neerstalle",Neerstallesteenweg,,,way
 "Chaussée de Neerstalle","Neerstalse Steenweg",,,relation
 "Chaussée de Ninove","Ninoofse Steenweg",,,relation
+"Chaussée de Ninove - Ninoofsesteenweg","Chaussée de Ninove - Ninoofsesteenweg",,,way
 "Chaussée de Roodebeek",Roodebeeksteenweg,,,relation
 "Chaussée de Ruisbroek","Ruisbroekse Steenweg",,,relation
 "Chaussée de Stockel",Stokkelsesteenweg,,,relation
@@ -1778,7 +1779,6 @@ Roeierspad,Roeierspad,,,way
 "Rue de Belgrade",Belgradostraat,,,way
 "Rue de Belle Vue",Bellevuestraat,,,way
 "Rue de Berchem",Berchemstraat,,,relation
-"Rue de Berger",Herdersstraat,,,relation
 "Rue de Beyseghem",Beizegemstraat,,,relation
 "Rue de Biestebroeck",Biestebroekstraat,,,relation
 "Rue de Birmingham",Birminghamstraat,,,relation
@@ -2605,6 +2605,7 @@ Roeierspad,Roeierspad,,,way
 "Rue du Belvédère",Belvédèrestraat,,,relation
 "Rue du Bemel",Bemelstraat,,,relation
 "Rue du Berceau",Prieelstraat,,,relation
+"Rue du Berger",Herdersstraat,,,relation
 "Rue du Bien-Être",Welzijnstraat,,,relation
 "Rue du Bien-Faire",Bien-Fairestraat,,,way
 "Rue du Biplan",Tweedekkerstraat,,,relation
@@ -2985,6 +2986,7 @@ Schoolgat,Schoolgat,,,way
 "Sentier de la Marjolaine",Marjoleinpad,,,way
 "Sentier de la Pépinière",Kwekerijpad,,,way
 "Sentier de la Petite Espinette","Kleine Hutvoetpad",,,way
+"Sentier de la Renarde",Moervospad,,,way
 "Sentier de la Source Laineuse",Wollenborrepad,,,way
 "Sentier de la Turquoise",Turkooispad,,,way
 "Sentier des Adonides",Adonissenpad,,,way

@@ -34,6 +34,7 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Simone Veil","Simone Veillaan",F,Q298180,way
 "Avenue de Castonier","de Castonierlaan",F,Q88385819,way
 "Avenue de la Princesse Paola","Prinses Paolalaan",F,Q31129,way
+"Boulevard Maria Groeninckx-De May","Maria Groeninckx-De Maylaan",F,Q89488154,relation
 "Carrefour Sainte-Anne",Sint-Annakruispunt,F,Q164294,way
 "Clos Andrée De Jongh","Andrée de Jonghgaarde",F,Q461027,way
 "Clos Andrée Dumont","Andrée Dumontgaarde",F,Q16262799,way
@@ -41,6 +42,8 @@ name_fr,name_nl,gender,wikidata,type
 "Clos Marilyn Monroe","Marilyn Monroegaarde",F,Q4616,relation
 "Drève Aleyde De Brabant","Aleyde Van Brabantdreef",F,Q377613,relation
 "Drêve Anna Boch","Anna Bochdreef",F,Q466668,way
+"Drève Aurélie Solvay","Aurélie Solvaydreef",F,Q89488177,relation
+"Drève Louisa Chaudoir","Louisa Chaudoirdreef",F,Q89488828,relation
 "Drève Sainte-Anne",Sint-Annadreef,F,Q164294,relation
 "Impasse Sainte-Pétronille",Sint-Petronillagang,F,Q463600,way
 "Parvis Notre-Dame",Onze-Lieve-Vrouwvoorplein,F,Q345,relation
@@ -64,12 +67,14 @@ name_fr,name_nl,gender,wikidata,type
 "Place Reine Fabiola","Koningin Fabiolaplein",F,Q231171,relation
 "Place Sainte-Catherine",Sint-Katelijneplein,F,Q179718,relation
 "Place Sainte-Gudule",Sinter-Goedeleplein,F,Q267660,way
+"Place Séverine",Séverineplein,F,Q453679,relation
 "Place Stéphanie",Stefaniaplein,F,Q170197,relation
 "Place de la Duchesse de Brabant","Hertogin van Brabantplaats",F,Q234047,relation
 "Place de la Reine Paola","Koningin Paolaplein",F,Q31129,relation
 "Pont Suzan Daniel","Suzan Danielbrug",F,Q2198159,way
 "Quai Reine Astrid","Kw Koningin Astrid",F,Q230238,way
 "Rue Akarova",Akarovastraat,F,Q2828943,relation
+"Rue Amélie Gomand","Amélie Gomandstraat",F,Q89489801,relation
 "Rue Andrée de Jongh","Andrée de Jonghstraat",F,Q461027,way
 "Rue Audrey Hepburn","Audrey Hepburnstraat",F,Q42786,relation
 "Rue Chantal Akerman","Chantal Akermanstraat",F,Q239823,way
@@ -77,6 +82,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Clémentine",Clementinestraat,F,Q261129,relation
 "Rue Edith Cavell","Edith Cavellstraat",F,Q237564,way
 "Rue Eliane Vogel-Polsky","Eliane Vogel-Polskystraat",F,Q50348436,way
+"Rue Élise",Elizastraat,F,Q89490193,relation
 "Rue Fernande Volral","Fernande Volralstraat",F,Q16262717,relation
 "Rue Gabrielle Petit","Gabrielle Petitstraat",F,Q468263,relation
 "Rue Gatti de Gamond","Gatti de Gamondstraat",F,Q2407913,way
@@ -108,12 +114,14 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Sainte-Marie",Sint-Mariastraat,F,Q345,relation
 "Rue Sainte-Thérèse",Sint-Theresiastraat,F,Q174880,relation
 "Rue Stéphanie",Stefaniastraat,F,Q170197,relation
+"Rue Van Gulick","Van Gulickstraat",F,Q89490401,relation
 "Rue Virginie Plas","Virginie Plasstraat",F,Q84347503,way
 "Rue Yvonne Jospa","Yvonne Jospastraat",F,Q3574207,way
 "Rue Yvonne Nèvejean","Yvonne Nèvejeanstraat",F,Q2907465,way
 "Rue de Sévigné","de Sévignéstraat",F,Q237103,relation
 "Rue de la Madeleine",Magdalenasteenweg,F,Q63070,relation
 "Square Clémentine",Clementinasquare,F,Q261129,relation
+"Square Elsa Frison","Elsa Frisonsquare",F,Q89490926,relation
 "Square Joséphine-Charlotte",Joséphine-Charlottesquare,F,Q160984,relation
 "Square Marguerite",Margaretasquare,F,Q79158,relation
 "Square Marie Curie","Marie Curiesquare",F,Q7186,relation
@@ -134,6 +142,7 @@ name_fr,name_nl,gender,wikidata,type
 "Allée Henri Roidot","Henri Roidotdreef",M,Q52156239,way
 "Allée Hergé",Hergédreef,M,Q52985,way
 "Allée Jacques Brel","Jacques Breldreef",M,Q1666,way
+"Allée Jacques Wiener","Jacques Wienerdreef",M,Q89585618,way
 "Allée Jean de La Fontaine","Jean de la Fontainelaan",M,Q49496,way
 "Allée Jean-Michel Charlier","Jean-Michel Charlierdreef",M,Q715206,way
 "Allée Jef Dutillieu","Jef Dutillieudreef",M,Q2929537,way
@@ -158,8 +167,10 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue A. Vermeylen","A. Vermeylenlaan",M,Q764378,relation
 "Avenue Adolphe Buyl","Adolphe Buyllaan",M,Q2824787,relation
 "Avenue Adolphe Demeur","Adolphe Demeurlaan",M,Q15869362,relation
+"Avenue Adolphe Dupuich","Adolphe Dupuichlaan",M,Q89586525,way
 "Avenue Adolphe Lacomblé","Adolphe Lacomblélaan",M,Q26707524,relation
 "Avenue Adolphe Wansart","Adolphe Wansartlaan",M,Q18507692,relation
+"Avenue Adrien Bayet","Adrien Bayetlaan",M,Q89586939,relation
 "Avenue Air Marshal Coningham","Air Marshal Coninghamlaan",M,Q2739491,way
 "Avenue Albert",Albertlaan,M,Q55008046,way
 "Avenue Albert Brachet","Albert Brachetlaan",M,Q1921361,relation
@@ -169,16 +180,20 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Albert Giraud","Albert Giraudlaan",M,Q972661,relation
 "Avenue Albert Jonnart","Albert Jonnartlaan",M,Q2831277,relation
 "Avenue Albert Lancaster","Albert Lancasterlaan",M,Q5933304,way
+"Avenue Albertyn",Albertynlaan,M,Q89586949,relation
 "Avenue Alexandre Bertrand","Alexandre Bertrandlaan",M,Q2342814,way
 "Avenue Alexandre Galopin","Alexandre Galopinlaan",M,Q1948980,relation
 "Avenue Alfred Bastien","Alfred Bastienlaan",M,Q2834961,relation
 "Avenue Alfred Madoux","Alfred Madouxlaan",M,Q22209331,relation
 "Avenue Alfred Solvay","Alfred Solvaylaan",M,Q22955207,way
+"Avenue Alphonse Valkeners","Alphonse Valkenerslaan",M,Q89587469,relation
 "Avenue Alphonse XIII","Alphonse XIII laan",M,Q18363,relation
 "Avenue Ambassadeur Van Vollenhoven","Ambassadeur Van Vollenhovenlaan",M,Q76286849,way
+"Avenue André Drouart","André Drouartlaan",M,Q16802038,relation
 "Avenue André Ryckmans","André Ryckmanslaan",M,Q17834839,relation
 "Avenue Antoine Depage","Antoine Depagelaan",M,Q2245909,way
 "Avenue Antoine de Saint-Exupéry","Antoine de Saint-Exupérylaan",M,Q2908,relation
+"Avenue Antoine-Joseph Slegers","Antoine-Joseph Slegerslaan",M,Q89585848,relation
 "Avenue Armand Huysmans","Armand Huysmanslaan",M,Q11313501,relation
 "Avenue Arnaud Fraiteur","Arnaud Fraiteurlaan",M,Q2863114,relation
 "Avenue Auber",Auberlaan,M,Q157672,relation
@@ -492,6 +507,7 @@ name_fr,name_nl,gender,wikidata,type
 "Chemin Luigi Visconti","Luigi Viscontiweg",M,Q3066379,way
 "Chemin Luis Bunuel","Luis Bunuelweg",M,Q51545,way
 "Cité Fontainas",Fontainashof,M,Q2744763,relation
+"Clos A.J. Slegers","A.J. Slegersgaarde",M,Q89585848,relation
 "Clos Albert Crommelynck","Albert Crommelynckgaarde",M,Q2831066,way
 "Clos Albert Marinus","Albert Marinusgaarde",M,Q2831381,relation
 "Clos Alberto Santos Dumont","Alberto Santos Dumontgaarde",M,Q313211,relation
@@ -610,7 +626,7 @@ name_fr,name_nl,gender,wikidata,type
 "Place Salvador Allende","Salvador Allendeplein",M,Q440,way
 "Place Simon Bolivar","Simon Bolivarplein",M,Q8605,way
 "Place Solvay",Solvayplein,M,Q311665,relation
-"Place Stephenson",Stephensonplein,M,Q33694336,relation
+"Place Stephenson",Stephensonplein,M,Q133614,relation
 "Place Surlet de Chokier","Surlet de Chokierplein",M,Q1079522,relation
 "Place Verdi",Verdiplein,M,Q7317,relation
 "Place Verheyleweghen",Verheyleweghenplein,M,Q3372356,relation
@@ -1299,31 +1315,15 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Willy De Bruyn","Willy De Bruynstraat",MX,Q15807938,relation
 "Avenue Jeanne",Johannalaan,F,,relation
 "Avenue Victoria",Victorialaan,F,,way
-"Boulevard Maria Groeninckx-De May","Maria Groeninckx-De Maylaan",F,,relation
-"Drève Aurélie Solvay","Aurélie Solvaydreef",F,,relation
-"Drève Louisa Chaudoir","Louisa Chaudoirdreef",F,,relation
 "Drève Soetkin",Soetkindreef,F,,relation
-"Place Séverine",Séverineplein,F,,relation
-"Rue Amélie Gomand","Amélie Gomandstraat",F,,relation
 "Rue Decrée",Decréestraat,F,,relation
-"Rue Élise",Elizastraat,F,,relation
 "Rue Marianne",Mariannestraat,F,,way
 "Rue Mercelis",Mercelisstraat,F,,relation
-"Rue Van Gulick","Van Gulickstraat",F,,relation
 "Rue de Beughem","de Beughemstraat",F,,relation
 "Rue de Ciplet","de Cipletstraat",F,,relation
-"Square Elsa Frison","Elsa Frisonsquare",F,,relation
 "Allée Charles Viane","Charles Vianedreef",M,,way
-"Allée Jacques Wiener","Jacques Wienerdreef",M,,way
 "Allée John Wiggin","John Wiggindreef",M,,way
 "Allée Nardo Lenaerts","Nardo Lenaertsdreef",M,,way
-"Avenue A. J. Slegers","A. J. Slegerslaan",M,,way
-"Avenue Adolphe Dupuich","Adolphe Dupuichlaan",M,,way
-"Avenue Adrien Bayet","Adrien Bayetlaan",M,,relation
-"Avenue Albertyn",Albertynlaan,M,,relation
-"Avenue Alphonse Valkeners","Alphonse Valkenerslaan",M,,relation
-"Avenue André Drouart","André Drouartlaan",M,,relation
-"Avenue Antoine-Joseph Slegers","Antoine-Joseph Slegerslaan",M,,relation
 "Avenue Antoon van Oss","Antoon van Osslaan",M,,relation
 "Avenue Armand Scheitler","Armand Scheitlerlaan",M,,relation
 "Avenue Arnold Delvaux","Arnold Delvauxlaan",M,,way
@@ -1503,7 +1503,6 @@ name_fr,name_nl,gender,wikidata,type
 "Chaussée de Saint-Job",Sint-Jobsesteenweg,M,,way
 "Chemin Pierre Vereman","Pierre Veremanweg",M,,way
 "Cité Jourdan","Jourdan Wijk",M,,way
-"Clos A.J. Slegers","A.J. Slegersgaarde",M,,relation
 "Clos André Rappe","André Rappegaarde",M,,relation
 "Clos Bourgmestre De Keyser","Burgemeester De Keysergaarde",M,,way
 "Clos Dandoy",Dandoygaarde,M,,way

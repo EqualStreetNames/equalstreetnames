@@ -134,6 +134,7 @@ name_fr,name_nl,gender,wikidata,type
 "Allée André Franquin","André Franquindreef",M,Q281411,way
 "Allée André Willequet","André Willequetdreef",M,Q523419,way
 "Allée Bob De Moor","Bob De Moordreef",M,Q262460,way
+"Allée Charles Viane","Charles Vianedreef",M,Q86198259,way
 "Allée Christian de Duve","Christian de Duve Dreef",M,Q234590,way
 "Allée Claude Lyr","Claude Lyrdreef",M,Q53368482,way
 "Allée Fernand Dineur","Fernand Dineurdreef",M,Q377154,way
@@ -147,11 +148,13 @@ name_fr,name_nl,gender,wikidata,type
 "Allée Jean-Michel Charlier","Jean-Michel Charlierdreef",M,Q715206,way
 "Allée Jef Dutillieu","Jef Dutillieudreef",M,Q2929537,way
 "Allée John Cluysenaar","John Cluysenaardreef",M,Q1699626,way
+"Allée John Wiggin","John Wiggindreef",M,Q86198974,way
 "Allée Jos Albert","Jos Albertdreef",M,Q16010220,way
 "Allée José Dierickx","José Dierickxdreef",M,Q16219379,way
 "Allée Kurt Peiser","Kurt Peiserdreef",M,Q2536774,way
 "Allée Léandre Grandmoulin","Léandre Grandmoulindreef",M,Q3270050,way
 "Allée Léon Londot","Léon Londotdreef",M,Q2556621,way
+"Allée Nardo Lenaerts","Nardo Lenaertsdreef",M,Q89691189,way
 "Allée Nicolas de Staël","Nicolas de Staëldreef",M,Q470551,way
 "Allée Omer Dierickx","Omer Dierickxdreef",M,Q18225422,way
 "Allée Paul Auguste Masui","Paul Auguste Masuidreef",M,Q22236124,way
@@ -195,7 +198,9 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Antoine de Saint-Exupéry","Antoine de Saint-Exupérylaan",M,Q2908,relation
 "Avenue Antoine-Joseph Slegers","Antoine-Joseph Slegerslaan",M,Q89585848,relation
 "Avenue Armand Huysmans","Armand Huysmanslaan",M,Q11313501,relation
+"Avenue Armand Scheitler","Armand Scheitlerlaan",M,Q89692023,relation
 "Avenue Arnaud Fraiteur","Arnaud Fraiteurlaan",M,Q2863114,relation
+"Avenue Arnold Delvaux","Arnold Delvauxlaan",M,Q89692208,way
 "Avenue Auber",Auberlaan,M,Q157672,relation
 "Avenue Auguste Oleffe","Auguste Oleffelaan",M,Q2341464,relation
 "Avenue Auguste Rodin","Auguste Rodinlaan",M,Q30755,relation
@@ -1321,12 +1326,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Mercelis",Mercelisstraat,F,,relation
 "Rue de Beughem","de Beughemstraat",F,,relation
 "Rue de Ciplet","de Cipletstraat",F,,relation
-"Allée Charles Viane","Charles Vianedreef",M,,way
-"Allée John Wiggin","John Wiggindreef",M,,way
-"Allée Nardo Lenaerts","Nardo Lenaertsdreef",M,,way
 "Avenue Antoon van Oss","Antoon van Osslaan",M,,relation
-"Avenue Armand Scheitler","Armand Scheitlerlaan",M,,relation
-"Avenue Arnold Delvaux","Arnold Delvauxlaan",M,,way
 "Avenue Auguste Bourgeois","Auguste Bourgeoislaan",M,,relation
 "Avenue Benjamin Jansen","Benjamin Jansenlaan",M,,relation
 "Avenue Bourgmestre Jean Herinckx","Burgemeester Jean Herinckxlaan",M,,way

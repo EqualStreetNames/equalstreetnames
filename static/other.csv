@@ -74,6 +74,7 @@ name_fr,name_nl,gender,wikidata,type
 "Place de Dinant",Dinantplein,,Q108247,way
 "Place de Louvain",Leuvenseplein,,Q118958,way
 "Place de Saint-Job",Sint-Jobsplein,,Q1927235,way
+"Place des Chasseurs Ardennais","Ardense Jagersplein",,Q893039,way
 "Place des Tulipes",Tulpenplein,,Q93201,way
 "Place du Chat Botté","Gelaarsde Katplein",,Q11834,way
 "Pont Borée",Boreabrug,,Q109220,way
@@ -753,6 +754,7 @@ Antwerpselaan,Antwerpselaan,,,way
 "Avenue du Vossegat",Vossegatlaan,,,way
 "Avenue du Yorkshire",Yorkshirelaan,,,relation
 "Avenue du champ de course",Rijbaanlaan,,,way
+"Avenue du diamant","Avenue du diamant",,,way
 "Avenue ten Horen","ten Horenlaan",,,relation
 "Barrière Saint-Gilles","Bareel van Sint-Gillis",,,way
 "Beelhouwtuinweg - Chemin du Jardin de Sculptures","Beelhouwtuinweg - Chemin du Jardin de Sculptures",,,way
@@ -793,7 +795,8 @@ Bosveldweg,Bosveldweg,,,way
 "Boulevard du Jardin Botanique",Kruidtuinlaan,,,relation
 "Boulevard du Jubilé",Jubelfeestlaan,,,relation
 "Boulevard du Midi",Zuidlaan,,,way
-"Boulevard du Neuvième de Ligne","Negende Linielaan",,,way
+"Boulevard du Midi - Zuidlaan","Boulevard du Midi - Zuidlaan",,,way
+"Boulevard du Neuvième de Ligne","Negende Linielaan",,,relation
 "Boulevard du Régent",Regentlaan,,,relation
 "Boulevard du Souverain",Vorstlaan,,,relation
 "Boulevard du Triomphe",Triomflaan,,,relation
@@ -1185,6 +1188,7 @@ Esplanade,Esplanade,,,relation
 Fleurbeekstraat,Fleurbeekstraat,,,way
 "Font Saint Landry","Sint Lendriksborre",,,relation
 GR,GR,,,way
+"GR 126","GR 126",,,way
 "Galerie Agora","Galerie Agora",,,way
 "Galerie Bortier",Bortiergalerij,,,way
 "Galerie Louise","Galerie Louise",,,way
@@ -1427,7 +1431,6 @@ Pannenhuisplein,Pannenhuisplein,,,way
 "Place des Bouvreuils",Goudvinkenplein,,,relation
 "Place des Carabiniers",Karabiniersplein,,,relation
 "Place des Castors",Castorplein,,,way
-"Place des Chasseurs Ardennais","Ardense Jagersplein",,,way
 "Place des Citronniers",Citroenbomenplein,,,way
 "Place des Coopérateurs",Samenwerkersplein,,,relation
 "Place des Gueux",Geuzenplein,,,way
@@ -2415,7 +2418,7 @@ Roeierspad,Roeierspad,,,way
 "Rue des Emérillons",Smellekensstraat,,,way
 "Rue des Entrepôts",Pakhuizenstraat,,,way
 "Rue des Éperonniers",Spoormakersstraat,,,way
-"Rue des Epicéas",Epiceastraat,,,way
+"Rue des Épicéas",Epiceastraat,,,relation
 "Rue des Érables",Ahornbomenstraat,,,relation
 "Rue des Escrimeurs",Schermersstraat,,,relation
 "Rue des Étangs Noirs","Zwarte Vijversstraat",,,relation

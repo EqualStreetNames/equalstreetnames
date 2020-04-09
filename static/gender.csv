@@ -116,7 +116,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Stéphanie",Stefaniastraat,F,Q170197,relation
 "Rue Van Gulick","Van Gulickstraat",F,Q89490401,relation
 "Rue Virginie Plas","Virginie Plasstraat",F,Q84347503,way
-"Rue Yvonne Jospa","Yvonne Jospastraat",F,Q3574207,way
+"Rue Yvonne Jospa","Yvonne Jospastraat",F,Q3574207,relation
 "Rue Yvonne Nèvejean","Yvonne Nèvejeanstraat",F,Q2907465,way
 "Rue de Sévigné","de Sévignéstraat",F,Q237103,relation
 "Rue de la Madeleine",Magdalenasteenweg,F,Q63070,relation
@@ -197,28 +197,39 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Antoine Depage","Antoine Depagelaan",M,Q2245909,way
 "Avenue Antoine de Saint-Exupéry","Antoine de Saint-Exupérylaan",M,Q2908,relation
 "Avenue Antoine-Joseph Slegers","Antoine-Joseph Slegerslaan",M,Q89585848,relation
+"Avenue Antoon van Oss","Antoon van Osslaan",M,Q89691723,relation
 "Avenue Armand Huysmans","Armand Huysmanslaan",M,Q11313501,relation
 "Avenue Armand Scheitler","Armand Scheitlerlaan",M,Q89692023,relation
 "Avenue Arnaud Fraiteur","Arnaud Fraiteurlaan",M,Q2863114,relation
 "Avenue Arnold Delvaux","Arnold Delvauxlaan",M,Q89692208,way
 "Avenue Auber",Auberlaan,M,Q157672,relation
+"Avenue Auguste Bourgeois","Auguste Bourgeoislaan",M,Q89692469,relation
 "Avenue Auguste Oleffe","Auguste Oleffelaan",M,Q2341464,relation
 "Avenue Auguste Rodin","Auguste Rodinlaan",M,Q30755,relation
 "Avenue Baden-Powell",Baden-Powelllaan,M,Q12665,relation
 "Avenue Baron Albert d'Huart","Baron Albert d'Huartlaan",M,Q2831651,relation
 "Avenue Beethoven",Beethovenlaan,M,Q255,relation
+"Avenue Benjamin Jansen","Benjamin Jansenlaan",M,Q89797231,relation
 "Avenue Besme",Besmelaan,M,Q2083665,relation
 "Avenue Blücher",Blücherlaan,M,Q153522,way
 "Avenue Boileau",Boileaulaan,M,Q188857,relation
 "Avenue Bonaparte",Bonapartelaan,M,Q517,way
+"Avenue Bourgmestre Jean Herinckx","Burgemeester Jean Herinckxlaan",M,Q3172533,way
 "Avenue Brillat-Savarin",Brillat-Savarinlaan,M,Q313027,relation
+"Avenue Britsiers",Britsierslaan,M,Q89797920,relation
 "Avenue Broustin",Broustinlaan,M,Q85470697,relation
 "Avenue Brugmann",Brugmannlaan,M,Q3102386,way
 "Avenue Brunard",Brunardlaan,M,Q3141947,way
 "Avenue Camille Joset","Camille Josetlaan",M,Q2934966,relation
+"Avenue Camille Vaneukem","Camille Vaneukemlaan",M,Q89798959,relation
 "Avenue Capart",Capartlaan,M,Q2373298,relation
+"Avenue Capitaine Fossoul","Kapitein Fossoullaan",M,Q89799318,relation
+"Avenue Capitaine Piret","Kapitein Piretlaan",M,Q89807875,relation
+"Avenue Cardinal Micara","Kardinaal Micaralaan",M,Q1100339,way
+"Avenue Carl Requette","Carl Requettelaan",M,Q89808988,relation
 "Avenue Carton de Wiart","Carton de Wiartlaan",M,Q14990,relation
 "Avenue Casalta",Casaltalaan,M,Q15967644,relation
+"Avenue Charbo",Charbolaan,M,Q89810259,way
 "Avenue Charle-Albert",Charle-Albertlaan,M,Q2831032,way
 "Avenue Charles Madoux","Charles Madouxlaan",M,Q2398384,way
 "Avenue Charles Plisnier","Charles Plisnierlaan",M,Q1065801,relation
@@ -1326,17 +1337,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Mercelis",Mercelisstraat,F,,relation
 "Rue de Beughem","de Beughemstraat",F,,relation
 "Rue de Ciplet","de Cipletstraat",F,,relation
-"Avenue Antoon van Oss","Antoon van Osslaan",M,,relation
-"Avenue Auguste Bourgeois","Auguste Bourgeoislaan",M,,relation
-"Avenue Benjamin Jansen","Benjamin Jansenlaan",M,,relation
-"Avenue Bourgmestre Jean Herinckx","Burgemeester Jean Herinckxlaan",M,,way
-"Avenue Britsiers",Britsierslaan,M,,relation
-"Avenue Camille Vaneukem","Camille Vaneukemlaan",M,,relation
-"Avenue Capitaine Fossoul","Kapitein Fossoullaan",M,,relation
-"Avenue Capitaine Piret","Kapitein Piretlaan",M,,relation
-"Avenue Cardinal Micara","Kardinaal Micaralaan",M,,way
-"Avenue Carl Requette","Carl Requettelaan",M,,relation
-"Avenue Charbo",Charbolaan,M,,way
 "Avenue Charles Brassine","Charles Brassinelaan",M,,relation
 "Avenue Charles De Tollenaere","Charles De Tollenaerelaan",M,,relation
 "Avenue Charles Dierickx","Charles Dierickxlaan",M,,way
@@ -1489,6 +1489,7 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue du Bourgmestre Etienne Demunter","Burgemeester Etienne Demunterlaan",M,,relation
 "Avenue du Prince d'Orange","Prins van Oranjelaan",M,,way
 "Avenue du Prince de Ligne","Prins de Lignelaan",M,,way
+"Boulevard Auguste Reyers","Boulevard Auguste Reyers",M,,way
 "Boulevard Guillaume Van Haelen","Guillaume Van Haelenlaan",M,,way
 "Boulevard Josse Leemans","Josse Leemanslaan",M,,relation
 "Boulevard Jules Graindor","Jules Graindorlaan",M,,relation

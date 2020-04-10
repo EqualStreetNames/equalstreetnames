@@ -231,10 +231,17 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Casalta",Casaltalaan,M,Q15967644,relation
 "Avenue Charbo",Charbolaan,M,Q89810259,way
 "Avenue Charle-Albert",Charle-Albertlaan,M,Q2831032,way
+"Avenue Charles Brassine","Charles Brassinelaan",M,Q89917504,relation
+"Avenue Charles De Tollenaere","Charles De Tollenaerelaan",M,Q89917716,relation
+"Avenue Charles Dierickx","Charles Dierickxlaan",M,Q89918184,way
+"Avenue Charles Gilisquet","Charles Gilisquetlaan",M,Q89918321,relation
 "Avenue Charles Madoux","Charles Madouxlaan",M,Q2398384,way
+"Avenue Charles Michiels","Charles Michielslaan",M,Q90038974,way
 "Avenue Charles Plisnier","Charles Plisnierlaan",M,Q1065801,relation
 "Avenue Charles Schaller","Charles Schallerlaan",M,Q17039757,relation
+"Avenue Charles Thielemans","Charles Thielemanslaan",M,Q89918395,relation
 "Avenue Charles Woeste","Charles Woestelaan",M,Q950611,relation
+"Avenue Charles d'Orjo de Marchovelette","Charles d'Orjo de Marchovelettelaan",M,Q90039051,way
 "Avenue Charles de Thiennes","Charles de Thienneslaan",M,Q2001632,relation
 "Avenue Charles-Quint","Keizer Karellaan",M,Q32500,relation
 "Avenue Chazal",Chazallaan,M,Q321760,relation
@@ -245,12 +252,16 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Colonel Daumerie","Kolonel Daumerielaan",M,Q56844459,relation
 "Avenue Colonel Picquart","Kolonel Picquartlaan",M,Q717539,relation
 "Avenue Commandant Lothaire","Kommandant Lothairelaan",M,Q29566788,relation
+"Avenue Commandant Vander Meeren","Commandant Vander Meerenlaan",M,Q90039947,relation
 "Avenue Constant Montald","Constant Montaldlaan",M,Q2994899,relation
 "Avenue Constant Permeke","Constant Permekelaan",M,Q381911,relation
 "Avenue Crokaert",Crokaertlaan,M,Q2239003,relation
 "Avenue Dailly",Daillylaan,M,Q3059800,way
 "Avenue Daniel Boon","Daniel Boonlaan",M,Q3013766,way
 "Avenue De Fré","De Frélaan",M,Q15878823,relation
+"Avenue Delleur",Delleurlaan,M,Q90040296,way
+"Avenue Démosthène Poplimont","Démosthène Poplimontlaan",M,Q90041037,relation
+"Avenue Denayer",Denayerlaan,M,Q90041057,relation
 "Avenue Docteur Decroly","Dokter Decrolylaan",M,Q451005,way
 "Avenue Docteur Dejase","Dokter Dejaselaan",M,Q2865067,relation
 "Avenue Docteur Edmond Cordier","Dokter Edmond Cordierlaan",M,Q3047789,relation
@@ -1337,17 +1348,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Mercelis",Mercelisstraat,F,,relation
 "Rue de Beughem","de Beughemstraat",F,,relation
 "Rue de Ciplet","de Cipletstraat",F,,relation
-"Avenue Charles Brassine","Charles Brassinelaan",M,,relation
-"Avenue Charles De Tollenaere","Charles De Tollenaerelaan",M,,relation
-"Avenue Charles Dierickx","Charles Dierickxlaan",M,,way
-"Avenue Charles Gilisquet","Charles Gilisquetlaan",M,,relation
-"Avenue Charles Michiels","Charles Michielslaan",M,,way
-"Avenue Charles Thielemans","Charles Thielemanslaan",M,,relation
-"Avenue Charles d'Orjo de Marchovelette","Charles d'Orjo de Marchovelettelaan",M,,way
-"Avenue Commandant Vander Meeren","Commandant Vander Meerenlaan",M,,relation
-"Avenue Delleur",Delleurlaan,M,,way
-"Avenue Démosthène Poplimont","Démosthène Poplimontlaan",M,,relation
-"Avenue Denayer",Denayerlaan,M,,relation
 "Avenue Dr. A. Schweitzer","Dr. A. Schweitzerlaan",M,,way
 "Avenue Échevin Van Muylders","Schepen Van Muylderslaan",M,,relation
 "Avenue Edmond Candries","Edmond Candrieslaan",M,,relation
@@ -1489,7 +1489,6 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue du Bourgmestre Etienne Demunter","Burgemeester Etienne Demunterlaan",M,,relation
 "Avenue du Prince d'Orange","Prins van Oranjelaan",M,,way
 "Avenue du Prince de Ligne","Prins de Lignelaan",M,,way
-"Boulevard Auguste Reyers","Boulevard Auguste Reyers",M,,way
 "Boulevard Guillaume Van Haelen","Guillaume Van Haelenlaan",M,,way
 "Boulevard Josse Leemans","Josse Leemanslaan",M,,relation
 "Boulevard Jules Graindor","Jules Graindorlaan",M,,relation

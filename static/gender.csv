@@ -268,18 +268,28 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Docteur Zamenhof","Dokter Zamenhoflaan",M,Q11758,relation
 "Avenue Dolez",Dolezlaan,M,Q2141152,relation
 "Avenue Don Bosco","Don Boscolaan",M,Q146183,relation
+"Avenue Dr. A. Schweitzer","Dr. A. Schweitzerlaan",M,Q49325,way
 "Avenue Ducpétiaux",Ducpétiauxlaan,M,Q2684331,way
+"Avenue Échevin Van Muylders","Schepen Van Muylderslaan",M,Q90104285,relation
 "Avenue Edgard Tytgat","Edgard Tytgatlaan",M,Q366851,relation
+"Avenue Edmond Candries","Edmond Candrieslaan",M,Q90104898,relation
 "Avenue Edmond Galoppin","Edmond Galoppinlaan",M,Q2363548,way
 "Avenue Edmond Mesens","Edmond Mesenslaan",M,Q11316725,relation
 "Avenue Edmond Parmentier","Edmond Parmentierlaan",M,Q3047941,relation
+"Avenue Edmond Van Nieuwenhuyse","Edmond Van Nieuwenhuyselaan",M,Q90105168,way
 "Avenue Édouard Bénès","Édouard Bénèslaan",M,Q152274,relation
 "Avenue Edouard Keilig","Edouard Keiliglaan",M,Q16905076,way
+"Avenue Edouard Kufferath","Edouard Kufferathlaan",M,Q90105741,relation
+"Avenue Édouard Lacomblé","Édouard Lacomblélaan",M,Q90106496,relation
+"Avenue Edouard Speeckaert","Edouard Speeckaertlaan",M,Q90107013,relation
+"Avenue Edouard de Thibault","Edouard de Thibaultlaan",M,Q90107526,relation
+"Avenue Émile Bossaert","Émile Bossaertlaan",M,Q90107947,relation
 "Avenue Émile De Mot","Émile De Motlaan",M,Q82897,way
 "Avenue Émile Duray","Émile Duraylaan",M,Q85423796,relation
 "Avenue Émile Gryson","Emile Grysonlaan",M,Q47339483,relation
 "Avenue Emile Laine","Emile Lainelaan",M,Q3588596,way
 "Avenue Emile Max","Emile Maxlaan",M,Q51849776,relation
+"Avenue Émile Van Becelaere","Émile Van Becelaerelaan",M,Q90108543,way
 "Avenue Emile Van Ermengem","Emile Van Ermengemlaan",M,Q1337255,relation
 "Avenue Émile Vandervelde","Émile Vanderveldelaan",M,Q286556,relation
 "Avenue Emile Verhaeren","Emile Verhaerenlaan",M,Q193680,relation
@@ -293,18 +303,28 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Eudore Pirmez","Eudore Pirmezlaan",M,Q239063,relation
 "Avenue Eugène Baie","Eugène Baielaan",M,Q27559987,relation
 "Avenue Eugène Demolder","Eugène Demolderlaan",M,Q2744860,relation
+"Avenue Eugène Godaux","Eugène Godauxlaan",M,Q90146122,relation
 "Avenue Eugène Plasky","Eugène Plaskylaan",M,Q3060103,relation
 "Avenue Eugène Ysaye","Eugène Ysayelaan",M,Q312857,relation
+"Avenue Évariste De Meersman","Évariste De Meersmanlaan",M,Q90146650,relation
+"Avenue Everard",Everardlaan,M,Q90146935,relation
+"Avenue Félix Marchal","Félix Marchallaan",M,Q90147426,way
 "Avenue Ferdauci",Ferdaucilaan,M,Q43459,relation
+"Avenue Firmin Lecharlier","Firmin Lecharlierlaan",M,Q90147605,relation
+"Avenue Fonsny",Fonsnylaan,M,Q90147623,relation
+"Avenue Fortin",Fortinlaan,M,Q90148053,relation
 "Avenue François Englert","François Englertlaan",M,Q151746,way
 "Avenue François Folie","François Folielaan",M,Q2098846,relation
 "Avenue François Malherbe","François Malherbelaan",M,Q358574,relation
 "Avenue François Peeters","François Peeterslaan",M,Q61493009,relation
 "Avenue François Sebrechts","François Sebrechtslaan",M,Q18001758,relation
 "Avenue François Villon","François Villonlaan",M,Q849,relation
+"Avenue François-Bernard Verboven","François-Bernard Verbovenlaan",M,Q90148398,way
+"Avenue François-Élie Van Elderen","François-Élie Van Elderenlaan",M,Q90148583,way
 "Avenue Franklin Roosevelt","Franklin Rooseveltlaan",M,Q8007,relation
 "Avenue Frans Courtens","Frans Courtenslaan",M,Q663721,way
 "Avenue Frans van Kalken","Frans van Kalkenlaan",M,Q18851377,relation
+"Avenue Franz Guillaume","Franz Guillaumelaan",M,Q90148687,relation
 "Avenue Gabriel Emile Lebon","Gabriel Emile Lebonlaan",M,Q3093544,relation
 "Avenue Gabriel Fauré","Gabriel Faurélaan",M,Q104919,relation
 "Avenue Galilée",Galileelaan,M,Q307,relation
@@ -1348,26 +1368,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Mercelis",Mercelisstraat,F,,relation
 "Rue de Beughem","de Beughemstraat",F,,relation
 "Rue de Ciplet","de Cipletstraat",F,,relation
-"Avenue Dr. A. Schweitzer","Dr. A. Schweitzerlaan",M,,way
-"Avenue Échevin Van Muylders","Schepen Van Muylderslaan",M,,relation
-"Avenue Edmond Candries","Edmond Candrieslaan",M,,relation
-"Avenue Edmond Van Nieuwenhuyse","Edmond Van Nieuwenhuyselaan",M,,way
-"Avenue Edouard Kufferath","Edouard Kufferathlaan",M,,relation
-"Avenue Édouard Lacomblé","Édouard Lacomblélaan",M,,relation
-"Avenue Edouard Speeckaert","Edouard Speeckaertlaan",M,,relation
-"Avenue Edouard de Thibault","Edouard de Thibaultlaan",M,,relation
-"Avenue Émile Bossaert","Émile Bossaertlaan",M,,relation
-"Avenue Émile Van Becelaere","Émile Van Becelaerelaan",M,,way
-"Avenue Eugène Godaux","Eugène Godauxlaan",M,,relation
-"Avenue Évariste De Meersman","Évariste De Meersmanlaan",M,,relation
-"Avenue Everard",Everardlaan,M,,relation
-"Avenue Félix Marchal","Félix Marchallaan",M,,way
-"Avenue Firmin Lecharlier","Firmin Lecharlierlaan",M,,relation
-"Avenue Fonsny",Fonsnylaan,M,,relation
-"Avenue Fortin",Fortinlaan,M,,relation
-"Avenue François-Bernard Verboven","François-Bernard Verbovenlaan",M,,way
-"Avenue François-Élie Van Elderen","François-Élie Van Elderenlaan",M,,way
-"Avenue Franz Guillaume","Franz Guillaumelaan",M,,relation
 "Avenue Gaston De Gryse","Gaston De Gryselaan",M,,way
 "Avenue Général Baron Empain","Generaal Baron Empainlaan",M,,relation
 "Avenue Général Lartigue","Generaal Lartiguelaan",M,,relation

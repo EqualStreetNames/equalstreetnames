@@ -36,6 +36,9 @@ foreach ($tagged as $element) {
         $etymology = array_map('trim', $etymology);
 
         foreach ($etymology as $e) {
+            if (strpos($e, 'Q') !== 0) { // Skip if it doesn't start with Q
+                continue;
+            }
             $path = sprintf('data/wikidata/%s.json', $e);
 
             if (!file_exists($path)) {

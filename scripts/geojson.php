@@ -78,7 +78,7 @@ foreach ($ways as $w) {
             'type'       => 'Feature',
             'id'         => $w['id'],
             'properties' => $properties,
-            'geometry'   => makeGeometry(is_null($linestrings) ? null : [$linestring]),
+            'geometry'   => makeGeometry(is_null($linestring) ? null : [$linestring]),
         ];
     }
 }

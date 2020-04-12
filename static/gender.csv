@@ -328,24 +328,32 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Gabriel Emile Lebon","Gabriel Emile Lebonlaan",M,Q3093544,relation
 "Avenue Gabriel Fauré","Gabriel Faurélaan",M,Q104919,relation
 "Avenue Galilée",Galileelaan,M,Q307,relation
+"Avenue Gaston De Gryse","Gaston De Gryselaan",M,Q90218559,way
+"Avenue Général Baron Empain","Generaal Baron Empainlaan",M,Q274360,relation
 "Avenue Général Bastin","Generaal Bastinlaan",M,Q3188423,relation
 "Avenue Général Bernheim","Generaal Bernheimlaan",M,Q3261235,relation
 "Avenue Général Dossin de Saint-Georges","Generaal Dossin de Saint-Georgeslaan",M,Q3052262,relation
 "Avenue Général Dumonceau","Generaal Dumonceaulaan",M,Q1268832,relation
 "Avenue Général Eisenhower","Generaal Eisenhowerlaan",M,Q9916,relation
+"Avenue Général Lartigue","Generaal Lartiguelaan",M,Q90220055,relation
 "Avenue Général Médecin Derache","Generaal Geneesheer Derachelaan",M,Q85436049,relation
 "Avenue Général Merjay","Generaal Merjaylaan",M,Q3164281,way
 "Avenue Général de Gaulle","Generaal de Gaullelaan",M,Q2042,relation
 "Avenue Géo Bernier","Géo Bernierlaan",M,Q3127252,relation
 "Avenue George Bergmann","George Bergmannlaan",M,Q2795811,relation
+"Avenue Georges Benoidt","Georges Benoidtlaan",M,Q90221210,way
 "Avenue Georges Eekhoud","Georges Eekhoudlaan",M,Q728405,relation
 "Avenue Georges Leclercq","Georges Leclercqlaan",M,Q3103063,relation
 "Avenue Georges Lecointe","Georges Lecointelaan",M,Q3103068,relation
+"Avenue Georges Maerckaert","Georges Maerckaertlaan",M,Q90222197,relation
 "Avenue Georges Petre","Georges Petrelaan",M,Q3103373,relation
 "Avenue Georges Rodenbach","Georges Rodenbachlaan",M,Q378240,relation
 "Avenue Giele",Gielelaan,M,Q2725266,relation
 "Avenue Gilbert Mullie","Gilbert Mullielaan",M,Q2172714,relation
+"Avenue Gisseleire Versé","Gisseleire Versélaan",M,Q90222356,relation
 "Avenue Gounod",Gounodlaan,M,Q180278,relation
+"Avenue Guillaume Abeloos","Guillaume Abelooslaan",M,Q90224213,relation
+"Avenue Guillaume Crock","Guillaume Crocklaan",M,Q90225495,way
 "Avenue Guillaume De Greef","Guillaume De Greeflaan",M,Q5769755,relation
 "Avenue Guillaume Gilbert","Guillaume Gilbertlaan",M,Q15965505,relation
 "Avenue Guillaume Macau","Guillaume Macaulaan",M,Q85421676,relation
@@ -1368,16 +1376,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Mercelis",Mercelisstraat,F,,relation
 "Rue de Beughem","de Beughemstraat",F,,relation
 "Rue de Ciplet","de Cipletstraat",F,,relation
-"Avenue Gaston De Gryse","Gaston De Gryselaan",M,,way
-"Avenue Général Baron Empain","Generaal Baron Empainlaan",M,,relation
-"Avenue Général Lartigue","Generaal Lartiguelaan",M,,relation
-"Avenue Georges Benoidt","Georges Benoidtlaan",M,,way
 "Avenue Georges Henri","Georges Henrilaan",M,,relation
-"Avenue Georges Maerckaert","Georges Maerckaertlaan",M,,relation
-"Avenue Gisseleire Versé","Gisseleire Versélaan",M,,relation
-"Avenue Groelstveld",Groelstveldlaan,M,,way
-"Avenue Guillaume Abeloos","Guillaume Abelooslaan",M,,relation
-"Avenue Guillaume Crock","Guillaume Crocklaan",M,,way
 "Avenue Guillaume Detroch","Guillaume Detrochlaan",M,,way
 "Avenue Guillaume Herinckx","Guillaume Herinckxlaan",M,,way
 "Avenue Guillaume Keyen","Guillaume Keyenlaan",M,,relation

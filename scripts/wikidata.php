@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -36,9 +36,17 @@ foreach ($tagged as $element) {
         $etymology = array_map('trim', $etymology);
 
         foreach ($etymology as $e) {
-            if (strpos($e, 'Q') !== 0) { // Skip if it doesn't start with Q
+            if (preg_match('/^Q.+$/', $e) !== 1) {
+                printf(
+                    'Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).%s',
+                    $e,
+                    $element['type'],
+                    $element['id'],
+                    PHP_EOL
+                );
                 continue;
             }
+
             $path = sprintf('data/wikidata/%s.json', $e);
 
             if (!file_exists($path)) {

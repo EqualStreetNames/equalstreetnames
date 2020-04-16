@@ -33,7 +33,7 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "chart.js": "^2.9.3",
-    "mapbox-gl": "^1.8.1"
+    "mapbox-gl": "^1.9.1"
   },
   "staticFiles": {
     "excludeGlob": "*.csv"

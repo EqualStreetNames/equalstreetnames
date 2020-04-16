@@ -30,7 +30,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.12.1",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "chart.js": "^2.9.3",
     "mapbox-gl": "^1.8.1"

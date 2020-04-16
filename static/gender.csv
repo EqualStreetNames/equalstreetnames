@@ -370,8 +370,11 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Gustave Latinis","Gustave Latinislaan",M,Q90293111,relation
 "Avenue H.V. Wolvens","H.V. Wolvenslaan",M,Q15876217,relation
 "Avenue Hamoir",Hamoirlaan,M,Q90294286,way
+"Avenue Hector Gobert","Hector Gobertlaan",M,Q90563726,way
 "Avenue Henri Conscience","Hendrik Consciencelaan",M,Q378133,relation
 "Avenue Henri Dietrich","Henri Dietrichlaan",M,Q56236358,relation
+"Avenue Henri Elleboudt","Henri Elleboudtlaan",M,Q90564320,way
+"Avenue Henri Feuillien","Henri Feuillienlaan",M,Q90564592,relation
 "Avenue Henri Hollevoet","Henri Hollevoetlaan",M,Q16069682,relation
 "Avenue Henri Jaspar","Henri Jasparlaan",M,Q14994,relation
 "Avenue Henri Lafontaine","Henri Lafontainelaan",M,Q3131400,relation
@@ -379,6 +382,7 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Henri Matisse","Henri Matisselaan",M,Q5589,relation
 "Avenue Henri Pauwels","Henri Pauwelslaan",M,Q2961665,relation
 "Avenue Henri Pirenne","Henri Pirennelaan",M,Q312501,way
+"Avenue Henri Schoofs","Henri Schoofslaan",M,Q3131997,relation
 "Avenue Henri Strauven","Henri Strauvenlaan",M,Q3132038,relation
 "Avenue Henri de Brouckère","Henri de Brouckèrelaan",M,Q527479,relation
 "Avenue Henry Dunant","Henry Dunantlaan",M,Q12091,relation
@@ -387,9 +391,14 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Herrmann Debroux","Herrmann Debrouxlaan",M,Q2938931,way
 "Avenue Hippocrate",Hippokrateslaan,M,Q5264,relation
 "Avenue Hippolyte Boulenger","Hippolyte Boulengerlaan",M,Q1620022,relation
+"Avenue Hoche",Hochelaan,M,Q367042,way
 "Avenue Houzeau",Houzeaulaan,M,Q768943,relation
 "Avenue Huart Hamoir","Huart Hamoirlaan",M,Q2823070,relation
+"Avenue Hugo Van der Goes","Hugo Van der Goeslaan",M,Q215251,way
 "Avenue Ilya Prigogine","Ilya Prigoginelaan",M,Q183509,relation
+"Avenue Isidore Gérard","Isidore Gérardlaan",M,Q90565209,way
+"Avenue Isidore Geyskens","Isidore Geyskenslaan",M,Q90565227,relation
+"Avenue J.G. Van Goolen","J.G. Van Goolenlaan",M,Q90565330,relation
 "Avenue J.P. Rullens","J.P. Rullenslaan",M,Q28927562,relation
 "Avenue Jaak Pieter Ballings","Jaak Pieter Ballingslaan",M,Q1895328,relation
 "Avenue Jacques Brel","Jacques Brellaan",M,Q1666,relation
@@ -397,15 +406,19 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Jacques Georgin","Jacques Georginlaan",M,Q87742133,way
 "Avenue Jacques Pastur","Jacques Pasturlaan",M,Q3159713,way
 "Avenue Jacques Sermon","Jacques Sermonlaan",M,Q85471653,relation
+"Avenue Jacques Swartenbrouck","Jacques Swartenbroucklaan",M,Q90719383,relation
+"Avenue Jacques de Meurers","Jacques de Meurerslaan",M,Q90565662,relation
 "Avenue Jan Olieslagers","Jan Olieslagerslaan",M,Q527442,relation
 "Avenue Jan Stobbaerts","Jan Stobbaertslaan",M,Q1619290,relation
 "Avenue Jan Verdoodt","Jan Verdoodtlaan",M,Q6150121,relation
 "Avenue Jean Accent","Jean Accentlaan",M,Q85546433,way
 "Avenue Jean Brusselmans","Jean Brusselmanslaan",M,Q2909779,relation
 "Avenue Jean Burgers","Jean Burgerslaan",M,Q3171033,way
+"Avenue Jean Charlier","Jean Charlierlaan",M,Q90719443,way
 "Avenue Jean Colin","Jean Colinlaan",M,Q3171377,relation
 "Avenue Jean Dubrucq","Jean Dubrucqlaan",M,Q2285285,relation
 "Avenue Jean Jaurès","Jean Jaurèslaan",M,Q12688,relation
+"Avenue Jean Josée","Jean Joséelaan",M,Q90719810,relation
 "Avenue Jean Joseph Crocq","Jean Joseph Crocqlaan",M,Q3171488,relation
 "Avenue Jean Laudy","Jean Laudylaan",M,Q4843860,relation
 "Avenue Jean Monnet","Jean Monnetlaan",M,Q159700,relation
@@ -413,10 +426,16 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Jean Roch Collon","Jean Roch Collonlaan",M,Q45286272,relation
 "Avenue Jean Sebastien Bach","Johann Sebastian Bachlaan",M,Q1339,relation
 "Avenue Jean Sibélius","Jean Sibéliuslaan",M,Q45682,relation
+"Avenue Jean Sobieski","Jan Sobieskilaan",M,Q53454,relation
+"Avenue Jean Van Horenbeeck","Jean Van Horenbeecklaan",M,Q90720974,way
+"Avenue Jean Vanhaelen","Jean Vanhaelenlaan",M,Q3174965,way
 "Avenue Jean Volders","Jean Volderslaan",M,Q3175076,relation
 "Avenue Jean de Bologne","Jean de Bolognelaan",M,Q220136,relation
 "Avenue Jean de la Hoese","Jean de la Hoeselaan",M,Q2527990,relation
+"Avenue Jean et Pierre Carsoel","Jean en Pierre Carsoellaan",M,Q90832608;Q90832116,relation
 "Avenue Jean-Baptiste Depaire","Jean-Baptiste Depairelaan",M,Q86086166,relation
+"Avenue Jean-François Debecker","Jean-François Debeckerlaan",M,Q90832971,relation
+"Avenue Jean-François Leemans","Jean-François Leemanslaan",M,Q90834772,way
 "Avenue Jef Lambeaux","Jef Lambeauxlaan",M,Q2515102,way
 "Avenue Joseph Baeck","Joseph Baecklaan",M,Q14632763,relation
 "Avenue Joseph De Heyn","Joseph De Heynlaan",M,Q86067927,relation
@@ -898,6 +917,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Fourmois",Fourmoisstraat,M,Q721260,way
 "Rue Fraikin",Fraikinstraat,M,Q706619,relation
 "Rue François Bossaerts","François Bossaertsstraat",M,Q3084043,relation
+"Rue François Debelder","François Debelderstraat",M,Q90833292,relation
 "Rue François Dons","François Donsstraat",M,Q85425585,relation
 "Rue François Roffiaen","François Roffiaenstraat",M,Q1975238,relation
 "Rue François Stroobant","François Stroobantstraat",M,Q1451201,relation
@@ -1388,25 +1408,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue de Ciplet","de Cipletstraat",F,,relation
 "Avenue Georges Henri","Georges Henrilaan",M,,relation
 "Avenue Hansen-Soulie",Hansen-Soulielaan,M,,relation
-"Avenue Hector Gobert","Hector Gobertlaan",M,,way
-"Avenue Henri Elleboudt","Henri Elleboudtlaan",M,,way
-"Avenue Henri Feuillien","Henri Feuillienlaan",M,,relation
-"Avenue Henri Schoofs","Henri Schoofslaan",M,,relation
-"Avenue Hoche",Hochelaan,M,,way
-"Avenue Hugo Van der Goes","Hugo Van der Goeslaan",M,,way
-"Avenue Isidore Gérard","Isidore Gérardlaan",M,,way
-"Avenue Isidore Geyskens","Isidore Geyskenslaan",M,,relation
-"Avenue J.G. Van Goolen","J.G. Van Goolenlaan",M,,relation
-"Avenue Jacques De Meurers","Jacques De Meurerslaan",M,,relation
-"Avenue Jacques Swartenbrouck","Jacques Swartenbroucklaan",M,,relation
-"Avenue Jean Charlier","Jean Charlierlaan",M,,way
-"Avenue Jean Josée","Jean Joséelaan",M,,relation
-"Avenue Jean Sobieski","Jan Sobieskilaan",M,,relation
-"Avenue Jean Van Horenbeeck","Jean Van Horenbeecklaan",M,,way
-"Avenue Jean Vanhaelen","Jean Vanhaelenlaan",M,,way
-"Avenue Jean et Pierre Carsoel","Jean en Pierre Carsoellaan",M,,relation
-"Avenue Jean-François Debecker","Jean-François Debeckerlaan",M,,relation
-"Avenue Jean-François Leemans","Jean-François Leemanslaan",M,,way
 "Avenue Jolé",Jolélaan,M,,way
 "Avenue Joseph Borlé","Joseph Borlélaan",M,,way
 "Avenue Joseph Chaudron","Joseph Chaudronlaan",M,,way
@@ -1721,7 +1722,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue François Beeckmans","François Beeckmansstraat",M,,relation
 "Rue François Bekaert","François Bekaertstraat",M,,way
 "Rue François Couteaux","François Couteauxstraat",M,,relation
-"Rue François Debelder","François Debelderstraat",M,,relation
 "Rue François Degreef","François Degreefstraat",M,,way
 "Rue François Delcoigne","François Delcoignestraat",M,,relation
 "Rue François Desmedt","François Desmedtstraat",M,,relation

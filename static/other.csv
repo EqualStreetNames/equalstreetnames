@@ -119,7 +119,6 @@ Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
 0,0,,,way
 "36 kV","36 kV",,,way
 Abbaye,Abdij,,,relation
-"Albert I","Albert I",,,way
 "Albert Temmermanstraat","Albert Temmermanstraat",,,way
 "Allée Hof ter Vleest","Hof ter Vleestdreef",,,relation
 "Allée Verte",Groendreef,,,relation
@@ -764,13 +763,11 @@ Antwerpselaan,Antwerpselaan,,,way
 "Avenue du Yorkshire",Yorkshirelaan,,,relation
 "Avenue du champ de course",Rijbaanlaan,,,way
 "Avenue ten Horen","ten Horenlaan",,,relation
-Bailli,Baljuw,,,way
 "Barrière Saint-Gilles","Bareel van Sint-Gillis",,,way
 "Beelhouwtuinweg - Chemin du Jardin de Sculptures","Beelhouwtuinweg - Chemin du Jardin de Sculptures",,,way
 Berensheide,Berensheide,,,relation
 Bergdal,Bergdal,,,way
 Bergensesteenweg,Bergensesteenweg,,,way
-Bethléem,Bethlehem,,,way
 Beukenberg,Beukenberg,,,way
 "Bocage des Myosotis","Bocage des Myosotis",,,way
 Boechoutlaan,Boechoutlaan,,,way
@@ -813,7 +810,6 @@ Bosveldweg,Bosveldweg,,,way
 Bovenberg,Bovenberg,,,relation
 "Brouwerijstraat - François Vervloetstraat","Brouwerijstraat - François Vervloetstraat",,,way
 Brusselstraat,Brusselstraat,,,way
-"Bruxelles Gare du Nord","Bruxelles Gare du Nord",,,way
 Cantersteen,Kantersteen,,,way
 "Carré Capouillet",Capouilletblok,,,relation
 "Carré Dewandeleer",Dewandeleerblok,,,relation
@@ -1096,7 +1092,6 @@ Coudenberg,Koudenberg,,,way
 "Couloir secondaire","Secundaire gang",,,way
 "Cours Amarante",Amarantenhof,,,relation
 "Coursive Plein Ciel",Openluchtwandelgang,,,relation
-Cureghem,Kuregem,,,way
 "De Bergen","De Bergen",,,way
 "Dédale du Campanile",Campaniledoolgang,,,relation
 Diegemvoetweg,Diegemvoetweg,,,way
@@ -1195,7 +1190,6 @@ Esplanade,Esplanade,,,relation
 "Esplanade de l'Europe",Europaesplanade,,,relation
 "Esplanade du Berlaymont",Esplanade,,,way
 "F212 Fietssnelweg Asse-Brussel","F212 Fietssnelweg Asse-Brussel",,,way
-Flagey,Flagey,,,way
 Fleurbeekstraat,Fleurbeekstraat,,,way
 "Font Saint Landry","Sint Lendriksborre",,,relation
 GR,GR,,,way
@@ -1227,7 +1221,6 @@ Grand-Place,"Grote Markt",,,relation
 Groenenberg,Groenenberg,,,relation
 Groenstraat,Groenstraat,,,way
 Grootveld,Grootveld,,,relation
-"Guillaume Tell","Willem Tell",,,way
 Gulledelle,Gulledelle,,,relation
 Hamweg,Hamweg,,,relation
 Harenberg,Harenberg,,,relation
@@ -1243,7 +1236,6 @@ Homborch,Homborch,,,way
 Hondenberg,Hondenberg,,,relation
 Houtweg,Houtweg,,,relation
 Hunderenveld,Hunderenveld,,,relation
-ICHEC,ICHEC,,,way
 "Impasse Poils",Poilsgang,,,way
 "Impasse Schuddeveld",Schuddeveldgang,,,way
 "Impasse aux Huîtres",Oestersgang,,,way
@@ -1297,11 +1289,9 @@ Krekelendries,Krekelendries,,,relation
 Kroonweg,Kroonweg,,,way
 Kruipweg,Kruipweg,,,relation
 Kruisberg,Kruisberg,,,relation
-"La Chasse","De Jacht",,,way
 "La Plage","Het Strand",,,way
 "La Venelle","Het Dreveken",,,relation
 Laskouter,Laskouter,,,relation
-Levure,Gist,,,way
 Lijkweg,Lijkweg,,,way
 Lindenberg,Lindenberg,,,relation
 "Livinus Walravenslaan","Livinus Walravenslaan",,,way
@@ -1318,7 +1308,6 @@ Marie-Henriettelaan,Marie-Henriettelaan,,,way
 Mariënborre,Mariënborre,,,relation
 Mariënsteen,Mariënsteen,,,relation
 Meir,Meir,,,way
-Merode,Merode,,,way
 Middelweg,Middelweg,,,relation
 Moensberg,Moensberg,,,way
 "Mont des Arts",Kunstberg,,,relation
@@ -1540,7 +1529,6 @@ Putterie,Putterij,,,way
 "Rampe des Citronniers",Citroenbomenoprit,,,way
 "Rampe des Hollandais",Hollandseoprit,,,way
 "Rampe du Lion",Leeuwoprit,,,way
-Résistance,Verzet,,,way
 Roeierspad,Roeierspad,,,way
 "Rond Point de la Liberté",Vrijheidsrotonde,,,way
 "Rond Point du Pannenhuis",Pannenhuisplein,,,relation
@@ -3139,7 +3127,6 @@ Tenreuken,Tenreuken,,,way
 Tomberg,Tomberg,,,relation
 Trassersweg,Trassersweg,,,relation
 Treurenberg,Treurenberg,,,relation
-Trinité,Drievuldigheid,,,way
 "Trois Tilleuls","Drie Linden",,,way
 Tuinbouw,Tuinbouw,,,relation
 "Tunnel Cinquantenaire",Jubelparktunnel,,,way

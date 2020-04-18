@@ -437,28 +437,44 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Jean-François Debecker","Jean-François Debeckerlaan",M,Q90832971,relation
 "Avenue Jean-François Leemans","Jean-François Leemanslaan",M,Q90834772,way
 "Avenue Jef Lambeaux","Jef Lambeauxlaan",M,Q2515102,way
+"Avenue Jolé",Jolélaan,M,Q90915648;Q90916142,way
 "Avenue Joseph Baeck","Joseph Baecklaan",M,Q14632763,relation
+"Avenue Joseph Borlé","Joseph Borlélaan",M,Q90916165,way
+"Avenue Joseph Chaudron","Joseph Chaudronlaan",M,Q3184752,way
 "Avenue Joseph De Heyn","Joseph De Heynlaan",M,Q86067927,relation
 "Avenue Joseph Divoort","Joseph Divoortlaan",M,Q3184854,way
+"Avenue Joseph Jean Gossiaux","Joseph Jean Gossiauxlaan",M,Q90916184,relation
 "Avenue Joseph Jongen","Joseph Jongenlaan",M,Q561259,way
 "Avenue Joseph Lemaire","Joseph Lemairelaan",M,Q1707501,relation
 "Avenue Joseph Peereboom","Joseph Peereboomlaan",M,Q17429151,relation
 "Avenue Joseph Rutten","Joseph Ruttenlaan",M,Q15455496,relation
+"Avenue Joseph Van Genegen","Joseph Van Genegenlaan",M,Q90916483,relation
+"Avenue Joseph Vandersmissen","Joseph Vandersmissenlaan",M,Q90916800,relation
 "Avenue Joseph Vanhellemont","Joseph Vanhellemontlaan",M,Q18818885,relation
 "Avenue Joseph Wybran","Joseph Wybranlaan",M,Q85422998,way
+"Avenue Josse Goffin","Josse Goffinlaan",M,Q90985270,relation
+"Avenue Josse Smets","Josse Smetslaan",M,Q90985556,relation
 "Avenue Jottrand",Jottrandlaan,M,Q3087937,relation
 "Avenue Jules Bordet","Jules Bordetlaan",M,Q211787,relation
 "Avenue Jules Buyssens","Jules Buyssenslaan",M,Q2466218,way
 "Avenue Jules César","Julius Caesarlaan",M,Q1048,relation
+"Avenue Jules Du Jardin","Jules Du Jardinlaan",M,Q90986175,relation
+"Avenue Jules Génicot","Jules Génicotlaan",M,Q3188612,way
 "Avenue Jules Malou","Jules Maloulaan",M,Q678535,relation
 "Avenue Jules Vandeleene","Jules Vandeleenelaan",M,Q2019941,relation
 "Avenue Jules de Trooz","Jules de Troozlaan",M,Q721798,relation
+"Avenue Julien Hanssens","Julien Hanssenslaan",M,Q90986908,relation
 "Avenue Konrad Adenauer","Konrad Adenauerlaan",M,Q2492,relation
 "Avenue Laënnec",Laënneclaan,M,Q219621,relation
 "Avenue Le Marinel","Le Marinellaan",M,Q770686,relation
 "Avenue Léo Errera","Léo Erreralaan",M,Q1879380,relation
+"Avenue Léon Debatty","Léon Debattylaan",M,Q90987653,relation
+"Avenue Léon Grosjean","Léon Grosjeanlaan",M,Q90987935,relation
 "Avenue Léon Houyoux","Léon Houyouxlaan",M,Q3271055,relation
+"Avenue Léon Mahillon","Léon Mahillonlaan",M,Q90988482,relation
 "Avenue Léon Tombu","Léon Tombulaan",M,Q2642070,relation
+"Avenue Léonard Mommaerts","Leonard Mommaertslaan",M,Q90989064,relation
+"Avenue Léopold Florent Lambin","Leopold Florent Lambinlaan",M,Q90989587,way
 "Avenue Léopold III","Leopold III-laan",M,Q12973,way
 "Avenue Léopold Wiener","Léopold Wienerlaan",M,Q2519413,way
 "Avenue Lieutenant Général Pire","Luitenant-Generaal Pirelaan",M,Q19935899,relation
@@ -1407,22 +1423,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue de Ciplet","de Cipletstraat",F,,relation
 "Avenue Georges Henri","Georges Henrilaan",M,,relation
 "Avenue Hansen-Soulie",Hansen-Soulielaan,M,,relation
-"Avenue Jolé",Jolélaan,M,,way
-"Avenue Joseph Borlé","Joseph Borlélaan",M,,way
-"Avenue Joseph Chaudron","Joseph Chaudronlaan",M,,way
-"Avenue Joseph Jean Gossiaux","Joseph Jean Gossiauxlaan",M,,relation
-"Avenue Joseph Van Genegen","Joseph Van Genegenlaan",M,,relation
-"Avenue Joseph Vandersmissen","Joseph Vandersmissenlaan",M,,relation
-"Avenue Josse Goffin","Josse Goffinlaan",M,,relation
-"Avenue Josse Smets","Josse Smetslaan",M,,relation
-"Avenue Jules Du Jardin","Jules Du Jardinlaan",M,,relation
-"Avenue Jules Génicot","Jules Génicotlaan",M,,way
-"Avenue Julien Hanssens","Julien Hanssenslaan",M,,relation
-"Avenue Léon Debatty","Léon Debattylaan",M,,relation
-"Avenue Léon Grosjean","Léon Grosjeanlaan",M,,relation
-"Avenue Léon Mahillon","Léon Mahillonlaan",M,,relation
-"Avenue Léonard Mommaerts","Léonard Mommaertslaan",M,,relation
-"Avenue Léopold Florent Lambin","Leopold Florent Lambinlaan",M,,way
 "Avenue Louis Ceusters","Louis Ceusterslaan",M,,relation
 "Avenue Louis Dehoux","Louis Dehouxlaan",M,,way
 "Avenue Louis Gribaumont","Louis Gribaumontlaan",M,,relation

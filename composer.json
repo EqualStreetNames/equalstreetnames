@@ -1,8 +1,24 @@
 {
+    "name": "openknowledgebe/equalstreetnames",
+    "description": "",
     "require": {
         "php": "^7.2",
         "ext-pdo": "*",
         "ext-sqlite3": "*",
         "guzzlehttp/guzzle": "^6.5"
+    },
+    "scripts": {
+        "geojson": "php scripts/geojson.php",
+        "overpass-relation": "php scripts/overpass/relation.php",
+        "overpass-way": "php scripts/overpass/way.php",
+        "statistics": "php scripts/statistics.php",
+        "update-data": [
+            "@overpass-relation",
+            "@overpass-way",
+            "@wikidata",
+            "@geojson",
+            "@statistics"
+        ],
+        "wikidata": "php scripts/wikidata.php"
     }
 }

@@ -89,6 +89,7 @@ Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
 "Rue d'Anderlecht",Anderlechtsesteenweg,,Q12886,way
 "Rue d'Arlon",Aarlenstraat,,Q675960,relation
 "Rue d'Ophem",Oppemstraat,,Q2520768,way
+"Rue de Cologne",Keulenstraat,,Q365,relation
 "Rue de Dinant",Dinantstraat,,Q108247,relation
 "Rue de Louvain",Leuvenseweg,,Q118958,relation
 "Rue de Mérode","de Mérodestraat",,Q1568461,relation
@@ -110,7 +111,6 @@ Romeinsesteenweg,Romeinsesteenweg,,Q194029,way
 "Venelle de Saint-Job",Sint-Jobsteeg,,Q1927235,way
 "Venelle du Boson",Bosonsteeg,,Q43101,way
 "'t Hof te Overbeke","'t Hof te Overbeke",,,relation
--2,-2,,,way
 "36 kV","36 kV",,,way
 Abbaye,Abdij,,,relation
 "Albert Temmermanstraat","Albert Temmermanstraat",,,way
@@ -198,6 +198,7 @@ Antwerpselaan,Antwerpselaan,,,way
 "Avenue Montjoie",Montjoielaan,,,way
 "Avenue Monumentale","Avenue Monumentale",,,way
 "Avenue Moscicki",Moscickilaan,,,way
+"Avenue Mostinck",Mostincklaan,,,relation
 "Avenue Mutsaard",Mutsaardlaan,,,relation
 "Avenue Nekkersgat",Nekkersgatlaan,,,way
 "Avenue Nippone",Nipponelaan,,,way
@@ -1088,6 +1089,7 @@ Coudenberg,Koudenberg,,,way
 "Coursive Plein Ciel",Openluchtwandelgang,,,relation
 "De Bergen","De Bergen",,,way
 "Dédale du Campanile",Campaniledoolgang,,,relation
+"Den Groenen Weg","Den Groenen Weg",,,way
 Diegemvoetweg,Diegemvoetweg,,,way
 Dieweg,Dieweg,,,relation
 "Digue du Canal",Vaartdijk,,,relation
@@ -1304,6 +1306,7 @@ Mariënsteen,Mariënsteen,,,relation
 Meir,Meir,,,way
 Middelweg,Middelweg,,,relation
 Moensberg,Moensberg,,,way
+Molenweg,Molenweg,,,way
 "Mont des Arts",Kunstberg,,,relation
 "Mont du Cinquantenaire",Jubelberg,,,relation
 "Montagne au Chaudron",Ketelberg,,,relation

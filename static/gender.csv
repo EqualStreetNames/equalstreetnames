@@ -482,27 +482,40 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Lloyd George","Lloyd Georgelaan",M,Q134982,relation
 "Avenue Louis Berlaimont","Louis Berlaimontlaan",M,Q3261222,relation
 "Avenue Louis Bertrand","Louis Bertrandlaan",M,Q2688550,way
+"Avenue Louis Ceusters","Louis Ceusterslaan",M,Q91101460,relation
 "Avenue Louis Clesse","Louis Clesselaan",M,Q2179242,relation
 "Avenue Louis De Brouckère","Louis De Brouckèrelaan",M,Q980014,relation
+"Avenue Louis Dehoux","Louis Dehouxlaan",M,Q91102140,way
 "Avenue Louis Fuchs","Louis Fuchslaan",M,Q13103789,way
+"Avenue Louis Gribaumont","Louis Gribaumontlaan",M,Q91102737,relation
+"Avenue Louis Jasmin","Louis Jasminlaan",M,Q91103626,relation
 "Avenue Louis Lepoutre","Louis Lepoutrelaan",M,Q84830575,relation
 "Avenue Louis Piérard","Louis Piérardlaan",M,Q3262929,relation
 "Avenue Louis Thévenet","Louis Thévenetlaan",M,Q2032016,relation
 "Avenue Louis Van Gorp","Louis Van Gorplaan",M,Q2746305,relation
+"Avenue Louis Vander Swaelmen","Louis Vander Swaelmenlaan",M,Q2468318,way
+"Avenue Louis Vercauteren","Louis Vercauterenlaan",M,Q91232015,way
 "Avenue Louis-Léopold Vander Swaelmen","Louis-Léopold Vander Swaelmenlaan",M,Q3260692,way
 "Avenue Mahatma Gandhi","Mahatma Gandhilaan",M,Q1001,relation
 "Avenue Marc Henri Van Laer","Marc Henri Van Laerlaan",M,Q85421684,relation
+"Avenue Marcel Devienne","Marcel Deviennelaan",M,Q91232050,relation
 "Avenue Marcel Thiry","Marcel Thirylaan",M,Q2146661,relation
 "Avenue Maréchal Foch","Maarschalk Fochlaan",M,Q192615,relation
 "Avenue Maréchal Joffre","Maarschalk Joffrelaan",M,Q207958,relation
+"Avenue Marius Renard","Marius Renardlaan",M,Q2357411,relation
 "Avenue Marnix",Marnixlaan,M,Q701605,relation
+"Avenue Marquis de Villalobar","Markies de Villalobarlaan",M,Q6001758,relation
 "Avenue Massenet",Massenetlaan,M,Q194436,relation
 "Avenue Mathieu De Jonge","Mathieu De Jongelaan",M,Q16245469,relation
+"Avenue Maurice Dekeyser","Maurice Dekeyserlaan",M,Q91348484,relation
 "Avenue Maurice Maeterlinck","Maurice Maeterlincklaan",M,Q49747,relation
 "Avenue Maurice Van Hemelrijck","Maurice Van Hemelrijcklaan",M,Q2296943,way
+"Avenue Maxe Smal","Maxe Smallaan",M,Q91348490,relation
 "Avenue Maxime Van Praag","Maxime Van Praaglaan",M,Q16244346,relation
+"Avenue Michel Sterckmans","Michel Sterckmanslaan",M,Q91348504,relation
 "Avenue Michel de Ghelderode","Michel de Ghelderodelaan",M,Q49746,relation
 "Avenue Michel-Ange","Michel Angelolaan",M,Q5592,relation
+"Avenue Milcamps",Milcampslaan,M,Q91349094,relation
 "Avenue Molière",Molièrelaan,M,Q687,way
 "Avenue Mozart",Mozartlaan,M,Q254,relation
 "Avenue Napoléon",Napoléonlaan,M,Q517,way
@@ -1128,6 +1141,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Louis Braille","Louis Braillestraat",M,Q93182,relation
 "Rue Louis Ernotte","Louis Ernottestraat",M,Q85429485,relation
 "Rue Louis Hymans","Louis Hymansstraat",M,Q3262216,way
+"Rue Louis Jasmin","Louis Jasminstraat",M,Q91103626,relation
 "Rue Louis Lumière","Louis Lumièrestraat",M,Q1962284,relation
 "Rue Louis Scutenaire","Louis Scutenairestraat",M,Q2038113,relation
 "Rue Louis Titz","Louis Titzstraat",M,Q18967745,relation
@@ -1423,21 +1437,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue de Ciplet","de Cipletstraat",F,,relation
 "Avenue Georges Henri","Georges Henrilaan",M,,relation
 "Avenue Hansen-Soulie",Hansen-Soulielaan,M,,relation
-"Avenue Louis Ceusters","Louis Ceusterslaan",M,,relation
-"Avenue Louis Dehoux","Louis Dehouxlaan",M,,way
-"Avenue Louis Gribaumont","Louis Gribaumontlaan",M,,relation
-"Avenue Louis Jasmin","Louis Jasminlaan",M,,relation
-"Avenue Louis Vander Swaelmen","Louis Vander Swaelmenlaan",M,,way
-"Avenue Louis Vercauteren","Louis Vercauterenlaan",M,,way
-"Avenue Marcel Devienne","Marcel Deviennelaan",M,,relation
 "Avenue Maréchal Ney","Maarschalk Neylaan",M,,way
-"Avenue Marius Renard","Marius Renardlaan",M,,relation
-"Avenue Marquis de Villalobar","Markies de Villalobarlaan",M,,relation
-"Avenue Maurice Dekeyser","Maurice Dekeyserlaan",M,,relation
-"Avenue Maxe Smal","Maxe Smallaan",M,,relation
-"Avenue Michel Sterckmans","Michel Sterckmanslaan",M,,relation
-"Avenue Milcamps",Milcampslaan,M,,relation
-"Avenue Mostinck",Mostincklaan,M,,relation
 "Avenue Norbert Gille","Norbert Gillelaan",M,,relation
 "Avenue Oscar Van Goidtsnoven","Oscar Van Goidtsnovenlaan",M,,relation
 "Avenue Paul De Merten","Paul De Mertenlaan",M,,relation
@@ -1924,7 +1924,6 @@ name_fr,name_nl,gender,wikidata,type
 "Rue Louis Delhove","Louis Delhovestraat",M,,relation
 "Rue Louis Hap","Louis Hapstraat",M,,relation
 "Rue Louis Isidore Lamey","Louis Isidore Lameystraat",M,,way
-"Rue Louis Jasmin","Louis Jasminstraat",M,,way
 "Rue Louis Marcx","Louis Marcxstraat",M,,relation
 "Rue Louis Mascré","Louis Mascréstraat",M,,relation
 "Rue Louis Socquet","Louis Socquetstraat",M,,relation

@@ -502,6 +502,7 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Marcel Thiry","Marcel Thirylaan",M,Q2146661,relation
 "Avenue Maréchal Foch","Maarschalk Fochlaan",M,Q192615,relation
 "Avenue Maréchal Joffre","Maarschalk Joffrelaan",M,Q207958,relation
+"Avenue Maréchal Ney","Maarschalk Neylaan",M,Q40756,way
 "Avenue Marius Renard","Marius Renardlaan",M,Q2357411,relation
 "Avenue Marnix",Marnixlaan,M,Q701605,relation
 "Avenue Marquis de Villalobar","Markies de Villalobarlaan",M,Q6001758,relation
@@ -520,17 +521,29 @@ name_fr,name_nl,gender,wikidata,type
 "Avenue Mozart",Mozartlaan,M,Q254,relation
 "Avenue Napoléon",Napoléonlaan,M,Q517,way
 "Avenue Nestor Plissart","Nestor Plissartlaan",M,Q3338465,relation
+"Avenue Norbert Gille","Norbert Gillelaan",M,Q91466607,relation
 "Avenue Odon Warland","Odon Warlandlaan",M,Q85471897,relation
 "Avenue Oscar Jespers","Oscar Jesperslaan",M,Q2246222,relation
+"Avenue Oscar Van Goidtsnoven","Oscar Van Goidtsnovenlaan",M,Q91466808,relation
 "Avenue Palmerston",Palmerstonlaan,M,Q193656,relation
+"Avenue Paul De Merten","Paul De Mertenlaan",M,Q91466818,relation
+"Avenue Paul Dejaer","Paul Dejaerlaan",M,Q91466826,way
 "Avenue Paul Deschanel","Paul Deschanellaan",M,Q309995,relation
 "Avenue Paul Gilson","Paul Gilsonlaan",M,Q958774,way
 "Avenue Paul Héger","Paul Hégerlaan",M,Q2387278,way
 "Avenue Paul Hymans","Paul Hymanslaan",M,Q31810,relation
 "Avenue Paul Janson","Paul Jansonlaan",M,Q730367,relation
 "Avenue Paul Stroobant","Paul Stroobantlaan",M,Q18415012,relation
+"Avenue Paul Vanden Thoren","Paul Vanden Thorenlaan",M,Q91466983,way
+"Avenue Paul Verheyleweghen","Paul Verheyleweghenlaan",M,Q3372356,way
 "Avenue Paul-Henri Spaak","Paul-Henri Spaaklaan",M,Q155691,way
+"Avenue Père Agnello","Pater Agnellolaan",M,Q91468053,relation
 "Avenue Père Damien","Pater Damiaanlaan",M,Q232785,relation
+"Avenue Philippe Thomas","Philippe Thomaslaan",M,Q91468253,relation
+"Avenue Pierre Beyst","Pierre Beystlaan",M,Q91468820,relation
+"Avenue Pierre Devis","Pierre Devislaan",M,Q3384746,way
+"Avenue Pierre Vander Biest","Pierre Vander Biestlaan",M,Q91469338,relation
+"Avenue Pierre d'Union","Pierre d'Unionlaan",M,Q3384861,way
 "Avenue Platon",Platolaan,M,Q859,relation
 "Avenue Prince Baudouin","Prins Boudewijnlaan",M,Q12976,relation
 "Avenue Ptolémée",Ptolemeelaan,M,Q34943,way
@@ -634,6 +647,7 @@ name_fr,name_nl,gender,wikidata,type
 "Clos Paul Delforge","Paul Delforgegaarde",M,Q3371017,relation
 "Clos Pierre Dupont","Pierre Dupontgaarde",M,Q2164212,relation
 "Clos René Magritte","René Magrittegaarde",M,Q7836,relation
+"Clos Vander Biest","Vander Biestgaarde",M,Q91469338,relation
 "Clos Victor Gilsoul","Victor Gilsoulgaarde",M,Q2539498,relation
 "Clos de l'Abbé Froidure","Priester Froiduregaarde",M,Q2656889,way
 "Cours Paul-Henri Spaak","Paul-Henri Spaak Promenade",M,Q155691,relation
@@ -1428,6 +1442,7 @@ name_fr,name_nl,gender,wikidata,type
 "Venelle de l'Alchimiste",Alchemiststeeg,M,Q294169,relation
 "Rue Willy De Bruyn","Willy De Bruynstraat",MX,Q15807938,relation
 "Avenue Jeanne",Johannalaan,F,,relation
+"Avenue Paule",Paulalaan,F,,relation
 "Avenue Victoria",Victorialaan,F,,way
 "Drève Soetkin",Soetkindreef,F,,relation
 "Rue Decrée",Decréestraat,F,,relation
@@ -1437,21 +1452,7 @@ name_fr,name_nl,gender,wikidata,type
 "Rue de Ciplet","de Cipletstraat",F,,relation
 "Avenue Georges Henri","Georges Henrilaan",M,,relation
 "Avenue Hansen-Soulie",Hansen-Soulielaan,M,,relation
-"Avenue Maréchal Ney","Maarschalk Neylaan",M,,way
-"Avenue Norbert Gille","Norbert Gillelaan",M,,relation
-"Avenue Oscar Van Goidtsnoven","Oscar Van Goidtsnovenlaan",M,,relation
-"Avenue Paul De Merten","Paul De Mertenlaan",M,,relation
-"Avenue Paul Dejaer","Paul Dejaerlaan",M,,way
-"Avenue Paul Vanden Thoren","Paul Vanden Thorenlaan",M,,way
-"Avenue Paul Verheyleweghen","Paul Verheyleweghenlaan",M,,way
-"Avenue Paule",Paulalaan,M,,relation
-"Avenue Père Agnello","Pater Agnellolaan",M,,relation
 "Avenue Père Hilaire","Pater Hilariuslaan",M,,relation
-"Avenue Philippe Thomas","Philippe Thomaslaan",M,,relation
-"Avenue Pierre Beyst","Pierre Beystlaan",M,,relation
-"Avenue Pierre Devis","Pierre Devislaan",M,,way
-"Avenue Pierre Vander Biest","Pierre Vander Biestlaan",M,,relation
-"Avenue Pierre d'Union","Pierre d'Unionlaan",M,,way
 "Avenue Pieter Goedefroy","Pieter Goedefroylaan",M,,relation
 "Avenue Prudent Bols","Prudent Bolslaan",M,,relation
 "Avenue Raymond Vander Bruggen","Raymond Vander Bruggenlaan",M,,relation
@@ -1511,7 +1512,6 @@ name_fr,name_nl,gender,wikidata,type
 "Clos Joseph Otten","Joseph Ottengaarde",M,,relation
 "Clos Louis Banken","Louis Bankengaarde",M,,relation
 "Clos Marcel Fonteyne","Marcel Fonteynegaarde",M,,relation
-"Clos Pierre Vander Biest","Pierre Vander Biestgaarde",M,,relation
 "Clos Saint-Martin",Sint-Martinusgaarde,M,,relation
 "Clos Theodore de Cuyper","Theodore de Cuypergaarde",M,,way
 "Clos Willy Chambon","Willy Chambongaarde",M,,relation

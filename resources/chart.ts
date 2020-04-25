@@ -4,8 +4,6 @@ import Chart from "chart.js";
 
 import colors from "./colors";
 
-import statistics from "../static/statistics.json";
-
 let elementCanvas: HTMLCanvasElement;
 let elementDiv: HTMLDivElement;
 
@@ -21,7 +19,7 @@ function createChart(data: number[]): Chart | null {
           "Female (cis)",
           "Male (trans)",
           "Female (trans)",
-          "Intersex"
+          "Intersex",
         ],
         datasets: [
           {
@@ -31,21 +29,21 @@ function createChart(data: number[]): Chart | null {
               colors.f,
               colors.mx,
               colors.fx,
-              colors.x
-            ]
-          }
-        ]
+              colors.x,
+            ],
+          },
+        ],
       },
       options: {
         animation: {
           animateScale: false,
-          animateRotate: false
+          animateRotate: false,
         },
         circumference: Math.PI,
         legend: false,
         responsive: true,
-        rotation: -Math.PI
-      }
+        rotation: -Math.PI,
+      },
     });
   }
 
@@ -88,31 +86,45 @@ function updateLabels(count: {
   });
 }
 
-export default function(element: HTMLCanvasElement): void {
+export default function (element: HTMLCanvasElement): void {
   elementCanvas = element;
   elementDiv = elementCanvas.parentElement as HTMLDivElement;
 
-  const count = {
-    f: statistics["F"],
-    m: statistics["M"],
-    fx: statistics["FX"],
-    mx: statistics["MX"],
-    x: statistics["X"],
-    o: statistics["-"], // not a person
-    p: statistics["+"], // multiple
-  };
-  const totalPerson =
-    count.f + count.m + count.fx + count.mx + count.x + count.p;
-  const total = totalPerson + count.o;
+  fetch("/statistics.json")
+    .then((response: Response) => response.json())
+    .then((statistics) => {
+      const count = {
+        f: statistics["F"],
+        m: statistics["M"],
+        fx: statistics["FX"],
+        mx: statistics["MX"],
+        x: statistics["X"],
+        o: statistics["-"], // not a person
+        p: statistics["+"], // multiple
+      };
+      const totalPerson =
+        count.f + count.m + count.fx + count.mx + count.x + count.p;
+      const total = totalPerson + count.o;
 
-  createChart([count["m"], count["f"], count["mx"], count["fx"], count["x"]]);
-  updateLabels(count);
+      createChart([
+        count["m"],
+        count["f"],
+        count["mx"],
+        count["fx"],
+        count["x"],
+      ]);
+      updateLabels(count);
 
-  const spanCount = document.getElementById("count-person") as HTMLSpanElement;
-  const spanTotal = document.getElementById("count-total") as HTMLSpanElement;
+      const spanCount = document.getElementById(
+        "count-person"
+      ) as HTMLSpanElement;
+      const spanTotal = document.getElementById(
+        "count-total"
+      ) as HTMLSpanElement;
 
-  const percentage = Math.round((totalPerson / total) * 100 * 100) / 100;
+      const percentage = Math.round((totalPerson / total) * 100 * 100) / 100;
 
-  spanCount.innerText = `${totalPerson} (${percentage}%)`;
-  spanTotal.innerText = total;
+      spanCount.innerText = `${totalPerson} (${percentage}%)`;
+      spanTotal.innerText = total;
+    });
 }

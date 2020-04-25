@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css">
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css">
+    <link rel="stylesheet" href="../../assets/style.css">
+
+    <title>EqualStreetNames.Brussels</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">EqualStreetNames.Brussels</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" class="btn btn-primary" data-toggle="modal" href="#about">
+                        <i class="fas fa-info-circle"></i>
+                        À propos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" class="btn btn-primary" data-toggle="modal" href="#workshops">
+                        <i class="fas fa-users"></i>
+                        Ateliers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" class="btn btn-primary" data-toggle="modal" href="#suggestions">
+                        <i class="fas fa-bullhorn"></i>
+                        Suggestions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" class="btn btn-primary" data-toggle="modal" href="#contact">
+                        <i class="fas fa-envelope"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://github.com/openknowledgebe/equalstreetnames/">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">Français</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="/nl/index.html">Nederlands</a>
+                        <a class="dropdown-item" href="/en/index.html">English</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="flex-fill">
+        <div id="map"></div>
+        <div id="chart-overlay" class="d-none d-sm-block">
+            <div id="gender-chart">
+                <table id="gender-chart-legend" class="table table-borderless table-sm">
+                    <tbody>
+                        <tr class="gender-chart-label" data-gender="m">
+                            <td class="text-center"><i class="fas fa-lg fa-mars"></i></td>
+                            <td>Homme (cis)</td>
+                            <td class="text-right gender-chart-count"></td>
+                            <td class="text-right gender-chart-pct"></td>
+                        </tr>
+                        <tr class="gender-chart-label" data-gender="f">
+                            <td class="text-center"><i class="fas fa-lg fa-venus"></i></td>
+                            <td>Femme (cis)</td>
+                            <td class="text-right gender-chart-count"></td>
+                            <td class="text-right gender-chart-pct"></td>
+                        </tr>
+                        <tr class="gender-chart-label" data-gender="mx">
+                            <td class="text-center"><i class="fas fa-lg fa-transgender-alt"></i></td>
+                            <td>Homme (trans)</td>
+                            <td class="text-right gender-chart-count"></td>
+                            <td class="text-right gender-chart-pct"></td>
+                        </tr>
+                        <tr class="gender-chart-label" data-gender="fx">
+                            <td class="text-center"><i class="fas fa-lg fa-transgender-alt"></i></td>
+                            <td>Femme (trans)</td>
+                            <td class="text-right gender-chart-count"></td>
+                            <td class="text-right gender-chart-pct"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <canvas width="250" height="100"></canvas>
+            </div>
+            <div id="count-information" class="small">
+                Sur les <span id="count-total"></span> noms de rue, <span id="count-person"></span> sont attribués à
+                une personne.
+            </div>
+    </main>
+
+    <div id="about" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-info-circle"></i>
+                        À propos
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Comment le projet est-il né ?</h5>
+
+                    <p>
+                        Les noms des espaces publics (rues, avenues, places et autres) définissent l’identité d’une
+                        ville et l’usage qu’en fait sa population. Pourtant, les 19 communes de la Région Bruxelloise
+                        souffrent d’un déséquilibre : une écrasante majorité des noms attribués aux espaces publics sont
+                        des profils d’hommes non-racisés.
+                    </p>
+
+                    <p>
+                        Il existe plusieurs manières d’approcher cette inégalité et de créer un changement positif pour
+                        notre société. La nôtre est d’utiliser les données ouvertes afin de créer
+                        <strong>une carte visualisant les noms des rues de Bruxelles par genre</strong>. Les noms
+                        masculins et féminins étant représentés par différentes couleurs, la plateforme permet de
+                        conscientiser le grand public sur le déséquilibre présent dans l’attribution des noms de
+                        l’espace public.
+                    </p>
+
+                    <h5>Comment avons-nous réalisé cette carte ?</h5>
+
+                    <p>
+                        Pour réaliser la carte, nous avons utilisé des
+                        <a target="_blank" href="http://opendefinition.org/">données ouvertes</a> - c’est à dire des
+                        données qui sont utilisées, modifiées et partagées pour n’importe quelle raison - de
+                        <a target="_blank" href="https://openstreetmap.org/">OpenStreetMap</a>
+                        et de <a target="_blank" href="https://www.wikipedia.org/">Wikipédia</a>.
+                    </p>
+
+                    <p>
+                        Le 17 Février 2020, 60 bénévoles se sont rassemblé.e.s pour ajouter les tags Wikidata (des tags
+                        contenant toutes les informations de Wikipédia) sur les rues de OpenStreetMap. Utiliser les
+                        données ouvertes a permis de créer de nouvelles opportunités, le projet étant maintenant
+                        réplicable dans d’autres villes et l’analyse étant transparente.
+                    </p>
+
+                    <p>
+                        Le projet est divisé en deux phases:
+                        <ul>
+                            <li>
+                                Phase 1: Création de la plateforme de visualisation des noms des rues par genre.
+                            </li>
+                            <li>
+                                Phase 2: Organisation d’ateliers une fois par mois afin de créer une liste de
+                                suggestions de noms représentatives de la diversité de la Région Bruxelloise, c’est à
+                                dire avec des profils de femmes issues de l’immigration, de personnes racisées,
+                                transgenres et LGBTQIA+. Après chaque édition, la liste de profils sera publiée sur la
+                                plateforme et jouera un rôle de conseil pour les 19 communes.
+                            </li>
+                        </ul>
+                    </p>
+
+                    <hr>
+
+                    <div>
+                        <h6>EqualStreetNames.Brussels est coordonné par</h6>
+                        <div class="row">
+                            <div class="col text-center">
+                                <a target="_blank" href="https://openknowledge.be/">
+                                    <img alt="Open Knowledge Belgium" src="../../assets/okbe.svg"
+                                        style="height: 150px;">
+                                </a>
+                            </div>
+                            <div class="col text-center">
+                                <a target="_blank" href="https://nomspeutetre.wordpress.com/">
+                                    <img alt="Noms Peut-Être !" src="../../assets/nomspeutetre.png"
+                                        style="height: 150px;">
+                                </a>
+                            </div>
+                        </div>
+
+                        <h6>Avec le soutien de</h6>
+                        <div class="row">
+                            <div class="col text-center">
+                                <a target="_blank" href="https://openstreetmap.be/">
+                                    <img alt="OpenStreetMap Belgium" src="../../assets/osmbe.svg"
+                                        style="height: 150px;">
+                                </a>
+                            </div>
+                            <div class="col text-center">
+                                <a target="_blank" href="https://wikimedia.be/">
+                                    <img alt="Wikimedia Belgique" src="../../assets/wikimediabe.svg"
+                                        style="height: 150px;">
+                                </a>
+                            </div>
+                        </div>
+
+                        <h6>EqualStreetNames.Brussels est rendu possible grâce à</h6>
+                        <div class="text-center">
+                            <a target="_blank" href="http://equal.brussels/">
+                                <img alt="equal.brussels" src="../../assets/equalbrussels.svg">
+                            </a>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <p class="mb-0 small">
+                        Les <a target="_blank"
+                            href="https://github.com/openknowledgebe/equalstreetnames/tree/master/static">données</a>,
+                        le code source, et la documentation sont disponibles sur
+                        <a target="_blank"
+                            href="https://github.com/openknowledgebe/equalstreetnames/#readme">GitHub</a>.<br>
+                        Le site et le traitement des données ont été développés
+                        par <a target="_blank" href="https://openknowledge.be/">Open Knowledge Belgium</a>
+                        et <a target="_blank" href="https://geo6.be/">SPRL GEO-6</a>.<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="workshops" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-users"></i>
+                        Ateliers
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <a target="_blank" href="https://openknowledge.be/">Open Knowledge Belgium</a> et
+                        la Collective Féministe
+                        <a target="_blank" href="https://nomspeutetre.wordpress.com/">Noms Peut-Être</a> s’associent
+                        pour l’organisation de 8 ateliers visant à créer des listes de suggestions de noms pour les
+                        communes. Les participant.e.s écriront les biographies de femmes éligibles sur Wikipédia et ces
+                        noms seront ensuite publiés sur le site.
+                    </p>
+                    <p>
+                        Les ateliers auront lieu une fois et seront à chaque fois organisés dans des communes
+                        différentes. Le premier atelier aura lieu
+                        <span style="text-decoration: line-through;">
+                            le <strong>23 Mars 2020</strong> à
+                            <a target="_blank" href="https://www.openstreetmap.org/node/5134811756">La Maison des Femmes
+                                de Schaerbeek</a>
+                        </span>.
+                    </p>
+
+                    <h5>Intéressé.e.s d’accueillir un atelier?</h5>
+                    <p>
+                        Chaque atelier aura lieu dans une commune différente. Si vous êtes intéressé.e.s pour accueillir
+                        un atelier ou en discuter, merci de nous contacter via
+                        <a href="mailto:equalstreetnames@openknowledge.be">equalstreetnames@openknowledge.be</a>.
+                    </p>
+
+                    <!-- <div class="text-center">
+                        <a target="_blank" href="#" class="btn btn-primary btn-cta">Je m’inscris pour l’atelier</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="suggestions" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-bullhorn"></i>
+                        Suggestions
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Des suggestions de nouveaux noms de rues seront publiées ici après chaque atelier.
+                    </p>
+
+                    <!-- <div class="text-center">
+                        <a target="_blank" href="#" class="btn btn-primary btn-cta">Je m’inscris pour l’atelier</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-envelope"></i>
+                        Contact
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Intéressé.e.s de répliquer EqualStreetNames dans votre ville ?<br>
+                        Intéressé.e.s d’accueillir un atelier dans votre commune ?<br>
+                    </p>
+
+                    <p>
+                        Contactez-nous via:
+                        <ul>
+                            <li>
+                                Open Knowledge Belgium:
+                                <a href="mailto:equalstreetnames@openknowledge.be">equalstreetnames@openknowledge.be</a>
+                            </li>
+                            <li>
+                                Noms Peut-Être:
+                                <a href="mailto:nomspeutetre@gmail.com">nomspeutetre@gmail.com</a>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="../../../../resources/index.ts"></script>
+    <!-- Fathom - simple website analytics - https://usefathom.com -->
+    <script>
+        (function (f, a, t, h, o, m) {
+            a[h] = a[h] || function () {
+                (a[h].q = a[h].q || []).push(arguments)
+            };
+            o = f.createElement('script'),
+                m = f.getElementsByTagName('script')[0];
+            o.async = 1; o.src = t; o.id = 'fathom-script';
+            m.parentNode.insertBefore(o, m)
+        })(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
+        if (process.env.FATHOM_TOKEN) {
+            fathom('set', 'siteId', process.env.FATHOM_TOKEN);
+            fathom('trackPageview');
+        }
+    </script>
+    <!-- / Fathom -->
+</body>
+
+</html>

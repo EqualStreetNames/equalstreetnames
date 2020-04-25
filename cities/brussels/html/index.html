@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>EqualStreetNames.Brussels</title>
+    <style>
+        html,
+        body {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+
+<body class="d-flex align-items-center flex-column">
+
+    <img src="../assets/visual.png" alt="EqualStreetNames.Brussels">
+
+    <div class="list-group text-center mt-3">
+        <a href="/en/index.html" class="list-group-item list-group-item-action">
+            English
+        </a>
+        <a href="/fr/index.html" class="list-group-item list-group-item-action">
+            Français
+        </a>
+        <a href="/nl/index.html" class="list-group-item list-group-item-action">
+            Nederlands
+        </a>
+    </div>
+
+    <script>
+        (function () {
+            var language = navigator.language || navigator.browserLanguage;
+
+            switch (language.slice(0, 2)) {
+                case "en": document.location.href = "/en/index.html"; break;
+                case "fr": document.location.href = "/fr/index.html"; break;
+                case "nl": document.location.href = "/nl/index.html"; break;
+            }
+        })();
+    </script>
+
+</body>
+
+</html>

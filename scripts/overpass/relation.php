@@ -6,22 +6,24 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../../');
+chdir(__DIR__ . '/../../');
 
 require 'vendor/autoload.php';
-
-$municipalities = include 'scripts/municipalities.php';
 
 $directory = 'data/overpass/relation';
 
 if (!file_exists($directory) || !is_dir($directory)) {
-    mkdir($directory);
+    mkdir($directory, 0777, true);
 }
+
+$options = getopt('c:', ['city:']);
+
+$city = $options['c'] ?? $options['city'];
 
 // Get all the relevant relations in Brussels Region.
 file_put_contents(
     sprintf('%s/full.json', $directory),
-    get()
+    get($city)
 );
 
 exit(0);
@@ -31,9 +33,11 @@ exit(0);
  *
  * @return string JSON response from Overpass.
  */
-function get(): string
+function get(string $city): string
 {
-    $query = file_get_contents('scripts/overpass/relation-full-json');
+    $query = file_get_contents(
+        sprintf('cities/%s/overpass/relation-full-json', $city)
+    );
     $query = str_replace(["\r", "\n"], '', $query);
 
     $client = new \GuzzleHttp\Client();

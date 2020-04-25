@@ -1,0 +1,118 @@
+@import "../../../node_modules/@fortawesome/fontawesome-free/css/brands.css";
+@import "../../../node_modules/@fortawesome/fontawesome-free/css/solid.css";
+@import "../../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
+
+html,
+body {
+  height: 100vh;
+}
+
+.btn-cta {
+  color: #ffffff;
+  background-color: #800080;
+  border-color: #800080;
+}
+.btn-cta:active,
+.btn-cta:focus,
+.btn-cta:hover {
+  color: #fff;
+  background-color: #800080;
+  border-color: #800080;
+}
+
+nav.navbar {
+  background-color: rgba(52, 51, 50, 0.9);
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.navbar-nav {
+  color: #fff;
+}
+
+#map {
+  background-color: #dddddd;
+  height: 100vh;
+  width: 100%;
+}
+
+.mapboxgl-popup {
+  animation: fadein 0.2s;
+}
+.mapboxgl-popup-content {
+  min-width: 200px;
+}
+.popup-description p {
+  margin-bottom: 0.5rem;
+}
+.mapboxgl-popup-content > hr {
+  margin: 0.2rem 0 0.2rem;
+}
+.mapboxgl-popup-content > .popup-streetname {
+  font-weight: bold;
+}
+.mapboxgl-popup-content > .popup-wikidata {
+  font-size: 0.8rem;
+  padding: 6px;
+}
+.mapboxgl-popup-content > .popup-wikidata > .popup-name {
+  margin-bottom: 6px;
+  display: inline-block;
+  position: relative;
+}
+.popup-name > .popup-name__name {
+  white-space: nowrap;
+  font-size: 1.3rem;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+.mapboxgl-popup-content > .popup-wikidata > .popup-links {
+  margin-top: 10px;
+}
+
+.mapboxgl-ctrl-top-left,
+.mapboxgl-ctrl-top-right {
+  top: 60px;
+}
+
+#chart-overlay {
+  background: rgba(255, 255, 255, 1);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  bottom: 50px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  width: 300px;
+}
+#gender-chart-legend td {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+#count-information {
+  margin-top: 10px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.highlight-low {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

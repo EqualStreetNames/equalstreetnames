@@ -2,9 +2,15 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
+
+$directory = 'data/wikidata';
+
+if (!file_exists($directory) || !is_dir($directory)) {
+    mkdir($directory, 0777, true);
+}
 
 $associatedStreets = json_decode(file_get_contents('data/overpass/relation/full.json'), true);
 $highways = json_decode(file_get_contents('data/overpass/way/full.json'), true);
@@ -47,7 +53,7 @@ foreach ($tagged as $element) {
                 continue;
             }
 
-            $path = sprintf('data/wikidata/%s.json', $e);
+            $path = sprintf('%s/%s.json', $directory, $e);
 
             if (!file_exists($path)) {
                 file_put_contents($path, get($e));

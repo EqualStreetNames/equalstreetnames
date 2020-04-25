@@ -1,0 +1,15 @@
+/**
+ * Get all the relevant relations in one of the municipalities in Brussels Region.
+ *
+ * ##### will be replaced by municipality NIS code.
+ * See docs/municipalities.md
+ */
+[out:csv(::type, ::id, name, "name:fr", "name:nl", wikidata, "name:etymology:wikidata")][timeout:120];
+( area["admin_level"="4"]["ref:INS"="04000"]["wikidata"="Q240"]; )->.b;
+( area["admin_level"="8"]["ref:INS"="#####"](area.b); )->.a;
+(
+    relation["type"="associatedStreet"](area.a)(area.b);
+    relation["type"="multipolygon"]["place"]["name"](area.a)(area.b);
+    relation["type"="multipolygon"]["highway"]["name"](area.a)(area.b);
+);
+out body;

@@ -2,9 +2,13 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
+
+$options = getopt('c:', ['city:']);
+
+$city = $options['c'] ?? $options['city'];
 
 $json = json_decode(file_get_contents('data/overpass/relation/full.json'), true);
 
@@ -16,7 +20,7 @@ $waysInRelation = array_keys($ways);
 
 $streetsGender = readStreetsGender();
 
-$instances = include 'scripts/instances.php';
+$instances = include sprintf('cities/%s/instances.php', $city);
 
 $geojson = [
     'type'     => 'FeatureCollection',
@@ -54,7 +58,10 @@ foreach ($relations as $r) {
     ];
 }
 
-file_put_contents('static/relations.geojson', json_encode($geojson));
+file_put_contents(
+    sprintf('cities/%s/data/relations.geojson', $city),
+    json_encode($geojson)
+);
 
 unset($json, $geojson);
 
@@ -83,7 +90,10 @@ foreach ($ways as $w) {
     }
 }
 
-file_put_contents('static/ways.geojson', json_encode($geojson));
+file_put_contents(
+    sprintf('cities/%s/data/ways.geojson', $city),
+    json_encode($geojson)
+);
 
 exit(0);
 
@@ -357,7 +367,7 @@ function readStreetsGender(): array
 {
     $streets = [];
 
-    if (($handle = fopen('data/event-2020-02-17/gender.csv', 'r')) !== false) {
+    if (($handle = fopen('cities/brussels/event-2020-02-17/gender.csv', 'r')) !== false) {
         while (($data = fgetcsv($handle)) !== false) {
             $streets[] = $data;
         }

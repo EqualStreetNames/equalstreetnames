@@ -2,12 +2,24 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
-$relations = json_decode(file_get_contents('static/relations.geojson'));
-$ways = json_decode(file_get_contents('static/ways.geojson'));
+$options = getopt('c:', ['city:']);
+
+$city = $options['c'] ?? $options['city'];
+
+$relations = json_decode(
+    file_get_contents(
+        sprintf('cities/%s/data/relations.geojson', $city)
+    )
+);
+$ways = json_decode(
+    file_get_contents(
+        sprintf('cities/%s/data/ways.geojson', $city)
+    )
+);
 
 $streets = [];
 $count = [
@@ -122,8 +134,8 @@ array_multisort(
 
 $previous = null;
 
-$fp = fopen('static/gender.csv', 'w');
-$fp2 = fopen('static/other.csv', 'w');
+$fp = fopen(sprintf('cities/%s/data/gender.csv', $city), 'w');
+$fp2 = fopen(sprintf('cities/%s/data/other.csv', $city), 'w');
 
 fputcsv($fp, ['name_fr', 'name_nl', 'gender', 'wikidata', 'type']);
 fputcsv($fp2, ['name_fr', 'name_nl', 'gender', 'wikidata', 'type']);
@@ -147,7 +159,7 @@ fclose($fp2);
 
 // JSON file
 
-file_put_contents('static/statistics.json', json_encode($count));
+file_put_contents(sprintf('cities/%s/data/statistics.json', $city), json_encode($count));
 
 echo PHP_EOL;
 

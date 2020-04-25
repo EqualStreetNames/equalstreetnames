@@ -1,3 +1,3 @@
 [submodule "cities/brussels"]
 	path = cities/brussels
-	url = git@github.com:openknowledgebe/equalstreetnames-brussels.git
+	url = https://github.com/openknowledgebe/equalstreetnames-brussels.git

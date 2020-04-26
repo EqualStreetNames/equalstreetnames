@@ -47,6 +47,8 @@ export default function(lang: string): Map {
 
     // Add events
     addEvents(map);
+
+    document.body.classList.add("loaded");
   });
 
   return map;

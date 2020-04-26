@@ -294,24 +294,32 @@ function extractWikidata(string $identifier): ?array
 
     $labels = array_filter(
         $entity['labels'],
-        function ($language) {
-            return in_array($language, ['de', 'en', 'fr', 'nl']);
+        function ($language) use ($config) {
+            return in_array($language, $config['languages']);
         },
         ARRAY_FILTER_USE_KEY
     );
 
     $descriptions = array_filter(
         $entity['descriptions'],
-        function ($language) {
-            return in_array($language, ['de', 'en', 'fr', 'nl']);
+        function ($language) use ($config) {
+            return in_array($language, $config['languages']);
         },
         ARRAY_FILTER_USE_KEY
     );
 
     $sitelinks = array_filter(
         $entity['sitelinks'],
-        function ($language) {
-            return in_array($language, ['dewiki', 'enwiki', 'frwiki', 'nlwiki']);
+        function ($language) use ($config) {
+            return in_array(
+                $language,
+                array_map(
+                    function ($language) {
+                        return $language . 'wiki';
+                    },
+                    $config['languages']
+                )
+            );
         },
         ARRAY_FILTER_USE_KEY
     );

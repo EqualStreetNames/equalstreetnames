@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -20,7 +20,7 @@ $waysInRelation = array_keys($ways);
 
 $streetsGender = readStreetsGender();
 
-$instances = include sprintf('cities/%s/instances.php', $city);
+$config = include sprintf('cities/%s/config.php', $city);
 
 $geojson = [
     'type'     => 'FeatureCollection',
@@ -253,7 +253,7 @@ function makeGeometry(array $linestrings): ?array
 
 function extractWikidata(string $identifier): ?array
 {
-    global $instances;
+    global $config;
 
     $path = sprintf('data/wikidata/%s.json', $identifier);
 
@@ -281,8 +281,8 @@ function extractWikidata(string $identifier): ?array
     } else {
         foreach ($instance as $p) {
             $value = $p['mainsnak']['datavalue']['value']['id'];
-            if (isset($instances[$value])) {
-                if ($instances[$value] === true) {
+            if (isset($config['instances'][$value])) {
+                if ($config['instances'][$value] === true) {
                     $person = true;
                     break;
                 }

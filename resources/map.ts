@@ -55,7 +55,8 @@ export default function (lang: string): Map {
       sourceLoaded++;
     }
 
-    if (sourceLoaded === 3) {
+    console.log(sourceLoaded, event);
+    if (sourceLoaded > 0) {
       document.body.classList.add("loaded");
     }
   });

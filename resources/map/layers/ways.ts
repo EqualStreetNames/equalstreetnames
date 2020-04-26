@@ -5,14 +5,18 @@ import { Map } from "mapbox-gl";
 import layout from "../style/layout";
 import paint from "../style/paint";
 
+import { increaseCountSource } from "../../map";
+
 const attribution =
   '© <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-export default function(map: Map): void {
+export default function (map: Map): void {
+  increaseCountSource();
+
   map.addSource("geojson-ways", {
     type: "geojson",
     attribution,
-    data: "/ways.geojson"
+    data: "/ways.geojson",
   });
 
   map.addLayer({
@@ -20,6 +24,6 @@ export default function(map: Map): void {
     type: "line",
     source: "geojson-ways",
     layout,
-    paint
+    paint,
   });
 }

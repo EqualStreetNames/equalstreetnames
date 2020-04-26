@@ -1,6 +1,6 @@
 "use strict";
 
-import mapboxgl, { Map } from "mapbox-gl";
+import mapboxgl, { Map, MapSourceDataEvent } from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 import addRelations from "./map/layers/relation";
@@ -8,18 +8,25 @@ import addWays from "./map/layers/ways";
 import addEvents from "./map/events";
 
 export let map: Map;
+export let countSources: number = 0;
 
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
-export default function(lang: string): Map {
+export function increaseCountSource(): number {
+  return countSources++;
+}
+
+export default function (lang: string): Map {
   // Initialize map.
   map = new mapboxgl.Map({
     center: [4.3651, 50.8355],
     container: "map",
     hash: true,
     style: "mapbox://styles/mapbox/dark-v10",
-    zoom: 11
+    zoom: 11,
   });
+
+  increaseCountSource();
 
   // Add controls.
   const nav = new mapboxgl.NavigationControl({ showCompass: false });
@@ -34,7 +41,7 @@ export default function(lang: string): Map {
     countries: "be",
     enableEventLogging: false,
     language: lang,
-    mapboxgl: mapboxgl
+    mapboxgl: mapboxgl,
   });
   map.addControl(geocoder);
 
@@ -47,8 +54,17 @@ export default function(lang: string): Map {
 
     // Add events
     addEvents(map);
+  });
 
-    document.body.classList.add("loaded");
+  let sourceLoaded: number = 0;
+  map.on("sourcedata", (event: MapSourceDataEvent) => {
+    if (event.isSourceLoaded === true) {
+      sourceLoaded++;
+    }
+
+    if (sourceLoaded > 0 && sourceLoaded === countSources) {
+      document.body.classList.add("loaded");
+    }
   });
 
   return map;

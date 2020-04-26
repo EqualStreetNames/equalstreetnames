@@ -7,6 +7,19 @@
   z-index: 9000;
   background: #222222;
 
+  #loader-title {
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 15px;
+    position: absolute;
+  }
+  #loader-status {
+    bottom: 0;
+    color: #fff;
+    padding: 15px;
+    position: absolute;
+  }
+
   #loader {
     display: block;
     position: relative;

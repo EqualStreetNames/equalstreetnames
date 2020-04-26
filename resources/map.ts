@@ -8,13 +8,8 @@ import addWays from "./map/layers/ways";
 import addEvents from "./map/events";
 
 export let map: Map;
-export let countSources: number = 0;
 
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
-
-export function increaseCountSource(): number {
-  return countSources++;
-}
 
 export default function (lang: string): Map {
   // Initialize map.
@@ -25,8 +20,6 @@ export default function (lang: string): Map {
     style: "mapbox://styles/mapbox/dark-v10",
     zoom: 11,
   });
-
-  increaseCountSource();
 
   // Add controls.
   const nav = new mapboxgl.NavigationControl({ showCompass: false });
@@ -62,7 +55,7 @@ export default function (lang: string): Map {
       sourceLoaded++;
     }
 
-    if (sourceLoaded > 0 && sourceLoaded === countSources) {
+    if (sourceLoaded === 3) {
       document.body.classList.add("loaded");
     }
   });

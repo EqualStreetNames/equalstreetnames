@@ -49,16 +49,8 @@ export default function (lang: string): Map {
     addEvents(map);
   });
 
-  let sourceLoaded: number = 0;
-  map.on("sourcedata", (event: MapSourceDataEvent) => {
-    if (event.isSourceLoaded === true) {
-      sourceLoaded++;
-    }
-
-    console.log(sourceLoaded, event);
-    if (sourceLoaded > 0) {
-      document.body.classList.add("loaded");
-    }
+  map.on("idle", () => {
+    document.body.classList.add("loaded");
   });
 
   return map;

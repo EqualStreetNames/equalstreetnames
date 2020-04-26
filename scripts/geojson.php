@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__ . '/../');
+chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 
@@ -315,7 +315,7 @@ function extractWikidata(string $identifier): ?array
                 $language,
                 array_map(
                     function ($language) {
-                        return $language . 'wiki';
+                        return $language.'wiki';
                     },
                     $config['languages']
                 )

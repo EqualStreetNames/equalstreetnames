@@ -12,13 +12,22 @@ export let map: Map;
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
 export default function (lang: string): Map {
+  const center = process.env.MAP_CENTER
+    ? JSON.parse(process.env.MAP_CENTER)
+    : [0, 0];
+  const zoom = process.env.MAP_ZOOM ? parseInt(process.env.MAP_ZOOM) : 2;
+  const bbox = process.env.GEOCODER_BBOX
+    ? JSON.parse(process.env.GEOCODER_BBOX)
+    : null;
+  const countries = process.env.GEOCODER_COUNTRIES;
+
   // Initialize map.
   map = new mapboxgl.Map({
-    center: [4.3651, 50.8355],
+    center,
     container: "map",
     hash: true,
     style: "mapbox://styles/mapbox/dark-v10",
-    zoom: 11,
+    zoom,
   });
 
   // Add controls.
@@ -30,8 +39,8 @@ export default function (lang: string): Map {
 
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
-    bbox: [4.243544, 50.763726, 4.482277, 50.913384],
-    countries: "be",
+    bbox,
+    countries,
     enableEventLogging: false,
     language: lang,
     mapboxgl: mapboxgl,

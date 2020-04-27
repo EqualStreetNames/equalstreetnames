@@ -22,9 +22,7 @@ function removeAccents(string $str, string $charset = 'utf-8'): string
 }
 
 /**
- * Check if
- *
- *
+ * Check if.
  */
 function already(string $name, ?string $gender, array $streets)
 {

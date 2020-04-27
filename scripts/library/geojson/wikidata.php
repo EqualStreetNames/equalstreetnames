@@ -82,7 +82,7 @@ function extractWikidata(
                 $language,
                 array_map(
                     function ($language) {
-                        return $language . 'wiki';
+                        return $language.'wiki';
                     },
                     $languages
                 )

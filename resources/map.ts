@@ -21,12 +21,14 @@ export default function (lang: string): Map {
     : null;
   const countries = process.env.GEOCODER_COUNTRIES;
 
+  const defaultMapStyle = "mapbox://styles/mapbox/dark-v10";
+  const mapStyle = process.env.MAP_STYLE ?? defaultMapStyle;
   // Initialize map.
   map = new mapboxgl.Map({
     center,
     container: "map",
     hash: true,
-    style: "mapbox://styles/mapbox/dark-v10",
+    style: mapStyle,
     zoom,
   });
 

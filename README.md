@@ -59,6 +59,8 @@ See [`docs/README.md`](./docs/README.md)
      (see [Mapbox GL JS API Reference](https://docs.mapbox.com/mapbox-gl-js/api/#map))
    - `MAP_ZOOM=2` replacing `2` with the zoom level of your map
      (see [Mapbox GL JS API Reference](https://docs.mapbox.com/mapbox-gl-js/api/#map))
+   - `MAP_STYLE=style` replacing `style` with custom style. This field is optional, needed only if you want to customize map style
+     (see [Mapbox GL JS API Reference](https://docs.mapbox.com/mapbox-gl-js/api/#map))
    - `GEOCODER_BBOX=[0,0,180,180]` replacing `[0,0,180,180]` by the bounding box of your city
      (see [Mapbox GL Geocoder API Reference](https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js#L32-L34))
    - `GEOCODER_COUNTRIES=be` replacing `be` by your country

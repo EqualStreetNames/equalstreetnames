@@ -9,8 +9,8 @@
     },
     "scripts": {
         "geojson": "php scripts/geojson.php",
-        "overpass-relation": "php scripts/overpass/relation.php",
-        "overpass-way": "php scripts/overpass/way.php",
+        "overpass-relation": "php scripts/overpass-relation.php",
+        "overpass-way": "php scripts/overpass-way.php",
         "statistics": "php scripts/statistics.php",
         "update-data": [
             "@overpass-relation",

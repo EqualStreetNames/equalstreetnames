@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
+require 'library/statistics.php';
 
 $options = getopt('c:', ['city:']);
 
@@ -32,54 +33,6 @@ $count = [
     '+'  => 0,
 ];
 
-function wd_remove_accents($str, $charset = 'utf-8')
-{
-    $str = htmlentities($str, ENT_NOQUOTES, $charset);
-
-    $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
-    $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
-    $str = preg_replace('#&[^;]+;#', '', $str);
-
-    return $str;
-}
-
-function already(string $name_fr, string $name_nl, ?string $gender, array $streets)
-{
-    $filter = array_filter(
-        $streets,
-        function (array $street) use ($name_fr, $name_nl, $gender) {
-            return wd_remove_accents($street['name_fr']) == wd_remove_accents($name_fr)
-                && wd_remove_accents($street['name_nl']) == wd_remove_accents($name_nl)
-                && $street['gender'] == $gender;
-        }
-    );
-
-    return count($filter) > 0 ? current($filter) : false;
-}
-
-function extractData(string $type, object $feature, array $streets)
-{
-    $data = [
-        'name_fr'  => $feature->properties->{'name:fr'} ?? $feature->properties->name,
-        'name_nl'  => $feature->properties->{'name:nl'} ?? $feature->properties->name,
-        'gender'   => $feature->properties->gender ?? null,
-        'wikidata' => !is_null($feature->properties->details) ?
-            (is_array($feature->properties->details) ? implode(';', array_column($feature->properties->details, 'wikidata')) : $feature->properties->details->wikidata)
-            : null,
-        'type'     => $type,
-    ];
-
-    if (($street = already($data['name_fr'], $data['name_nl'], $data['gender'], $streets)) === false) {
-        return $data;
-    } elseif (!is_null($street['wikidata']) && !is_null($data['wikidata']) && $street['wikidata'] !== $data['wikidata']) {
-        printf('Wikidata mismatch: %s - %s : %s <> %s%s', $data['name_fr'], $data['name_nl'], $data['wikidata'], $street['wikidata'], PHP_EOL);
-
-        return false;
-    }
-
-    return false;
-}
-
 foreach ($relations->features as $feature) {
     $data = extractData('relation', $feature, $streets);
 
@@ -105,15 +58,9 @@ $wikidata = array_map(
     },
     $streets
 );
-$name_fr = array_map(
+$name = array_map(
     function ($street) {
-        return wd_remove_accents($street['name_fr']);
-    },
-    $streets
-);
-$name_nl = array_map(
-    function ($street) {
-        return wd_remove_accents($street['name_nl']);
+        return removeAccents($street['name']);
     },
     $streets
 );
@@ -123,9 +70,7 @@ array_multisort(
     SORT_ASC,
     array_column($streets, 'gender'),
     SORT_ASC,
-    $name_fr,
-    SORT_ASC,
-    $name_nl,
+    $name,
     SORT_ASC,
     $streets
 );
@@ -137,15 +82,11 @@ $previous = null;
 $fp = fopen(sprintf('cities/%s/data/gender.csv', $city), 'w');
 $fp2 = fopen(sprintf('cities/%s/data/other.csv', $city), 'w');
 
-fputcsv($fp, ['name_fr', 'name_nl', 'gender', 'wikidata', 'type']);
-fputcsv($fp2, ['name_fr', 'name_nl', 'gender', 'wikidata', 'type']);
+fputcsv($fp, ['name', 'gender', 'wikidata', 'type']);
+fputcsv($fp2, ['name', 'gender', 'wikidata', 'type']);
 
 foreach ($streets as $street) {
     if (in_array($street['gender'], ['F', 'M', 'FX', 'MX', 'X', '+'])) {
-        if (!is_null($previous) && ($previous['name_fr'] == $street['name_fr'] || $previous['name_nl'] == $street['name_nl'])) {
-            printf('Duplicate: %s - %s <> %s - %s%s', $previous['name_fr'], $previous['name_nl'], $street['name_fr'], $street['name_nl'], PHP_EOL);
-        }
-
         fputcsv($fp, $street);
     } else {
         fputcsv($fp2, $street);

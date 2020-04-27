@@ -11,16 +11,13 @@ export let map: Map;
 
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
-export default function (lang: string): Map {
-  const center = process.env.MAP_CENTER
-    ? JSON.parse(process.env.MAP_CENTER)
-    : [0, 0];
-  const zoom = process.env.MAP_ZOOM ? parseInt(process.env.MAP_ZOOM) : 2;
-  const bbox = process.env.GEOCODER_BBOX
-    ? JSON.parse(process.env.GEOCODER_BBOX)
-    : null;
-  const countries = process.env.GEOCODER_COUNTRIES;
-
+export default function (
+  lang: string,
+  center: [number, number],
+  zoom: number,
+  bbox: [number, number, number, number],
+  countries: string
+): Map {
   // Initialize map.
   map = new mapboxgl.Map({
     center,

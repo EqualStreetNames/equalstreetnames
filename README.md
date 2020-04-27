@@ -52,17 +52,7 @@ See [`docs/README.md`](./docs/README.md)
 
 1. Create a file named `.env` in the root directory of the project
 
-1. Add the following line to the `.env` file:
-
-   - `MAPBOX_TOKEN=[your Mapbox token]` replacing `[your Mapbox token]` with the token you created
-   - `MAP_CENTER=[0,0]` replacing `[0,0]` with the longitude and latitude of your map
-     (see [Mapbox GL JS API Reference](https://docs.mapbox.com/mapbox-gl-js/api/#map))
-   - `MAP_ZOOM=2` replacing `2` with the zoom level of your map
-     (see [Mapbox GL JS API Reference](https://docs.mapbox.com/mapbox-gl-js/api/#map))
-   - `GEOCODER_BBOX=[0,0,180,180]` replacing `[0,0,180,180]` by the bounding box of your city
-     (see [Mapbox GL Geocoder API Reference](https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js#L32-L34))
-   - `GEOCODER_COUNTRIES=be` replacing `be` by your country
-     (see [Mapbox GL Geocoder API Reference](https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js#L35-L36))
+1. Add the following line to the `.env` file: `MAPBOX_TOKEN=[your Mapbox token]` replacing `[your Mapbox token]` with the token you created
 
 1. Run
 

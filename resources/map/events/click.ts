@@ -6,8 +6,6 @@ import popupContent from "../../popup";
 
 interface Property {
   name: string;
-  "name:fr"?: string | null;
-  "name:nl"?: string | null;
   wikidata: string | null;
   etymology: string | null;
   details?: string;
@@ -34,24 +32,19 @@ export default function (
     .addTo(map);
 }
 
-function getStreetname(properties: {
-  name: string;
-  "name:fr"?: string | null;
-  "name:nl"?: string | null;
-}): string {
-  const streetname = properties.name;
-  const streetnameFr = properties["name:fr"] ?? "";
-  const streetnameNl = properties["name:nl"] ?? "";
-
+function getStreetname(properties: { name: string }): string {
   // Bug in MapboxGL (see https://github.com/mapbox/mapbox-gl-js/issues/8497)
-  if (
-    streetnameFr !== null &&
-    streetnameNl !== null &&
-    streetnameFr !== "null" &&
-    streetnameNl !== "null"
-  ) {
-    return `${streetnameFr}<br>${streetnameNl}`;
-  } else {
-    return streetname;
+  if (properties.name === null || properties.name === "null") {
+    return "";
   }
+
+  const matches = properties.name.match(/^(.+) - (.+)$/);
+
+  if (matches !== null && matches.length > 1) {
+    matches.shift();
+
+    return matches.join("<br>");
+  }
+
+  return properties.name;
 }

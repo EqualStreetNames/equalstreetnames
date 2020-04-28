@@ -18,6 +18,12 @@
 1. `php scripts/geojson.php` ([documentation](./geojson.md))
 1. `php scripts/statistics.php` ([documentation](./statistics.md))
 
+Or you can just run (after replacing `mycity` by the name of your city):
+
+```
+composer run update-data -- --city=mycity
+```
+
 ### Streets listing
 
 1. [Download data from _OpenStreetMap_ (overpass)](./overpass-csv.md)

@@ -7,23 +7,19 @@ import addRelations from "./map/layers/relation";
 import addWays from "./map/layers/ways";
 import addEvents from "./map/events";
 
+import { lang, center, zoom, bbox, countries, style } from "./index";
+
 export let map: Map;
 
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
-export default function (
-  lang: string,
-  center: [number, number],
-  zoom: number,
-  bbox: [number, number, number, number],
-  countries: string
-): Map {
+export default function (): Map {
   // Initialize map.
   map = new mapboxgl.Map({
     center,
     container: "map",
     hash: true,
-    style: "mapbox://styles/mapbox/dark-v10",
+    style,
     zoom,
   });
 

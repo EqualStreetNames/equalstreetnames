@@ -1,3 +1,6 @@
 [submodule "cities/brussels"]
 	path = cities/brussels
 	url = https://github.com/openknowledgebe/equalstreetnames-brussels.git
+[submodule "cities/belgrade"]
+	path = cities/belgrade
+	url = https://github.com/stalker314314/equalstreetnames-belgrade

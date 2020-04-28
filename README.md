@@ -33,6 +33,10 @@ Documentation about those data is available in the same folder (see [`README.md`
 
 See [`docs/README.md`](./docs/README.md)
 
+## Replicate the EqualStreetNames project for your city
+
+See [`docs/replicate.md`](./docs/replicate.md)
+
 ## Run locally
 
 1. Clone the repository
@@ -64,8 +68,8 @@ See [`docs/README.md`](./docs/README.md)
 
    1. For Belgrade, run
 
-   ```
+      ```
       npm run serve:belgrade
-   ```
+      ```
 
 1. Once installed and running, go to <http://localhost:1234/index.html>

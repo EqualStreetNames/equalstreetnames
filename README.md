@@ -54,10 +54,18 @@ See [`docs/README.md`](./docs/README.md)
 
 1. Add the following line to the `.env` file: `MAPBOX_TOKEN=[your Mapbox token]` replacing `[your Mapbox token]` with the token you created
 
-1. Run
+1. Choose the city you want to run locally :
+
+   1. For Brussels, run
+
+      ```
+      npm run serve:brussels
+      ```
+
+   1. For Belgrade, run
 
    ```
-   npm run serve
+      npm run serve:belgrade
    ```
 
 1. Once installed and running, go to <http://localhost:1234/index.html>

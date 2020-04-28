@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
+    "build:belgrade": "parcel build cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --no-source-maps",
     "build:brussels": "parcel build cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --no-source-maps",
+    "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app",
     "serve:brussels": "parcel serve cities/brussels/html/index.html cities/brussels/html/*/index.html --global app"
   },
   "repository": {

@@ -3,11 +3,6 @@
 The EqualStreetNames project is built so it's (relatively) easy to replicate in any city in the World !  
 The data and file specific to a city are hosted in a separated repository.
 
-| Country | City     | Link                               | Data Repository                                                                           | Maintainer     |
-| ------- | -------- | ---------------------------------- | ----------------------------------------------------------------------------------------- | -------------- |
-| 🇧🇪      | Brussels | https://equalstreetnames.brussels/ | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | @jbelien       |
-| 🇷🇸      | Belgrade | - (_wait for green light_)         | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | @stalker314314 |
-
 ## Process
 
 The easiest way is to fork/duplicate and existing repository, choose one of the data repository listed above.

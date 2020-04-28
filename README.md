@@ -35,6 +35,11 @@ See [`docs/README.md`](./docs/README.md)
 
 ## Replicate the EqualStreetNames project for your city
 
+| Country | City     | Link                               | Data Repository                                                                           | Maintainer     |
+| ------- | -------- | ---------------------------------- | ----------------------------------------------------------------------------------------- | -------------- |
+| 🇧🇪      | Brussels | https://equalstreetnames.brussels/ | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | @jbelien       |
+| 🇷🇸      | Belgrade | - (_wait for green light_)         | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | @stalker314314 |
+
 See [`docs/replicate.md`](./docs/replicate.md)
 
 ## Run locally

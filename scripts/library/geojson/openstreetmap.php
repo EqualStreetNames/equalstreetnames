@@ -38,7 +38,9 @@ function extractElements(string $type, array $elements): array
  * @param array    $instances Array that defines what instances are
  *                            considered as a person.
  * @param array    $gender    Manually assigned street gender
- *                            (only available for Brussels).
+ *                            (via configuration).
+ * @param array    $manual    Manually assigned street gender
+ *                            (via CSV file - only available for Brussels).
  *
  * @return array
  */
@@ -47,7 +49,8 @@ function extractTags(
     array $element,
     array $languages,
     array $instances,
-    array $gender
+    array $gender,
+    array $manual
 ): array {
     $properties = [
         'name'      => $element['tags']['name'] ?? null,
@@ -85,10 +88,10 @@ function extractTags(
                 ]
             );
 
-            $person = array_unique(array_column($properties['details'], 'person'));
-            $gender = array_unique(array_column($properties['details'], 'gender'));
+            $_person = array_unique(array_column($properties['details'], 'person'));
+            $_gender = array_unique(array_column($properties['details'], 'gender'));
 
-            $properties['gender'] = (count($person) === 1 && current($person) === true) ? (count($gender) === 1 ? current($gender) : '+') : null;
+            $properties['gender'] = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : null;
         } else {
             $properties = array_merge(
                 $properties,
@@ -100,10 +103,14 @@ function extractTags(
             $properties['gender'] = $properties['details']['person'] === true ?
                 $properties['details']['gender'] : null;
         }
-    } elseif (count($gender) > 0) {
+    } elseif ($type === 'relation' && isset($gender['relation'], $gender['relation'][(string) $element['id']])) {
+        $properties['gender'] = $gender['relation'][(string) $element['id']];
+    } elseif ($type === 'way' && isset($gender['way'], $gender['way'][(string) $element['id']])) {
+        $properties['gender'] = $gender['way'][(string) $element['id']];
+    } elseif (count($manual) > 0) {
         // Extract gender from manual work (only available for Brussels)
         $properties['gender'] = getGender(
-            $gender,
+            $manual,
             $element['tags']['name:fr'] ?? $element['tags']['name'],
             $element['tags']['name:nl'] ?? $element['tags']['name']
         );

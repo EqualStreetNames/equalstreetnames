@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 require 'library/geojson/openstreetmap.php';
@@ -53,6 +53,7 @@ foreach ($relations as $r) {
         $r,
         $config['languages'],
         $config['instances'],
+        $config['gender'] ?? [],
         $manualStreetsGender
     );
 
@@ -118,6 +119,7 @@ foreach ($ways as $w) {
             $w,
             $config['languages'],
             $config['instances'],
+            $config['gender'] ?? [],
             $manualStreetsGender
         );
 

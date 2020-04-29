@@ -44,6 +44,10 @@ $geojson = [
 ];
 
 foreach ($relations as $r) {
+    if (isset($config['exclude'], $config['exclude']['relation']) && is_array($config['exclude']['relation']) && in_array($r['id'], $config['exclude']['relation'], true)) {
+        continue;
+    }
+
     $properties = extractTags(
         'relation',
         $r,
@@ -104,6 +108,10 @@ $geojson = [
 ];
 
 foreach ($ways as $w) {
+    if (isset($config['exclude'], $config['exclude']['way']) && is_array($config['exclude']['way']) && in_array($w['id'], $config['exclude']['way'], true)) {
+        continue;
+    }
+
     if (!in_array($w['id'], $waysInRelation)) {
         $properties = extractTags(
             'way',

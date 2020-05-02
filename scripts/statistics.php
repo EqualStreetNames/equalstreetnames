@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 require 'library/statistics.php';
@@ -24,13 +24,14 @@ $ways = json_decode(
 
 $streets = [];
 $count = [
-    'F'  => 0,
-    'M'  => 0,
-    'FX' => 0,
-    'MX' => 0,
-    'X'  => 0,
-    '-'  => 0,
-    '+'  => 0,
+    'F'  => 0, // female (cis)
+    'M'  => 0, // male (cis)
+    'FX' => 0, // female (trans)
+    'MX' => 0, // male (trans)
+    'X'  => 0, // intersex
+    '+'  => 0, // multi (male + female)
+    '?'  => 0, // unknown gender
+    '-'  => 0, // not a person
 ];
 
 foreach ($relations->features as $feature) {
@@ -86,7 +87,7 @@ fputcsv($fp, ['name', 'gender', 'wikidata', 'type']);
 fputcsv($fp2, ['name', 'gender', 'wikidata', 'type']);
 
 foreach ($streets as $street) {
-    if (in_array($street['gender'], ['F', 'M', 'FX', 'MX', 'X', '+'])) {
+    if (in_array($street['gender'], ['F', 'M', 'FX', 'MX', 'X', '+', '?'])) {
         fputcsv($fp, $street);
     } else {
         fputcsv($fp2, $street);
@@ -104,7 +105,7 @@ file_put_contents(sprintf('cities/%s/data/statistics.json', $city), json_encode(
 
 echo PHP_EOL;
 
-$total = $count['F'] + $count['M'] + $count['FX'] + $count['MX'] + $count['X'] + $count['+'];
+$total = $count['F'] + $count['M'] + $count['FX'] + $count['MX'] + $count['X'] + $count['+'] + $count['?'];
 
 printf('Person: %d%s', $total, PHP_EOL);
 printf('Female (cis): %d (%.2f %%)%s', $count['F'], $count['F'] / $total * 100, PHP_EOL);
@@ -113,6 +114,7 @@ printf('Female (transgender): %d (%.2f %%)%s', $count['FX'], $count['FX'] / $tot
 printf('Male (transgender): %d (%.2f %%)%s', $count['MX'], $count['MX'] / $total * 100, PHP_EOL);
 printf('Intersex: %d (%.2f %%)%s', $count['X'], $count['X'] / $total * 100, PHP_EOL);
 printf('Multiple: %d (%.2f %%)%s', $count['+'], $count['+'] / $total * 100, PHP_EOL);
+printf('Unknown: %d (%.2f %%)%s', $count['?'], $count['?'] / $total * 100, PHP_EOL);
 
 echo PHP_EOL;
 

@@ -75,6 +75,17 @@ function extractWikidata(
         ARRAY_FILTER_USE_KEY
     );
 
+    $nicknames = null;
+    if (isset($entity['claims']['P1449'])) {
+        foreach ($entity['claims']['P1449'] as $value) {
+            $language = $value['mainsnak']['datavalue']['value']['language'];
+
+            if (in_array($language, $languages, true)) {
+                $nicknames[$language] = $value['mainsnak']['datavalue']['value'];
+            }
+        }
+    }
+
     $sitelinks = array_filter(
         $entity['sitelinks'],
         function ($language) use ($languages) {
@@ -101,6 +112,7 @@ function extractWikidata(
         'person'       => $person,
         'labels'       => $labels,
         'descriptions' => $descriptions,
+        'nicknames'    => $nicknames,
         'gender'       => is_null($genderId) ? null : extractGender($genderId),
         'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 1, 4)),
         'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 1, 4)),

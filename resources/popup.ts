@@ -5,6 +5,7 @@ import getName from "./wikidata/labels";
 import getBirth from "./wikidata/birth";
 import getDeath from "./wikidata/death";
 import getDescription from "./wikidata/descriptions";
+import getNickname from "./wikidata/nicknames";
 import getWikipedia from "./wikidata/sitelinks";
 
 import colors from "./colors";
@@ -41,6 +42,7 @@ function popupDetails(
   const birth = getBirth(details);
   const death = getDeath(details);
   const description = getDescription(details, lang);
+  const nickname = getNickname(details, lang);
   const gender = getGender(details);
   const wikipedia = getWikipedia(details, lang);
 
@@ -50,6 +52,9 @@ function popupDetails(
 
   htmlDetails += '<div class="popup-name">';
   htmlDetails += `<span class="popup-name__name">${name}</span>`;
+  if (nickname !== null) {
+    htmlDetails += ` (<span class="popup-name__nickname">${nickname}</span>)`;
+  }
   if (details.person === true && gender !== null) {
     const highlightColor = colors[gender.toLowerCase()] ?? "#fff";
     htmlDetails += `<span class="highlight-low" style="background:linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, ${highlightColor} 65%);"></span>`;

@@ -1,0 +1,64 @@
+.mapboxgl-popup {
+  animation: fadein 0.2s;
+}
+
+.mapboxgl-popup-content {
+  min-width: 200px;
+  padding-bottom: 10px;
+
+  & > .popup-wikidata {
+    font-size: 0.8rem;
+    padding: 6px;
+
+    & > .popup-name {
+      margin-bottom: 6px;
+      display: inline-block;
+      position: relative;
+      font-size: 1.3rem;
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+
+      & > .highlight-low {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0.5;
+      }
+
+      & > .popup-name__name {
+        white-space: nowrap;
+      }
+
+      & > .popup-name__nickname {
+        white-space: nowrap;
+        font-style: italic;
+      }
+    }
+
+    & > .popup-description {
+      margin-bottom: 0.5rem;
+    }
+
+    & > .popup-links {
+      margin-top: 10px;
+    }
+  }
+
+  & > hr {
+    margin: 0.2rem 0 0.2rem;
+  }
+
+  & > .popup-streetname {
+    padding: 6px;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

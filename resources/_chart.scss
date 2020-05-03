@@ -1,0 +1,18 @@
+#chart-overlay {
+  background: rgba(255, 255, 255, 1);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  bottom: 50px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  width: 300px;
+}
+#gender-chart-legend td {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+#count-information {
+  margin-top: 10px;
+}

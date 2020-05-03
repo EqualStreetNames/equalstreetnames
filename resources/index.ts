@@ -1,5 +1,6 @@
 "use strict";
 
+import "bootstrap/js/dist/dropdown";
 import "bootstrap/js/dist/modal";
 
 import initChart from "./chart";

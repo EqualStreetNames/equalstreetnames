@@ -2,6 +2,17 @@
 @import "../node_modules/@fortawesome/fontawesome-free/css/solid.css";
 @import "../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
 
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/modal";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/utilities";
+
 @import "loader";
 @import "map";
 @import "popup";

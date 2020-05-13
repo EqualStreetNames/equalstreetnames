@@ -8,8 +8,10 @@
   },
   "scripts": {
     "build:belgrade": "parcel build cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade --no-source-maps",
+    "build:brugge": "parcel build cities/brugge/html/index.html cities/brugge/html/*/index.html --global app --out-dir dist/brugge --no-source-maps",
     "build:brussels": "parcel build cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels --no-source-maps",
     "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade",
+    "serve:brugge": "parcel serve cities/brugge/html/index.html cities/brugge/html/*/index.html --global app --out-dir dist/brugge",
     "serve:brussels": "parcel serve cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels"
   },
   "repository": {
@@ -47,6 +49,10 @@
       {
         "outDirPattern": "**/dist/belgrade",
         "staticPath": "cities/belgrade/data"
+      },
+      {
+        "outDirPattern": "**/dist/brugge",
+        "staticPath": "cities/brugge/data"
       },
       {
         "outDirPattern": "**/dist/brussels",

@@ -30,14 +30,14 @@
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.3.1",
     "sass": "^1.26.5",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
     "mapbox-gl": "^1.10.0",
     "popper.js": "^1.16.1"
   },

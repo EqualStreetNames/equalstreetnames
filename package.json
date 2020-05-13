@@ -7,10 +7,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "build:belgrade": "parcel build cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --no-source-maps",
-    "build:brussels": "parcel build cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --no-source-maps",
-    "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app",
-    "serve:brussels": "parcel serve cities/brussels/html/index.html cities/brussels/html/*/index.html --global app"
+    "build:belgrade": "parcel build cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade --no-source-maps",
+    "build:brussels": "parcel build cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels --no-source-maps",
+    "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade",
+    "serve:brussels": "parcel serve cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,15 @@
   },
   "staticFiles": {
     "excludeGlob": "*.{csv,md}",
-    "staticPath": "cities/brussels/data"
+    "staticPath": [
+      {
+        "outDirPattern": "**/dist/belgrade",
+        "staticPath": "cities/belgrade/data"
+      },
+      {
+        "outDirPattern": "**/dist/brussels",
+        "staticPath": "cities/brussels/data"
+      }
+    ]
   }
 }

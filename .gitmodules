@@ -7,3 +7,6 @@
 [submodule "cities/brugge"]
 	path = cities/brugge
 	url = https://github.com/openknowledgebe/equalstreetnames-brugge.git
+[submodule "cities/gent"]
+	path = cities/gent
+	url = https://github.com/openknowledgebe/equalstreetnames-gent.git

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use GuzzleHttp\Exception\BadResponseException;
 
-chdir(__DIR__ . '/../');
+chdir(__DIR__.'/../');
 
 require 'vendor/autoload.php';
 

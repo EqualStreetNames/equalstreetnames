@@ -100,8 +100,10 @@ function extractTags(
                 ]
             );
 
-            $properties['gender'] = $properties['details']['person'] === true ?
-                $properties['details']['gender'] : null;
+            if (!is_null($properties['details'])) {
+                $properties['gender'] = $properties['details']['person'] === true ?
+                    $properties['details']['gender'] : null;
+            }
         }
     } elseif ($type === 'relation' && isset($gender['relation'], $gender['relation'][(string) $element['id']])) {
         $properties['gender'] = $gender['relation'][(string) $element['id']];

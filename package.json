@@ -11,10 +11,12 @@
     "build:brugge": "parcel build cities/brugge/html/index.html cities/brugge/html/*/index.html --global app --out-dir dist/brugge --no-source-maps",
     "build:brussels": "parcel build cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels --no-source-maps",
     "build:gent": "parcel build cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent --no-source-maps",
+    "build:leuven": "parcel build cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven --no-source-maps",
     "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade",
     "serve:brugge": "parcel serve cities/brugge/html/index.html cities/brugge/html/*/index.html --global app --out-dir dist/brugge",
     "serve:brussels": "parcel serve cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels",
-    "serve:gent": "parcel serve cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent"
+    "serve:gent": "parcel serve cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent",
+    "serve:leuven": "parcel serve cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven"
   },
   "repository": {
     "type": "git",
@@ -63,6 +65,10 @@
       {
         "outDirPattern": "**/dist/gent",
         "staticPath": "cities/gent/data"
+      },
+      {
+        "outDirPattern": "**/dist/leuven",
+        "staticPath": "cities/leuven/data"
       }
     ]
   }

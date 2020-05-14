@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-chdir(__DIR__.'/../');
+use GuzzleHttp\Exception\BadResponseException;
+
+chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
@@ -56,27 +58,39 @@ foreach ($tagged as $element) {
             $path = sprintf('%s/%s.json', $directory, $e);
 
             if (!file_exists($path)) {
-                file_put_contents($path, get($e));
+                $client = new \GuzzleHttp\Client();
+
+                try {
+                    $response = $client->request(
+                        'GET',
+                        sprintf('https://www.wikidata.org/wiki/Special:EntityData/%s.json', $e),
+                        [
+                            'sink' => $path,
+                        ]
+                    );
+                } catch (BadResponseException $exception) {
+                    if ($exception->getCode() === 404) {
+                        printf(
+                            'Wikidata item %s for %s(%d) does not exist.%s',
+                            $e,
+                            $element['type'],
+                            $element['id'],
+                            PHP_EOL
+                        );
+                    } else {
+                        printf(
+                            'Error while fetching Wikidata item %s for %s(%d): %s.%s',
+                            $e,
+                            $element['type'],
+                            $element['id'],
+                            $exception->getMessage(),
+                            PHP_EOL
+                        );
+                    }
+                }
             }
         }
     }
 }
 
 exit(0);
-
-function get(string $id): string
-{
-    $client = new \GuzzleHttp\Client();
-    $response = $client->request(
-        'GET',
-        sprintf('https://www.wikidata.org/wiki/Special:EntityData/%s.json', $id)
-    );
-
-    $status = $response->getStatusCode();
-
-    if ($status !== 200) {
-        throw new ErrorException($response->getReasonPhrase());
-    }
-
-    return (string) $response->getBody();
-}

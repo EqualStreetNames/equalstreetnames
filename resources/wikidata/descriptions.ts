@@ -2,12 +2,7 @@
 
 export default function(
   person: {
-    descriptions?: {
-      de?: { language: string; value: string };
-      en?: { language: string; value: string };
-      fr?: { language: string; value: string };
-      nl?: { language: string; value: string };
-    };
+    descriptions?: Record<string, { language: string; value: string }>;;
   },
   lang: string
 ): string | null {
@@ -18,13 +13,8 @@ export default function(
     return null;
   }
 
-  const description =
-    (person.descriptions as any)[lang] ??
-    person.descriptions.en ??
-    person.descriptions.fr ??
-    person.descriptions.nl ??
-    person.descriptions.de ??
-    null;
+  const keys = Object.keys(person.descriptions);
+  const description = person.descriptions[lang] ?? person.descriptions[keys[0]] ?? null;
 
   return description !== null ? description.value : null;
 }

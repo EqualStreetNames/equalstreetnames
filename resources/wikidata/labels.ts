@@ -2,12 +2,7 @@
 
 export default function(
   person: {
-    labels?: {
-      de?: { language: string; value: string };
-      en?: { language: string; value: string };
-      fr?: { language: string; value: string };
-      nl?: { language: string; value: string };
-    };
+    labels?: Record<string, { language: string; value: string }>;
   },
   lang: string
 ): string | null {
@@ -18,13 +13,8 @@ export default function(
     return null;
   }
 
-  const label =
-    (person.labels as any)[lang] ??
-    person.labels.en ??
-    person.labels.fr ??
-    person.labels.nl ??
-    person.labels.de ??
-    null;
+  const keys = Object.keys(person.labels);
+  const label = person.labels[lang] ?? person.labels[keys[0]] ?? null;
 
   return label !== null ? label.value : null;
 }

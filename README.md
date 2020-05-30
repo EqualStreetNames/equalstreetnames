@@ -37,8 +37,8 @@ See [`docs/README.md`](./docs/README.md)
 
 | Country | City     | Link                               | Data Repository                                                                           | Maintainer     |
 | ------- | -------- | ---------------------------------- | ----------------------------------------------------------------------------------------- | -------------- |
-| 🇧🇪      | Brussels | https://equalstreetnames.brussels/    | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | @jbelien       |
-| 🇷🇸      | Belgrade | https://naziviulica.openstreetmap.rs/ | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | @stalker314314 |
+| 🇧🇪      | Brussels | https://equalstreetnames.brussels/    | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | [@jbelien](https://github.com/jbelien/) |
+| 🇷🇸      | Belgrade | https://naziviulica.openstreetmap.rs/ | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | [@stalker314314](https://github.com/stalker314314/) |
 
 See [`docs/replicate.md`](./docs/replicate.md)
 

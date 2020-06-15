@@ -44,7 +44,7 @@
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
     "jquery": "^3.5.1",
-    "mapbox-gl": "^1.10.1",
+    "mapbox-gl": "^1.11.0",
     "popper.js": "^1.16.1"
   },
   "staticFiles": {

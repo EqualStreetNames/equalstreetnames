@@ -30,11 +30,11 @@
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@types/chart.js": "^2.9.21",
-    "@types/mapbox-gl": "^1.10.2",
+    "@types/mapbox-gl": "^1.10.4",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.12.4",
-    "parcel-plugin-static-files-copy": "^2.4.1",
+    "parcel-plugin-static-files-copy": "^2.4.3",
     "sass": "^1.26.8",
     "typescript": "^3.9.5"
   },
@@ -44,7 +44,7 @@
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
     "jquery": "^3.5.1",
-    "mapbox-gl": "^1.10.1",
+    "mapbox-gl": "^1.11.0",
     "popper.js": "^1.16.1"
   },
   "staticFiles": {

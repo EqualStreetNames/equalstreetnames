@@ -30,7 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@types/chart.js": "^2.9.21",
-    "@types/mapbox-gl": "^1.10.4",
+    "@types/mapbox-gl": "^1.11.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.12.4",

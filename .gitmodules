@@ -13,3 +13,6 @@
 [submodule "cities/leuven"]
 	path = cities/leuven
 	url = https://github.com/openknowledgebe/equalstreetnames-leuven.git
+[submodule "cities/assen"]
+	path = cities/assen
+	url = https://github.com/RobinLinde/equalstreetnames-assen.git

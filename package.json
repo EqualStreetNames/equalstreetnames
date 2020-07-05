@@ -7,11 +7,13 @@
     "doc": "docs"
   },
   "scripts": {
+    "build:assen": "parcel build cities/assen/html/index.html cities/assen/html/*/index.html --global app --out-dir dist/assen --no-source-maps",
     "build:belgrade": "parcel build cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade --no-source-maps",
     "build:brugge": "parcel build cities/brugge/html/index.html cities/brugge/html/*/index.html --global app --out-dir dist/brugge --no-source-maps",
     "build:brussels": "parcel build cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels --no-source-maps",
     "build:gent": "parcel build cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent --no-source-maps",
     "build:leuven": "parcel build cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven --no-source-maps",
+	"serve:assen": "parcel serve cities/assen/html/index.html cities/assen/html/*/index.html --global app --out-dir dist/assen",
     "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade",
     "serve:brugge": "parcel serve cities/brugge/html/index.html cities/brugge/html/*/index.html --global app --out-dir dist/brugge",
     "serve:brussels": "parcel serve cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels",
@@ -50,6 +52,10 @@
   "staticFiles": {
     "excludeGlob": "*.{csv,md}",
     "staticPath": [
+	  {
+        "outDirPattern": "**/dist/assen",
+        "staticPath": "cities/assen/data"
+      },
       {
         "outDirPattern": "**/dist/belgrade",
         "staticPath": "cities/belgrade/data"

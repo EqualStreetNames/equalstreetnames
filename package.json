@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/openknowledgebe/equalstreetnames#readme",
   "devDependencies": {
-    "@babel/core": "^7.10.3",
+    "@babel/core": "^7.10.4",
     "@types/chart.js": "^2.9.22",
     "@types/mapbox-gl": "^1.11.0",
     "babel-core": "^6.26.3",

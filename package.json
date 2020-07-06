@@ -38,7 +38,7 @@
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.4.3",
     "sass": "^1.26.9",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.6"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",

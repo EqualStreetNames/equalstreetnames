@@ -17,6 +17,7 @@
     "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade",
     "serve:brugge": "parcel serve cities/brugge/html/index.html cities/brugge/html/*/index.html --global app --out-dir dist/brugge",
     "serve:brussels": "parcel serve cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels",
+    "serve:berlin": "parcel serve cities/berlin/html/index.html cities/berlin/html/*/index.html --global app --out-dir dist/berlin",
     "serve:gent": "parcel serve cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent",
     "serve:leuven": "parcel serve cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven"
   },
@@ -52,7 +53,7 @@
   "staticFiles": {
     "excludeGlob": "*.{csv,md}",
     "staticPath": [
-	  {
+      {
         "outDirPattern": "**/dist/assen",
         "staticPath": "cities/assen/data"
       },
@@ -67,6 +68,10 @@
       {
         "outDirPattern": "**/dist/brussels",
         "staticPath": "cities/brussels/data"
+      },
+      {
+        "outDirPattern": "**/dist/berlin",
+        "staticPath": "cities/berlin/data"
       },
       {
         "outDirPattern": "**/dist/gent",

@@ -43,7 +43,8 @@ function get(string $city): string
     $client = new \GuzzleHttp\Client();
     $response = $client->request(
         'GET',
-        sprintf('https://overpass-api.de/api/interpreter?data=%s', urlencode($query))
+        sprintf('https://overpass-api.de/api/interpreter?data=%s', urlencode($query)),
+        ['timeout' => 400]
     );
 
     $status = $response->getStatusCode();

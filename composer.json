@@ -20,5 +20,8 @@
             "@statistics"
         ],
         "wikidata": "php scripts/wikidata.php"
+    },
+    "config": {
+        "process-timeout": 800
     }
 }

@@ -40,6 +40,7 @@ See [`docs/README.md`](./docs/README.md)
 | 🇧🇪      | Brussels | https://equalstreetnames.brussels/    | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | [@jbelien](https://github.com/jbelien/) |
 | 🇷🇸      | Belgrade | https://naziviulica.openstreetmap.rs/ | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | [@stalker314314](https://github.com/stalker314314/) |
 | 🇳🇱      | Assen | https://esn.rlin.eu/    | [equalstreetnames-assen](https://github.com/robinlinde/equalstreetnames-assen) | [@robinlinde](https://github.com/robinlinde/) |
+| 🇩🇪      | Berlin | --    | [equalstreetnames-berlin](https://github.com/gislars/equalstreetnames-berlin) | [@gislars](https://github.com/gislars/) |
 
 See [`docs/replicate.md`](./docs/replicate.md)
 
@@ -82,6 +83,12 @@ See [`docs/replicate.md`](./docs/replicate.md)
 
       ```
       npm run serve:assen
+      ```
+
+   1. For Berlin, run
+
+      ```
+      npm run serve:berlin
       ```
 
 1. Once installed and running, go to <http://localhost:1234/index.html>

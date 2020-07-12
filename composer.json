@@ -13,6 +13,7 @@
         "overpass-way": "php scripts/overpass-way.php",
         "statistics": "php scripts/statistics.php",
         "update-data": [
+            "Composer\\Config::disableProcessTimeout",
             "@overpass-relation",
             "@overpass-way",
             "@wikidata",

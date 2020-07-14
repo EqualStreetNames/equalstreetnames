@@ -54,10 +54,6 @@
   "staticFiles": {
     "excludeGlob": "*.{csv,md}",
     "staticPath": [
-	  {
-        "outDirPattern": "**/dist/assen",
-        "staticPath": "cities/assen/data"
-      },
       {
         "outDirPattern": "**/dist/assen",
         "staticPath": "cities/assen/data"

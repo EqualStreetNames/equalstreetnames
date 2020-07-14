@@ -16,3 +16,6 @@
 [submodule "cities/assen"]
 	path = cities/assen
 	url = https://github.com/RobinLinde/equalstreetnames-assen.git
+[submodule "cities/berlin"]
+	path = cities/berlin
+	url = https://github.com/gislars/equalstreetnames-berlin.git

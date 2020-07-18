@@ -40,7 +40,7 @@ See [`docs/README.md`](./docs/README.md)
 | 🇧🇪      | Brussels | https://equalstreetnames.brussels/    | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | [@jbelien](https://github.com/jbelien/) |
 | 🇷🇸      | Belgrade | https://naziviulica.openstreetmap.rs/ | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | [@stalker314314](https://github.com/stalker314314/) |
 | 🇳🇱      | Assen | https://esn.rlin.eu/    | [equalstreetnames-assen](https://github.com/robinlinde/equalstreetnames-assen) | [@robinlinde](https://github.com/robinlinde/) |
-| 🇩🇪      | Berlin | --    | [equalstreetnames-berlin](https://github.com/gislars/equalstreetnames-berlin) | [@gislars](https://github.com/gislars/) |
+| 🇩🇪      | Berlin | https://equalstreetnames-berlin.openstreetmap.de/ | [equalstreetnames-berlin](https://github.com/gislars/equalstreetnames-berlin) | [@gislars](https://github.com/gislars/) |
 
 See [`docs/replicate.md`](./docs/replicate.md)
 

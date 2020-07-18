@@ -131,7 +131,7 @@ function extractGender(string $identifier): ?string
 {
     switch ($identifier) {
         case 'Q6581097': // male
-        case 'Q1052281': // male (cis)
+        case 'Q15145778': // male (cis)
 
             return 'M';
 

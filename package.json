@@ -32,18 +32,18 @@
   },
   "homepage": "https://github.com/openknowledgebe/equalstreetnames#readme",
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@types/chart.js": "^2.9.22",
+    "@babel/core": "^7.10.5",
+    "@types/chart.js": "^2.9.23",
     "@types/mapbox-gl": "^1.11.1",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.4.3",
     "sass": "^1.26.10",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.1",
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",

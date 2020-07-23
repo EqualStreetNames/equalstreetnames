@@ -19,3 +19,6 @@
 [submodule "cities/berlin"]
 	path = cities/berlin
 	url = https://github.com/gislars/equalstreetnames-berlin.git
+[submodule "cities/groningen"]
+	path = cities/groningen
+	url = https://github.com/robinlinde/equalstreetnames-groningen.git

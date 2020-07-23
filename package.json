@@ -12,6 +12,7 @@
     "build:brugge": "parcel build cities/brugge/html/index.html cities/brugge/html/*/index.html --global app --out-dir dist/brugge --no-source-maps",
     "build:brussels": "parcel build cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels --no-source-maps",
     "build:gent": "parcel build cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent --no-source-maps",
+    "build:groningen": "parcel build cities/groningen/html/index.html cities/groningen/html/*/index.html --global app --out-dir dist/groningen --no-source-maps",
     "build:leuven": "parcel build cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven --no-source-maps",
     "build:berlin": "parcel build cities/berlin/html/index.html cities/berlin/html/*/index.html --global app --out-dir dist/berlin --no-source-maps",
     "serve:assen": "parcel serve cities/assen/html/index.html cities/assen/html/*/index.html --global app --out-dir dist/assen",
@@ -20,6 +21,7 @@
     "serve:brussels": "parcel serve cities/brussels/html/index.html cities/brussels/html/*/index.html --global app --out-dir dist/brussels",
     "serve:berlin": "parcel serve cities/berlin/html/index.html cities/berlin/html/*/index.html --global app --out-dir dist/berlin",
     "serve:gent": "parcel serve cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent",
+    "serve:groningen": "parcel serve cities/groningen/html/index.html cities/groningen/html/*/index.html --global app --out-dir dist/groningen",
     "serve:leuven": "parcel serve cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven"
   },
   "repository": {
@@ -77,6 +79,10 @@
       {
         "outDirPattern": "**/dist/gent",
         "staticPath": "cities/gent/data"
+      },
+      {
+        "outDirPattern": "**/dist/groningen",
+        "staticPath": "cities/groningen/data"
       },
       {
         "outDirPattern": "**/dist/leuven",

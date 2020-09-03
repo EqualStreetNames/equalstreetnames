@@ -70,7 +70,7 @@ See [`docs/replicate.md`](./docs/replicate.md)
 
    - 🇳🇱 Assen, Netherlands: Run `npm run serve:assen`
    - 🇷🇸 Belgrade, Serbia: Run `npm run serve:belgrade`
-   - 🇩🇪 Berlin, Belgium: Run `npm run serve:berlin`
+   - 🇩🇪 Berlin, Germany: Run `npm run serve:berlin`
    - 🇧🇪 Brussels, Belgium: Run `npm run serve:brussels`
    - 🇳🇱 Groningen, Netherlands: Run `npm run serve:groningen`
 

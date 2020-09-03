@@ -38,10 +38,10 @@ See [`docs/README.md`](./docs/README.md)
 | Country | City     | Link                               | Data Repository                                                                           | Maintainer     |
 | ------- | -------- | ---------------------------------- | ----------------------------------------------------------------------------------------- | -------------- |
 | 🇧🇪      | Brussels | https://equalstreetnames.brussels/    | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | [@jbelien](https://github.com/jbelien/) |
-| 🇷🇸      | Belgrade | https://naziviulica.openstreetmap.rs/ | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | [@stalker314314](https://github.com/stalker314314/) |
-| 🇳🇱      | Assen | https://assen.equalstreetnames.eu/    | [equalstreetnames-assen](https://github.com/robinlinde/equalstreetnames-assen) | [@robinlinde](https://github.com/robinlinde/) |
 | 🇩🇪      | Berlin | https://equalstreetnames-berlin.openstreetmap.de/ | [equalstreetnames-berlin](https://github.com/gislars/equalstreetnames-berlin) | [@gislars](https://github.com/gislars/) |
+| 🇳🇱      | Assen | https://assen.equalstreetnames.eu/    | [equalstreetnames-assen](https://github.com/robinlinde/equalstreetnames-assen) | [@robinlinde](https://github.com/robinlinde/) |
 | 🇳🇱      | Groningen | https://groningen.equalstreetnames.eu/    | [equalstreetnames-groningen](https://github.com/robinlinde/equalstreetnames-groningen) | [@robinlinde](https://github.com/robinlinde/) |
+| 🇷🇸      | Belgrade | https://naziviulica.openstreetmap.rs/ | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | [@stalker314314](https://github.com/stalker314314/) |
 
 See [`docs/replicate.md`](./docs/replicate.md)
 
@@ -68,34 +68,10 @@ See [`docs/replicate.md`](./docs/replicate.md)
 
 1. Choose the city you want to run locally :
 
-   1. For Brussels, run
-
-      ```
-      npm run serve:brussels
-      ```
-
-   1. For Belgrade, run
-
-      ```
-      npm run serve:belgrade
-      ```
-
-   1. For Assen, run
-
-      ```
-      npm run serve:assen
-      ```
-
-   1. For Berlin, run
-
-      ```
-      npm run serve:berlin
-      ```
-
-   1. For Groningen, run
-
-      ```
-      npm run serve:groningen
-      ```
+   - 🇳🇱 Assen, Netherlands: Run `npm run serve:assen`
+   - 🇷🇸 Belgrade, Serbia: Run `npm run serve:belgrade`
+   - 🇩🇪 Berlin, Germany: Run `npm run serve:berlin`
+   - 🇧🇪 Brussels, Belgium: Run `npm run serve:brussels`
+   - 🇳🇱 Groningen, Netherlands: Run `npm run serve:groningen`
 
 1. Once installed and running, go to <http://localhost:1234/index.html>

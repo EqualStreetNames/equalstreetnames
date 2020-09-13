@@ -107,6 +107,8 @@ function extractWikidata(
     $dateOfBirth = $entity['claims']['P569'][0]['mainsnak']['datavalue']['value']['time'] ?? null;
     $dateOfDeath = $entity['claims']['P570'][0]['mainsnak']['datavalue']['value']['time'] ?? null;
 
+    $image = $entity['claims']['P18'][0]['mainsnak']['datavalue']['value'] ?? null;
+
     return [
         'wikidata'     => $identifier,
         'person'       => $person,
@@ -117,6 +119,7 @@ function extractWikidata(
         'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 1, 4)),
         'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 1, 4)),
         'sitelinks'    => $sitelinks,
+        'image'        => $image,
     ];
 }
 

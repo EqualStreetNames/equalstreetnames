@@ -7,6 +7,7 @@ import getDeath from "./wikidata/death";
 import getDescription from "./wikidata/descriptions";
 import getNickname from "./wikidata/nicknames";
 import getWikipedia from "./wikidata/sitelinks";
+import getImage from "./wikidata/image";
 
 import colors from "./colors";
 
@@ -45,10 +46,17 @@ function popupDetails(
   const nickname = getNickname(details, lang);
   const gender = getGender(details);
   const wikipedia = getWikipedia(details, lang);
+  const image = getImage(details, 150, 150);
 
   let htmlDetails = "";
 
   htmlDetails += '<div class="popup-wikidata">';
+
+  if (image !== null) {
+    htmlDetails += '<div class="media">';
+    htmlDetails += `<img class="mr-3" src="${image}" alt="${name}" />`;
+    htmlDetails += '<div class="media-body">';
+  }
 
   htmlDetails += '<div class="popup-name">';
   htmlDetails += `<span class="popup-name__name">${name}</span>`;
@@ -85,6 +93,10 @@ function popupDetails(
   htmlDetails += "</div>";
 
   htmlDetails += "</div>";
+
+  if (image !== null) {
+    htmlDetails += "</div>";
+  }
 
   htmlDetails += "<hr>";
 

@@ -7,7 +7,7 @@ on:
       - 'cities/gent' 
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:

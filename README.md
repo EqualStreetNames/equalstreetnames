@@ -35,13 +35,16 @@ See [`docs/README.md`](./docs/README.md)
 
 ## Replicate the EqualStreetNames project for your city
 
-| Country | City     | Link                               | Data Repository                                                                           | Maintainer     |
-| ------- | -------- | ---------------------------------- | ----------------------------------------------------------------------------------------- | -------------- |
-| 🇧🇪      | Brussels | https://equalstreetnames.brussels/    | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | [@jbelien](https://github.com/jbelien/) |
-| 🇩🇪      | Berlin | https://equalstreetnames-berlin.openstreetmap.de/ | [equalstreetnames-berlin](https://github.com/gislars/equalstreetnames-berlin) | [@gislars](https://github.com/gislars/) |
-| 🇳🇱      | Assen | https://assen.equalstreetnames.eu/    | [equalstreetnames-assen](https://github.com/robinlinde/equalstreetnames-assen) | [@robinlinde](https://github.com/robinlinde/) |
-| 🇳🇱      | Groningen | https://groningen.equalstreetnames.eu/    | [equalstreetnames-groningen](https://github.com/robinlinde/equalstreetnames-groningen) | [@robinlinde](https://github.com/robinlinde/) |
-| 🇷🇸      | Belgrade | https://naziviulica.openstreetmap.rs/ | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | [@stalker314314](https://github.com/stalker314314/) |
+| Country | City      | Link                                                | Data Repository                                                                           | Maintainer                                          |
+|---------|-----------|-----------------------------------------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------|
+| 🇧🇪    | Brussels  | <https://equalstreetnames.brussels/>                | [equalstreetnames-brussels](https://github.com/openknowledgebe/equalstreetnames-brussels) | [@jbelien](https://github.com/jbelien/)             |
+| 🇧🇪    | Brugge    | <https://brugge.equalstreetnames.be/>               | [equalstreetnames-brugge](https://github.com/openknowledgebe/equalstreetnames-brugge)     | [@jbelien](https://github.com/jbelien/)             |
+| 🇧🇪    | Gent      | <https://gent.equalstreetnames.be/>                 | [equalstreetnames-gent](https://github.com/openknowledgebe/equalstreetnames-gent)         | [@jbelien](https://github.com/jbelien/)             |
+| 🇧🇪    | Leuven    | <https://leuven.equalstreetnames.be/>               | [equalstreetnames-leuven](https://github.com/openknowledgebe/equalstreetnames-leuven)     | [@jbelien](https://github.com/jbelien/)             |
+| 🇩🇪    | Berlin    | <https://equalstreetnames-berlin.openstreetmap.de/> | [equalstreetnames-berlin](https://github.com/gislars/equalstreetnames-berlin)             | [@gislars](https://github.com/gislars/)             |
+| 🇳🇱    | Assen     | <https://assen.equalstreetnames.eu/>                | [equalstreetnames-assen](https://github.com/robinlinde/equalstreetnames-assen)            | [@robinlinde](https://github.com/robinlinde/)       |
+| 🇳🇱    | Groningen | <https://groningen.equalstreetnames.eu/>            | [equalstreetnames-groningen](https://github.com/robinlinde/equalstreetnames-groningen)    | [@robinlinde](https://github.com/robinlinde/)       |
+| 🇷🇸    | Belgrade  | <https://naziviulica.openstreetmap.rs/>             | [equalstreetnames-belgrade](https://github.com/stalker314314/equalstreetnames-belgrade)   | [@stalker314314](https://github.com/stalker314314/) |
 
 See [`docs/replicate.md`](./docs/replicate.md)
 

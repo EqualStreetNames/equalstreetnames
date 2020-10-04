@@ -5,13 +5,13 @@ with the support of [OpenStreetMap Belgium](https://openstreetmap.be/) and [Wiki
 
 EqualStreetNames is made possible thanks to [equal.brussels](http://equal.brussels/).
 
-## Why EqualStreetNames.Brussels?
+## Why EqualStreetNames.Brussels
 
 The names of public spaces (streets, avenues, squares and others) define the identity of a city and how citizens interact with it. The region of Brussels suffers from a major inequality between male and female street names and we want to help fix this.
 
 There are several ways to approach the inequality of street names and leverage a positive change in our society. Ours is with the use of Open Data to create a **map visualizing the streetnames of Brussels by gender**.
 
-## How did we make this map?
+## How did we make this map
 
 To make this happen, we used [open data](http://opendefinition.org/) - data which can be freely used, modified, and shared by anyone for any purpose - from [OpenStreetMap](https://openstreetmap.org/) and [Wikipedia](https://www.wikipedia.org/).
 
@@ -52,14 +52,14 @@ See [`docs/replicate.md`](./docs/replicate.md)
 
 1. Clone the repository
 
-   ```
+   ```cmd
    git clone https://github.com/openknowledgebe/equalstreetnames.git
    cd equalstreetnames
    ```
 
 1. Install dependencies
 
-   ```
+   ```cmd
    npm install
    ```
 

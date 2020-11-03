@@ -8,9 +8,14 @@
   right: 0;
   width: 300px;
 }
-#gender-chart-legend td {
-  padding-bottom: 0;
-  padding-top: 0;
+
+#gender-chart-legend {
+  width: 100%;
+
+  td {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
 }
 
 #count-information {

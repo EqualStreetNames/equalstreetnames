@@ -29,6 +29,8 @@ jobs:
         run: composer validate
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Update sub-modules
+        run: git submodule update --remote --merge
       - name: Run update
         run: composer run update-data -- --city=brussels
       - name: Upload artifact

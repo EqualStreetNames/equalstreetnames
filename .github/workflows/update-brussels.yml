@@ -29,8 +29,11 @@ jobs:
         run: composer validate
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Checkout submodule to master
+        working-directory: cities/brussels
+        run: git checkout -q master
       - name: Update sub-modules
-        run: git submodule update --remote --merge
+        run: git submodule update --remote --merge cities/brussels
       - name: Run update
         run: composer run update-data -- --city=brussels
       - name: Upload artifact

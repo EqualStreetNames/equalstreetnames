@@ -31,7 +31,7 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
       - name: Run update
         run: composer run update-data -- --city=brussels
-      - name: Upload statistics
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: Brussels
@@ -42,7 +42,6 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git pull
           git add data/*
           git commit -m "🗃 Update data"
           git push

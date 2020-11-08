@@ -41,16 +41,20 @@ jobs:
         with:
           name: Brussels
           path: cities/brussels/data/*
-      - name: Push to sub-module
+      - name: Commit sub-module
         if: ${{ github.event != 'pull_request' }}
         working-directory: cities/brussels
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git checkout master
           git add data/*
           git commit -m "🗃 Update data"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        if: ${{ github.event != 'pull_request' }}
+        working-directory: cities/brussels
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
       - name: Push to repository
         if: ${{ github.event != 'pull_request' }}
         run: |

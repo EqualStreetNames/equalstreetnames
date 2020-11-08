@@ -55,6 +55,7 @@ jobs:
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           directory: cities/brussels
+          repository: openknowledgebe/equalstreetnames-brussels
       - name: Push to repository
         if: ${{ github.event != 'pull_request' }}
         run: |

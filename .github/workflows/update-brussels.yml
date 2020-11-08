@@ -49,12 +49,12 @@ jobs:
           git config user.email github-actions@github.com
           git add data/*
           git commit -m "🗃 Update data"
-      - name: Push changes
+      - name: Push to sub-module
         uses: ad-m/github-push-action@master
         if: ${{ github.event != 'pull_request' }}
-        working-directory: cities/brussels
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
+          directory: cities/brussels
       - name: Push to repository
         if: ${{ github.event != 'pull_request' }}
         run: |
@@ -62,5 +62,5 @@ jobs:
           git config user.email github-actions@github.com
           git pull
           git add cities/brussels
-          git commit -m "🗃 Update data"
+          git commit -m "🗃 Update Brussels sub-module"
           git push

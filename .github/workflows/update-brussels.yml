@@ -56,12 +56,13 @@ jobs:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           directory: cities/brussels
           repository: openknowledgebe/equalstreetnames-brussels
-      - name: Push to repository
+      - name: Commit repository
         if: ${{ github.event != 'pull_request' }}
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git pull
           git add cities/brussels
           git commit -m "🗃 Update Brussels sub-module"
-          git push
+      - name: Push to repository
+        uses: ad-m/github-push-action@master
+        if: ${{ github.event != 'pull_request' }}
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}

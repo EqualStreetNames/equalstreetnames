@@ -1,0 +1,57 @@
+name: Update Brussels data
+
+on:
+  push:
+    paths:
+      - ".github/workflows/update-brussels.yml"
+      - "cities/brussels/config.php"
+      - "cities/brussels/overpass/*"
+  pull_request:
+    paths:
+      - ".github/workflows/update-brussels.yml"
+      - "cities/brussels/config.php"
+      - "cities/brussels/overpass/*"
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          submodules: true
+      - name: Use PHP 7.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: curl, pdo, sqlite3
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Run update
+        run: composer run update-data -- --city=brussels
+      - name: Upload statistics
+        uses: actions/upload-artifact@v2
+        with:
+          name: Brussels
+          path: cities/brussels/data/*
+      - name: Push to sub-module
+        if: ${{ github.event != 'pull_request' }}
+        working-directory: cities/brussels
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git pull
+          git add data/*
+          git commit -m "🗃 Update data"
+          git push
+      - name: Push to repository
+        if: ${{ github.event != 'pull_request' }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git pull
+          git add cities/brussels
+          git commit -m "🗃 Update data"
+          git push

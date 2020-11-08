@@ -1,6 +1,9 @@
 name: Update Brussels data
 
 on:
+  # Run every Monday at 1:00 UTC
+  schedule:
+    - cron: "0 1 * * 1"
   push:
     paths:
       - ".github/workflows/update-brussels.yml"

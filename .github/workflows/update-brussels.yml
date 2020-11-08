@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          submodules: true
       - name: Use PHP 7.4
         uses: shivammathur/setup-php@v2
         with:

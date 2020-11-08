@@ -45,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: leuven
+          name: Leuven
           path: cities/leuven/data/*
 
       - name: Commit sub-module
@@ -68,6 +68,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git pull
           git add cities/leuven
           git commit -m "🗃 Update Leuven sub-module"
       - name: Push to repository

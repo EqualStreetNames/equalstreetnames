@@ -35,7 +35,7 @@
   "homepage": "https://github.com/openknowledgebe/equalstreetnames#readme",
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@types/chart.js": "^2.9.27",
+    "@types/chart.js": "^2.9.28",
     "@types/mapbox-gl": "^1.12.7",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",

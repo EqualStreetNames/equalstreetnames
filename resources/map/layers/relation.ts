@@ -1,6 +1,6 @@
 "use strict";
 
-import { Map } from "mapbox-gl";
+import { Map } from "maplibre-gl";
 
 import layout from "../style/layout";
 import paint from "../style/paint";

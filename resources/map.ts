@@ -1,6 +1,6 @@
 "use strict";
 
-import mapboxgl, { Map, MapSourceDataEvent } from "mapbox-gl";
+import mapboxgl, { Map, MapSourceDataEvent } from "maplibre-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 import addRelations from "./map/layers/relation";

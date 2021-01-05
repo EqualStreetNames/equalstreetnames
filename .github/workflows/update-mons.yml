@@ -1,0 +1,78 @@
+name: Update Mons data
+
+on:
+  # Run every Monday at 1:00 UTC
+  schedule:
+    - cron: "0 1 * * 1"
+  push:
+    paths:
+      - ".github/workflows/update-mons.yml"
+      - "cities/mons/config.php"
+      - "cities/mons/overpass/*"
+  pull_request:
+    paths:
+      - ".github/workflows/update-mons.yml"
+      - "cities/mons/config.php"
+      - "cities/mons/overpass/*"
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          submodules: true
+      - name: Use PHP 7.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: curl, pdo, sqlite3
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Checkout submodule to master
+        working-directory: cities/mons
+        run: git checkout -q master
+      - name: Update sub-modules
+        run: git submodule update --remote --merge cities/mons
+
+      - name: Run update
+        run: composer run update-data -- --city=mons
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Mons
+          path: cities/mons/data/*
+
+      - name: Commit sub-module
+        if: ${{ github.event != 'pull_request' }}
+        working-directory: cities/mons
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add data/*
+          git commit -m "🗃 Update data"
+      - name: Push to sub-module
+        uses: ad-m/github-push-action@master
+        if: ${{ github.event != 'pull_request' }}
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          directory: cities/mons
+          repository: openknowledgebe/equalstreetnames-mons
+      - name: Commit repository
+        if: ${{ github.event != 'pull_request' }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git pull
+          git add cities/mons
+          git commit -m "🗃 Update Mons sub-module"
+      - name: Push to repository
+        uses: ad-m/github-push-action@master
+        if: ${{ github.event != 'pull_request' }}
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}

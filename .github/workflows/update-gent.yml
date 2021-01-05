@@ -52,8 +52,8 @@ jobs:
         if: ${{ github.event != 'pull_request' }}
         working-directory: cities/gent
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add data/*
           git commit -m "🗃 Update data"
       - name: Push to sub-module
@@ -66,8 +66,8 @@ jobs:
       - name: Commit repository
         if: ${{ github.event != 'pull_request' }}
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git pull
           git add cities/gent
           git commit -m "🗃 Update Gent sub-module"

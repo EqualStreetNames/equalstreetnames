@@ -22,3 +22,6 @@
 [submodule "cities/groningen"]
 	path = cities/groningen
 	url = https://github.com/robinlinde/equalstreetnames-groningen.git
+[submodule "cities/mons"]
+	path = cities/mons
+	url = https://github.com/openknowledgebe/equalstreetnames-mons.git

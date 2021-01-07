@@ -1,6 +1,6 @@
 "use strict";
 
-import mapboxgl, { Map, MapSourceDataEvent } from "mapbox-gl";
+import mapboxgl, { Map, NavigationControl, ScaleControl } from "maplibre-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 import addRelations from "./map/layers/relation";
@@ -15,7 +15,7 @@ mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
 export default function (): Map {
   // Initialize map.
-  map = new mapboxgl.Map({
+  map = new Map({
     center,
     container: "map",
     hash: true,
@@ -24,10 +24,10 @@ export default function (): Map {
   });
 
   // Add controls.
-  const nav = new mapboxgl.NavigationControl({ showCompass: false });
+  const nav = new NavigationControl({ showCompass: false });
   map.addControl(nav, "top-left");
 
-  const scale = new mapboxgl.ScaleControl({ unit: "metric" });
+  const scale = new ScaleControl({ unit: "metric" });
   map.addControl(scale);
 
   const geocoder = new MapboxGeocoder({

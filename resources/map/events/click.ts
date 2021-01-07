@@ -1,6 +1,6 @@
 "use strict";
 
-import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from "mapbox-gl";
+import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from "maplibre-gl";
 
 import popupContent from "../../popup";
 

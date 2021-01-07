@@ -1,6 +1,6 @@
 "use strict";
 
-import { Map, MapMouseEvent } from "mapbox-gl";
+import { Map, MapMouseEvent } from "maplibre-gl";
 
 import onClick from "./events/click";
 import onMouseEnter from "./events/mouseenter";

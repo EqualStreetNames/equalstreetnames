@@ -61,6 +61,12 @@ function extractData(string $type, object $feature, array $streets)
         'type'     => $type,
     ];
 
+    if (is_null($data['name'])) {
+        printf('Streetname should not be NULL: %s(%s).%s', $type, $feature->id, PHP_EOL);
+
+        return false;
+    }
+
     if (($street = already($data['name'], $data['gender'], $streets)) === false) {
         return $data;
     } elseif (!is_null($street['wikidata']) && !is_null($data['wikidata']) && $street['wikidata'] !== $data['wikidata']) {

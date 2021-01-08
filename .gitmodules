@@ -25,3 +25,6 @@
 [submodule "cities/mons"]
 	path = cities/mons
 	url = https://github.com/openknowledgebe/equalstreetnames-mons.git
+[submodule "cities/liege"]
+	path = cities/liege
+	url = https://github.com/openknowledgebe/equalstreetnames-liege.git

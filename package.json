@@ -15,6 +15,7 @@
     "build:gent": "parcel build cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent --no-source-maps",
     "build:groningen": "parcel build cities/groningen/html/index.html cities/groningen/html/*/index.html --global app --out-dir dist/groningen --no-source-maps",
     "build:leuven": "parcel build cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven --no-source-maps",
+    "build:liege": "parcel build cities/liege/html/index.html cities/liege/html/*/index.html --global app --out-dir dist/liege --no-source-maps",
     "build:mons": "parcel build cities/mons/html/index.html cities/mons/html/*/index.html --global app --out-dir dist/mons --no-source-maps",
     "build:namur": "parcel build cities/namur/html/index.html cities/namur/html/*/index.html --global app --out-dir dist/namur --no-source-maps",
     "serve:assen": "parcel serve cities/assen/html/index.html cities/assen/html/*/index.html --global app --out-dir dist/assen",
@@ -25,6 +26,7 @@
     "serve:gent": "parcel serve cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent",
     "serve:groningen": "parcel serve cities/groningen/html/index.html cities/groningen/html/*/index.html --global app --out-dir dist/groningen",
     "serve:leuven": "parcel serve cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven",
+    "serve:liege": "parcel serve cities/liege/html/index.html cities/liege/html/*/index.html --global app --out-dir dist/liege",
     "serve:mons": "parcel serve cities/mons/html/index.html cities/mons/html/*/index.html --global app --out-dir dist/mons",
     "serve:namur": "parcel serve cities/namur/html/index.html cities/namur/html/*/index.html --global app --out-dir dist/namur"
   },
@@ -93,6 +95,10 @@
       {
         "outDirPattern": "**/dist/leuven",
         "staticPath": "cities/leuven/data"
+      },
+      {
+        "outDirPattern": "**/dist/liege",
+        "staticPath": "cities/liege/data"
       },
       {
         "outDirPattern": "**/dist/mons",

@@ -16,6 +16,7 @@
     "build:groningen": "parcel build cities/groningen/html/index.html cities/groningen/html/*/index.html --global app --out-dir dist/groningen --no-source-maps",
     "build:leuven": "parcel build cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven --no-source-maps",
     "build:mons": "parcel build cities/mons/html/index.html cities/mons/html/*/index.html --global app --out-dir dist/mons --no-source-maps",
+    "build:namur": "parcel build cities/namur/html/index.html cities/namur/html/*/index.html --global app --out-dir dist/namur --no-source-maps",
     "serve:assen": "parcel serve cities/assen/html/index.html cities/assen/html/*/index.html --global app --out-dir dist/assen",
     "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade",
     "serve:berlin": "parcel serve cities/berlin/html/index.html cities/berlin/html/*/index.html --global app --out-dir dist/berlin",
@@ -24,7 +25,8 @@
     "serve:gent": "parcel serve cities/gent/html/index.html cities/gent/html/*/index.html --global app --out-dir dist/gent",
     "serve:groningen": "parcel serve cities/groningen/html/index.html cities/groningen/html/*/index.html --global app --out-dir dist/groningen",
     "serve:leuven": "parcel serve cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven",
-    "serve:mons": "parcel serve cities/mons/html/index.html cities/mons/html/*/index.html --global app --out-dir dist/mons"
+    "serve:mons": "parcel serve cities/mons/html/index.html cities/mons/html/*/index.html --global app --out-dir dist/mons",
+    "serve:namur": "parcel serve cities/namur/html/index.html cities/namur/html/*/index.html --global app --out-dir dist/namur"
   },
   "repository": {
     "type": "git",
@@ -95,6 +97,10 @@
       {
         "outDirPattern": "**/dist/mons",
         "staticPath": "cities/mons/data"
+      },
+      {
+        "outDirPattern": "**/dist/namur",
+        "staticPath": "cities/namur/data"
       }
     ]
   }

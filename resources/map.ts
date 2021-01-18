@@ -1,8 +1,11 @@
 "use strict";
 
-import mapboxgl, { Map, NavigationControl, ScaleControl } from "maplibre-gl";
+import mapboxgl, { LngLatBoundsLike, Map, NavigationControl, ScaleControl } from "maplibre-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import { feature as turfFeature } from "@turf/helpers";
+import turfBBox from "@turf/bbox";
 
+import addBoundary from "./map/layers/boundary";
 import addRelations from "./map/layers/relation";
 import addWays from "./map/layers/ways";
 import addEvents from "./map/events";
@@ -13,15 +16,23 @@ export let map: Map;
 
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
-export default function (): Map {
+export default async function (): Promise<Map> {
   // Initialize map.
   map = new Map({
-    center,
+    center: center || [0,0],
     container: "map",
     hash: true,
     style,
-    zoom,
+    zoom: zoom || 0,
   });
+
+  const response = await fetch("/boundary.geojson");
+  if (response.ok === true) {
+    const boundary = await response.json();
+    const boundingBox = turfBBox(turfFeature(boundary.geometries[0]));
+
+    map.fitBounds(boundingBox as LngLatBoundsLike, { padding: 25 });
+  }
 
   // Add controls.
   const nav = new NavigationControl({ showCompass: false });
@@ -32,7 +43,7 @@ export default function (): Map {
 
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
-    bbox,
+    bbox: boundingBox || bbox,
     countries,
     enableEventLogging: false,
     language: lang,
@@ -46,6 +57,10 @@ export default function (): Map {
     // Add GeoJSON sources.
     addRelations(map);
     addWays(map);
+
+    if (typeof boundary !== "undefined") {
+      addBoundary(map, boundary);
+    }
 
     // Add events
     addEvents(map);

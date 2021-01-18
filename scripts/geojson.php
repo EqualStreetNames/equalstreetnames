@@ -29,6 +29,22 @@ if ($city === 'brussels') {
     }
 }
 
+// Get polygon
+if (isset($config['relationId'])) {
+    $url = sprintf('http://polygons.openstreetmap.fr/get_geojson.py?id=%d', $config['relationId']);
+
+    file_put_contents(
+        sprintf('cities/%s/data/boundary.geojson', $city),
+        file_get_contents($url)
+    );
+
+    printf(
+        'Boundary downloaded from %s.%s',
+        $url,
+        PHP_EOL
+    );
+}
+
 // Process relations
 $json = json_decode(file_get_contents('data/overpass/relation/full.json'), true);
 

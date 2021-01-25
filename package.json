@@ -54,7 +54,7 @@
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@mapbox/mapbox-gl-geocoder": "^4.7.0",
     "@turf/bbox": "^6.3.0",
-    "@turf/helpers": "^6.2.0",
+    "@turf/helpers": "^6.3.0",
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",
     "jquery": "^3.5.1",

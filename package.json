@@ -17,6 +17,7 @@
     "build:leuven": "parcel build cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven --no-source-maps",
     "build:liege": "parcel build cities/liege/html/index.html cities/liege/html/*/index.html --global app --out-dir dist/liege --no-source-maps",
     "build:mons": "parcel build cities/mons/html/index.html cities/mons/html/*/index.html --global app --out-dir dist/mons --no-source-maps",
+    "build:munich": "parcel build cities/munich/html/index.html cities/munich/html/*/index.html --global app --out-dir dist/munich --no-source-maps",
     "build:namur": "parcel build cities/namur/html/index.html cities/namur/html/*/index.html --global app --out-dir dist/namur --no-source-maps",
     "serve:assen": "parcel serve cities/assen/html/index.html cities/assen/html/*/index.html --global app --out-dir dist/assen",
     "serve:belgrade": "parcel serve cities/belgrade/html/index.html cities/belgrade/html/*/index.html --global app --out-dir dist/belgrade",
@@ -28,6 +29,7 @@
     "serve:leuven": "parcel serve cities/leuven/html/index.html cities/leuven/html/*/index.html --global app --out-dir dist/leuven",
     "serve:liege": "parcel serve cities/liege/html/index.html cities/liege/html/*/index.html --global app --out-dir dist/liege",
     "serve:mons": "parcel serve cities/mons/html/index.html cities/mons/html/*/index.html --global app --out-dir dist/mons",
+    "serve:munich": "parcel serve cities/munich/html/index.html cities/munich/html/*/index.html --global app --out-dir dist/munich",
     "serve:namur": "parcel serve cities/namur/html/index.html cities/namur/html/*/index.html --global app --out-dir dist/namur"
   },
   "repository": {
@@ -107,6 +109,10 @@
       {
         "outDirPattern": "**/dist/namur",
         "staticPath": "cities/namur/data"
+      },
+      {
+        "outDirPattern": "**/dist/munich",
+        "staticPath": "cities/munich/data"
       }
     ]
   }

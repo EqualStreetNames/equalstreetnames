@@ -1,11 +1,11 @@
-# Replicate the EqualStreetNames project for your city
+# How to Replicate the EqualStreetNames Project for Your City
 
 The EqualStreetNames project is built so it's (relatively) easy to replicate in any city in the World !  
-The data and file specific to a city are hosted in a separated repository.
+The data and files specific to a city are hosted in separate repositories.
 
 ## Process
 
-The easiest way is to fork/duplicate and existing repository, choose one of the data repository listed above.
+The easiest way is to fork/duplicate an existing city repository, choose one listed in [cities](../cities).
 
 Each city repository is a [sub-module](https://git-scm.com/book/en/v2/Git-Tools-Submodules) of the [main repository](https://github.com/openknowledgebe/equalstreetnames). A sub-module is working as a sub-folder in the `cities` folder of the main repository.
 

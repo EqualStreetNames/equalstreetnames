@@ -31,3 +31,6 @@
 [submodule "cities/namur"]
 	path = cities/namur
 	url = https://github.com/openknowledgebe/equalstreetnames-namur.git
+[submodule "cities/nivelles"]
+	path = cities/nivelles
+	url = https://github.com/openknowledgebe/equalstreetnames-nivelles.git

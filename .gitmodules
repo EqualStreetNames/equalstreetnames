@@ -34,3 +34,6 @@
 [submodule "cities/nivelles"]
 	path = cities/nivelles
 	url = https://github.com/openknowledgebe/equalstreetnames-nivelles.git
+[submodule "cities/munich"]
+	path = cities/munich
+	url = https://github.com/mitmirzutun/equalstreetnames-munich.git

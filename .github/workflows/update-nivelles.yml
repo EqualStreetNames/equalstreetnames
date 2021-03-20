@@ -1,4 +1,4 @@
-name: Update Brussels data
+name: Update Nivelles data
 
 on:
   # Run every Monday at 1:00 UTC
@@ -6,14 +6,14 @@ on:
     - cron: "0 1 * * 1"
   push:
     paths:
-      - ".github/workflows/update-brussels.yml"
-      - "cities/brussels/config.php"
-      - "cities/brussels/overpass/*"
+      - ".github/workflows/update-nivelles.yml"
+      - "cities/nivelles/config.php"
+      - "cities/nivelles/overpass/*"
   pull_request:
     paths:
-      - ".github/workflows/update-brussels.yml"
-      - "cities/brussels/config.php"
-      - "cities/brussels/overpass/*"
+      - ".github/workflows/update-nivelles.yml"
+      - "cities/nivelles/config.php"
+      - "cities/nivelles/overpass/*"
 
 jobs:
   update-data:
@@ -34,23 +34,23 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Checkout submodule to master
-        working-directory: cities/brussels
+        working-directory: cities/nivelles
         run: git checkout -q master
       - name: Update sub-modules
-        run: git submodule update --remote --merge cities/brussels
+        run: git submodule update --remote --merge cities/nivelles
 
       - name: Run update
-        run: composer run update-data -- --city=brussels
+        run: composer run update-data -- --city=nivelles
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Brussels
-          path: cities/brussels/data/*
+          name: Nivelles
+          path: cities/nivelles/data/*
 
       - name: Commit sub-module
         if: ${{ github.event_name != 'pull_request' }}
-        working-directory: cities/brussels
+        working-directory: cities/nivelles
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
@@ -61,16 +61,16 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
-          directory: cities/brussels
-          repository: openknowledgebe/equalstreetnames-brussels
+          directory: cities/nivelles
+          repository: openknowledgebe/equalstreetnames-nivelles
       - name: Commit repository
         if: ${{ github.event_name != 'pull_request' }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git pull
-          git add cities/brussels
-          git commit -m "🗃 Update Brussels sub-module"
+          git add cities/nivelles
+          git commit -m "🗃 Update Nivelles sub-module"
       - name: Push to repository
         uses: ad-m/github-push-action@master
         if: ${{ github.event_name != 'pull_request' }}

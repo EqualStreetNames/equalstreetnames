@@ -49,7 +49,7 @@ jobs:
           path: cities/namur/data/*
 
       - name: Commit sub-module
-        if: ${{ github.event != 'pull_request' }}
+        if: ${{ github.event_name != 'pull_request' }}
         working-directory: cities/namur
         run: |
           git config user.name github-actions[bot]
@@ -58,13 +58,13 @@ jobs:
           git commit -m "🗃 Update data"
       - name: Push to sub-module
         uses: ad-m/github-push-action@master
-        if: ${{ github.event != 'pull_request' }}
+        if: ${{ github.event_name != 'pull_request' }}
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           directory: cities/namur
           repository: openknowledgebe/equalstreetnames-namur
       - name: Commit repository
-        if: ${{ github.event != 'pull_request' }}
+        if: ${{ github.event_name != 'pull_request' }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
@@ -73,6 +73,6 @@ jobs:
           git commit -m "🗃 Update Namur sub-module"
       - name: Push to repository
         uses: ad-m/github-push-action@master
-        if: ${{ github.event != 'pull_request' }}
+        if: ${{ github.event_name != 'pull_request' }}
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}

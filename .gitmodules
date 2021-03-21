@@ -24,7 +24,7 @@
 	url = https://github.com/EqualStreetNames/equalstreetnames-nivelles.git
 [submodule "cities/germany/berlin"]
 	path = cities/germany/berlin
-	url = https://github.com/gislars/equalstreetnames-berlin.git
+	url = https://github.com/EqualStreetNames/equalstreetnames-berlin.git
 [submodule "cities/germany/leipzig"]
 	path = cities/germany/leipzig
 	url = https://github.com/EqualStreetNames/equalstreetnames-leipzig.git

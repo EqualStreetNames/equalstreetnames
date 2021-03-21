@@ -33,7 +33,7 @@
 	url = https://github.com/RobinLinde/equalstreetnames-assen.git
 [submodule "cities/netherlands/groningen"]
 	path = cities/netherlands/groningen
-	url = https://github.com/robinlinde/equalstreetnames-groningen.git
+	url = https://github.com/RobinLinde/equalstreetnames-groningen.git
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
-	url = https://github.com/stalker314314/equalstreetnames-belgrade
+	url = https://github.com/stalker314314/equalstreetnames-belgrade.git

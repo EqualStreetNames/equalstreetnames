@@ -30,10 +30,10 @@
 	url = https://github.com/mitmirzutun/equalstreetnames-munich.git
 [submodule "cities/netherlands/assen"]
 	path = cities/netherlands/assen
-	url = https://github.com/RobinLinde/equalstreetnames-assen.git
+	url = https://github.com/EqualStreetNames/equalstreetnames-assen.git
 [submodule "cities/netherlands/groningen"]
 	path = cities/netherlands/groningen
-	url = https://github.com/RobinLinde/equalstreetnames-groningen.git
+	url = https://github.com/EqualStreetNames/equalstreetnames-groningen.git
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
-	url = https://github.com/stalker314314/equalstreetnames-belgrade.git
+	url = https://github.com/EqualStreetNames/equalstreetnames-belgrade

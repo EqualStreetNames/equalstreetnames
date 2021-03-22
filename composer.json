@@ -1,5 +1,5 @@
 {
-    "name": "openknowledgebe/equalstreetnames",
+    "name": "equalstreetnames/equalstreetnames",
     "description": "",
     "require": {
         "php": "^7.2",

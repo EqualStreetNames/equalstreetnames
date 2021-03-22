@@ -7,12 +7,12 @@ The data and file specific to a city are hosted in a separated repository.
 
 The easiest way is to fork/duplicate and existing repository, choose one of the data repository listed above.
 
-Each city repository is a [sub-module](https://git-scm.com/book/en/v2/Git-Tools-Submodules) of the [main repository](https://github.com/openknowledgebe/equalstreetnames). A sub-module is working as a sub-folder in the `cities` folder of the main repository.
+Each city repository is a [sub-module](https://git-scm.com/book/en/v2/Git-Tools-Submodules) of the [main repository](https://github.com/EqualStreetNames/equalstreetnames). A sub-module is working as a sub-folder in the `cities` folder of the main repository.
 
 ### HTML files
 
 The HTML files should be in the `html/` folder.  
-You have the `html/index.html` that will show the list of available languages and you have an `index.html` file per language (for Brussels, [`html/en/index.html`](https://github.com/openknowledgebe/equalstreetnames-brussels/blob/master/html/en/index.html), [`html/fr/index.html`](https://github.com/openknowledgebe/equalstreetnames-brussels/blob/master/html/fr/index.html), and [`html/nl/index.html`](https://github.com/openknowledgebe/equalstreetnames-brussels/blob/master/html/nl/index.html)).
+You have the `html/index.html` that will show the list of available languages and you have an `index.html` file per language (for Brussels, [`html/en/index.html`](https://github.com/EqualStreetNames/equalstreetnames-brussels/blob/master/html/en/index.html), [`html/fr/index.html`](https://github.com/EqualStreetNames/equalstreetnames-brussels/blob/master/html/fr/index.html), and [`html/nl/index.html`](https://github.com/EqualStreetNames/equalstreetnames-brussels/blob/master/html/nl/index.html)).
 
 You'll have to adapt the content but the most important part is the map settings:
 
@@ -65,4 +65,4 @@ You now have everything you need to run the project on your city, you can now fo
 
 We would be more than happy to include your city in your project !
 
-Create a new [issue](https://github.com/openknowledgebe/equalstreetnames/issues) to let us know about your city or send us a [pull request](https://github.com/openknowledgebe/equalstreetnames/pulls) with your sub-module !
+Create a new [issue](https://github.com/EqualStreetNames/equalstreetnames/issues) to let us know about your city or send us a [pull request](https://github.com/EqualStreetNames/equalstreetnames/pulls) with your sub-module !

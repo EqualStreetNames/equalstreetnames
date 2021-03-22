@@ -57,7 +57,7 @@ See [`docs/replicate.md`](./docs/replicate.md)
 1. Clone the repository
 
    ```cmd
-   git clone https://github.com/openknowledgebe/equalstreetnames.git
+   git clone https://github.com/EqualStreetNames/equalstreetnames.git
    cd equalstreetnames
    ```
 

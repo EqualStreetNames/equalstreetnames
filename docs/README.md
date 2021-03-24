@@ -1,18 +1,23 @@
-# EqualStreetNames.Brussels
+# EqualStreetNames
+
+This document aims to describe the process of EqualStreetNames.
+Many of the examples describe here are based on Brussels, but can be applied to any other city.
 
 ## Process
 
-1. Get all the streets in Brussels from _OpenStreetMap_
+1. Get all the streets in a city from _OpenStreetMap_
 2. Use the [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) to query the information about the person mentionned in the streetname
 3. Use the data from _Wikidata_ to determine the gender (and more) of the person
 
 ## Data quality
 
-The process defined here above assume that we have all the streets of Brussels in _OpenStreetMap_ and that all the streets of Brussels in _OpenStreetMap_ have a [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) if the streetname mentions a person.
+The process defined here above assumes that we have all the streets of our city in _OpenStreetMap_ and that all the streets of our city in _OpenStreetMap_ have a [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) if the streetname mentions a person.
 
 ### All the streets
 
-To make sure we have all the streets of Brussels in _OpenStreetMap_, I compared the streets listing from _OpenStreetMap_ to the streets listing from [_UrbIS_](https://bric.brussels/en/our-solutions/urbis-solutions/urbis-data) (official data from the Brussels Region).
+First it's important to make sure we have all the streets of our city in _OpenStreetMap_. In the case of Brussels the streets listing from _OpenStreetMap_ was compared to the streets listing from [_UrbIS_](https://bric.brussels/en/our-solutions/urbis-solutions/urbis-data) (official data from the Brussels Region).
+
+Alternatives for other regions can be the Flemish [Wegenregister](https://overheid.vlaanderen.be/informatie-vlaanderen/producten-diensten/wegenregister), the Wallonian [PICC](https://geoportail.wallonie.be/catalogue/b795de68-726c-4bdf-a62a-a42686aa5b6f.html), the Dutch [NWB](https://nationaalwegenbestand.nl/), or any official government source.
 
 A few streets were missing and manually added to _OpenStreetMap_.
 
@@ -41,7 +46,7 @@ We consider to be a person, the _Wikidata_ items that are "instance of" (propert
 
 In the _Wikidata_ object, the sex or gender is defined by the property [`P21`](https://www.wikidata.org/wiki/Property:P21).
 
-### No `name:etymology:wikidata` tag
+### No `name:etymology:wikidata` tag (only applies to Brussels)
 
 If there is no [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) in _OpenStreetMap_, we can't get the gender from _Wikidata_.  
 In this case, the gender is queried from the work done during the event of the 17th February 2020. That work is available as a [CSV file](../data/event-2020-02-17/gender.csv). Caution, that CSV file is **not** to be used for statistics (not cleaned)!

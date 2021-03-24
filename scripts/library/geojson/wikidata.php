@@ -155,6 +155,10 @@ function extractGender(string $identifier): ?string
 
             return 'X';
 
+        case 'Q48270': // non-binary
+
+            return 'NB';
+
         default:
             printf('Undefined gender %s.%s', $identifier, PHP_EOL);
 

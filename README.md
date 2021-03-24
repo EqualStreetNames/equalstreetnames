@@ -68,6 +68,12 @@ For more detailed instructions look in [`dev-linux.md`](./dev-linux.md) or [`dev
    cd equalstreetnames
    ```
 
+1. Clone submodules
+
+   ```cmd
+   git submodule update --init --recursive
+   ```
+
 1. Install dependencies
 
    ```cmd

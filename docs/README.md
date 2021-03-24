@@ -54,7 +54,6 @@ In this case, the gender is queried from the work done during the event of the 1
 ## Documentation
 
 - [Replicate the EqualStreetNames project for your city](./replicate.md)
-- [List of municipalities in Brussels](./municipalities.md)
 - [Scripts](./scripts/README.md)
 - [Setup for Linux](./dev-linux.md)
 - [Setup for Windows](./dev-windows.md)

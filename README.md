@@ -54,12 +54,13 @@ See [`docs/replicate.md`](./docs/replicate.md)
 
 ## Run locally
 
-1. Clone the repository
+1. Clone the repository. Note that we are using [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
    ```cmd
-   git clone https://github.com/openknowledgebe/equalstreetnames.git
+   git clone --recurse-submodules https://github.com/EqualStreetNames/equalstreetnames.git
    cd equalstreetnames
    ```
+
 
 1. Install dependencies
 

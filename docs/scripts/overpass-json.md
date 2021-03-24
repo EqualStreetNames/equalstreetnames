@@ -1,6 +1,6 @@
 # EqualStreetNames.Brussels - Scripts
 
-Scripts: [`relation.php`](../../scripts/overpass/relation.php) + [`way.php`](../../scripts/overpass/way.php)
+Scripts: [`overpass-relation.php`](../../scripts/overpass/overpass-relation.php) + [`overpass-way.php`](../../scripts/overpass-way.php)
 
 ## Download data from [_OpenStreetMap_](https://openstreetmap.org/) (overpass)
 

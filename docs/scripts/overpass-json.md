@@ -47,7 +47,7 @@ out skel qt;
 
 ## Run the script locally
 
-```shell
+```cmd
 composer install
 
 php scripts/overpass/relation.php

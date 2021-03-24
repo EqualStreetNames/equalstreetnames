@@ -8,7 +8,7 @@ For every `associatedStreet` relations and `highway` ways that have a [`wikidata
 
 ## Run the script locally
 
-```shell
+```cmd
 composer install
 
 php scripts/wikidata.php

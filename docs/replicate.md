@@ -53,7 +53,7 @@ Once the Overpass queries are adapted to your city, you can run the scripts to d
 
 Read the [scripts documentation](./scripts/README.md) and simply run the following command by replacing `mycity` by the name of your city:
 
-```
+```shell
 composer run update-data -- --city=mycity
 ```
 

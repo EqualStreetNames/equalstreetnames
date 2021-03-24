@@ -20,7 +20,7 @@
 
 Or you can just run (after replacing `mycity` by the name of your city):
 
-```
+```shell
 composer run update-data -- --city=mycity
 ```
 

@@ -1,42 +1,17 @@
 # EqualStreetNames
 
-This project is coordinated by [Open Knowledge Belgium](https://openknowledge.be/) and [Noms Peut-Être](https://nomspeutetre.wordpress.com/)
+This project is coordinated by [Open Knowledge Belgium](https://openknowledge.be/)
 with the support of [OpenStreetMap Belgium](https://openstreetmap.be/) and [Wikimedia Belgium](https://wikimedia.be/).
 
 EqualStreetNames is made possible thanks to [equal.brussels](http://equal.brussels/).
 
-## Why EqualStreetNames.Brussels
+## Why
 
 The names of public spaces (streets, avenues, squares and others) define the identity of a city and how citizens interact with it. The region of Brussels suffers from a major inequality between male and female street names and we want to help fix this.
 
-There are several ways to approach the inequality of street names and leverage a positive change in our society. Ours is with the use of Open Data to create a **map visualizing the streetnames of Brussels by gender**.
+There are several ways to approach the inequality of street names and leverage a positive change in our society. Ours is with the use of Open Data to create a **map visualizing the streetnames of a city by gender**.
 
-Since then, this project has been replicated in several cities across multiple countries.
-For a complete list take a look at the table located under **Replicate the EqualStreetNames project for your city**
-
-## How did we make this map
-
-To make this happen, we used [open data](http://opendefinition.org/) - data which can be freely used, modified, and shared by anyone for any purpose - from [OpenStreetMap](https://openstreetmap.org/) and [Wikipedia](https://www.wikipedia.org/).
-
-On 17 February 2020, 60 volunteers gathered to add the Wikidata tags (a tag containing all the information from a Wikipedia page) to the streets on OpenStreetMap. Using Open Data has unlocked new opportunities, the project now being replicable for other cities and the analysis being fully transparent.
-
-The Equal Street Names project is divided into two phases:
-
-- Phase 1:  
-  Mapping the inequality of name attributions.
-- Phase 2:  
-  Organizing one workshop per month in 2020 to provide a list of names that will be published on the platform and act as references for city councils. The names should represent the diversity of Brussels Region, which means with profiles of women; women from the immigration, women of color, transgender and LGBTQIA+
-
-## Data
-
-Data is available in the `data/` directory of each city.
-For Burssels there is documentation about the data is in the same folder (see [`README.md`](https://github.com/EqualStreetNames/equalstreetnames-brussels/blob/master/data/README.md)).
-
-## Documentation
-
-See [`docs/README.md`](./docs/README.md)
-
-## Replicate the EqualStreetNames project for your city
+The project start with Brussels, Belgium in March 2020 and since then, this project has been replicated in several cities across multiple countries.
 
 | Country | City      | Link                                                | Data Repository                                                                              | Maintainer                                          |
 |---------|-----------|-----------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------|
@@ -55,37 +30,39 @@ See [`docs/README.md`](./docs/README.md)
 | 🇳🇱    | Groningen | <https://groningen.equalstreetnames.eu/>            | [equalstreetnames-groningen](https://github.com/EqualStreetNames/equalstreetnames-groningen) | [@robinlinde](https://github.com/robinlinde/)       |
 | 🇷🇸    | Belgrade  | <https://naziviulica.openstreetmap.rs/>             | [equalstreetnames-belgrade](https://github.com/EqualStreetNames/equalstreetnames-belgrade)   | [@stalker314314](https://github.com/stalker314314/) |
 
+## How
+
+To make this happen, we used [open data](http://opendefinition.org/) - data which can be freely used, modified, and shared by anyone for any purpose - from [OpenStreetMap](https://openstreetmap.org/) and [Wikipedia](https://www.wikipedia.org/).
+
+## Data
+
+Data is available in the `data/` directory of each city (see [`cities` directory](https://github.com/EqualStreetNames/equalstreetnames/tree/master/cities)).
+
+Following data are available for each city:
+
+- `gender.csv` : List of streetnames in CSV (Comma-separated values) format with streetname, gender, and Wikidata item ;
+- `other.csv` : List of streetnames in CSV (Comma-separated values) format that are not related to a person (with Wikidata item if available) ;
+- `relations.geojson` + `ways.geojson` : Streets in [GeoJSON format](https://geojson.org/) with streetname, gender, Wikidata item and details (when available) ;
+- `statistics.json` : Number of streetnames for each gender:
+  - `F` : cisgender female ;
+  - `M` : cisgender male ;
+  - `FX` : transgender female ;
+  - `MX` : transgender male ;
+  - `X` : intersex ;
+  - `NB` : non-binary ;
+  - `+` : multiple ;
+  - `?` : unknown ;
+  - `-` : not related to a person ;
+- `boundary.geojson` : Boundary of the city in [GeoJSON format](https://geojson.org/) (only the streets that are inside this boundary are processed) ;
+
+## Documentation
+
+See [`docs/README.md`](./docs/README.md)
+
+## Replicate the EqualStreetNames project for your city
+
 See [`docs/replicate.md`](./docs/replicate.md)
 
-## Run locally
+## Install & Run locally
 
-For more detailed instructions look in [`dev-linux.md`](./dev-linux.md) or [`dev-windows.md`](./dev-windows.md)
-
-1. Clone the repository
-
-   ```cmd
-   git clone https://github.com/EqualStreetNames/equalstreetnames.git
-   cd equalstreetnames
-   ```
-
-1. Clone submodules
-
-   ```cmd
-   git submodule update --init --recursive
-   ```
-
-1. Install dependencies
-
-   ```cmd
-   npm install
-   ```
-
-1. Create a [Mapbox token](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/)
-
-1. Create a file named `.env` in the root directory of the project
-
-1. Add the following line to the `.env` file: `MAPBOX_TOKEN=[your Mapbox token]` replacing `[your Mapbox token]` with the token you created
-
-1. Choose the city you want to run locally `npm run serve:country:city` (for example `npm run serve:belgium:brussels`)
-
-1. Once installed and running, go to <http://localhost:1234/index.html>
+See [`INSTALL.md`](./INSTALL.md)

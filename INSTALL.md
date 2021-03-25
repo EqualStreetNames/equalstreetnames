@@ -30,6 +30,7 @@ Git installation is quite straightforward, and can also be replaced by installin
 or a text editor that has Git built-in like [Visual Studio Code](https://code.visualstudio.com/).
 If you choose to install GIT standalone, you can leave most options to default,
 but it might be worth to change the editor config to an editor you prefer on this screen:
+
 ![Editor selection](docs/assets/git-editor-win.png)
 
 ### Setting up

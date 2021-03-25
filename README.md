@@ -34,6 +34,8 @@ The project start with Brussels, Belgium in March 2020 and since then, this proj
 
 To make this happen, we used [open data](http://opendefinition.org/) - data which can be freely used, modified, and shared by anyone for any purpose - from [OpenStreetMap](https://openstreetmap.org/) and [Wikipedia](https://www.wikipedia.org/).
 
+For more details, see [`docs/README.md`](./docs/README.md)
+
 ## Data
 
 Data is available in the `data/` directory of each city (see [`cities` directory](https://github.com/EqualStreetNames/equalstreetnames/tree/master/cities)).
@@ -54,10 +56,6 @@ Following data are available for each city:
   - `?` : unknown ;
   - `-` : not related to a person ;
 - `boundary.geojson` : Boundary of the city in [GeoJSON format](https://geojson.org/) (only the streets that are inside this boundary are processed) ;
-
-## Documentation
-
-See [`docs/README.md`](./docs/README.md)
 
 ## Replicate the EqualStreetNames project for your city
 

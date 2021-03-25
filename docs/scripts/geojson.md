@@ -25,7 +25,7 @@ From the files downloaded from _OpenStreetMap_, we extract the following informa
 
 ## Run the script locally
 
-```
+```cmd
 composer install
 
 php scripts/geojson.php

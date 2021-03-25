@@ -55,5 +55,3 @@ In this case, the gender is queried from the work done during the event of the 1
 
 - [Replicate the EqualStreetNames project for your city](./replicate.md)
 - [Scripts](./scripts/README.md)
-- [Setup for Linux](./dev-linux.md)
-- [Setup for Windows](./dev-windows.md)

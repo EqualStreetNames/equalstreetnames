@@ -40,6 +40,8 @@ For more details, see [`docs/README.md`](./docs/README.md)
 
 Data is available in the `data/` directory of each city (see [`cities` directory](https://github.com/EqualStreetNames/equalstreetnames/tree/master/cities)).
 
+Data are automatically updated once a week.
+
 Following data are available for each city:
 
 - `gender.csv` : List of streetnames in CSV (Comma-separated values) format with streetname, gender, and Wikidata item ;

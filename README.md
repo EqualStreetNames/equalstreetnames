@@ -59,7 +59,7 @@ Following data are available for each city:
 
 ## Replicate the EqualStreetNames project for your city
 
-See [`docs/replicate.md`](./docs/replicate.md)
+See our `equalstreetnames-template` repository: <https://github.com/EqualStreetNames/equalstreetnames-template>
 
 ## Install & Run locally
 

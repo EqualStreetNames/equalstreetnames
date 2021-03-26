@@ -1,6 +1,6 @@
 # EqualStreetNames.Brussels - Scripts
 
-Scripts: [`wikidata.php`](../../scripts/wikidata.php)
+Scripts: [`geojson.php`](../../scripts/geojson.php)
 
 ## Generate final GeoJSON files
 

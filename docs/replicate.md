@@ -1,7 +1,7 @@
 # Replicate the EqualStreetNames project for your city
 
 The EqualStreetNames project is built so it's (relatively) easy to replicate in any city in the World !  
-The data and file specific to a city are hosted in a separated repository.
+The data and files specific to a city are hosted in separate repositories.
 
 ## Process
 

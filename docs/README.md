@@ -30,7 +30,7 @@ Of course, not all the streets refer to a person (or an entity) and thus need a 
 To link all the streets that refer to a person to the equivalent _Wikidata_ item, we organized an event were we asked 100 people to manually find the _Wikidata_ item (or the _Wikipedia_ page) about the person from the streetname.
 
 To avoid any issue and to simplify the workflow, the 100 people didn't edit _Wikipedia_, _Wikidata_, or _OpenStreetMap_.  
-The result of their work has been tagged manually in _OpenStreetMap_ by [OpenStreetMap Belgium](https://openstreetmap.be/) volunteers. (**work in progress**).
+The result of their work has been tagged manually in _OpenStreetMap_ by [OpenStreetMap Belgium](https://openstreetmap.be/) volunteers.
 
 ## Get the gender (and data about the person)
 
@@ -46,12 +46,6 @@ We consider to be a person, the _Wikidata_ items that are "instance of" (propert
 
 In the _Wikidata_ object, the sex or gender is defined by the property [`P21`](https://www.wikidata.org/wiki/Property:P21).
 
-### No `name:etymology:wikidata` tag (only applies to Brussels)
+## Scripts
 
-If there is no [`name:etymology:wikidata` tag](https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata) in _OpenStreetMap_, we can't get the gender from _Wikidata_.  
-In this case, the gender is queried from the work done during the event of the 17th February 2020. That work is available as a [CSV file](../data/event-2020-02-17/gender.csv). Caution, that CSV file is **not** to be used for statistics (not cleaned)!
-
-## Documentation
-
-- [Replicate the EqualStreetNames project for your city](./replicate.md)
-- [Scripts](./scripts/README.md)
+See [`scripts/README.md`](./scripts/README.md)

@@ -1,6 +1,8 @@
-# EqualStreetNames.Brussels - Scripts
+# EqualStreetNames - Scripts
 
-Scripts: [`geojson.php`](../../scripts/geojson.php)
+## Scripts
+
+- [`geojson.php`](../../scripts/geojson.php)
 
 ## Generate final GeoJSON files
 
@@ -31,4 +33,4 @@ composer install
 php scripts/geojson.php
 ```
 
-The `relations.geojson` and `ways.geojson` files will be stored in `static/` directory.
+The `relations.geojson` and `ways.geojson` files will be stored in the city `data/` directory.

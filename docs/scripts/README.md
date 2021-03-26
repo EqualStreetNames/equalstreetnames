@@ -1,31 +1,34 @@
-# EqualStreetNames.Brussels
+# EqualStreetNames
 
-## Scripts
+## Scripts used by the data update process
 
-### Map
+1. Download data from _OpenStreetMap_ using Overpass ([documentation](./overpass.md))
 
-1. [Download data from _OpenStreetMap_ (overpass)](./overpass-json.md)
-1. [Download data from _Wikidata_](./wikidata.md)
-1. [Generate final GeoJSON files](./geojson.md)
-1. [Generate final statistics JSON file](./statistics.md)
+    ```cmd
+    php scripts/overpass/relation.php
+    php scripts/overpass/way.php
+    ```
 
-#### Run locally
+1. Download data from _Wikidata_ ([documentation](./wikidata.md))
 
-1. `composer install`
-1. `php scripts/overpass/relation.php` ([documentation](./overpass-json.md))
-1. `php scripts/overpass/way.php` ([documentation](./overpass-json.md))
-1. `php scripts/wikidata.php` ([documentation](./wikidata.md))
-1. `php scripts/geojson.php` ([documentation](./geojson.md))
-1. `php scripts/statistics.php` ([documentation](./statistics.md))
+    ```cmd
+    php scripts/wikidata.php
+    ```
 
-Or you can just run (after replacing `mycity` by the name of your city):
+1. Generate final GeoJSON files ([documentation](./geojson.md))
+
+    ```cmd
+    php scripts/geojson.php
+    ```
+
+1. Generate final statistics JSON file and CSV files ([documentation](./statistics.md))
+
+    ```cmd
+    php scripts/statistics.php
+    ```
+
+All those steps are runned sequentially when you run the following command (after replacing `my-country` and `my-city` by the name of your country and city):
 
 ```cmd
-composer run update-data -- --city=mycity
+composer run update-data -- --city=my-country/my-city
 ```
-
-### Streets listing
-
-1. [Download data from _OpenStreetMap_ (overpass)](./overpass-csv.md)
-1. [Create street streets listing database](./database.md)
-1. [Generate street listing (per municipality)](./listing.md)

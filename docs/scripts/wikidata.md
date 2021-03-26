@@ -1,6 +1,8 @@
-# EqualStreetNames.Brussels - Scripts
+# EqualStreetNames - Scripts
 
-Scripts: [`wikidata.php`](../../scripts/wikidata.php)
+## Scripts
+
+- [`wikidata.php`](../../scripts/wikidata.php)
 
 ## Download data from [_Wikidata_](https://www.wikidata.org/)
 

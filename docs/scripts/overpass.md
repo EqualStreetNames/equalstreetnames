@@ -1,8 +1,11 @@
-# EqualStreetNames.Brussels - Scripts
+# EqualStreetNames - Scripts
 
-Scripts: [`overpass-relation.php`](../../scripts/overpass-relation.php) + [`overpass-way.php`](../../scripts/overpass-way.php)
+## Scripts
 
-## Download data from [_OpenStreetMap_](https://openstreetmap.org/) (overpass)
+- [`overpass-relation.php`](../../scripts/overpass-relation.php)
+- [`overpass-way.php`](../../scripts/overpass-way.php)
+
+## Download data from [_OpenStreetMap_](https://openstreetmap.org/) using Overpass
 
 We used the [Overpass API](https://overpass-api.de/) to query the _OpenStreetMap_ database.
 

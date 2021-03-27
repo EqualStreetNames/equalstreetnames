@@ -26,7 +26,7 @@ if (city.length > 0) {
 
     shell.rm('-rf', `../dist/${city}`)
 
-    shell.exec(`npm run ${script} -- --out-dir "../dist/${city}"`);
+    shell.exec(`./node_modules/parcel-bundler/bin/cli.js ${script} "public/index.html" --global app --out-dir "../dist/${city}"`);
   } else {
     shell.echo(`Error: Path ${directory} does not exist.`);
     shell.exit(1);

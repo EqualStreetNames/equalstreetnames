@@ -1,0 +1,13 @@
+@import "maplibre-gl/dist/maplibre-gl.css";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+
+#map {
+  background-color: #dddddd;
+  height: 100vh;
+  width: 100%;
+}
+
+.mapboxgl-ctrl-top-left,
+.mapboxgl-ctrl-top-right {
+  top: 60px;
+}

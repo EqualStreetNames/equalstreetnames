@@ -1,0 +1,7 @@
+.cache/
+assets/
+dist/
+node_modules/
+public/
+static/
+.env

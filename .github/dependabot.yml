@@ -1,12 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: "/"
+    directory: "/website"
     schedule:
       interval: monthly
     open-pull-requests-limit: 10
   - package-ecosystem: composer
-    directory: "/"
+    directory: "/process"
     schedule:
       interval: monthly
     open-pull-requests-limit: 10

@@ -19,7 +19,14 @@
     "@babel/core": "^7.13.13",
     "@types/chart.js": "^2.9.31",
     "@types/maplibre-gl": "^1.13.1",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
     "commander": "^2.20.3",
+    "eslint": "^7.23.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "sass": "^1.32.8",
@@ -38,6 +45,8 @@
     "popper.js": "^1.16.1"
   },
   "scripts": {
+    "lint": "eslint \"src/script/**/*.ts\"",
+    "lint:fix": "eslint --fix \"src/script/**/*.ts\"",
     "build:belgium:brugge": "node build.js -c belgium/brugge",
     "build:belgium:brussels": "node build.js -c belgium/brussels",
     "build:belgium:gent": "node build.js -c belgium/gent",

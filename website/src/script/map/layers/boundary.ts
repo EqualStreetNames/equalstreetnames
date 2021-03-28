@@ -1,16 +1,15 @@
 'use strict';
 
-import { Feature, FeatureCollection } from '@turf/helpers';
 import { Map } from 'maplibre-gl';
 
 const attribution =
   '© <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-export default function (map: Map, data: Feature|FeatureCollection): void {
+export default function (map: Map): void {
   map.addSource('geojson-boundary', {
     type: 'geojson',
     attribution,
-    data
+    data: '/boundary.geojson'
   });
 
   map.addLayer({

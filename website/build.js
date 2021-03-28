@@ -1,36 +1,57 @@
-const shell = require('shelljs');
+const Parcel = require("parcel-bundler");
+const path = require("path");
+const shell = require("shelljs");
+const program = require("commander");
+const version = require("./package.json").version;
 
-let city = '';
-const cityIndex = process.argv.indexOf('-c');
-if (cityIndex > -1) {
-  city = process.argv[cityIndex + 1];
-}
+program.version(version);
 
-let script = 'build';
-const scriptIndex = process.argv.indexOf('-s');
-if (scriptIndex > -1) {
-  script = process.argv[scriptIndex + 1];
-}
+program.option("-c, --city <path>").option("-s, --serve").action(bundle);
 
-if (city.length > 0) {
+program.parse(process.argv);
+
+async function bundle(options) {
+  const city = options.city;
+  const serve = options.serve || false;
+
   const directory = `../cities/${city}`;
 
-  if (shell.test('-e', directory) === true) {
-    shell.rm('-rf', ['assets/', 'dist/', 'public/', 'static/']);
+  if (shell.test("-e", directory) === true) {
+    shell.rm("-rf", ["assets/", "dist/", "public/", "static/"]);
 
-    shell.mkdir('assets/', 'public/', 'static/')
+    shell.mkdir("assets/", "public/", "static/");
 
-    shell.cp(`${directory}/assets/*`, 'assets/');
-    shell.cp('-r', `${directory}/html/*`, 'public/');
-    shell.cp(`${directory}/data/*`, 'static/');
+    shell.cp(`${directory}/assets/*`, "assets/");
+    shell.cp("-r", `${directory}/html/*`, "public/");
+    shell.cp(`${directory}/data/*`, "static/");
 
-    shell.rm('-rf', `../dist/${city}`)
+    shell.rm("-rf", `../dist/${city}`);
 
-    shell.exec(`./node_modules/parcel-bundler/bin/cli.js ${script} "public/index.html" --global app --out-dir "../dist/${city}"`);
+    const options = {
+      global: "app",
+      outDir: path.join(__dirname, "./dist", city),
+    };
+
+    if (serve === true) {
+      process.env.NODE_ENV = process.env.NODE_ENV || "development";
+
+      const bundler = new Parcel(path.join(__dirname, "./public/index.html"), {
+        ...options,
+      });
+
+      await bundler.serve();
+    } else {
+      process.env.NODE_ENV = process.env.NODE_ENV || "production";
+
+      const bundler = new Parcel(path.join(__dirname, "./public/index.html"), {
+        ...options,
+        production: true,
+      });
+
+      bundler.bundle();
+    }
   } else {
     shell.echo(`Error: Path ${directory} does not exist.`);
     shell.exit(1);
   }
 }
-
-shell.exit();

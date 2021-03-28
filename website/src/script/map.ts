@@ -14,7 +14,7 @@ import { lang, center, zoom, bbox, countries, style } from './index';
 
 export let map: Map;
 
-mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+mapboxgl.accessToken = process.env.MAPBOX_TOKEN || '';
 
 export default async function (): Promise<Map> {
   // Initialize map.
@@ -26,14 +26,6 @@ export default async function (): Promise<Map> {
     zoom: zoom || 0
   });
 
-  const response = await fetch('/boundary.geojson');
-  if (response.ok === true) {
-    const boundary = await response.json();
-    const boundingBox = turfBBox(turfFeature(boundary.geometries[0]));
-
-    map.fitBounds(boundingBox as LngLatBoundsLike, { padding: 25 });
-  }
-
   // Add controls.
   const nav = new NavigationControl({ showCompass: false });
   map.addControl(nav, 'top-left');
@@ -43,7 +35,6 @@ export default async function (): Promise<Map> {
 
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
-    bbox: boundingBox || bbox,
     countries,
     enableEventLogging: false,
     language: lang,
@@ -51,19 +42,29 @@ export default async function (): Promise<Map> {
   });
   map.addControl(geocoder);
 
-  map.on('load', () => {
+  map.on('load', async () => {
     map.resize();
 
     // Add GeoJSON sources.
     addRelations(map);
     addWays(map);
 
-    if (typeof boundary !== 'undefined') {
-      addBoundary(map, boundary);
-    }
-
     // Add events
     addEvents(map);
+
+    // Add boundaries
+    const response = await fetch('/boundary.geojson');
+    if (response.ok === true) {
+      const boundary = await response.json();
+      const boundingBox = turfBBox(turfFeature(boundary.geometries[0])) as MapboxGeocoder.Bbox;
+
+      map.fitBounds(boundingBox as LngLatBoundsLike, { padding: 25 });
+
+      if (typeof boundary !== 'undefined') {
+        addBoundary(map, boundary);
+        geocoder.setBbox(boundingBox || bbox);
+      }
+    }
   });
 
   map.on('idle', () => {

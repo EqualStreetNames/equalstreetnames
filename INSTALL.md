@@ -62,7 +62,7 @@ Getting a working version of EqualStreetNames consists of a couple of steps:
     npm install
     ```
 
-1. Install PHP dependencies with `composer`  
+1. Install PHP dependencies with `composer` (command to run in `process/` directory)  
 **Required if you want to run the data update process locally**
 
     ```cmd
@@ -93,7 +93,7 @@ You should now have a completely working version of EqualStreetNames to work on.
 
 ### Data update process
 
-1. Choose the city you want to update locally
+1. Choose the city you want to update locally (command to run in `process/` directory)
 
     ```cmd
     composer run update-data -- --city=country/city

@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from "maplibre-gl";
+import mapboxgl, { Map, MapboxGeoJSONFeature, LngLat } from 'maplibre-gl';
 
-import popupContent from "../../popup";
+import popupContent from '../../popup';
 
 interface Property {
   name: string;
@@ -20,22 +20,22 @@ export default function (
 
   const streetname = getStreetname(properties);
   const details =
-    typeof properties.details !== "undefined" && properties.details !== null
+    typeof properties.details !== 'undefined' && properties.details !== null
       ? JSON.parse(properties.details)
       : null;
 
   const html = popupContent(streetname, details);
 
-  new mapboxgl.Popup({ maxWidth: "none" })
+  new mapboxgl.Popup({ maxWidth: 'none' })
     .setLngLat(lnglat)
     .setHTML(html)
     .addTo(map);
 }
 
-function getStreetname(properties: { name: string }): string {
+function getStreetname (properties: { name: string }): string {
   // Bug in MapboxGL (see https://github.com/mapbox/mapbox-gl-js/issues/8497)
-  if (properties.name === null || properties.name === "null") {
-    return "";
+  if (properties.name === null || properties.name === 'null') {
+    return '';
   }
 
   const matches = properties.name.match(/^(.+) - (.+)$/);
@@ -43,7 +43,7 @@ function getStreetname(properties: { name: string }): string {
   if (matches !== null && matches.length > 1) {
     matches.shift();
 
-    return matches.join("<br>");
+    return matches.join('<br>');
   }
 
   return properties.name;

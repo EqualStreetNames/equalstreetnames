@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import mapboxgl, { LngLatBoundsLike, Map, NavigationControl, ScaleControl } from "maplibre-gl";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import { feature as turfFeature } from "@turf/helpers";
-import turfBBox from "@turf/bbox";
+import mapboxgl, { LngLatBoundsLike, Map, NavigationControl, ScaleControl } from 'maplibre-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import { feature as turfFeature } from '@turf/helpers';
+import turfBBox from '@turf/bbox';
 
-import addBoundary from "./map/layers/boundary";
-import addRelations from "./map/layers/relation";
-import addWays from "./map/layers/ways";
-import addEvents from "./map/events";
+import addBoundary from './map/layers/boundary';
+import addRelations from './map/layers/relation';
+import addWays from './map/layers/ways';
+import addEvents from './map/events';
 
-import { lang, center, zoom, bbox, countries, style } from "./index";
+import { lang, center, zoom, bbox, countries, style } from './index';
 
 export let map: Map;
 
@@ -19,14 +19,14 @@ mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 export default async function (): Promise<Map> {
   // Initialize map.
   map = new Map({
-    center: center || [0,0],
-    container: "map",
+    center: center || [0, 0],
+    container: 'map',
     hash: true,
     style,
-    zoom: zoom || 0,
+    zoom: zoom || 0
   });
 
-  const response = await fetch("/boundary.geojson");
+  const response = await fetch('/boundary.geojson');
   if (response.ok === true) {
     const boundary = await response.json();
     const boundingBox = turfBBox(turfFeature(boundary.geometries[0]));
@@ -36,9 +36,9 @@ export default async function (): Promise<Map> {
 
   // Add controls.
   const nav = new NavigationControl({ showCompass: false });
-  map.addControl(nav, "top-left");
+  map.addControl(nav, 'top-left');
 
-  const scale = new ScaleControl({ unit: "metric" });
+  const scale = new ScaleControl({ unit: 'metric' });
   map.addControl(scale);
 
   const geocoder = new MapboxGeocoder({
@@ -47,18 +47,18 @@ export default async function (): Promise<Map> {
     countries,
     enableEventLogging: false,
     language: lang,
-    mapboxgl: mapboxgl,
+    mapboxgl: mapboxgl
   });
   map.addControl(geocoder);
 
-  map.on("load", () => {
+  map.on('load', () => {
     map.resize();
 
     // Add GeoJSON sources.
     addRelations(map);
     addWays(map);
 
-    if (typeof boundary !== "undefined") {
+    if (typeof boundary !== 'undefined') {
       addBoundary(map, boundary);
     }
 
@@ -66,8 +66,8 @@ export default async function (): Promise<Map> {
     addEvents(map);
   });
 
-  map.on("idle", () => {
-    document.body.classList.add("loaded");
+  map.on('idle', () => {
+    document.body.classList.add('loaded');
   });
 
   return map;

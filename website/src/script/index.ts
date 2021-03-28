@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "bootstrap/js/dist/collapse";
-import "bootstrap/js/dist/dropdown";
-import "bootstrap/js/dist/modal";
+import 'bootstrap/js/dist/collapse';
+import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/js/dist/modal';
 
-import initChart from "./chart";
-import initMap from "./map";
+import initChart from './chart';
+import initMap from './map';
 
 export let lang: string;
 
@@ -15,13 +15,13 @@ export let bbox: [number, number, number, number];
 export let countries: string;
 export let style: string;
 
-export function init() {
-  const html = document.querySelector("html") as HTMLHtmlElement;
-  lang = html.getAttribute("lang") ?? "en";
+export function init () {
+  const html = document.querySelector('html') as HTMLHtmlElement;
+  lang = html.getAttribute('lang') ?? 'en';
 
   initMap();
 
   initChart(
-    document.querySelector("#gender-chart > canvas") as HTMLCanvasElement
+    document.querySelector('#gender-chart > canvas') as HTMLCanvasElement
   );
 }

@@ -1,26 +1,26 @@
-"use strict";
+'use strict';
 
-import Chart from "chart.js";
+import Chart from 'chart.js';
 
-import colors from "./colors";
+import colors from './colors';
 
 let elementCanvas: HTMLCanvasElement;
 let elementDiv: HTMLDivElement;
 
-function createChart(data: number[]): Chart | null {
-  const context = elementCanvas.getContext("2d");
+function createChart (data: number[]): Chart | null {
+  const context = elementCanvas.getContext('2d');
 
   if (context !== null) {
     return new Chart(context, {
-      type: "doughnut",
+      type: 'doughnut',
       data: {
         labels: [
-          "Male (cis)",
-          "Female (cis)",
-          "Male (trans)",
-          "Female (trans)",
-          "Intersex",
-          "Unknown",
+          'Male (cis)',
+          'Female (cis)',
+          'Male (trans)',
+          'Female (trans)',
+          'Intersex',
+          'Unknown'
         ],
         datasets: [
           {
@@ -31,36 +31,36 @@ function createChart(data: number[]): Chart | null {
               colors.mx,
               colors.fx,
               colors.x,
-              colors.u,
-            ],
-          },
-        ],
+              colors.u
+            ]
+          }
+        ]
       },
       options: {
         animation: {
           animateScale: false,
-          animateRotate: false,
+          animateRotate: false
         },
         circumference: Math.PI,
         legend: false,
         responsive: true,
-        rotation: -Math.PI,
-      },
+        rotation: -Math.PI
+      }
     });
   }
 
   return null;
 }
 
-function updateLabel(gender: string, count: number, total: number): void {
+function updateLabel (gender: string, count: number, total: number): void {
   const labelElement = elementDiv.querySelector(
     `.gender-chart-label[data-gender=${gender}]`
   ) as HTMLTableRowElement;
   const countElement = labelElement.querySelector(
-    ".gender-chart-count"
+    '.gender-chart-count'
   ) as HTMLTableCellElement;
   const pctElement = labelElement.querySelector(
-    ".gender-chart-pct"
+    '.gender-chart-pct'
   ) as HTMLTableCellElement;
 
   const percentage = Math.round((count / total) * 100 * 100) / 100;
@@ -70,7 +70,7 @@ function updateLabel(gender: string, count: number, total: number): void {
   pctElement.innerText = `${percentage} %`;
 }
 
-function updateLabels(count: {
+function updateLabels (count: {
   f: number;
   m: number;
   fx: number;
@@ -82,9 +82,9 @@ function updateLabels(count: {
 }): void {
   const totalPerson =
     count.f + count.m + count.fx + count.mx + count.x + count.p;
-  const total = totalPerson + count.o;
+  // const total = totalPerson + count.o;
 
-  ["f", "m", "fx", "mx"].forEach((gender: string) => {
+  ['f', 'm', 'fx', 'mx'].forEach((gender: string) => {
     updateLabel(gender, count[gender], totalPerson);
   });
 }
@@ -93,18 +93,18 @@ export default function (element: HTMLCanvasElement): void {
   elementCanvas = element;
   elementDiv = elementCanvas.parentElement as HTMLDivElement;
 
-  fetch("/statistics.json")
+  fetch('/statistics.json')
     .then((response: Response) => response.json())
     .then((statistics) => {
       const count = {
-        f: statistics["F"],
-        m: statistics["M"],
-        fx: statistics["FX"],
-        mx: statistics["MX"],
-        x: statistics["X"],
-        u: statistics["?"], // unknown
-        p: statistics["+"], // multiple
-        o: statistics["-"], // not a person
+        f: statistics.F,
+        m: statistics.M,
+        fx: statistics.FX,
+        mx: statistics.MX,
+        x: statistics.X,
+        u: statistics['?'], // unknown
+        p: statistics['+'], // multiple
+        o: statistics['-'] // not a person
       };
       const totalPerson =
         count.f + count.m + count.fx + count.mx + count.x + count.u + count.p;
@@ -114,10 +114,10 @@ export default function (element: HTMLCanvasElement): void {
       updateLabels(count);
 
       const spanCount = document.getElementById(
-        "count-person"
+        'count-person'
       ) as HTMLSpanElement;
       const spanTotal = document.getElementById(
-        "count-total"
+        'count-total'
       ) as HTMLSpanElement;
 
       const percentage = Math.round((totalPerson / total) * 100 * 100) / 100;

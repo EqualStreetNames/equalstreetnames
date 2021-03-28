@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-export default function(
+export default function (
   person: {
     labels?: Record<string, { language: string; value: string }>;
   },
   lang: string
 ): string | null {
   if (
-    typeof person.labels === "undefined" ||
+    typeof person.labels === 'undefined' ||
     Object.keys(person.labels).length === 0
   ) {
     return null;

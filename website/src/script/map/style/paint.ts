@@ -1,34 +1,34 @@
-"use strict";
+'use strict';
 
-import colors from "../../colors";
+import colors from '../../colors';
 
 export default {
-  "line-color": [
-    "case",
-    ["==", ["get", "gender"], "F"],
+  'line-color': [
+    'case',
+    ['==', ['get', 'gender'], 'F'],
     colors.f,
-    ["==", ["get", "gender"], "M"],
+    ['==', ['get', 'gender'], 'M'],
     colors.m,
-    ["==", ["get", "gender"], "FX"],
+    ['==', ['get', 'gender'], 'FX'],
     colors.fx,
-    ["==", ["get", "gender"], "MX"],
+    ['==', ['get', 'gender'], 'MX'],
     colors.mx,
-    ["==", ["get", "gender"], "X"],
+    ['==', ['get', 'gender'], 'X'],
     colors.x,
-    ["==", ["get", "gender"], "?"],
+    ['==', ['get', 'gender'], '?'],
     colors.u,
-    ["==", ["get", "gender"], "+"],
+    ['==', ['get', 'gender'], '+'],
     colors.p,
-    colors.o,
+    colors.o
   ],
-  "line-width": [
-    "interpolate",
-    ["linear"],
-    ["zoom"],
+  'line-width': [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
     13,
     1,
     22,
-    ["case", ["==", ["typeof", ["get", "gender"]], "string"], 20, 10],
+    ['case', ['==', ['typeof', ['get', 'gender']], 'string'], 20, 10]
   ],
-  "line-opacity": 0.8,
+  'line-opacity': 0.8
 };

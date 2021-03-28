@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-export default function(
+export default function (
   person: {
     sitelinks?: {
       dewiki?: { badges: string[]; site: string; title: string; url: string };
@@ -12,7 +12,7 @@ export default function(
   lang: string
 ): { lang: string; url: string } | null {
   if (
-    typeof person.sitelinks === "undefined" ||
+    typeof person.sitelinks === 'undefined' ||
     Object.keys(person.sitelinks).length === 0
   ) {
     return null;

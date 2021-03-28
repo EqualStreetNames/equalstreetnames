@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
-import getGender from "./wikidata/gender";
-import getName from "./wikidata/labels";
-import getBirth from "./wikidata/birth";
-import getDeath from "./wikidata/death";
-import getDescription from "./wikidata/descriptions";
-import getNickname from "./wikidata/nicknames";
-import getWikipedia from "./wikidata/sitelinks";
-import getImage from "./wikidata/image";
+import getGender from './wikidata/gender';
+import getName from './wikidata/labels';
+import getBirth from './wikidata/birth';
+import getDeath from './wikidata/death';
+import getDescription from './wikidata/descriptions';
+import getNickname from './wikidata/nicknames';
+import getWikipedia from './wikidata/sitelinks';
+import getImage from './wikidata/image';
 
-import colors from "./colors";
+import colors from './colors';
 
-import { lang } from "./index";
+import { lang } from './index';
 
 export default function (
   streetname: string,
@@ -20,7 +20,7 @@ export default function (
     | Record<string, string | number | boolean>[]
     | null
 ): string {
-  let html = "";
+  let html = '';
 
   if (details !== null) {
     if (Array.isArray(details) === true) {
@@ -35,7 +35,7 @@ export default function (
   return html + `<div class="popup-streetname">${streetname}</div>`;
 }
 
-function popupDetails(
+function popupDetails (
   details: Record<string, string | number | boolean>
 ): string {
   const wikidata = details.wikidata as string;
@@ -48,7 +48,7 @@ function popupDetails(
   const wikipedia = getWikipedia(details, lang);
   const image = getImage(details, 150, 150);
 
-  let htmlDetails = "";
+  let htmlDetails = '';
 
   htmlDetails += '<div class="popup-wikidata">';
 
@@ -64,18 +64,18 @@ function popupDetails(
     htmlDetails += ` (<span class="popup-name__nickname">${nickname}</span>)`;
   }
   if (details.person === true && gender !== null) {
-    const highlightColor = colors[gender.toLowerCase()] ?? "#fff";
+    const highlightColor = colors[gender.toLowerCase()] ?? '#fff';
     htmlDetails += `<span class="highlight-low" style="background:linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, ${highlightColor} 65%);"></span>`;
   }
-  htmlDetails += "</div>";
+  htmlDetails += '</div>';
 
   if (details.person === true && (birth !== null || death !== null)) {
     htmlDetails +=
       '<div class="popup-life">' +
-      (birth === null ? "???" : birth) +
-      " - " +
-      (death === null ? "???" : death) +
-      "</div>";
+      (birth === null ? '???' : birth) +
+      ' - ' +
+      (death === null ? '???' : death) +
+      '</div>';
   }
 
   if (description !== null) {
@@ -87,18 +87,18 @@ function popupDetails(
     htmlDetails +=
       `<a target="_blank" href="${wikipedia.url}">` +
       `Wikipedia (${wikipedia.lang.toUpperCase()})` +
-      `</a> + `;
+      '</a> + ';
   }
   htmlDetails += `<a target="_blank" href="https://www.wikidata.org/wiki/${wikidata}">Wikidata</a>`;
-  htmlDetails += "</div>";
+  htmlDetails += '</div>';
 
-  htmlDetails += "</div>";
+  htmlDetails += '</div>';
 
   if (image !== null) {
-    htmlDetails += "</div>";
+    htmlDetails += '</div>';
   }
 
-  htmlDetails += "<hr>";
+  htmlDetails += '<hr>';
 
   return htmlDetails;
 }

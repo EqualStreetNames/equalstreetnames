@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 export default function (
   person: {
@@ -12,14 +12,14 @@ export default function (
   lang: string
 ): string | null {
   if (
-    typeof person.nicknames === "undefined" ||
+    typeof person.nicknames === 'undefined' ||
     person.nicknames === null ||
     Object.keys(person.nicknames).length === 0
   ) {
     return null;
   }
 
-  return typeof (person.nicknames as any)[lang] !== "undefined"
+  return typeof (person.nicknames as any)[lang] !== 'undefined'
     ? (person.nicknames as any)[lang].text
     : null;
 }

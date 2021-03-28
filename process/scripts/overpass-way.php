@@ -36,7 +36,7 @@ exit(0);
 function get(string $city): string
 {
     $query = file_get_contents(
-        sprintf('cities/%s/overpass/way-full-json', $city)
+        sprintf('../cities/%s/overpass/way-full-json', $city)
     );
     $query = str_replace(["\r", "\n"], '', $query);
 

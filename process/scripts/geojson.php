@@ -14,13 +14,13 @@ $options = getopt('c:', ['city:']);
 
 $city = $options['c'] ?? $options['city'];
 
-$config = include sprintf('cities/%s/config.php', $city);
+$config = include sprintf('../cities/%s/config.php', $city);
 
 // Need to be removed when each Brussels streets
 // have its `name:etymology:wikidata` tag
 $manualStreetsGender = [];
 if ($city === 'brussels') {
-    $handle = fopen('cities/brussels/event-2020-02-17/gender.csv', 'r');
+    $handle = fopen('../cities/brussels/event-2020-02-17/gender.csv', 'r');
     if ($handle !== false) {
         while (($data = fgetcsv($handle)) !== false) {
             $manualStreetsGender[] = $data;
@@ -34,7 +34,7 @@ if (isset($config['relationId'])) {
     $url = sprintf('http://polygons.openstreetmap.fr/get_geojson.py?id=%d', $config['relationId']);
 
     file_put_contents(
-        sprintf('cities/%s/data/boundary.geojson', $city),
+        sprintf('../cities/%s/data/boundary.geojson', $city),
         file_get_contents($url)
     );
 
@@ -107,7 +107,7 @@ foreach ($relations as $r) {
 }
 
 file_put_contents(
-    sprintf('cities/%s/data/relations.geojson', $city),
+    sprintf('../cities/%s/data/relations.geojson', $city),
     json_encode($geojson)
 );
 
@@ -153,7 +153,7 @@ foreach ($ways as $w) {
 }
 
 file_put_contents(
-    sprintf('cities/%s/data/ways.geojson', $city),
+    sprintf('../cities/%s/data/ways.geojson', $city),
     json_encode($geojson)
 );
 

@@ -2,7 +2,7 @@
 
 export default function (
   person: {
-    descriptions?: Record<string, { language: string; value: string }>;
+    descriptions?: {[key: string]: { language: string; value: string }}
   },
   lang: string
 ): string | null {

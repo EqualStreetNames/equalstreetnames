@@ -1,6 +1,6 @@
 'use strict';
 
-const colors: Record<string, string> = {
+const colors: {[key: string]: string} = {
   f: '#800080', // female (cis)
   m: '#C8C800', // male (cis)
   fx: '#00a050', // female (transgender)

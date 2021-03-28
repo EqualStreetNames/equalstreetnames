@@ -16,15 +16,15 @@ import { lang } from './index';
 export default function (
   streetname: string,
   details:
-    | Record<string, string | number | boolean>
-    | Record<string, string | number | boolean>[]
+    | {[key: string]: string | number | boolean}
+    | {[key: string]: string | number | boolean}[]
     | null
 ): string {
   let html = '';
 
   if (details !== null) {
     if (Array.isArray(details) === true) {
-      details.forEach((d: Record<string, string | number | boolean>) => {
+      details.forEach((d: {[key: string]: string | number | boolean}) => {
         html += popupDetails(d);
       });
     } else {
@@ -36,7 +36,7 @@ export default function (
 }
 
 function popupDetails (
-  details: Record<string, string | number | boolean>
+  details: {[key: string]: string | number | boolean}
 ): string {
   const wikidata = details.wikidata as string;
   const name = getName(details, lang);

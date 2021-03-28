@@ -19,6 +19,7 @@
     "@babel/core": "^7.13.13",
     "@types/chart.js": "^2.9.31",
     "@types/maplibre-gl": "^1.13.1",
+    "commander": "^2.20.3",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "sass": "^1.32.8",

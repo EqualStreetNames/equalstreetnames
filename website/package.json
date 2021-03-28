@@ -1,20 +1,20 @@
 {
   "name": "@equalstreetnames/website",
   "version": "1.0.0",
-  "description": "",
+  "description": "EqualStreetNames city website/map",
   "main": "index.js",
   "directories": {
     "doc": "docs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openknowledgebe/equalstreetnames.git"
+    "url": "git+https://github.com/EqualStreetNames/equalstreetnames.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/openknowledgebe/equalstreetnames/issues"
+    "url": "https://github.com/EqualStreetNames/equalstreetnames/issues"
   },
-  "homepage": "https://github.com/openknowledgebe/equalstreetnames#readme",
+  "homepage": "https://github.com/EqualStreetNames/equalstreetnames#readme",
   "devDependencies": {
     "@babel/core": "^7.13.13",
     "@types/chart.js": "^2.9.31",

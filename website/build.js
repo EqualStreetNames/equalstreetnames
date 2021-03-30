@@ -1,51 +1,51 @@
-const Parcel = require("parcel-bundler");
-const path = require("path");
-const shell = require("shelljs");
-const program = require("commander");
-const version = require("./package.json").version;
+const Parcel = require('parcel-bundler');
+const path = require('path');
+const shell = require('shelljs');
+const program = require('commander');
+const version = require('./package.json').version;
 
 program.version(version);
 
-program.option("-c, --city <path>").option("-s, --serve").action(bundle);
+program.option('-c, --city <path>').option('-s, --serve').action(bundle);
 
 program.parse(process.argv);
 
-async function bundle(options) {
+async function bundle (options) {
   const city = options.city;
   const serve = options.serve || false;
 
   const directory = `../cities/${city}`;
 
-  if (shell.test("-e", directory) === true) {
-    shell.rm("-rf", ["assets/", "dist/", "public/", "static/"]);
+  if (shell.test('-e', directory) === true) {
+    shell.rm('-rf', ['assets/', 'dist/', 'public/', 'static/']);
 
-    shell.mkdir("assets/", "public/", "static/");
+    shell.mkdir('assets/', 'public/', 'static/');
 
-    shell.cp(`${directory}/assets/*`, "assets/");
-    shell.cp("-r", `${directory}/html/*`, "public/");
-    shell.cp(`${directory}/data/*`, "static/");
+    shell.cp(`${directory}/assets/*`, 'assets/');
+    shell.cp('-r', `${directory}/html/*`, 'public/');
+    shell.cp(`${directory}/data/*`, 'static/');
 
-    shell.rm("-rf", `../dist/${city}`);
+    shell.rm('-rf', `../dist/${city}`);
 
     const options = {
-      global: "app",
-      outDir: path.join(__dirname, "./dist", city),
+      global: 'app',
+      outDir: path.join(__dirname, './dist', city)
     };
 
     if (serve === true) {
-      process.env.NODE_ENV = process.env.NODE_ENV || "development";
+      process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-      const bundler = new Parcel(path.join(__dirname, "./public/index.html"), {
-        ...options,
+      const bundler = new Parcel(path.join(__dirname, './public/index.html'), {
+        ...options
       });
 
       await bundler.serve();
     } else {
-      process.env.NODE_ENV = process.env.NODE_ENV || "production";
+      process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
-      const bundler = new Parcel(path.join(__dirname, "./public/index.html"), {
+      const bundler = new Parcel(path.join(__dirname, './public/index.html'), {
         ...options,
-        production: true,
+        production: true
       });
 
       bundler.bundle();

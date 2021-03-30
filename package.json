@@ -108,6 +108,10 @@
         "staticPath": "cities/germany/berlin/data"
       },
       {
+        "outDirPattern": "**/dist/germany/freising",
+        "staticPath": "cities/germany/freising/data"
+      },
+      {
         "outDirPattern": "**/dist/germany/leipzig",
         "staticPath": "cities/germany/leipzig/data"
       },

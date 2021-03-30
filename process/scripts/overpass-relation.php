@@ -38,7 +38,6 @@ function get(string $city): string
     $query = file_get_contents(
         sprintf('../cities/%s/overpass/relation-full-json', $city)
     );
-    $query = str_replace(["\r", "\n"], '', $query);
 
     $client = new \GuzzleHttp\Client();
     $response = $client->request(

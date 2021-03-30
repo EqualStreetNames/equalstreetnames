@@ -38,10 +38,7 @@ async function bundle (options) {
       const bundler = new Parcel(path.join(__dirname, './public/index.html'), {
         ...options
       });
-      bundler.on('buildError', (error) => {
-        shell.echo(error);
-        shell.exit(1);
-      });
+      bundler.on('buildError', () => { shell.exit(1); });
 
       await bundler.serve();
     } else {
@@ -51,10 +48,7 @@ async function bundle (options) {
         ...options,
         production: true
       });
-      bundler.on('buildError', (error) => {
-        shell.echo(error);
-        shell.exit(1);
-      });
+      bundler.on('buildError', () => { shell.exit(1); });
 
       bundler.bundle();
     }

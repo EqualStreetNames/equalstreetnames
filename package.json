@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "build:belgium:braine-lalleud": "parcel build \"cities/belgium/braine-lalleud/html/**/index.html\" --global app --out-dir dist/belgium/braine-lalleud --no-source-maps",
     "build:belgium:brugge": "parcel build \"cities/belgium/brugge/html/**/index.html\" --global app --out-dir dist/belgium/brugge --no-source-maps",
     "build:belgium:brussels": "parcel build \"cities/belgium/brussels/html/**/index.html\" --global app --out-dir dist/belgium/brussels --no-source-maps",
     "build:belgium:gent": "parcel build \"cities/belgium/gent/html/**/index.html\" --global app --out-dir dist/belgium/gent --no-source-maps",
@@ -71,6 +72,10 @@
   "staticFiles": {
     "excludeGlob": "*.{csv,md}",
     "staticPath": [
+      {
+        "outDirPattern": "**/dist/belgium/braine-lalleud",
+        "staticPath": "cities/belgium/braine-lalleud/data"
+      },
       {
         "outDirPattern": "**/dist/belgium/brugge",
         "staticPath": "cities/belgium/brugge/data"

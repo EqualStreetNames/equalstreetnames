@@ -16,6 +16,8 @@ export let map: Map;
 
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
+var initialLocation = location.hash
+
 export default async function (): Promise<Map> {
   // Initialize map.
   map = new Map({
@@ -31,7 +33,9 @@ export default async function (): Promise<Map> {
     const boundary = await response.json();
     const boundingBox = turfBBox(turfFeature(boundary.geometries[0]));
 
-    map.fitBounds(boundingBox as LngLatBoundsLike, { padding: 25 });
+    if(!initialLocation) {
+      map.fitBounds(boundingBox as LngLatBoundsLike, { padding: 25 });
+    }
   }
 
   // Add controls.

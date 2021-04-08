@@ -31,6 +31,9 @@
 [submodule "cities/germany/freising"]
 	path = cities/germany/freising
 	url = https://github.com/EqualStreetNames/equalstreetnames-freising.git
+[submodule "cities/germany/halle-saale"]
+	path = cities/germany/halle-saale
+	url = https://github.com/EqualStreetNames/equalstreetnames-halle-saale.git
 [submodule "cities/germany/leipzig"]
 	path = cities/germany/leipzig
 	url = https://github.com/EqualStreetNames/equalstreetnames-leipzig.git

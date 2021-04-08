@@ -21,6 +21,7 @@
     "build:serbia:belgrade": "parcel build \"cities/serbia/belgrade/html/**/index.html\" --global app --out-dir dist/serbia/belgrade --no-source-maps",
     "build:germany:berlin": "parcel build \"cities/germany/berlin/html/**/index.html\" --global app --out-dir dist/germany/berlin --no-source-maps",
     "build:germany:freising": "parcel build \"cities/germany/freising/html/**/index.html\" --global app --out-dir dist/germany/freising --no-source-maps",
+    "build:germany:halle-saale": "parcel build \"cities/germany/halle-saale/html/**/index.html\" --global app --out-dir dist/germany/halle-saale --no-source-maps",
     "build:germany:leipzig": "parcel build \"cities/germany/leipzig/html/**/index.html\" --global app --out-dir dist/germany/leipzig --no-source-maps",
     "build:germany:munich": "parcel build \"cities/germany/munich/html/**/index.html\" --global app --out-dir dist/germany/munich --no-source-maps",
     "serve:belgium:brugge": "parcel serve \"cities/belgium/brugge/html/**/index.html\" --global app --out-dir dist/belgium/brugge",
@@ -115,6 +116,10 @@
       {
         "outDirPattern": "**/dist/germany/freising",
         "staticPath": "cities/germany/freising/data"
+      },
+      {
+        "outDirPattern": "**/dist/germany/halle-saale",
+        "staticPath": "cities/germany/halle-saale/data"
       },
       {
         "outDirPattern": "**/dist/germany/leipzig",

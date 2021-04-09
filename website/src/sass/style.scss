@@ -1,0 +1,46 @@
+@import "@fortawesome/fontawesome-free/css/brands.css";
+@import "@fortawesome/fontawesome-free/css/solid.css";
+@import "@fortawesome/fontawesome-free/css/fontawesome.css";
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/media";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/utilities";
+
+@import "loader";
+@import "map";
+@import "popup";
+@import "chart";
+
+html,
+body {
+  height: 100vh;
+}
+
+nav.navbar {
+  background-color: rgba(52, 51, 50, 0.9);
+
+  .navbar-nav {
+    color: #fff;
+
+    .nav-item {
+      margin-left: 20px;
+    }
+  }
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+}

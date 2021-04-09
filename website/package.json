@@ -1,0 +1,72 @@
+{
+  "name": "@equalstreetnames/website",
+  "version": "1.0.0",
+  "description": "EqualStreetNames city website/map",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EqualStreetNames/equalstreetnames.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/EqualStreetNames/equalstreetnames/issues"
+  },
+  "homepage": "https://github.com/EqualStreetNames/equalstreetnames#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@types/chart.js": "^2.9.32",
+    "@types/mapbox__mapbox-gl-geocoder": "^4.7.0",
+    "@types/maplibre-gl": "^1.13.1",
+    "@types/node": "^14.14.37",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "commander": "^7.2.0",
+    "eslint": "^7.23.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "sass": "^1.32.8",
+    "shelljs": "^0.8.4",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@mapbox/mapbox-gl-geocoder": "^4.7.0",
+    "@turf/bbox": "^6.3.0",
+    "@turf/helpers": "^6.3.0",
+    "bootstrap": "^4.6.0",
+    "chart.js": "^2.9.4",
+    "jquery": "^3.6.0",
+    "maplibre-gl": "^1.14.0",
+    "popper.js": "^1.16.1"
+  },
+  "scripts": {
+    "lint": "eslint \"src/script/**/*.ts\"",
+    "lint:fix": "eslint --fix \"src/script/**/*.ts\"",
+    "build:belgium:brugge": "node build.js -c belgium/brugge",
+    "build:belgium:brussels": "node build.js -c belgium/brussels",
+    "build:belgium:gent": "node build.js -c belgium/gent",
+    "build:belgium:leuven": "node build.js -c belgium/leuven",
+    "build:belgium:liege": "node build.js -c belgium/liege",
+    "build:belgium:mons": "node build.js -c belgium/mons",
+    "build:belgium:namur": "node build.js -c belgium/namur",
+    "build:belgium:nivelles": "node build.js -c belgium/nivelles",
+    "build:netherlands:assen": "node build.js -c netherlands/assen",
+    "build:netherlands:groningen": "node build.js -c netherlands/groningen",
+    "build:germany:berlin": "node build.js -c germany/berlin",
+    "build:germany:freising": "node build.js -c germany/freising",
+    "build:germany:halle-saale": "node build.js -c germany/halle-saale",
+    "build:germany:leipzig": "node build.js -c germany/leipzig",
+    "build:germany:munich": "node build.js -c germany/munich",
+    "build:serbia:belgrade": "node build.js -c serbia/belgrade"
+  },
+  "staticFiles": {
+    "excludeGlob": "*.{csv,md}"
+  }
+}

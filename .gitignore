@@ -1,6 +1,0 @@
-.cache/
-node_modules/
-vendor/
-data/
-dist/
-.env

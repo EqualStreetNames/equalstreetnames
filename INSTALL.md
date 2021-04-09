@@ -55,14 +55,14 @@ Getting a working version of EqualStreetNames consists of a couple of steps:
     git submodule update --init --recursive
     ```
 
-1. Install JavaScript dependencies with `npm`  
+1. Install JavaScript dependencies with `npm` (command to run in `website/` directory)  
 **Required if you want to run the website locally**
 
     ```cmd
     npm install
     ```
 
-1. Install PHP dependencies with `composer`  
+1. Install PHP dependencies with `composer` (command to run in `process/` directory)  
 **Required if you want to run the data update process locally**
 
     ```cmd
@@ -77,23 +77,23 @@ You should now have a completely working version of EqualStreetNames to work on.
 
 1. Create a [Mapbox token](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/)
 
-1. Create a file named `.env` in the root directory of the project
+1. Create a file named `.env` in the `website/` directory of the project
 
 1. Add the following line to the `.env` file: `MAPBOX_TOKEN=[your Mapbox token]` replacing `[your Mapbox token]` with the token you created
 
-1. Choose the city you want to run locally
+1. Choose the city you want to run locally (command to run in `website/` directory)
 
     ```cmd
-    npm run serve:country:city
+    npm run build:country:city -- --serve
     ```
 
-    Example for Brussels, Belgium: `npm run serve:belgium:brussels`
+    Example for Brussels, Belgium: `npm run build:belgium:brussels -- --serve`
 
 1. Once installed and running, go to <http://localhost:1234/>
 
 ### Data update process
 
-1. Choose the city you want to update locally
+1. Choose the city you want to update locally (command to run in `process/` directory)
 
     ```cmd
     composer run update-data -- --city=country/city

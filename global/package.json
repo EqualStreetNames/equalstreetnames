@@ -10,9 +10,19 @@
   "bugs": "https://github.com/EqualStreetNames/equalstreetnames/issues",
   "homepage": "https://equalstreetnames.be/",
   "devDependencies": {
-    "parcel": "^2.0.0-beta.2"
+    "@parcel/transformer-sass": "^2.0.0-beta.2",
+    "@turf/turf": "^5.1.6",
+    "@types/ol": "^6.4.2",
+    "commander": "^7.2.0",
+    "parcel": "^2.0.0-beta.2",
+    "shelljs": "^0.8.4"
   },
   "scripts": {
-    "build": "parcel build index.html"
+    "build": "node build.js",
+    "parcel:build": "parcel build src/index.html",
+    "parcel:serve": "parcel serve src/index.html"
+  },
+  "dependencies": {
+    "ol": "^6.5.0"
   }
 }

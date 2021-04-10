@@ -1,0 +1,78 @@
+{
+  "belgium": {
+    "brussels": {
+      "name": "🇧🇪 Brussels, Belgium",
+      "url": "https://equalstreetnames.brussels/"
+    },
+    "braine-lalleud": {
+      "name": "🇧🇪 Braine-l'Alleud, Belgium",
+      "url": "https://braine-lalleud.equalstreetnames.be/"
+    },
+    "brugge": {
+      "name": "🇧🇪 Brugge, Belgium",
+      "url": "https://brugge.equalstreetnames.be/"
+    },
+    "gent": {
+      "name": "🇧🇪 Gent, Belgium",
+      "url": "https://gent.equalstreetnames.be/"
+    },
+    "leuven": {
+      "name": "🇧🇪 Leuven, Belgium",
+      "url": "https://leuven.equalstreetnames.be/"
+    },
+    "liege": {
+      "name": "🇧🇪 Liège, Belgium",
+      "url": "https://liege.equalstreetnames.be/"
+    },
+    "mons": {
+      "name": "🇧🇪 Mons, Belgium",
+      "url": "https://mons.equalstreetnames.be/"
+    },
+    "namur": {
+      "name": "🇧🇪 Namur, Belgium",
+      "url": "https://namur.equalstreetnames.be/"
+    },
+    "nivelles": {
+      "name": "🇧🇪 Nivelles, Belgium",
+      "url": "https://nivelles.equalstreetnames.be/"
+    }
+  },
+  "germany": {
+    "berlin": {
+      "name": "🇩🇪 Berlin, Germany",
+      "url": ""
+    },
+    "freising": {
+      "name": "🇩🇪 Freising, Germany",
+      "url": ""
+    },
+    "halle-saale": {
+      "name": "🇩🇪 Halle (Saale), Germany",
+      "url": ""
+    },
+    "leipzig": {
+      "name": "🇩🇪 Leipzig, Germany",
+      "url": ""
+    },
+    "munich": {
+      "name": "🇩🇪 Munich, Germany",
+      "url": ""
+    }
+  },
+  "netherlands": {
+    "assen": {
+      "name": "🇳🇱 Assen, The Netherlands",
+      "url": ""
+    },
+    "groningen": {
+      "name": "🇳🇱 Groningen, The Netherlands",
+      "url": ""
+    }
+  },
+  "serbia": {
+    "belgrade": {
+      "name": "🇷🇸 Belgrade, Serbia",
+      "url": ""
+    }
+  }
+}

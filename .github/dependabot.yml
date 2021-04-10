@@ -1,6 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: npm
+    directory: "/global"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 10
+  - package-ecosystem: npm
     directory: "/website"
     schedule:
       interval: monthly

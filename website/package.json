@@ -1,19 +1,13 @@
 {
   "name": "@equalstreetnames/website",
-  "version": "1.0.0",
   "description": "EqualStreetNames city website/map",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "license": "MIT",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EqualStreetNames/equalstreetnames.git"
   },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/EqualStreetNames/equalstreetnames/issues"
-  },
+  "bugs": "https://github.com/EqualStreetNames/equalstreetnames/issues",
   "homepage": "https://github.com/EqualStreetNames/equalstreetnames#readme",
   "devDependencies": {
     "@babel/core": "^7.13.15",
@@ -48,7 +42,6 @@
   },
   "scripts": {
     "lint": "eslint \"src/script/**/*.ts\"",
-    "lint:fix": "eslint --fix \"src/script/**/*.ts\"",
     "build:belgium:braine-lalleud": "node build.js -c belgium/braine-lalleud",
     "build:belgium:brugge": "node build.js -c belgium/brugge",
     "build:belgium:brussels": "node build.js -c belgium/brussels",

@@ -1,0 +1,18 @@
+{
+  "name": "@equalstreetnames/global",
+  "description": "EqualStreetNames global map",
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EqualStreetNames/equalstreetnames.git"
+  },
+  "bugs": "https://github.com/EqualStreetNames/equalstreetnames/issues",
+  "homepage": "https://equalstreetnames.be/",
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.2"
+  },
+  "scripts": {
+    "build": "parcel build index.html"
+  }
+}

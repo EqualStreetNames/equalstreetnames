@@ -40,19 +40,19 @@
   "germany": {
     "berlin": {
       "name": "🇩🇪 Berlin, Germany",
-      "url": ""
+      "url": "https://equalstreetnames-berlin.openstreetmap.de/"
     },
     "freising": {
       "name": "🇩🇪 Freising, Germany",
-      "url": ""
+      "url": "https://freising.equalstreetnames.eu/"
     },
     "halle-saale": {
       "name": "🇩🇪 Halle (Saale), Germany",
-      "url": ""
+      "url": "https://halle-saale.equalstreetnames.eu/"
     },
     "leipzig": {
       "name": "🇩🇪 Leipzig, Germany",
-      "url": ""
+      "url": "https://leipzig.equalstreetnames.eu/"
     },
     "munich": {
       "name": "🇩🇪 Munich, Germany",
@@ -62,17 +62,17 @@
   "netherlands": {
     "assen": {
       "name": "🇳🇱 Assen, The Netherlands",
-      "url": ""
+      "url": "https://assen.equalstreetnames.eu/"
     },
     "groningen": {
       "name": "🇳🇱 Groningen, The Netherlands",
-      "url": ""
+      "url": "https://groningen.equalstreetnames.eu/"
     }
   },
   "serbia": {
     "belgrade": {
       "name": "🇷🇸 Belgrade, Serbia",
-      "url": ""
+      "url": "https://naziviulica.openstreetmap.rs/"
     }
   }
 }

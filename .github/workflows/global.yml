@@ -20,13 +20,15 @@ defaults:
     working-directory: global
 
 jobs:
-  build-brussels:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12.x, 14.x]
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:

@@ -69,7 +69,9 @@ export default async function (): Promise<Map> {
     const boundary = await response.json();
     const boundingBox = turfBBox(turfFeature(boundary.geometries[0])) as MapboxGeocoder.Bbox;
 
-    map.fitBounds(boundingBox as LngLatBoundsLike, { padding: 25 });
+    if (typeof location.hash === 'undefined' || location.hash === '' || location.hash === '#0/0/0') {
+      map.fitBounds(boundingBox as LngLatBoundsLike, { padding: 25 });
+    }
     geocoder.setBbox(boundingBox);
   }
 

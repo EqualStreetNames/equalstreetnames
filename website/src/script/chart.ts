@@ -3,6 +3,7 @@
 import Chart from 'chart.js';
 
 import colors from './colors';
+import { statistics } from './index';
 
 let elementCanvas: HTMLCanvasElement;
 let elementDiv: HTMLDivElement;
@@ -93,36 +94,32 @@ export default function (element: HTMLCanvasElement): void {
   elementCanvas = element;
   elementDiv = elementCanvas.parentElement as HTMLDivElement;
 
-  fetch('/statistics.json')
-    .then((response: Response) => response.json())
-    .then((statistics) => {
-      const count = {
-        f: statistics.F,
-        m: statistics.M,
-        fx: statistics.FX,
-        mx: statistics.MX,
-        x: statistics.X,
-        u: statistics['?'], // unknown
-        p: statistics['+'], // multiple
-        o: statistics['-'] // not a person
-      };
-      const totalPerson =
-        count.f + count.m + count.fx + count.mx + count.x + count.u + count.p;
-      const total = totalPerson + count.o;
+  const count = {
+    f: statistics.F,
+    m: statistics.M,
+    fx: statistics.FX,
+    mx: statistics.MX,
+    x: statistics.X,
+    u: statistics['?'], // unknown
+    p: statistics['+'], // multiple
+    o: statistics['-'] // not a person
+  };
+  const totalPerson =
+    count.f + count.m + count.fx + count.mx + count.x + count.u + count.p;
+  const total = totalPerson + count.o;
 
-      createChart([count.m, count.f, count.mx, count.fx, count.x, count.u]);
-      updateLabels(count);
+  createChart([count.m, count.f, count.mx, count.fx, count.x, count.u]);
+  updateLabels(count);
 
-      const spanCount = document.getElementById(
-        'count-person'
-      ) as HTMLSpanElement;
-      const spanTotal = document.getElementById(
-        'count-total'
-      ) as HTMLSpanElement;
+  const spanCount = document.getElementById(
+    'count-person'
+  ) as HTMLSpanElement;
+  const spanTotal = document.getElementById(
+    'count-total'
+  ) as HTMLSpanElement;
 
-      const percentage = Math.round((totalPerson / total) * 100 * 100) / 100;
+  const percentage = Math.round((totalPerson / total) * 100 * 100) / 100;
 
-      spanCount.innerText = `${totalPerson} (${percentage}%)`;
-      spanTotal.innerText = total;
-    });
+  spanCount.innerText = `${totalPerson} (${percentage}%)`;
+  spanTotal.innerText = total;
 }

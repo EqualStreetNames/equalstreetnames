@@ -11,12 +11,11 @@ import { Fill, Stroke, Circle, Style } from 'ol/style';
 import * as polygons from '../dist/cities.json';
 import * as points from '../dist/cities-point.json';
 
-
 (function () {
   document.getElementById('count').innerText = polygons.features.length.toString();
 
   const baselayer = new TileLayer({
-    source: new OSM(),
+    source: new OSM()
   });
 
   const map = new Map({
@@ -24,8 +23,8 @@ import * as points from '../dist/cities-point.json';
     target: 'map',
     view: new View({
       center: [0, 0],
-      zoom: 2,
-    }),
+      zoom: 2
+    })
   });
 
   const layerPolygons = new VectorLayer({
@@ -71,8 +70,8 @@ import * as points from '../dist/cities-point.json';
     element: document.getElementById('popup'),
     autoPan: true,
     autoPanAnimation: {
-      duration: 250,
-    },
+      duration: 250
+    }
   });
   map.addOverlay(overlay);
 
@@ -87,13 +86,13 @@ import * as points from '../dist/cities-point.json';
 
       let html = `${name}<br><a target="_blank" href="${url}">${url}</a>`;
       html += '<hr>';
-      html += `<div style="font-size: small;">`
-        + `Out of ${total} streetnames,<br>${totalPerson} have been found to be named after a person :<br>`
-        + (statistics.F > 0 ? `${statistics.F} after a cisgender female,<br>` : '')
-        + (statistics.FX > 0 ? `${statistics.FX} after a transgender female,<br>` : '')
-        + (statistics.MX > 0 ? `${statistics.MX} after a transgender male,<br>` : '')
-        + (statistics.M > 0 ? `${statistics.M} after a cisgender male,<br>` : '')
-        + `</div>`;
+      html += '<div style="font-size: small;">' +
+        `Out of ${total} streetnames,<br>${totalPerson} have been found to be named after a person :<br>` +
+        (statistics.F > 0 ? `${statistics.F} after a cisgender female,<br>` : '') +
+        (statistics.FX > 0 ? `${statistics.FX} after a transgender female,<br>` : '') +
+        (statistics.MX > 0 ? `${statistics.MX} after a transgender male,<br>` : '') +
+        (statistics.M > 0 ? `${statistics.M} after a cisgender male,<br>` : '') +
+        '</div>';
 
       overlay.getElement().innerHTML = html;
 

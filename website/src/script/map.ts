@@ -26,6 +26,7 @@ export default async function (): Promise<Map> {
     options.zoom = zoom;
   } else {
     options.bounds = bbox || bounds;
+    options.fitBoundsOptions = { padding: 50 };
   }
 
   // Initialize map.

@@ -1,27 +1,27 @@
-const fs = require("fs");
-const path = require("path");
-const shell = require("shelljs");
-const program = require("commander");
-const turf = require("@turf/turf");
+const fs = require('fs');
+const path = require('path');
+const shell = require('shelljs');
+const program = require('commander');
+const turf = require('@turf/turf');
 
-const version = require("./package.json").version;
+const version = require('./package.json').version;
 
 program.version(version);
-program.option("-s, --serve").action(bundle);
+program.option('-s, --serve').action(bundle);
 program.parse(process.argv);
 
-async function bundle(options) {
+async function bundle (options) {
   const serve = options.serve || false;
 
   try {
-    const polygons = { type: "FeatureCollection", features: [] };
-    const points = { type: "FeatureCollection", features: [] };
+    const polygons = { type: 'FeatureCollection', features: [] };
+    const points = { type: 'FeatureCollection', features: [] };
 
     const citiesDetails = JSON.parse(
-      fs.readFileSync(path.resolve("./cities.json"))
+      fs.readFileSync(path.resolve('./cities.json'))
     );
 
-    const directory = path.resolve("../cities/");
+    const directory = path.resolve('../cities/');
 
     const countries = fs
       .readdirSync(directory, { withFileTypes: true })
@@ -30,14 +30,14 @@ async function bundle(options) {
     countries.forEach((country) => {
       const cities = fs
         .readdirSync(path.join(directory, country.name), {
-          withFileTypes: true,
+          withFileTypes: true
         })
         .filter((directory) => directory.isDirectory());
 
       cities.forEach((city) => {
         if (
-          typeof citiesDetails[country.name] === "undefined" ||
-          typeof citiesDetails[country.name][city.name] === "undefined"
+          typeof citiesDetails[country.name] === 'undefined' ||
+          typeof citiesDetails[country.name][city.name] === 'undefined'
         ) {
           throw new Error(
             `Details are missing for "${country.name}/${city.name}".`
@@ -45,10 +45,10 @@ async function bundle(options) {
         }
 
         const feature = {
-          type: "Feature",
+          type: 'Feature',
           id: `${country.name}:${city.name}`,
           properties: citiesDetails[country.name][city.name],
-          geometry: null,
+          geometry: null
         };
 
         const statistics = fs.readFileSync(
@@ -56,10 +56,10 @@ async function bundle(options) {
             directory,
             country.name,
             city.name,
-            "data",
-            "statistics.json"
+            'data',
+            'statistics.json'
           ),
-          "utf8"
+          'utf8'
         );
         feature.properties.statistics = JSON.parse(statistics);
 
@@ -68,10 +68,10 @@ async function bundle(options) {
             directory,
             country.name,
             city.name,
-            "data",
-            "boundary.geojson"
+            'data',
+            'boundary.geojson'
           ),
-          "utf8"
+          'utf8'
         );
         feature.geometry = JSON.parse(boundary);
 
@@ -84,30 +84,30 @@ async function bundle(options) {
 
         points.features.push(featurePoint);
 
-        shell.echo("✔", feature.properties.name);
+        shell.echo('✔', feature.properties.name);
       });
     });
 
-    shell.rm("-rf", "dist/");
-    shell.mkdir("dist/");
+    shell.rm('-rf', 'dist/');
+    shell.mkdir('dist/');
 
     fs.writeFileSync(
-      path.resolve("./dist/cities.json"),
+      path.resolve('./dist/cities.json'),
       JSON.stringify(polygons),
-      "utf8"
+      'utf8'
     );
     fs.writeFileSync(
-      path.resolve("./dist/cities-point.json"),
+      path.resolve('./dist/cities-point.json'),
       JSON.stringify(points),
-      "utf8"
+      'utf8'
     );
 
-    shell.echo("Total:", polygons.features.length, "polygons", "&", points.features.length, "points");
+    shell.echo('Total:', polygons.features.length, 'polygons', '&', points.features.length, 'points');
 
     if (serve === true) {
-      shell.exec("npm run parcel:serve", { async: true });
+      shell.exec('npm run parcel:serve', { async: true });
     } else {
-      shell.exec("npm run parcel:build");
+      shell.exec('npm run parcel:build');
     }
   } catch (error) {
     shell.echo(error.message);

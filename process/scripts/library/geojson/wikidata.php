@@ -116,8 +116,8 @@ function extractWikidata(
         'descriptions' => $descriptions,
         'nicknames'    => $nicknames,
         'gender'       => is_null($genderId) ? null : extractGender($genderId),
-        'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 1, 4)),
-        'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 1, 4)),
+        'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 0, 5)),
+        'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 0, 5)),
         'sitelinks'    => $sitelinks,
         'image'        => $image,
     ];

@@ -7,13 +7,13 @@ on:
   push:
     branches: [master]
     paths:
-      - .github/workflows/website.yml
-      - website/*
+      - '.github/workflows/website.yml'
+      - 'website/**/*'
   pull_request:
     branches: [master]
     paths:
-      - .github/workflows/website.yml
-      - website/*
+      - '.github/workflows/website.yml'
+      - 'website/**/*'
 
 defaults:
   run:

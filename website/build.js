@@ -27,7 +27,7 @@ async function bundle (options) {
 
     shell.rm('-rf', `../dist/${city}`);
 
-    const options = {
+    const parcelOptions = {
       global: 'app',
       outDir: path.join(__dirname, './dist', city)
     };
@@ -36,7 +36,7 @@ async function bundle (options) {
       process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
       const bundler = new Parcel(path.join(__dirname, './public/index.html'), {
-        ...options
+        ...parcelOptions
       });
       bundler.on('buildError', () => { shell.exit(1); });
 
@@ -45,7 +45,7 @@ async function bundle (options) {
       process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
       const bundler = new Parcel(path.join(__dirname, './public/index.html'), {
-        ...options,
+        ...parcelOptions,
         production: true
       });
       bundler.on('buildError', () => { shell.exit(1); });

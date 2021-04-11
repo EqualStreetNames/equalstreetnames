@@ -24,6 +24,8 @@ export default async function (): Promise<Map> {
   if (typeof center !== 'undefined' && typeof zoom !== 'undefined') {
     options.center = center;
     options.zoom = zoom;
+  } else {
+    options.bounds = bbox || bounds;
   }
 
   // Initialize map.
@@ -38,6 +40,7 @@ export default async function (): Promise<Map> {
 
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
+    bbox: bbox || bounds,
     countries,
     enableEventLogging: false,
     language: lang,
@@ -47,11 +50,6 @@ export default async function (): Promise<Map> {
 
   map.on('load', () => {
     map.resize();
-
-    if (typeof center === 'undefined' || typeof zoom === 'undefined') {
-      map.fitBounds(bbox || bounds, { padding: 50 });
-      geocoder.setBbox(bbox || bounds);
-    }
 
     // Add GeoJSON sources.
     addRelations(map);

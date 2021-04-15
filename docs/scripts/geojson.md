@@ -18,7 +18,7 @@ From the files downloaded from _OpenStreetMap_, we extract the following informa
 
 ### Extract data from _Wikidata_ objects
 
-From the files downloaded from _OpenStreetMap_, we extract the following informations:
+From the files downloaded from _Wikidata_, we extract the following informations:
 
 - `instance of` ([`P31`](https://www.wikidata.org/wiki/Property:P31)) or `subclass of` ([`P279`](https://www.wikidata.org/wiki/Property:P279))
 - `labels` (in the languages chosen)

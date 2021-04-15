@@ -54,6 +54,8 @@ foreach ($ways->features as $feature) {
     }
 }
 
+// Sort results (by Wikidata identifier, then gender, then streetname)
+
 $wikidata = array_map(
     function ($street) {
         return is_null($street['wikidata']);
@@ -77,7 +79,7 @@ array_multisort(
     $streets
 );
 
-// CSV file
+// CSV files
 
 $previous = null;
 
@@ -105,6 +107,8 @@ fclose($fp2);
 file_put_contents(sprintf('../cities/%s/data/statistics.json', $city), json_encode($count));
 
 echo PHP_EOL;
+
+// Display statistics
 
 $total = $count['F'] + $count['M'] + $count['FX'] + $count['MX'] + $count['X'] + $count['NB'] + $count['+'] + $count['?'];
 

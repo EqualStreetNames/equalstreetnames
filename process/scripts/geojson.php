@@ -29,7 +29,7 @@ if ($city === 'brussels') {
     }
 }
 
-// Get polygon
+// Get boundary polygon (and store it)
 if (isset($config['relationId'])) {
     $url = sprintf('http://polygons.openstreetmap.fr/get_geojson.py?id=%d', $config['relationId']);
 

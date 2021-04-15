@@ -2,8 +2,8 @@
 
 ## Scripts
 
-- [`overpass-relation.php`](../../scripts/overpass-relation.php)
-- [`overpass-way.php`](../../scripts/overpass-way.php)
+- [`overpass-relation.php`](../../process/scripts/overpass-relation.php)
+- [`overpass-way.php`](../../process/scripts/overpass-way.php)
 
 ## Download data from [_OpenStreetMap_](https://openstreetmap.org/) using Overpass
 

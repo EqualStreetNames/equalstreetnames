@@ -14,11 +14,13 @@ if (!file_exists($directory) || !is_dir($directory)) {
     mkdir($directory, 0777, true);
 }
 
+// Get relations/ways data
 $associatedStreets = json_decode(file_get_contents('data/overpass/relation/full.json'), true);
 $highways = json_decode(file_get_contents('data/overpass/way/full.json'), true);
 
 $elements = array_merge($associatedStreets['elements'], $highways['elements']);
 
+// Only keep the relations/ways that have a `wikidata` and/or `name:etymology:wikidata` tag
 $tagged = array_filter(
     $elements,
     function ($element) {
@@ -44,6 +46,7 @@ foreach ($tagged as $element) {
         $etymology = array_map('trim', $etymology);
 
         foreach ($etymology as $e) {
+            // Check that the value of the tag is a valid Wikidata item identifier
             if (preg_match('/^Q.+$/', $e) !== 1) {
                 printf(
                     'Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).%s',
@@ -55,8 +58,8 @@ foreach ($tagged as $element) {
                 continue;
             }
 
+            // Get the Wikidata item and store it
             $path = sprintf('%s/%s.json', $directory, $e);
-
             if (!file_exists($path)) {
                 $client = new \GuzzleHttp\Client();
 

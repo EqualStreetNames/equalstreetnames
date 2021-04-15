@@ -22,7 +22,13 @@ function removeAccents(string $str, string $charset = 'utf-8'): string
 }
 
 /**
- * Check if.
+ * Check if the streetname has already be "processed".
+ *
+ * @param string $name        Streetname.
+ * @param string|null $gender Gender (F, M, FX, MX, X, ...).
+ * @param array  $streets Array of already processed streets.
+ *
+ * @return array|false
  */
 function already(string $name, ?string $gender, array $streets)
 {

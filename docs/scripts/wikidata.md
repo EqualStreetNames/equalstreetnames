@@ -2,7 +2,7 @@
 
 ## Scripts
 
-- [`wikidata.php`](../../scripts/wikidata.php)
+- [`wikidata.php`](../../process/scripts/wikidata.php)
 
 ## Download data from [_Wikidata_](https://www.wikidata.org/)
 

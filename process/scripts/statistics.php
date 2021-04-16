@@ -57,13 +57,13 @@ foreach ($ways->features as $feature) {
 // Sort results (by Wikidata identifier, then gender, then streetname)
 
 $wikidata = array_map(
-    function ($street) {
+    function ($street): bool {
         return is_null($street['wikidata']);
     },
     $streets
 );
 $name = array_map(
-    function ($street) {
+    function ($street): string {
         return removeAccents($street['name']);
     },
     $streets

@@ -34,7 +34,7 @@ function already(string $name, ?string $gender, array $streets)
 {
     $filter = array_filter(
         $streets,
-        function (array $street) use ($name, $gender) {
+        function (array $street) use ($name, $gender): bool {
             return removeAccents($street['name']) == removeAccents($name)
                 && $street['gender'] == $gender;
         }

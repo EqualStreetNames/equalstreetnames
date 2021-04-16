@@ -75,7 +75,7 @@ foreach ($relations as $r) {
 
     $streets = array_filter(
         $r['members'],
-        function ($member) {
+        function ($member): bool {
             return $member['role'] === 'street' || $member['role'] === 'outer';
         }
     );
@@ -129,7 +129,7 @@ foreach ($ways as $w) {
         continue;
     }
 
-    if (!in_array($w['id'], $waysInRelation)) {
+    if (!in_array($w['id'], $waysInRelation, true)) {
         $properties = extractTags(
             'way',
             $w,

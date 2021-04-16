@@ -15,7 +15,7 @@ function extractElements(string $type, array $elements): array
 {
     $filter = array_filter(
         $elements,
-        function ($element) use ($type) {
+        function ($element) use ($type): bool {
             return $element['type'] === $type;
         }
     );

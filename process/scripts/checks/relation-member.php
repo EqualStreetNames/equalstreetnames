@@ -16,7 +16,7 @@ foreach ($relations->elements as $relation) {
 
     $members = array_filter(
         $relation->members,
-        function ($member) {
+        function ($member): bool {
             return $member->type === 'way' && $member->role === 'street';
         }
     );
@@ -26,7 +26,7 @@ foreach ($relations->elements as $relation) {
 
         $way = array_filter(
             $ways->elements,
-            function ($way) use ($id) {
+            function ($way) use ($id): bool {
                 return $way->id === $id;
             }
         );

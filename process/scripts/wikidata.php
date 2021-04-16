@@ -23,7 +23,7 @@ $elements = array_merge($associatedStreets['elements'], $highways['elements']);
 // Only keep the relations/ways that have a `wikidata` and/or `name:etymology:wikidata` tag
 $tagged = array_filter(
     $elements,
-    function ($element) {
+    function ($element): bool {
         return isset($element['tags']) &&
             (isset($element['tags']['wikidata']) || isset($element['tags']['name:etymology:wikidata']));
     }

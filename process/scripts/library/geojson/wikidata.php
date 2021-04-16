@@ -61,16 +61,16 @@ function extractWikidata(
 
     $labels = array_filter(
         $entity['labels'],
-        function ($language) use ($languages) {
-            return in_array($language, $languages);
+        function ($language) use ($languages): bool {
+            return in_array($language, $languages, true);
         },
         ARRAY_FILTER_USE_KEY
     );
 
     $descriptions = array_filter(
         $entity['descriptions'],
-        function ($language) use ($languages) {
-            return in_array($language, $languages);
+        function ($language) use ($languages): bool {
+            return in_array($language, $languages, true);
         },
         ARRAY_FILTER_USE_KEY
     );
@@ -88,15 +88,16 @@ function extractWikidata(
 
     $sitelinks = array_filter(
         $entity['sitelinks'],
-        function ($language) use ($languages) {
+        function ($language) use ($languages): bool {
             return in_array(
                 $language,
                 array_map(
-                    function ($language) {
+                    function ($language): string {
                         return $language . 'wiki';
                     },
                     $languages
-                )
+                ),
+                true
             );
         },
         ARRAY_FILTER_USE_KEY

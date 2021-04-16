@@ -18,7 +18,7 @@ function getGender(
 ): ?string {
     $filter = array_filter(
         $manualStreetsGender,
-        function ($street) use ($nameFr, $nameNl) {
+        function ($street) use ($nameFr, $nameNl): bool {
             return $street[0] === $nameFr || $street[1] === $nameNl;
         }
     );
@@ -32,7 +32,7 @@ function getGender(
     } else {
         $gender = [];
         foreach ($filter as $street) {
-            if (!in_array($street[2], $gender)) {
+            if (!in_array($street[2], $gender, true)) {
                 $gender[] = $street[2];
             }
         }

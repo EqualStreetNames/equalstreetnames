@@ -1,0 +1,11 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+parameters:
+    paths:
+        - scripts
+    fileExtensions:
+        - php
+    level: max
+    reportUnmatchedIgnoredErrors: true
+    # checkModelProperties: true
+    # checkMissingIterableValueType: false

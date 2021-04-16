@@ -93,7 +93,7 @@ function extractWikidata(
                 $language,
                 array_map(
                     function ($language) {
-                        return $language.'wiki';
+                        return $language . 'wiki';
                     },
                     $languages
                 )
@@ -135,28 +135,22 @@ function extractGender(string $identifier): ?string
     switch ($identifier) {
         case 'Q6581097': // male
         case 'Q15145778': // male (cis)
-
             return 'M';
 
         case 'Q6581072': // female
         case 'Q15145779': // female (cis)
-
             return 'F';
 
         case 'Q1052281': // female (trans)
-
             return 'FX';
 
         case 'Q2449503': // male (trans)
-
             return 'MX';
 
         case 'Q1097630': // intersex
-
             return 'X';
 
         case 'Q48270': // non-binary
-
             return 'NB';
 
         default:

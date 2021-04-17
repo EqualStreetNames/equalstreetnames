@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use ErrorException;
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -55,7 +56,7 @@ class OverpassCommand extends Command
       file_put_contents(sprintf('%s/way.json', $this->outputDir), $ways);
 
       return Command::SUCCESS;
-    } catch (ErrorException $error) {
+    } catch (Exception $error) {
       $output->writeln(sprintf('<error>%s</error>', $error->getMessage()));
 
       return Command::FAILURE;

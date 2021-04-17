@@ -39,7 +39,7 @@ class OverpassCommand extends Command
   {
     try {
       if (!file_exists($this->directory) || !is_dir($this->directory)) {
-        throw new Exception(sprintf('Directory "%s" doesn\'t exist.', $this->directory));
+        throw new ErrorException(sprintf('Directory "%s" doesn\'t exist.', $this->directory));
       }
 
       $output->writeln([
@@ -55,7 +55,9 @@ class OverpassCommand extends Command
 
       return Command::SUCCESS;
     } catch (Exception $exception) {
-      $output->writeln(sprintf('<error>%s</error>', $exception->getMessage()));
+      $output->writeln(sprintf('<warning>%s</warning>', $exception->getMessage()));
+    } catch (ErrorException $error) {
+      $output->writeln(sprintf('<error>%s</error>', $error->getMessage()));
 
       return Command::FAILURE;
     }
@@ -64,7 +66,7 @@ class OverpassCommand extends Command
   protected static function query(string $path): string
   {
     if (!file_exists($path) || !is_readable($path)) {
-      throw new Exception(sprintf('File "%s" doesn\'t exist or is not readable.', $path));
+      throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $path));
     }
 
     $query = file_get_contents($path);

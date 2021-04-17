@@ -15,21 +15,22 @@ class OverpassCommand extends Command
 
     protected const URL = 'https://overpass-api.de/api/interpreter';
 
+    protected string $city;
     protected string $directory;
     protected string $outputDir = 'data/overpass';
 
     protected function configure()
     {
-        $this->setDescription('Download OpenStreetMap data with Overpass API.');
+        $this->setDescription('Download data from OpenStreetMap with Overpass API.');
 
         $this->addOption('city', 'c', InputOption::VALUE_REQUIRED, 'City directory: <my-country>/<my-city>');
     }
 
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
-        $city = $input->getOption('city');
+        $this->city = $input->getOption('city');
 
-        $this->directory = sprintf('../cities/%s/overpass', $city);
+        $this->directory = sprintf('../cities/%s/overpass', $this->city);
 
         mkdir($this->outputDir, 0777, true);
     }
@@ -41,7 +42,10 @@ class OverpassCommand extends Command
                 throw new Exception(sprintf('Directory "%s" doesn\'t exist.', $this->directory));
             }
 
-            $output->writeln(sprintf('<info>%s</info>',$this->directory));
+            $output->writeln([
+                sprintf('<info>%s</info>', $this->getDescription()),
+                sprintf('<comment>City: %s</info>', $this->city),
+            ]);
 
             $relations = self::query(sprintf('%s/relation-full-json', $this->directory));
             $ways = self::query(sprintf('%s/way-full-json', $this->directory));
@@ -61,7 +65,7 @@ class OverpassCommand extends Command
     protected static function query(string $path): string
     {
         if (!file_exists($path) || !is_readable($path)) {
-            throw new Exception(sprintf('File "%s" doesn\'t exists or is not readable.', $path));
+            throw new Exception(sprintf('File "%s" doesn\'t exist or is not readable.', $path));
         }
 
         $query = file_get_contents($path);
@@ -79,5 +83,4 @@ class OverpassCommand extends Command
 
         return (string) $response->getBody();
     }
-
 }

@@ -62,6 +62,7 @@ function extractData(string $type, object $feature, array $streets)
 
     $data = [
         'name'     => $feature->properties->name,
+        'source'   => $feature->properties->source ?? null,
         'gender'   => $feature->properties->gender ?? null,
         'wikidata' => $wikidata,
         'type'     => $type,

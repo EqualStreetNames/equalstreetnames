@@ -61,7 +61,6 @@ class OverpassCommand extends Command
     }
   }
 
-
   protected static function query(string $path): string
   {
     if (!file_exists($path) || !is_readable($path)) {

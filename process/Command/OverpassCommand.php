@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class OverpassCommand extends Command
 {
-  protected static $defaultName = 'process:overpass';
+  protected static $defaultName = 'overpass';
 
   protected const URL = 'https://overpass-api.de/api/interpreter';
 
@@ -22,7 +22,7 @@ class OverpassCommand extends Command
   {
     $this->setDescription('Download data from OpenStreetMap with Overpass API.');
 
-    $this->addOption('city', 'c', InputOption::VALUE_REQUIRED, 'City directory: <my-country>/<my-city>');
+    $this->addOption('city', 'c', InputOption::VALUE_REQUIRED, 'City directory: <my-country>/<my-city>', 'undefined/undefined');
   }
 
   protected function initialize(InputInterface $input, OutputInterface $output)
@@ -45,7 +45,7 @@ class OverpassCommand extends Command
 
       $output->writeln([
         sprintf('<info>%s</info>', $this->getDescription()),
-        sprintf('<comment>City: %s</info>', $this->city),
+        sprintf('<comment>City: %s</comment>', $this->city),
       ]);
 
       $relations = self::query(sprintf('%s/relation-full-json', $this->directory));

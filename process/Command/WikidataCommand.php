@@ -9,11 +9,12 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class WikidataCommand extends Command
 {
-  protected static $defaultName = 'process:wikidata';
+  protected static $defaultName = 'wikidata';
 
   protected const URL = 'https://www.wikidata.org/wiki/Special:EntityData/';
 
@@ -25,6 +26,8 @@ class WikidataCommand extends Command
   protected function configure()
   {
     $this->setDescription('Download data from Wikidata.');
+
+    $this->addOption('city', 'c', InputOption::VALUE_REQUIRED, 'City directory: <my-country>/<my-city>', 'undefined/undefined');
   }
 
   protected function initialize(InputInterface $input, OutputInterface $output)

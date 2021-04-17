@@ -3,7 +3,6 @@
 namespace App\Command;
 
 use ErrorException;
-use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -32,7 +31,9 @@ class OverpassCommand extends Command
 
     $this->directory = sprintf('../cities/%s/overpass', $this->city);
 
-    mkdir($this->outputDir, 0777, true);
+    if (!file_exists($this->outputDir) || !is_dir($this->outputDir)) {
+      mkdir($this->outputDir, 0777, true);
+    }
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
@@ -54,8 +55,6 @@ class OverpassCommand extends Command
       file_put_contents(sprintf('%s/way.json', $this->outputDir), $ways);
 
       return Command::SUCCESS;
-    } catch (Exception $exception) {
-      $output->writeln(sprintf('<warning>%s</warning>', $exception->getMessage()));
     } catch (ErrorException $error) {
       $output->writeln(sprintf('<error>%s</error>', $error->getMessage()));
 

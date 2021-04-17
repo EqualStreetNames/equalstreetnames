@@ -121,7 +121,9 @@ function extractTags(
             $element['tags']['name:fr'] ?? $element['tags']['name'],
             $element['tags']['name:nl'] ?? $element['tags']['name']
         );
-        if (!is_null($properties['gender'])) $properties['source'] = 'event';
+        if (!is_null($properties['gender'])) {
+            $properties['source'] = 'event';
+        }
     }
 
     return $properties;

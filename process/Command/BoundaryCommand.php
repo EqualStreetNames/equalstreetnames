@@ -14,8 +14,6 @@ class BoundaryCommand extends AbstractCommand
 
   protected const URL = 'http://polygons.openstreetmap.fr/get_geojson.py';
 
-  protected int $relationId;
-
   protected function configure()
   {
     parent::configure();
@@ -44,7 +42,7 @@ class BoundaryCommand extends AbstractCommand
     }
   }
 
-  protected static function query(int $id): string
+  private static function query(int $id): string
   {
     $url = sprintf('%s?id=%d', self::URL, $id);
 

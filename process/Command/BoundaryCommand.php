@@ -9,57 +9,33 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class BoundaryCommand extends Command
+class BoundaryCommand extends AbstractCommand
 {
   protected static $defaultName = 'boundary';
 
   protected const URL = 'http://polygons.openstreetmap.fr/get_geojson.py';
 
-  protected string $city;
-  protected string $configPath;
-  protected string $outputDir;
   protected int $relationId;
 
   protected function configure()
   {
+    parent::configure();
+
     $this->setDescription('Download city boundary from OpenStreetMap.');
-
-    $this->addOption('city', 'c', InputOption::VALUE_REQUIRED, 'City directory: <my-country>/<my-city>', 'undefined/undefined');
-  }
-
-  protected function initialize(InputInterface $input, OutputInterface $output)
-  {
-    $this->city = $input->getOption('city');
-
-    $this->configPath = sprintf('../cities/%s/config.php', $this->city);
-    $this->outputDir = sprintf('../cities/%s/data', $this->city);
-
-    if (!file_exists($this->outputDir) || !is_dir($this->outputDir)) {
-      mkdir($this->outputDir, 0777, true);
-    }
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
-    $output->writeln([
-      sprintf('<info>%s</info>', $this->getDescription()),
-      sprintf('<comment>City: %s</comment>', $this->city),
-    ]);
-
     try {
-      if (!file_exists($this->configPath) || !is_readable($this->configPath)) {
-        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $this->configPath));
+      parent::execute($input, $output);
+
+      if (!isset($this->config['relationId']) || !is_int($this->config['relationId'])) {
+        throw new ErrorException('"relationId" parameter is missing or is invalid in "config.php".');
       }
 
-      $config = require $this->configPath;
+      $boundary = self::query($this->config['relationId']);
 
-      if (!isset($config['relationId']) || !is_int($config['relationId'])) {
-        throw new ErrorException(sprintf('"relationId" parameter is missing in "%s".', $this->configPath));
-      }
-
-      $boundary = self::query($config['relationId']);
-
-      file_put_contents(sprintf('%s/boundary.geojson', $this->outputDir), $boundary);
+      file_put_contents(sprintf('%s/boundary.geojson', $this->cityOutputDir), $boundary);
 
       return Command::SUCCESS;
     } catch (Exception $error) {

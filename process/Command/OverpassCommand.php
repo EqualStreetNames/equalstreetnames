@@ -6,54 +6,31 @@ use ErrorException;
 use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class OverpassCommand extends Command
+class OverpassCommand extends AbstractCommand
 {
   protected static $defaultName = 'overpass';
 
   protected const URL = 'https://overpass-api.de/api/interpreter';
 
-  protected string $city;
-  protected string $directory;
-  protected string $outputDir = 'data/overpass';
-
   protected function configure()
   {
+    parent::configure();
+
     $this->setDescription('Download data from OpenStreetMap with Overpass API.');
-
-    $this->addOption('city', 'c', InputOption::VALUE_REQUIRED, 'City directory: <my-country>/<my-city>', 'undefined/undefined');
-  }
-
-  protected function initialize(InputInterface $input, OutputInterface $output)
-  {
-    $this->city = $input->getOption('city');
-
-    $this->directory = sprintf('../cities/%s/overpass', $this->city);
-
-    if (!file_exists($this->outputDir) || !is_dir($this->outputDir)) {
-      mkdir($this->outputDir, 0777, true);
-    }
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
     try {
-      if (!file_exists($this->directory) || !is_dir($this->directory)) {
-        throw new ErrorException(sprintf('Directory "%s" doesn\'t exist.', $this->directory));
-      }
+      parent::execute($input, $output);
 
-      $output->writeln([
-        sprintf('<info>%s</info>', $this->getDescription()),
-        sprintf('<comment>City: %s</comment>', $this->city),
-      ]);
+      $relations = self::query(sprintf('%s/overpass/relation-full-json', $this->cityDir));
+      $ways = self::query(sprintf('%s/overpass/way-full-json', $this->cityDir));
 
-      $relations = self::query(sprintf('%s/relation-full-json', $this->directory));
-      $ways = self::query(sprintf('%s/way-full-json', $this->directory));
-
-      file_put_contents(sprintf('%s/relation.json', $this->outputDir), $relations);
-      file_put_contents(sprintf('%s/way.json', $this->outputDir), $ways);
+      file_put_contents(sprintf('%s/overpass/relation.json', $this->processOutputDir), $relations);
+      file_put_contents(sprintf('%s/overpass/way.json', $this->processOutputDir), $ways);
 
       return Command::SUCCESS;
     } catch (Exception $error) {

@@ -6,50 +6,41 @@ use ErrorException;
 use Exception;
 use GuzzleHttp\Exception\BadResponseException;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class WikidataCommand extends Command
+class WikidataCommand extends AbstractCommand
 {
   protected static $defaultName = 'wikidata';
 
   protected const URL = 'https://www.wikidata.org/wiki/Special:EntityData/';
 
-  protected string $relationPath = 'data/overpass/relation.json';
-  protected string $wayPath = 'data/overpass/way.json';
-  protected string $outputDir = 'data/wikidata';
+  protected string $relationPath;
+  protected string $wayPath;
   protected array $elements = [];
 
   protected function configure()
   {
+    parent::configure();
+
     $this->setDescription('Download data from Wikidata.');
 
-    $this->addOption('city', 'c', InputOption::VALUE_REQUIRED, 'City directory: <my-country>/<my-city>', 'undefined/undefined');
-  }
-
-  protected function initialize(InputInterface $input, OutputInterface $output)
-  {
-    $output->getFormatter()->setStyle('warning', new OutputFormatterStyle('red'));
-
-    if (!file_exists($this->outputDir) || !is_dir($this->outputDir)) {
-      mkdir($this->outputDir, 0777, true);
-    }
+    $this->relationPath = sprintf('%s/overpass/relation.json', $this->processOutputDir);
+    $this->wayPath = sprintf('%s/overpass/way.json', $this->processOutputDir);
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
     try {
+      parent::execute($input, $output);
+
       if (!file_exists($this->relationPath) || !is_readable($this->relationPath)) {
-        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "process:overpass" command first.', $this->relationPath));
+        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $this->relationPath));
       }
       if (!file_exists($this->wayPath) || !is_readable($this->wayPath)) {
-        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "process:overpass" command first.', $this->relationPath));
+        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $this->relationPath));
       }
-
-      $output->writeln(sprintf('<info>%s</info>', $this->getDescription()));
 
       $relations = json_decode(file_get_contents($this->relationPath));
       $ways = json_decode(file_get_contents($this->wayPath));
@@ -81,7 +72,7 @@ class WikidataCommand extends Command
               }
 
               // Download Wikidata item
-              $path = sprintf('%s/%s.json', $this->outputDir, $identifier);
+              $path = sprintf('%s/wikidata/%s.json', $this->processOutputDir, $identifier);
               if (!file_exists($path)) {
                 $wikidata = self::query($identifier, $element);
 
@@ -92,7 +83,7 @@ class WikidataCommand extends Command
 
         if (!is_null($wikidataTag)) {
           // Download Wikidata item
-          // $path = sprintf('%s/%s.json', $this->outputDir, $wikidataTag);
+          // $path = sprintf('%s/wikidata/%s.json', $this->processOutputDir, $wikidataTag);
           // if (!file_exists($path)) {
           //   $wikidata = self::query($wikidataTag, $element);
 

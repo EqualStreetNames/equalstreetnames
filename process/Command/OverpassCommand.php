@@ -40,7 +40,7 @@ class OverpassCommand extends AbstractCommand
     }
   }
 
-  protected static function query(string $path): string
+  private static function query(string $path): string
   {
     if (!file_exists($path) || !is_readable($path)) {
       throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $path));

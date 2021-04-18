@@ -49,8 +49,18 @@ class WikidataCommand extends AbstractCommand
         }
       );
 
+      $outputDir = sprintf('%s/wikidata', $this->processOutputDir);
+      if (!file_exists($outputDir) || !is_dir($outputDir)) {
+        mkdir($outputDir, 0777, true);
+      }
+
+      $warnings = [];
       $progressBar = new ProgressBar($output, count($elements));
       $progressBar->start();
+
+      // $progressBar->setRedrawFrequency(5);
+      // $progressBar->maxSecondsBetweenRedraws(5);
+      // $progressBar->minSecondsBetweenRedraws(1);
 
       foreach ($elements as $element) {
         $wikidataTag = $element->tags->wikidata ?? null;
@@ -67,25 +77,19 @@ class WikidataCommand extends AbstractCommand
               }
 
               // Download Wikidata item
-              $path = sprintf('%s/wikidata/%s.json', $this->processOutputDir, $identifier);
+              $path = sprintf('%s/%s.json', $outputDir, $identifier);
               if (!file_exists($path)) {
-                $wikidata = self::query($identifier, $element);
-
-                file_put_contents($path, $wikidata);
+                self::save($identifier, $element, $path, $warnings);
               }
           }
         }
 
         if (!is_null($wikidataTag)) {
           // Download Wikidata item
-          // $path = sprintf('%s/wikidata/%s.json', $this->processOutputDir, $wikidataTag);
+          // $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
           // if (!file_exists($path)) {
-          //   $wikidata = self::query($wikidataTag, $element);
-
-          //   file_put_contents($path, $wikidata);
+          //   self::save($wikidataTag, $element, $path, $warnings);
           // }
-
-          // @todo Extract "named after" (P138) property
         }
 
 
@@ -94,38 +98,38 @@ class WikidataCommand extends AbstractCommand
 
       $progressBar->finish();
 
-      $output->writeln('');
+      $output->writeln(['', ...$warnings]);
 
       return Command::SUCCESS;
-    } catch (ErrorException $error) {
+    } catch (Exception $error) {
       $output->writeln(sprintf('<error>%s</error>', $error->getMessage()));
 
       return Command::FAILURE;
-    } catch (Exception $exception) {
-      $output->writeln(sprintf('<warning>%s</warning>', $exception->getMessage()));
     }
   }
 
-  private static function query(string $identifier, $element): ?string
+  private static function save(string $identifier, $element, string $path, &$warnings = []): void
   {
     $url = sprintf('%s%s.json', self::URL, $identifier);
 
     try {
       $client = new \GuzzleHttp\Client();
-      $response = $client->request('GET', $url);
-
-      return (string) $response->getBody();
+      $client->request('GET', $url, [
+        'sink' => $path
+      ]);
     } catch (BadResponseException $exception) {
-      switch ($exception->getCode()) {
-        case 404:
-          throw new Exception(sprintf('Wikidata item %s for %s(%d) does not exist.', $identifier, $element['type'], $element['id']));
-          break;
-        default:
-          throw new Exception(sprintf('Error while fetching Wikidata item %s for %s(%d): %s.', $identifier, $element['type'], $element['id'], $exception->getMessage()));
-          break;
+      if (file_exists($path)) {
+        unlink($path);
       }
 
-      return null;
+      switch ($exception->getResponse()->getStatusCode()) {
+        case 404:
+          $warnings[] = sprintf('<warning>Wikidata item %s for %s(%d) does not exist.</warning>', $identifier, $element->type, $element->id);
+          break;
+        default:
+          $warnings[] = sprintf('<warning>Error while fetching Wikidata item %s for %s(%d): %s.</warning>', $identifier, $element->type, $element->id, $exception->getMessage());
+          break;
+      }
     }
   }
 }

@@ -23,18 +23,13 @@
         "analyze": "phpstan analyze",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "geojson": "php scripts/geojson.php",
-        "overpass-relation": "php scripts/overpass-relation.php",
-        "overpass-way": "php scripts/overpass-way.php",
-        "statistics": "php scripts/statistics.php",
         "update-data": [
             "Composer\\Config::disableProcessTimeout",
-            "@overpass-relation",
-            "@overpass-way",
-            "@wikidata",
-            "@geojson",
-            "@statistics"
-        ],
-        "wikidata": "php scripts/wikidata.php"
+            "php process.php overpass",
+            "php process.php wikidata",
+            "php process.php boundary",
+            "php process.php geojson",
+            "php process.php statistics"
+        ]
     }
 }

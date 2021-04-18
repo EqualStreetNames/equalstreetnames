@@ -16,18 +16,11 @@ class WikidataCommand extends AbstractCommand
 
   protected const URL = 'https://www.wikidata.org/wiki/Special:EntityData/';
 
-  protected string $relationPath;
-  protected string $wayPath;
-  protected array $elements = [];
-
   protected function configure()
   {
     parent::configure();
 
     $this->setDescription('Download data from Wikidata.');
-
-    $this->relationPath = sprintf('%s/overpass/relation.json', $this->processOutputDir);
-    $this->wayPath = sprintf('%s/overpass/way.json', $this->processOutputDir);
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
@@ -35,18 +28,20 @@ class WikidataCommand extends AbstractCommand
     try {
       parent::execute($input, $output);
 
-      if (!file_exists($this->relationPath) || !is_readable($this->relationPath)) {
-        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $this->relationPath));
+      $relationPath = sprintf('%s/overpass/relation.json', $this->processOutputDir);
+      if (!file_exists($relationPath) || !is_readable($relationPath)) {
+        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
       }
-      if (!file_exists($this->wayPath) || !is_readable($this->wayPath)) {
-        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $this->relationPath));
+      $wayPath = sprintf('%s/overpass/way.json', $this->processOutputDir);
+      if (!file_exists($wayPath) || !is_readable($wayPath)) {
+        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
       }
 
-      $relations = json_decode(file_get_contents($this->relationPath));
-      $ways = json_decode(file_get_contents($this->wayPath));
+      $relations = json_decode(file_get_contents($relationPath));
+      $ways = json_decode(file_get_contents($wayPath));
 
       // Only keep ways/relations that have a `wikidata` tag and/or a `name:etymology:wikidata` tag
-      $this->elements = array_filter(
+      $elements = array_filter(
         array_merge($relations->elements ?? [], $ways->elements ?? []),
         function ($element): bool {
           return isset($element->tags) &&
@@ -54,10 +49,10 @@ class WikidataCommand extends AbstractCommand
         }
       );
 
-      $progressBar = new ProgressBar($output, count($this->elements));
+      $progressBar = new ProgressBar($output, count($elements));
       $progressBar->start();
 
-      foreach ($this->elements as $element) {
+      foreach ($elements as $element) {
         $wikidataTag = $element->tags->wikidata ?? null;
         $etymologyTag = $element->tags->{'name:etymology:wikidata'} ?? null;
 
@@ -111,7 +106,7 @@ class WikidataCommand extends AbstractCommand
     }
   }
 
-  protected static function query(string $identifier, $element): ?string
+  private static function query(string $identifier, $element): ?string
   {
     $url = sprintf('%s%s.json', self::URL, $identifier);
 

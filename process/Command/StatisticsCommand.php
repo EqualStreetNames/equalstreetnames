@@ -12,9 +12,6 @@ class StatisticsCommand extends AbstractCommand
 {
   protected static $defaultName = 'statistics';
 
-  protected string $relationPath;
-  protected string $wayPath;
-
   protected function configure()
   {
     parent::configure();
@@ -22,30 +19,24 @@ class StatisticsCommand extends AbstractCommand
     $this->setDescription('Calculate statistics.');
   }
 
-  protected function interact(InputInterface $input, OutputInterface $output)
-  {
-    parent::interact($input, $output);
-
-    $this->relationPath = sprintf('%s/relations.geojson', $this->cityOutputDir);
-    $this->wayPath = sprintf('%s/ways.geojson', $this->cityOutputDir);
-  }
-
   protected function execute(InputInterface $input, OutputInterface $output)
   {
     try {
       parent::execute($input, $output);
 
-      if (!file_exists($this->relationPath) || !is_readable($this->relationPath)) {
-        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $this->relationPath));
+      $relationPath = sprintf('%s/relations.geojson', $this->cityOutputDir);
+      if (!file_exists($relationPath) || !is_readable($relationPath)) {
+        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $relationPath));
       }
-      if (!file_exists($this->wayPath) || !is_readable($this->wayPath)) {
-        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $this->relationPath));
+      $wayPath = sprintf('%s/ways.geojson', $this->cityOutputDir);
+      if (!file_exists($wayPath) || !is_readable($wayPath)) {
+        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $wayPath));
       }
 
       $streets = [];
 
-      $relations = json_decode(file_get_contents($this->relationPath));
-      $ways = json_decode(file_get_contents($this->wayPath));
+      $relations = json_decode(file_get_contents($relationPath));
+      $ways = json_decode(file_get_contents($wayPath));
 
       // Extract necesarry data
       foreach ($relations->features as $feature) {

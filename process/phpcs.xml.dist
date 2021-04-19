@@ -14,5 +14,6 @@
     </rule>
 
     <!-- Paths to check -->
-    <file>scripts</file>
+    <file>Command</file>
+    <file>process.php</file>
 </ruleset>

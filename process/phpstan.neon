@@ -2,7 +2,8 @@ includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
 parameters:
     paths:
-        - scripts
+        - Command
+        - process.php
     fileExtensions:
         - php
     level: max

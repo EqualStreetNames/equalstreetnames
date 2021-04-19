@@ -74,5 +74,11 @@
       "name": "🇷🇸 Belgrade, Serbia",
       "url": "https://naziviulica.openstreetmap.rs/"
     }
+  },
+  "switzerland": {
+    "bern": {
+      "name": "🇨🇭 Bern, Switzerland",
+      "url": ""
+    }
   }
 }

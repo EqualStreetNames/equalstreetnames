@@ -32,6 +32,7 @@ The project start with Brussels, Belgium in March 2020 and since then, this proj
 | 🇳🇱    | Assen           | [assen.equalstreetnames.eu](https://assen.equalstreetnames.eu/)                               | [equalstreetnames-assen](https://github.com/EqualStreetNames/equalstreetnames-assen)                   | [@robinlinde](https://github.com/robinlinde/)                 |
 | 🇳🇱    | Groningen       | [groningen.equalstreetnames.eu](https://groningen.equalstreetnames.eu/)                       | [equalstreetnames-groningen](https://github.com/EqualStreetNames/equalstreetnames-groningen)           | [@robinlinde](https://github.com/robinlinde/)                 |
 | 🇷🇸    | Belgrade        | [naziviulica.openstreetmap.rs](https://naziviulica.openstreetmap.rs/)                         | [equalstreetnames-belgrade](https://github.com/EqualStreetNames/equalstreetnames-belgrade)             | [@stalker314314](https://github.com/stalker314314/)           |
+| 🇨🇭    | Bern            |                                                                                               | [equalstreetnames-bern](https://github.com/EqualStreetNames/equalstreetnames-bern)                     | [@habi](https://github.com/habi/)                             |
 
 ## How
 

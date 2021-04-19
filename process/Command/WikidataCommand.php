@@ -114,9 +114,7 @@ class WikidataCommand extends AbstractCommand
 
     try {
       $client = new \GuzzleHttp\Client();
-      $client->request('GET', $url, [
-        'sink' => $path
-      ]);
+      $client->request('GET', $url, ['sink' => $path]);
     } catch (BadResponseException $exception) {
       if (file_exists($path)) {
         unlink($path);

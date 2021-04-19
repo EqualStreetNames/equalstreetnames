@@ -26,11 +26,23 @@ class OverpassCommand extends AbstractCommand
     try {
       parent::execute($input, $output);
 
-      $relations = self::query(sprintf('%s/overpass/relation-full-json', $this->cityDir));
-      $ways = self::query(sprintf('%s/overpass/way-full-json', $this->cityDir));
+      $relationPath = sprintf('%s/overpass/relation-full-json', $this->cityDir);
+      if (!file_exists($relationPath) || !is_readable($relationPath)) {
+        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $relationPath));
+      }
+      $wayPath = sprintf('%s/overpass/way-full-json', $this->cityDir);
+      if (!file_exists($wayPath) || !is_readable($wayPath)) {
+        throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $wayPath));
+      }
 
-      file_put_contents(sprintf('%s/overpass/relation.json', $this->processOutputDir), $relations);
-      file_put_contents(sprintf('%s/overpass/way.json', $this->processOutputDir), $ways);
+      self::save(
+        file_get_contents($relationPath),
+        sprintf('%s/overpass/relation.json', $this->processOutputDir)
+      );
+      self::save(
+        file_get_contents($wayPath),
+        sprintf('%s/overpass/way.json', $this->processOutputDir)
+      );
 
       return Command::SUCCESS;
     } catch (Exception $error) {
@@ -40,25 +52,11 @@ class OverpassCommand extends AbstractCommand
     }
   }
 
-  private static function query(string $path): string
+  private static function save(string $query, string $path): void
   {
-    if (!file_exists($path) || !is_readable($path)) {
-      throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $path));
-    }
-
-    $query = file_get_contents($path);
-
     $url = sprintf('%s?data=%s', self::URL, urlencode($query));
 
     $client = new \GuzzleHttp\Client();
-    $response = $client->request('GET', $url);
-
-    $status = $response->getStatusCode();
-
-    if ($status !== 200) {
-      throw new ErrorException($response->getReasonPhrase());
-    }
-
-    return (string) $response->getBody();
+    $client->request('GET', $url, ['sink' => $path]);
   }
 }

@@ -34,6 +34,12 @@ $count = [
     '?'  => 0, // unknown gender
     '-'  => 0, // not a person
 ];
+$sources = [
+    'wikidata' => 0,
+    'config'   => 0,
+    'event'    => 0,
+    '-'        => 0,
+];
 
 foreach ($relations->features as $feature) {
     $data = extractData('relation', $feature, $streets);
@@ -42,6 +48,7 @@ foreach ($relations->features as $feature) {
         $streets[] = $data;
 
         $count[is_null($data['gender']) ? '-' : $data['gender']]++;
+        $sources[is_null($data['source']) ? '-' : $data['source']]++;
     }
 }
 foreach ($ways->features as $feature) {
@@ -51,6 +58,7 @@ foreach ($ways->features as $feature) {
         $streets[] = $data;
 
         $count[is_null($data['gender']) ? '-' : $data['gender']]++;
+        $sources[is_null($data['source']) ? '-' : $data['source']]++;
     }
 }
 
@@ -105,6 +113,7 @@ fclose($fp2);
 // JSON file
 
 file_put_contents(sprintf('../cities/%s/data/statistics.json', $city), json_encode($count));
+file_put_contents(sprintf('../cities/%s/data/sources.json', $city), json_encode($sources));
 
 echo PHP_EOL;
 
@@ -113,17 +122,28 @@ echo PHP_EOL;
 $total = $count['F'] + $count['M'] + $count['FX'] + $count['MX'] + $count['X'] + $count['NB'] + $count['+'] + $count['?'];
 
 printf('Person: %d%s', $total, PHP_EOL);
-printf('Female (cis): %d (%.2f %%)%s', $count['F'], $count['F'] / $total * 100, PHP_EOL);
-printf('Male (cis): %d (%.2f %%)%s', $count['M'], $count['M'] / $total * 100, PHP_EOL);
-printf('Female (trans): %d (%.2f %%)%s', $count['FX'], $count['FX'] / $total * 100, PHP_EOL);
-printf('Male (trans): %d (%.2f %%)%s', $count['MX'], $count['MX'] / $total * 100, PHP_EOL);
-printf('Intersex: %d (%.2f %%)%s', $count['X'], $count['X'] / $total * 100, PHP_EOL);
-printf('Non-Binary: %d (%.2f %%)%s', $count['NB'], $count['NB'] / $total * 100, PHP_EOL);
-printf('Multiple: %d (%.2f %%)%s', $count['+'], $count['+'] / $total * 100, PHP_EOL);
-printf('Unknown: %d (%.2f %%)%s', $count['?'], $count['?'] / $total * 100, PHP_EOL);
+printf('  Female (cis): %d (%.2f %%)%s', $count['F'], $count['F'] / $total * 100, PHP_EOL);
+printf('  Male (cis): %d (%.2f %%)%s', $count['M'], $count['M'] / $total * 100, PHP_EOL);
+printf('  Female (trans): %d (%.2f %%)%s', $count['FX'], $count['FX'] / $total * 100, PHP_EOL);
+printf('  Male (trans): %d (%.2f %%)%s', $count['MX'], $count['MX'] / $total * 100, PHP_EOL);
+printf('  Intersex: %d (%.2f %%)%s', $count['X'], $count['X'] / $total * 100, PHP_EOL);
+printf('  Non-Binary: %d (%.2f %%)%s', $count['NB'], $count['NB'] / $total * 100, PHP_EOL);
+printf('  Multiple: %d (%.2f %%)%s', $count['+'], $count['+'] / $total * 100, PHP_EOL);
+printf('  Unknown: %d (%.2f %%)%s', $count['?'], $count['?'] / $total * 100, PHP_EOL);
 
 echo PHP_EOL;
 
 printf('Not a person: %d%s', $count['-'], PHP_EOL);
+
+echo PHP_EOL;
+
+printf('Sources:%s', PHP_EOL);
+printf('  Wikidata: %d (%.2f %%)%s', $sources['wikidata'], $sources['wikidata'] / $total * 100, PHP_EOL);
+printf('  Configuration: %d (%.2f %%)%s', $sources['config'], $sources['config'] / $total * 100, PHP_EOL);
+printf('  Event (Brussels only): %d (%.2f %%)%s', $sources['event'], $sources['event'] / $total * 100, PHP_EOL);
+
+echo PHP_EOL;
+
+printf('No source: %d%s', $sources['-'], PHP_EOL);
 
 exit(0);

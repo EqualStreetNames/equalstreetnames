@@ -94,8 +94,8 @@ $previous = null;
 $fp = fopen(sprintf('../cities/%s/data/gender.csv', $city), 'w');
 $fp2 = fopen(sprintf('../cities/%s/data/other.csv', $city), 'w');
 
-fputcsv($fp, ['name', 'gender', 'wikidata', 'type']);
-fputcsv($fp2, ['name', 'gender', 'wikidata', 'type']);
+fputcsv($fp, ['name', 'source', 'gender', 'wikidata', 'type']);
+fputcsv($fp2, ['name', 'source', 'gender', 'wikidata', 'type']);
 
 foreach ($streets as $street) {
     if (in_array($street['gender'], ['F', 'M', 'FX', 'MX', 'X', 'NB', '+', '?'])) {

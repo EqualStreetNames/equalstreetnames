@@ -84,13 +84,21 @@ class StatisticsCommand extends AbstractCommand
         '?'  => 0, // unknown gender
         '-'  => 0, // not a person
       ];
+      $sources = [
+        'wikidata' => 0,
+        'config'   => 0,
+        'event'    => 0,
+        '-'        => 0,
+      ];
 
       foreach ($streets as $street) {
         $genders[$street['gender'] ?? '-']++;
+        $sources[$street['source'] ?? '-']++;
       }
 
       // Store statistics
       file_put_contents(sprintf('%s/statistics.json', $this->cityOutputDir), json_encode($genders));
+      file_put_contents(sprintf('%s/sources.json', $this->cityOutputDir), json_encode($sources));
 
       // Display statistics
       $total = $genders['F'] + $genders['M'] + $genders['FX'] + $genders['MX'] + $genders['X'] + $genders['NB'] + $genders['+'] + $genders['?'];
@@ -106,6 +114,16 @@ class StatisticsCommand extends AbstractCommand
         sprintf('  Multiple: %d (%.2f %%)', $genders['+'], $genders['+'] / $total * 100),
         sprintf('  Unknown: %d (%.2f %%)', $genders['?'], $genders['?'] / $total * 100),
         sprintf('Not a person: %d', $genders['-']),
+      ]);
+
+      $output->writeln('');
+
+      $output->writeln([
+        'Sources:',
+        sprintf('  Wikidata: %d (%.2f %%)', $sources['wikidata'], $sources['wikidata'] / $total * 100),
+        sprintf('  Configuration: %d (%.2f %%)', $sources['config'], $sources['config'] / $total * 100),
+        sprintf('  Event (Brussels only): %d (%.2f %%)', $sources['event'], $sources['event'] / $total * 100),
+        sprintf('No source: %d', $sources['-']),
       ]);
 
       return Command::SUCCESS;
@@ -196,19 +214,25 @@ class StatisticsCommand extends AbstractCommand
       if (count($streets) === 1) {
         $results[] = [
           'name'     => $streets[0]['name'],
+          'source'   => $streets[0]['source'],
           'gender'   => $streets[0]['gender'],
           'wikidata' => $streets[0]['wikidata'],
           'type'     => $streets[0]['type'],
         ];
       } else {
         $types = array_unique(array_column($streets, 'type'));
-        $genders = array_values(array_filter(array_unique(array_column($streets, 'gender')), function ($type) { return !is_null($type); }));
-        $wikidatas = array_values(array_filter(array_unique(array_column($streets, 'wikidata')), function ($type) { return !is_null($type); }));
+        $sources = array_values(array_filter(array_unique(array_column($streets, 'source')), function ($value) { return !is_null($value); }));
+        $genders = array_values(array_filter(array_unique(array_column($streets, 'gender')), function ($value) { return !is_null($value); }));
+        $wikidatas = array_values(array_filter(array_unique(array_column($streets, 'wikidata')), function ($value) { return !is_null($value); }));
 
         sort($types);
+        sort($sources);
         sort($genders);
         sort($wikidatas);
 
+        if (count($sources) > 1) {
+          $output->writeln(sprintf('Multiple source (%s) for street "%s".',  implode(', ', $sources), $streets[0]['name']));
+        }
         if (count($genders) > 1) {
           $output->writeln(sprintf('<warning>Gender mismatch (%s) for street "%s".</warning>',  implode(', ', $genders), $streets[0]['name']));
         }
@@ -218,6 +242,7 @@ class StatisticsCommand extends AbstractCommand
 
         $results[] = [
           'name'     => $streets[0]['name'],
+          'source'   => count($sources) === 0 ? null : implode('+', $sources),
           'gender'   => count($genders) === 0 ? null : (count($genders) > 1 ? '?' : $genders[0]),
           'wikidata' => count($wikidatas) === 0 ? null : implode(';', $wikidatas),
           'type'     => count($types) > 1 ? implode('+', $types) : $types[0],

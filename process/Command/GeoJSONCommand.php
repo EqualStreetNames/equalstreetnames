@@ -104,6 +104,7 @@ class GeoJSONCommand extends AbstractCommand
     $properties = [
       'name'     => $object->tags->name ?? null,
       'wikidata' => $object->tags->wikidata ?? null,
+      'source'   => null,
       'gender'   => null,
       'details'  => null,
     ];
@@ -135,11 +136,15 @@ class GeoJSONCommand extends AbstractCommand
       if (count($details) === 1) {
         $details = current($details);
       }
+
+      $properties['source'] = 'wikidata';
+      $properties['details'] = $details;
     } else if (isset(
       $this->config['gender'],
       $this->config['gender'][$object->type],
       $this->config['gender'][$object->type][(string) $object->id]
     )) {
+      $properties['source'] = 'config';
       $properties['gender'] = $this->config['gender'][$object->type][(string) $object->id];
     }
 

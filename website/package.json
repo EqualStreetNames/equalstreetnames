@@ -56,6 +56,7 @@
     "build:germany:halle-saale": "node build.js -c germany/halle-saale",
     "build:germany:leipzig": "node build.js -c germany/leipzig",
     "build:germany:munich": "node build.js -c germany/munich",
-    "build:serbia:belgrade": "node build.js -c serbia/belgrade"
+    "build:serbia:belgrade": "node build.js -c serbia/belgrade",
+    "build:switzerland:bern": "node build.js -c switzerland/bern"
   }
 }

@@ -56,6 +56,7 @@ function extractTags(
         'name'      => $element['tags']['name'] ?? null,
         'wikidata'  => $element['tags']['wikidata'] ?? null,
         'gender'    => null,
+        'source'    => null,
         'details'   => null,
     ];
 
@@ -84,6 +85,7 @@ function extractTags(
             $properties = array_merge(
                 $properties,
                 [
+                    'source'  => 'wikidata',
                     'details' => $details,
                 ]
             );
@@ -96,6 +98,7 @@ function extractTags(
             $properties = array_merge(
                 $properties,
                 [
+                    'source'  => 'wikidata',
                     'details' => extractWikidata($etymology, $languages, $instances),
                 ]
             );
@@ -106,8 +109,10 @@ function extractTags(
             }
         }
     } elseif ($type === 'relation' && isset($gender['relation'], $gender['relation'][(string) $element['id']])) {
+        $properties['source'] = 'config';
         $properties['gender'] = $gender['relation'][(string) $element['id']];
     } elseif ($type === 'way' && isset($gender['way'], $gender['way'][(string) $element['id']])) {
+        $properties['source'] = 'config';
         $properties['gender'] = $gender['way'][(string) $element['id']];
     } elseif (count($manual) > 0) {
         // Extract gender from manual work (only available for Brussels)
@@ -116,6 +121,9 @@ function extractTags(
             $element['tags']['name:fr'] ?? $element['tags']['name'],
             $element['tags']['name:nl'] ?? $element['tags']['name']
         );
+        if (!is_null($properties['gender'])) {
+            $properties['source'] = 'event';
+        }
     }
 
     return $properties;

@@ -19,8 +19,8 @@ $config = include sprintf('../cities/%s/config.php', $city);
 // Need to be removed when each Brussels streets
 // have its `name:etymology:wikidata` tag
 $manualStreetsGender = [];
-if ($city === 'brussels') {
-    $handle = fopen('../cities/brussels/event-2020-02-17/gender.csv', 'r');
+if ($city === 'belgium/brussels') {
+    $handle = fopen('../cities/belgium/brussels/event-2020-02-17/gender.csv', 'r');
     if ($handle !== false) {
         while (($data = fgetcsv($handle)) !== false) {
             $manualStreetsGender[] = $data;

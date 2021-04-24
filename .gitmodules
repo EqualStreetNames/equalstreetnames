@@ -49,3 +49,6 @@
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
 	url = https://github.com/EqualStreetNames/equalstreetnames-belgrade
+[submodule "cities/switzerland/bern"]
+	path = cities/switzerland/bern
+	url = https://github.com/EqualStreetNames/equalstreetnames-bern.git

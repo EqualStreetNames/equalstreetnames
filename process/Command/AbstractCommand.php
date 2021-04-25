@@ -50,6 +50,11 @@ abstract class AbstractCommand extends Command
             $this->city = $city;
         }
 
+        $output->writeln([
+            sprintf('<info>%s</info>', $this->getDescription()),
+            sprintf('<comment>City: %s</comment>', $this->city),
+        ]);
+
         $this->cityDir = sprintf('../cities/%s', $this->city);
         $this->cityOutputDir = sprintf('%s/data', $this->cityDir);
     }
@@ -66,11 +71,6 @@ abstract class AbstractCommand extends Command
         if (!file_exists($this->processOutputDir) || !is_dir($this->processOutputDir)) {
             mkdir($this->processOutputDir, 0777, true);
         }
-
-        $output->writeln([
-        sprintf('<info>%s</info>', $this->getDescription()),
-        sprintf('<comment>City: %s</comment>', $this->city),
-        ]);
 
         $configPath = sprintf('%s/config.php', $this->cityDir);
         if (!file_exists($configPath) || !is_readable($configPath)) {

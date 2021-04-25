@@ -40,8 +40,14 @@ class OverpassCommand extends AbstractCommand
                 mkdir($outputDir, 0777, true);
             }
 
-            self::save(file_get_contents($relationPath), sprintf('%s/relation.json', $outputDir));
-            self::save(file_get_contents($wayPath), sprintf('%s/way.json', $outputDir));
+            $overpassR = file_get_contents($relationPath);
+            if ($overpassR !== false) {
+                self::save($overpassR, sprintf('%s/relation.json', $outputDir));
+            }
+            $overpassW = file_get_contents($wayPath);
+            if ($overpassW !== false) {
+                self::save($overpassW, sprintf('%s/way.json', $outputDir));
+            }
 
             return Command::SUCCESS;
         } catch (Exception $error) {

@@ -10,3 +10,5 @@ parameters:
     reportUnmatchedIgnoredErrors: true
     # checkModelProperties: true
     # checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Method App\\Command\\AbstractCommand::execute\(\) should return int but return statement is missing.#'

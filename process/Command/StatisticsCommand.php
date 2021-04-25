@@ -35,60 +35,66 @@ class StatisticsCommand extends AbstractCommand
 
             $streets = [];
 
-            $relations = json_decode(file_get_contents($relationPath));
-            $ways = json_decode(file_get_contents($wayPath));
+            $contentR = file_get_contents($relationPath);
+            $relations = $contentR !== false ? json_decode($contentR) : null;
+            $contentW = file_get_contents($wayPath);
+            $ways = $contentW !== false ? json_decode($contentW) : null;
 
-          // Extract necesarry data
-            foreach ($relations->features as $feature) {
-                $street = self::extract($feature);
-                $street['type'] = 'relation';
+            // Extract necesarry data
+            if (!is_null($relations)) {
+                foreach ($relations->features as $feature) {
+                    $street = self::extract($feature);
+                    $street['type'] = 'relation';
 
-                $streets[] = $street;
+                    $streets[] = $street;
+                }
             }
-            foreach ($ways->features as $feature) {
-                $street = self::extract($feature);
-                $street['type'] = 'way';
+            if (!is_null($ways)) {
+                foreach ($ways->features as $feature) {
+                    $street = self::extract($feature);
+                    $street['type'] = 'way';
 
-                $streets[] = $street;
+                    $streets[] = $street;
+                }
             }
 
-          // Group by streetname
+            // Group by streetname
             $streets = self::groupBy($streets, $output);
 
-          // Sort streets
+            // Sort streets
             $streets = self::sort($streets);
 
-          // Export to CSV ("gender.csv" + "other.csv")
+            // Export to CSV ("gender.csv" + "other.csv")
             self::exportCSV(
                 sprintf('%s/gender.csv', $this->cityOutputDir),
-                array_filter($streets, function ($street) {
+                array_filter($streets, function ($street): bool {
                     return !is_null($street['gender']);
                 })
             );
             self::exportCSV(
                 sprintf('%s/other.csv', $this->cityOutputDir),
-                array_filter($streets, function ($street) {
+                array_filter($streets, function ($street): bool {
                     return is_null($street['gender']);
                 })
             );
 
-          // Calculate statistics
+            // Calculate statistics
             $genders = [
-            'F'  => 0, // female (cis)
-            'M'  => 0, // male (cis)
-            'FX' => 0, // female (trans)
-            'MX' => 0, // male (trans)
-            'X'  => 0, // intersex
-            'NB' => 0, // non-binary
-            '+'  => 0, // multi (male + female)
-            '?'  => 0, // unknown gender
-            '-'  => 0, // not a person
+                'F'  => 0, // female (cis)
+                'M'  => 0, // male (cis)
+                'FX' => 0, // female (trans)
+                'MX' => 0, // male (trans)
+                'X'  => 0, // intersex
+                'NB' => 0, // non-binary
+                '+'  => 0, // multi (male + female)
+                '?'  => 0, // unknown gender
+                '-'  => 0, // not a person
             ];
             $sources = [
-            'wikidata' => 0,
-            'config'   => 0,
-            'event'    => 0,
-            '-'        => 0,
+                'wikidata' => 0,
+                'config'   => 0,
+                'event'    => 0,
+                '-'        => 0,
             ];
 
             foreach ($streets as $street) {
@@ -104,34 +110,34 @@ class StatisticsCommand extends AbstractCommand
                 }
             }
 
-          // Store statistics
+            // Store statistics
             file_put_contents(sprintf('%s/statistics.json', $this->cityOutputDir), json_encode($genders));
             file_put_contents(sprintf('%s/sources.json', $this->cityOutputDir), json_encode($sources));
 
-          // Display statistics
+            // Display statistics
             $total = $genders['F'] + $genders['M'] + $genders['FX'] + $genders['MX'] + $genders['X'] + $genders['NB'] + $genders['+'] + $genders['?'];
 
             $output->writeln([
-            sprintf('Person: %d', $total),
-            sprintf('  Female (cis): %d (%.2f %%)', $genders['F'], $genders['F'] / $total * 100),
-            sprintf('  Male (cis): %d (%.2f %%)', $genders['M'], $genders['M'] / $total * 100),
-            sprintf('  Female (trans): %d (%.2f %%)', $genders['FX'], $genders['FX'] / $total * 100),
-            sprintf('  Male (trans): %d (%.2f %%)', $genders['MX'], $genders['MX'] / $total * 100),
-            sprintf('  Intersex: %d (%.2f %%)', $genders['X'], $genders['X'] / $total * 100),
-            sprintf('  Non-Binary: %d (%.2f %%)', $genders['NB'], $genders['NB'] / $total * 100),
-            sprintf('  Multiple: %d (%.2f %%)', $genders['+'], $genders['+'] / $total * 100),
-            sprintf('  Unknown: %d (%.2f %%)', $genders['?'], $genders['?'] / $total * 100),
-            sprintf('Not a person: %d', $genders['-']),
+                sprintf('Person: %d', $total),
+                sprintf('  Female (cis): %d (%.2f %%)', $genders['F'], $genders['F'] / $total * 100),
+                sprintf('  Male (cis): %d (%.2f %%)', $genders['M'], $genders['M'] / $total * 100),
+                sprintf('  Female (trans): %d (%.2f %%)', $genders['FX'], $genders['FX'] / $total * 100),
+                sprintf('  Male (trans): %d (%.2f %%)', $genders['MX'], $genders['MX'] / $total * 100),
+                sprintf('  Intersex: %d (%.2f %%)', $genders['X'], $genders['X'] / $total * 100),
+                sprintf('  Non-Binary: %d (%.2f %%)', $genders['NB'], $genders['NB'] / $total * 100),
+                sprintf('  Multiple: %d (%.2f %%)', $genders['+'], $genders['+'] / $total * 100),
+                sprintf('  Unknown: %d (%.2f %%)', $genders['?'], $genders['?'] / $total * 100),
+                sprintf('Not a person: %d', $genders['-']),
             ]);
 
             $output->writeln('');
 
             $output->writeln([
-            'Sources:',
-            sprintf('  Wikidata: %d (%.2f %%)', $sources['wikidata'], $sources['wikidata'] / $total * 100),
-            sprintf('  Configuration: %d (%.2f %%)', $sources['config'], $sources['config'] / $total * 100),
-            sprintf('  Event (Brussels only): %d (%.2f %%)', $sources['event'], $sources['event'] / $total * 100),
-            sprintf('No source: %d', $sources['-']),
+                'Sources:',
+                sprintf('  Wikidata: %d (%.2f %%)', $sources['wikidata'], $sources['wikidata'] / $total * 100),
+                sprintf('  Configuration: %d (%.2f %%)', $sources['config'], $sources['config'] / $total * 100),
+                sprintf('  Event (Brussels only): %d (%.2f %%)', $sources['event'], $sources['event'] / $total * 100),
+                sprintf('No source: %d', $sources['-']),
             ]);
 
             return Command::SUCCESS;
@@ -151,11 +157,11 @@ class StatisticsCommand extends AbstractCommand
         }
 
         return [
-        'id'       => $feature->id,
-        'name'     => $feature->properties->name,
-        'source'   => $feature->properties->source,
-        'gender'   => $feature->properties->gender ?? null,
-        'wikidata' => $wikidata,
+            'id'       => $feature->id,
+            'name'     => $feature->properties->name,
+            'source'   => $feature->properties->source,
+            'gender'   => $feature->properties->gender ?? null,
+            'wikidata' => $wikidata,
         ];
     }
 
@@ -167,7 +173,7 @@ class StatisticsCommand extends AbstractCommand
         $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
         $str = preg_replace('#&[^;]+;#', '', $str);
 
-      // $str = strtolower($str);
+        // $str = strtolower($str);
 
         return $str;
     }
@@ -203,7 +209,7 @@ class StatisticsCommand extends AbstractCommand
 
     private static function groupBy(array $streets, OutputInterface $output): array
     {
-      // Group streets by streetname
+        // Group streets by streetname
         $groups = [];
         foreach ($streets as $street) {
             if (is_null($street['name'])) {
@@ -217,26 +223,26 @@ class StatisticsCommand extends AbstractCommand
             $groups[$key][] = $street;
         }
 
-      // Keep only one record per streetname
+        // Keep only one record per streetname
         $results = [];
         foreach ($groups as $streets) {
             if (count($streets) === 1) {
                 $results[] = [
-                'name'     => $streets[0]['name'],
-                'source'   => $streets[0]['source'],
-                'gender'   => $streets[0]['gender'],
-                'wikidata' => $streets[0]['wikidata'],
-                'type'     => $streets[0]['type'],
+                    'name'     => $streets[0]['name'],
+                    'source'   => $streets[0]['source'],
+                    'gender'   => $streets[0]['gender'],
+                    'wikidata' => $streets[0]['wikidata'],
+                    'type'     => $streets[0]['type'],
                 ];
             } else {
                 $types = array_unique(array_column($streets, 'type'));
-                $sources = array_values(array_filter(array_unique(array_column($streets, 'source')), function ($value) {
+                $sources = array_values(array_filter(array_unique(array_column($streets, 'source')), function ($value): bool {
                     return !is_null($value);
                 }));
-                $genders = array_values(array_filter(array_unique(array_column($streets, 'gender')), function ($value) {
+                $genders = array_values(array_filter(array_unique(array_column($streets, 'gender')), function ($value): bool {
                     return !is_null($value);
                 }));
-                $wikidatas = array_values(array_filter(array_unique(array_column($streets, 'wikidata')), function ($value) {
+                $wikidatas = array_values(array_filter(array_unique(array_column($streets, 'wikidata')), function ($value): bool {
                     return !is_null($value);
                 }));
 
@@ -246,8 +252,8 @@ class StatisticsCommand extends AbstractCommand
                 sort($wikidatas);
 
                 if (count($sources) > 1) {
-                  // Temporary workaround (Brussels only)
-                    if ($sources === ['event','wikidata']) {
+                    // Temporary workaround (Brussels only)
+                    if ($sources === ['event', 'wikidata']) {
                         $sources = ['wikidata'];
                     } elseif ($sources === ['config', 'event']) {
                         $sources = ['config'];
@@ -263,11 +269,11 @@ class StatisticsCommand extends AbstractCommand
                 }
 
                 $results[] = [
-                'name'     => $streets[0]['name'],
-                'source'   => count($sources) === 0 ? null : implode('+', $sources),
-                'gender'   => count($genders) === 0 ? null : (count($genders) > 1 ? '?' : $genders[0]),
-                'wikidata' => count($wikidatas) === 0 ? null : implode(';', $wikidatas),
-                'type'     => /*count($types) > 1 ? implode('+', $types) : */$types[0],
+                    'name'     => $streets[0]['name'],
+                    'source'   => count($sources) === 0 ? null : implode('+', $sources),
+                    'gender'   => count($genders) === 0 ? null : (count($genders) > 1 ? '?' : $genders[0]),
+                    'wikidata' => count($wikidatas) === 0 ? null : implode(';', $wikidatas),
+                    'type'     => /*count($types) > 1 ? implode('+', $types) : */ $types[0],
                 ];
             }
         }
@@ -279,12 +285,14 @@ class StatisticsCommand extends AbstractCommand
     {
         $fp = fopen($path, 'w');
 
-        fputcsv($fp, ['name', 'source', 'gender', 'wikidata', 'type']);
+        if ($fp !== false) {
+            fputcsv($fp, ['name', 'source', 'gender', 'wikidata', 'type']);
 
-        foreach ($streets as $street) {
-            fputcsv($fp, $street);
+            foreach ($streets as $street) {
+                fputcsv($fp, $street);
+            }
+
+            fclose($fp);
         }
-
-        fclose($fp);
     }
 }

@@ -28,7 +28,7 @@ class GeoJSONCommand extends AbstractCommand
         try {
             parent::execute($input, $output);
 
-          // Brussels only (for now)
+            // Brussels only (for now)
             if ($this->city === 'belgium/brussels') {
                 $csvPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
                 if (file_exists($csvPath) && is_readable($csvPath)) {
@@ -41,7 +41,7 @@ class GeoJSONCommand extends AbstractCommand
                             $gender = $data[2];
 
                             if (isset($this->csv[md5($streetFR)]) && $this->csv[md5($streetFR)] !== $gender) {
-                                  throw new ErrorException('');
+                                throw new ErrorException('');
                             }
                             if (isset($this->csv[md5($streetNL)]) && $this->csv[md5($streetNL)] !== $gender) {
                                 throw new ErrorException('');
@@ -64,8 +64,10 @@ class GeoJSONCommand extends AbstractCommand
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
             }
 
-            $overpassR = json_decode(file_get_contents($relationPath));
-            $overpassW = json_decode(file_get_contents($wayPath));
+            $contentR = file_get_contents($relationPath);
+            $overpassR = $contentR !== false ? json_decode($contentR) : null;
+            $contentW = file_get_contents($wayPath);
+            $overpassW = $contentW !== false ? json_decode($contentW) : null;
 
             $output->write('Relations: ');
             $geojsonR = $this->createGeoJSON('relation', $overpassR->elements ?? [], $output);
@@ -73,12 +75,12 @@ class GeoJSONCommand extends AbstractCommand
             $geojsonW = $this->createGeoJSON('way', $overpassW->elements ?? [], $output);
 
             if (isset($this->config['exclude'], $this->config['exclude']['relation']) && is_array($this->config['exclude']['relation'])) {
-                $geojsonR['features'] = array_filter($geojsonR['features'], function ($feature) {
+                $geojsonR['features'] = array_filter($geojsonR['features'], function ($feature): bool {
                     return !in_array($feature['id'], $this->config['exclude']['relation'], true);
                 });
             }
             if (isset($this->config['exclude'], $this->config['exclude']['way']) && is_array($this->config['exclude']['way'])) {
-                $geojsonW['features'] = array_filter($geojsonW['features'], function ($feature) {
+                $geojsonW['features'] = array_filter($geojsonW['features'], function ($feature): bool {
                     return !in_array($feature['id'], $this->config['exclude']['way'], true);
                 });
             }
@@ -130,27 +132,27 @@ class GeoJSONCommand extends AbstractCommand
         }
 
         return [
-        'wikidata'     => $entity->id,
-        'person'       => $person,
-        'gender'       => Wikidata::extractGender($entity),
-        'labels'       => Wikidata::extractLabels($entity, $config['languages']),
-        'descriptions' => Wikidata::extractDescriptions($entity, $config['languages']),
-        'nicknames'    => Wikidata::extractNicknames($entity, $config['languages']),
-        'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 0, 5)),
-        'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 0, 5)),
-        'sitelinks'    => Wikidata::extractSitelinks($entity, $config['languages']),
-        'image'        => Wikidata::extractImage($entity),
+            'wikidata'     => $entity->id,
+            'person'       => $person,
+            'gender'       => Wikidata::extractGender($entity),
+            'labels'       => Wikidata::extractLabels($entity, $config['languages']),
+            'descriptions' => Wikidata::extractDescriptions($entity, $config['languages']),
+            'nicknames'    => Wikidata::extractNicknames($entity, $config['languages']),
+            'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 0, 5)),
+            'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 0, 5)),
+            'sitelinks'    => Wikidata::extractSitelinks($entity, $config['languages']),
+            'image'        => Wikidata::extractImage($entity),
         ];
     }
 
     private function createProperties($object, array &$warnings = []): array
     {
         $properties = [
-        'name'     => $object->tags->name ?? null,
-        'wikidata' => $object->tags->wikidata ?? null,
-        'source'   => null,
-        'gender'   => null,
-        'details'  => null,
+            'name'     => $object->tags->name ?? null,
+            'wikidata' => $object->tags->wikidata ?? null,
+            'source'   => null,
+            'gender'   => null,
+            'details'  => null,
         ];
 
         if (isset($object->tags->{'name:etymology:wikidata'})) {
@@ -163,7 +165,8 @@ class GeoJSONCommand extends AbstractCommand
                 if (!file_exists($wikiPath) || !is_readable($wikiPath)) {
                     $warnings[] = sprintf('<warning>File "%s" doesn\'t exist or is not readable (tagged in %s(%s)). You maybe need to run "wikidata" command first.</warning>', $wikiPath, $object->type, $object->id);
                 } else {
-                    $json = json_decode(file_get_contents($wikiPath));
+                    $content = file_get_contents($wikiPath);
+                    $json = $content !== false ? json_decode($content) : null;
                     if (is_null($json)) {
                         throw new ErrorException(sprintf('Can\'t read "%s".', $wikiPath));
                     }
@@ -227,7 +230,7 @@ class GeoJSONCommand extends AbstractCommand
             );
 
             if (count($members) === 0) {
-                  $warnings[] = sprintf('No "street" or "outer" member in relation(%d).</warning>', $object->id);
+                $warnings[] = sprintf('No "street" or "outer" member in relation(%d).</warning>', $object->id);
             } else {
                 foreach ($members as $member) {
                     if ($member->type === 'relation') {
@@ -238,9 +241,9 @@ class GeoJSONCommand extends AbstractCommand
                         }
                     } elseif ($member->type === 'way') {
                         if (isset($ways[$member->ref])) {
-                              $linestrings[] = self::createGeometry($ways[$member->ref], $relations, $ways, $nodes, $warnings);
+                            $linestrings[] = self::createGeometry($ways[$member->ref], $relations, $ways, $nodes, $warnings);
                         } else {
-                              $linestrings[] = sprintf('<warning>Can\'t find way(%d) in relation(%d).</warning>', $member->ref, $object->id);
+                            $linestrings[] = sprintf('<warning>Can\'t find way(%d) in relation(%d).</warning>', $member->ref, $object->id);
                         }
                     }
                 }
@@ -263,13 +266,13 @@ class GeoJSONCommand extends AbstractCommand
             return null;
         } elseif (count($linestrings) > 1) {
             return [
-            'type'        => 'MultiLineString',
-            'coordinates' => $linestrings,
+                'type'        => 'MultiLineString',
+                'coordinates' => $linestrings,
             ];
         } else {
             return [
-            'type'        => 'LineString',
-            'coordinates' => $linestrings[0],
+                'type'        => 'LineString',
+                'coordinates' => $linestrings[0],
             ];
         }
     }
@@ -283,8 +286,8 @@ class GeoJSONCommand extends AbstractCommand
         $output->writeln(sprintf('%d node(s), %d way(s), %d relation(s)', count($nodes), count($ways), count($relations)));
 
         $geojson = [
-        'type'     => 'FeatureCollection',
-        'features' => [],
+            'type'     => 'FeatureCollection',
+            'features' => [],
         ];
 
         $objects = $type === 'relation' ? $relations : $ways;
@@ -298,10 +301,10 @@ class GeoJSONCommand extends AbstractCommand
             $geometry = self::createGeometry($object, $relations, $ways, $nodes, $warnings);
 
             $geojson['features'][] = [
-            'type' => 'Feature',
-            'id'   => $object->id,
-            'properties' => $properties,
-            'geometry' => $geometry,
+                'type' => 'Feature',
+                'id'   => $object->id,
+                'properties' => $properties,
+                'geometry' => $geometry,
             ];
 
             $progressBar->advance();

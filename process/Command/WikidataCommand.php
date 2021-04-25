@@ -37,30 +37,32 @@ class WikidataCommand extends AbstractCommand
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
             }
 
-            $relations = json_decode(file_get_contents($relationPath));
-            $ways = json_decode(file_get_contents($wayPath));
+            $contentR = file_get_contents($relationPath);
+            $relations = $contentR !== false ? json_decode($contentR) : null;
+            $contentW = file_get_contents($wayPath);
+            $ways = $contentW !== false ? json_decode($contentW) : null;
 
-          // Only keep ways/relations that have a `wikidata` tag and/or a `name:etymology:wikidata` tag
+            // Only keep ways/relations that have a `wikidata` tag and/or a `name:etymology:wikidata` tag
             $elements = array_filter(
                 array_merge($relations->elements ?? [], $ways->elements ?? []),
                 function ($element): bool {
                     return isset($element->tags) &&
-                    (isset($element->tags->wikidata) || isset($element->tags->{'name:etymology:wikidata'}));
+                        (isset($element->tags->wikidata) || isset($element->tags->{'name:etymology:wikidata'}));
                 }
             );
 
             $outputDir = sprintf('%s/wikidata', $this->processOutputDir);
             if (!file_exists($outputDir) || !is_dir($outputDir)) {
-                  mkdir($outputDir, 0777, true);
+                mkdir($outputDir, 0777, true);
             }
 
             $warnings = [];
             $progressBar = new ProgressBar($output, count($elements));
             $progressBar->start();
 
-          // $progressBar->setRedrawFrequency(5);
-          // $progressBar->maxSecondsBetweenRedraws(5);
-          // $progressBar->minSecondsBetweenRedraws(1);
+            // $progressBar->setRedrawFrequency(5);
+            // $progressBar->maxSecondsBetweenRedraws(5);
+            // $progressBar->minSecondsBetweenRedraws(1);
 
             foreach ($elements as $element) {
                 $wikidataTag = $element->tags->wikidata ?? null;
@@ -73,7 +75,7 @@ class WikidataCommand extends AbstractCommand
                     foreach ($identifiers as $identifier) {
                         // Check that the value of the tag is a valid Wikidata item identifier
                         if (preg_match('/^Q.+$/', $identifier) !== 1) {
-                            throw new Exception(sprintf('Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).%s', $identifier, $element['type'], $element['id']));
+                            throw new Exception(sprintf('Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).', $identifier, $element->type, $element->id));
                         }
 
                         // Download Wikidata item
@@ -85,11 +87,11 @@ class WikidataCommand extends AbstractCommand
                 }
 
                 if (!is_null($wikidataTag)) {
-                  // Download Wikidata item
-                  // $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
-                  // if (!file_exists($path)) {
-                  //   self::save($wikidataTag, $element, $path, $warnings);
-                  // }
+                    // Download Wikidata item
+                    // $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
+                    // if (!file_exists($path)) {
+                    //   self::save($wikidataTag, $element, $path, $warnings);
+                    // }
                 }
 
 

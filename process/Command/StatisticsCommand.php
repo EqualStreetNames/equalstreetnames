@@ -266,7 +266,7 @@ class StatisticsCommand extends AbstractCommand
   {
     $fp = fopen($path, 'w');
 
-    fputcsv($fp, ['name', 'gender', 'wikidata', 'type']);
+    fputcsv($fp, ['name', 'source', 'gender', 'wikidata', 'type']);
 
     foreach ($streets as $street) {
       fputcsv($fp, $street);

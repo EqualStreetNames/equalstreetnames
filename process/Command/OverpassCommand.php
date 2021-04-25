@@ -35,14 +35,13 @@ class OverpassCommand extends AbstractCommand
         throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $wayPath));
       }
 
-      self::save(
-        file_get_contents($relationPath),
-        sprintf('%s/overpass/relation.json', $this->processOutputDir)
-      );
-      self::save(
-        file_get_contents($wayPath),
-        sprintf('%s/overpass/way.json', $this->processOutputDir)
-      );
+      $outputDir = sprintf('%s/overpass', $this->processOutputDir);
+      if (!file_exists($outputDir) || !is_dir($outputDir)) {
+        mkdir($outputDir, 0777, true);
+      }
+
+      self::save(file_get_contents($relationPath), sprintf('%s/relation.json', $outputDir));
+      self::save(file_get_contents($wayPath), sprintf('%s/way.json', $outputDir));
 
       return Command::SUCCESS;
     } catch (Exception $error) {

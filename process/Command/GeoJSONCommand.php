@@ -54,6 +54,15 @@ class GeoJSONCommand extends AbstractCommand
         });
       }
 
+      file_put_contents(
+        sprintf('%s/relations.geojson', $this->cityOutputDir),
+        json_encode($geojsonR)
+      );
+      file_put_contents(
+        sprintf('%s/ways.geojson', $this->cityOutputDir),
+        json_encode($geojsonW)
+      );
+
       return Command::SUCCESS;
     } catch (Exception $error) {
       $output->writeln(sprintf('<error>%s</error>', $error->getMessage()));
@@ -80,21 +89,26 @@ class GeoJSONCommand extends AbstractCommand
     return $result;
   }
 
-  private static function extractDetails($entity, array $languages, array &$warnings = []): ?array
+  private static function extractDetails($entity, array $config, array &$warnings = []): ?array
   {
     $dateOfBirth = Wikidata::extractDateOfBirth($entity);
     $dateOfDeath = Wikidata::extractDateOfDeath($entity);
 
+    $person = Wikidata::isPerson($entity, $config['instances']);
+    if (is_null($person)) {
+      $warnings[] = sprintf('No instance or subclass for "%s".', $entity->id);
+      $person = false;
+    }
+
     return [
       'wikidata'     => $entity->id,
-      'person'       => false,
-      'labels'       => Wikidata::extractLabels($entity, $languages),
-      'descriptions' => Wikidata::extractDescriptions($entity, $languages),
-      'nicknames'    => Wikidata::extractNicknames($entity, $languages),
-      'gender'       => Wikidata::extractGender($entity),
+      'person'       => $person,
+      'labels'       => Wikidata::extractLabels($entity, $config['languages']),
+      'descriptions' => Wikidata::extractDescriptions($entity, $config['languages']),
+      'nicknames'    => Wikidata::extractNicknames($entity, $config['languages']),
       'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 0, 5)),
       'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 0, 5)),
-      'sitelinks'    => Wikidata::extractSitelinks($entity, $languages),
+      'sitelinks'    => Wikidata::extractSitelinks($entity, $config['languages']),
       'image'        => Wikidata::extractImage($entity),
     ];
   }
@@ -113,24 +127,26 @@ class GeoJSONCommand extends AbstractCommand
       $identifiers = explode(';', $object->tags->{'name:etymology:wikidata'});
       $identifiers = array_map('trim', $identifiers);
 
+      $gender = null;
       $details = [];
       foreach ($identifiers as $identifier) {
         $wikiPath = sprintf('%s/wikidata/%s.json', $this->processOutputDir, $identifier);
         if (!file_exists($wikiPath) || !is_readable($wikiPath)) {
-          throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "wikidata" command first.', $wikiPath));
-        }
+          $warnings[] = sprintf('<warning>File "%s" doesn\'t exist or is not readable (tagged in %s(%s)). You maybe need to run "wikidata" command first.</warning>', $wikiPath, $object->type, $object->id);
+        } else {
+          $json = json_decode(file_get_contents($wikiPath));
+          if (is_null($json)) {
+            throw new ErrorException(sprintf('Can\'t read "%s".', $wikiPath));
+          }
+          $entity = current($json->entities);
 
-        $json = json_decode(file_get_contents($wikiPath));
-        if (is_null($json)) {
-          throw new ErrorException(sprintf('Can\'t read "%s".', $wikiPath));
-        }
-        $entity = current($json->entities);
+          if ($entity->id !== $identifier) {
+            $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s".', $identifier, $entity->id);
+          }
 
-        if ($entity->id !== $identifier) {
-          $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s".', $identifier, $entity->id);
+          $gender = Wikidata::extractGender($entity);
+          $details[] = self::extractDetails($entity, $this->config ?? [], $warnings);
         }
-
-        $details[] = self::extractDetails($entity, $this->config['languages'] ?? [], $warnings);
       }
 
       if (count($details) === 1) {
@@ -138,6 +154,7 @@ class GeoJSONCommand extends AbstractCommand
       }
 
       $properties['source'] = 'wikidata';
+      $properties['gender'] = $gender;
       $properties['details'] = $details;
     } else if (isset(
       $this->config['gender'],

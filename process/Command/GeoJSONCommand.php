@@ -141,7 +141,7 @@ class GeoJSONCommand extends AbstractCommand
           $entity = current($json->entities);
 
           if ($entity->id !== $identifier) {
-            $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s".', $identifier, $entity->id);
+            $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged in %s(%s)).', $identifier, $entity->id, $object->type, $object->id);
           }
 
           $details[] = self::extractDetails($entity, $this->config ?? [], $warnings);

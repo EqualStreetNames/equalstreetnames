@@ -12,37 +12,42 @@ use Symfony\Component\Console\Question\ChoiceQuestion;
 
 abstract class AbstractCommand extends Command
 {
-    protected $city;
+    protected ?string $city;
     protected string $cityDir;
     protected string $cityOutputDir;
     protected array $config = [];
     protected string $processOutputDir = 'data';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->addOption('city', 'c', InputOption::VALUE_REQUIRED, 'City directory: <my-country>/<my-city>');
     }
 
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $output->getFormatter()->setStyle('warning', new OutputFormatterStyle('red'));
-
-        $this->city = $input->getOption('city');
     }
 
-    protected function interact(InputInterface $input, OutputInterface $output)
+    protected function interact(InputInterface $input, OutputInterface $output): void
     {
-        if (is_null($this->city)) {
+        $city = $input->getOption('city');
+
+        if (is_null($city) || !is_string($city)) {
             $helper = $this->getHelper('question');
 
-            $cities = array_map(function ($path) {
-                return substr($path, 10);
-            }, glob('../cities/*/*'));
+            $glob = glob('../cities/*/*');
+            if ($glob !== false) {
+                $cities = array_map(function ($path): string {
+                    return substr($path, 10);
+                }, $glob);
 
-            $question = new ChoiceQuestion('Choose a city: ', $cities);
-            $question->setAutocompleterValues($cities);
+                $question = new ChoiceQuestion('Choose a city: ', $cities);
+                $question->setAutocompleterValues($cities);
 
-            $this->city = $helper->ask($input, $output, $question);
+                $this->city = $helper->ask($input, $output, $question);
+            }
+        } else {
+            $this->city = $city;
         }
 
         $this->cityDir = sprintf('../cities/%s', $this->city);

@@ -261,7 +261,7 @@ class StatisticsCommand extends AbstractCommand
           'source'   => count($sources) === 0 ? null : implode('+', $sources),
           'gender'   => count($genders) === 0 ? null : (count($genders) > 1 ? '?' : $genders[0]),
           'wikidata' => count($wikidatas) === 0 ? null : implode(';', $wikidatas),
-          'type'     => count($types) > 1 ? implode('+', $types) : $types[0],
+          'type'     => /*count($types) > 1 ? implode('+', $types) : */$types[0],
         ];
       }
     }

@@ -14,14 +14,16 @@ class GeoJSONCommand extends AbstractCommand
 {
     protected static $defaultName = 'geojson';
 
-    protected function configure()
+    protected array $csv;
+
+    protected function configure(): void
     {
         parent::configure();
 
         $this->setDescription('Generate GeoJSON files.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             parent::execute($input, $output);

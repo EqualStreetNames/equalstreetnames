@@ -12,14 +12,14 @@ class StatisticsCommand extends AbstractCommand
 {
     protected static $defaultName = 'statistics';
 
-    protected function configure()
+    protected function configure(): void
     {
         parent::configure();
 
         $this->setDescription('Calculate statistics.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             parent::execute($input, $output);

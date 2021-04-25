@@ -14,14 +14,14 @@ class OverpassCommand extends AbstractCommand
 
     protected const URL = 'https://overpass-api.de/api/interpreter';
 
-    protected function configure()
+    protected function configure(): void
     {
         parent::configure();
 
         $this->setDescription('Download data from OpenStreetMap with Overpass API.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             parent::execute($input, $output);

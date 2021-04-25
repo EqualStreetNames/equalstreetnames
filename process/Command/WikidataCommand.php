@@ -16,14 +16,14 @@ class WikidataCommand extends AbstractCommand
 
     protected const URL = 'https://www.wikidata.org/wiki/Special:EntityData/';
 
-    protected function configure()
+    protected function configure(): void
     {
         parent::configure();
 
         $this->setDescription('Download data from Wikidata.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             parent::execute($input, $output);

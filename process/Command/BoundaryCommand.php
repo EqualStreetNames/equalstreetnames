@@ -14,14 +14,14 @@ class BoundaryCommand extends AbstractCommand
 
     protected const URL = 'http://polygons.openstreetmap.fr/get_geojson.py';
 
-    protected function configure()
+    protected function configure(): void
     {
         parent::configure();
 
         $this->setDescription('Download city boundary from OpenStreetMap.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             parent::execute($input, $output);

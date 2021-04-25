@@ -240,7 +240,14 @@ class StatisticsCommand extends AbstractCommand
         sort($wikidatas);
 
         if (count($sources) > 1) {
-          $output->writeln(sprintf('Multiple source (%s) for street "%s".',  implode(', ', $sources), $streets[0]['name']));
+          // Temporary workaround (Brussels only)
+          if ($sources === ['event','wikidata']) {
+            $sources = ['wikidata'];
+          } else if ($sources === ['config', 'event']) {
+            $sources = ['config'];
+          } else {
+            $output->writeln(sprintf('Multiple source (%s) for street "%s".',  implode(', ', $sources), $streets[0]['name']));
+          }
         }
         if (count($genders) > 1) {
           $output->writeln(sprintf('<warning>Gender mismatch (%s) for street "%s".</warning>',  implode(', ', $genders), $streets[0]['name']));

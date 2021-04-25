@@ -3,6 +3,7 @@ includes:
 parameters:
     paths:
         - Command
+        - Wikidata
         - process.php
     fileExtensions:
         - php

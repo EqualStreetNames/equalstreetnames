@@ -103,6 +103,7 @@ class GeoJSONCommand extends AbstractCommand
     return [
       'wikidata'     => $entity->id,
       'person'       => $person,
+      'gender'       => Wikidata::extractGender($entity),
       'labels'       => Wikidata::extractLabels($entity, $config['languages']),
       'descriptions' => Wikidata::extractDescriptions($entity, $config['languages']),
       'nicknames'    => Wikidata::extractNicknames($entity, $config['languages']),
@@ -127,7 +128,6 @@ class GeoJSONCommand extends AbstractCommand
       $identifiers = explode(';', $object->tags->{'name:etymology:wikidata'});
       $identifiers = array_map('trim', $identifiers);
 
-      $gender = null;
       $details = [];
       foreach ($identifiers as $identifier) {
         $wikiPath = sprintf('%s/wikidata/%s.json', $this->processOutputDir, $identifier);
@@ -144,10 +144,14 @@ class GeoJSONCommand extends AbstractCommand
             $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s".', $identifier, $entity->id);
           }
 
-          $gender = Wikidata::extractGender($entity);
           $details[] = self::extractDetails($entity, $this->config ?? [], $warnings);
         }
       }
+
+      $_person = array_unique(array_column($details, 'person'));
+      $_gender = array_unique(array_column($details, 'gender'));
+
+      $gender = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : null;
 
       if (count($details) === 1) {
         $details = current($details);

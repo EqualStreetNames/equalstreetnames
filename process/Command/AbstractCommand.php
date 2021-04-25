@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Model\Config;
 use ErrorException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
@@ -15,7 +16,7 @@ abstract class AbstractCommand extends Command
     protected ?string $city;
     protected string $cityDir;
     protected string $cityOutputDir;
-    protected array $config = [];
+    protected Config $config;
     protected string $processOutputDir = 'data';
 
     protected function configure(): void
@@ -77,6 +78,7 @@ abstract class AbstractCommand extends Command
             throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $configPath));
         }
 
-        $this->config = require $configPath;
+        $configArray = require $configPath;
+        $this->config = new Config($configArray);
     }
 }

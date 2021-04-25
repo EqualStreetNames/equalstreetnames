@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Model\GeoJSON\Feature;
 use ErrorException;
 use Exception;
 use Symfony\Component\Console\Command\Command;
@@ -148,7 +149,7 @@ class StatisticsCommand extends AbstractCommand
         }
     }
 
-    private static function extract($feature): array
+    private static function extract(Feature $feature): array
     {
         if (!is_null($feature->properties->details) && is_array($feature->properties->details)) {
             $wikidata = implode(';', array_column($feature->properties->details, 'wikidata'));
@@ -169,9 +170,9 @@ class StatisticsCommand extends AbstractCommand
     {
         $str = htmlentities($string, ENT_NOQUOTES, $charset);
 
-        $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
-        $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
-        $str = preg_replace('#&[^;]+;#', '', $str);
+        /** @var string */ $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+        /** @var string */ $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
+        /** @var string */ $str = preg_replace('#&[^;]+;#', '', $str);
 
         // $str = strtolower($str);
 
@@ -225,24 +226,24 @@ class StatisticsCommand extends AbstractCommand
 
         // Keep only one record per streetname
         $results = [];
-        foreach ($groups as $streets) {
-            if (count($streets) === 1) {
+        foreach ($groups as $_streets) {
+            if (count($_streets) === 1) {
                 $results[] = [
-                    'name'     => $streets[0]['name'],
-                    'source'   => $streets[0]['source'],
-                    'gender'   => $streets[0]['gender'],
-                    'wikidata' => $streets[0]['wikidata'],
-                    'type'     => $streets[0]['type'],
+                    'name'     => $_streets[0]['name'],
+                    'source'   => $_streets[0]['source'],
+                    'gender'   => $_streets[0]['gender'],
+                    'wikidata' => $_streets[0]['wikidata'],
+                    'type'     => $_streets[0]['type'],
                 ];
             } else {
-                $types = array_unique(array_column($streets, 'type'));
-                $sources = array_values(array_filter(array_unique(array_column($streets, 'source')), function ($value): bool {
+                $types = array_unique(array_column($_streets, 'type'));
+                $sources = array_values(array_filter(array_unique(array_column($_streets, 'source')), function ($value): bool {
                     return !is_null($value);
                 }));
-                $genders = array_values(array_filter(array_unique(array_column($streets, 'gender')), function ($value): bool {
+                $genders = array_values(array_filter(array_unique(array_column($_streets, 'gender')), function ($value): bool {
                     return !is_null($value);
                 }));
-                $wikidatas = array_values(array_filter(array_unique(array_column($streets, 'wikidata')), function ($value): bool {
+                $wikidatas = array_values(array_filter(array_unique(array_column($_streets, 'wikidata')), function ($value): bool {
                     return !is_null($value);
                 }));
 
@@ -258,18 +259,18 @@ class StatisticsCommand extends AbstractCommand
                     } elseif ($sources === ['config', 'event']) {
                         $sources = ['config'];
                     } else {
-                        $output->writeln(sprintf('Multiple source (%s) for street "%s".', implode(', ', $sources), $streets[0]['name']));
+                        $output->writeln(sprintf('Multiple source (%s) for street "%s".', implode(', ', $sources), $_streets[0]['name']));
                     }
                 }
                 if (count($genders) > 1) {
-                    $output->writeln(sprintf('<warning>Gender mismatch (%s) for street "%s".</warning>', implode(', ', $genders), $streets[0]['name']));
+                    $output->writeln(sprintf('<warning>Gender mismatch (%s) for street "%s".</warning>', implode(', ', $genders), $_streets[0]['name']));
                 }
                 if (count($wikidatas) > 1) {
-                    $output->writeln(sprintf('<warning>Wikidata mismatch (%s) for street "%s".</warning>', implode(', ', $wikidatas), $streets[0]['name']));
+                    $output->writeln(sprintf('<warning>Wikidata mismatch (%s) for street "%s".</warning>', implode(', ', $wikidatas), $_streets[0]['name']));
                 }
 
                 $results[] = [
-                    'name'     => $streets[0]['name'],
+                    'name'     => $_streets[0]['name'],
                     'source'   => count($sources) === 0 ? null : implode('+', $sources),
                     'gender'   => count($genders) === 0 ? null : (count($genders) > 1 ? '?' : $genders[0]),
                     'wikidata' => count($wikidatas) === 0 ? null : implode(';', $wikidatas),

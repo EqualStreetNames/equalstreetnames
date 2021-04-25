@@ -26,11 +26,11 @@ class BoundaryCommand extends AbstractCommand
         try {
             parent::execute($input, $output);
 
-            if (!isset($this->config['relationId']) || !is_int($this->config['relationId'])) {
+            if (!isset($this->config->relationId) || !is_int($this->config->relationId)) {
                 throw new ErrorException('"relationId" parameter is missing or is invalid in "config.php".');
             }
 
-            $boundary = self::query($this->config['relationId']);
+            $boundary = self::query($this->config->relationId);
 
             file_put_contents(sprintf('%s/boundary.geojson', $this->cityOutputDir), $boundary);
 

@@ -2,6 +2,20 @@
 
 namespace App\Command;
 
+use App\Model\Config;
+use App\Model\Details;
+use App\Model\GeoJSON\Feature;
+use App\Model\GeoJSON\FeatureCollection;
+use App\Model\GeoJSON\Geometry;
+use App\Model\GeoJSON\LineString;
+use App\Model\GeoJSON\MultiLineString;
+use App\Model\GeoJSON\Properties;
+use App\Model\Overpass\Element;
+use App\Model\Overpass\Node;
+use App\Model\Overpass\Overpass;
+use App\Model\Overpass\Relation;
+use App\Model\Overpass\Way;
+use App\Model\Wikidata\Entity;
 use App\Wikidata\Wikidata;
 use ErrorException;
 use Exception;
@@ -65,23 +79,23 @@ class GeoJSONCommand extends AbstractCommand
             }
 
             $contentR = file_get_contents($relationPath);
-            $overpassR = $contentR !== false ? json_decode($contentR) : null;
+            /** @var Overpass */ $overpassR = $contentR !== false ? json_decode($contentR) : null;
             $contentW = file_get_contents($wayPath);
-            $overpassW = $contentW !== false ? json_decode($contentW) : null;
+            /** @var Overpass */ $overpassW = $contentW !== false ? json_decode($contentW) : null;
 
             $output->write('Relations: ');
             $geojsonR = $this->createGeoJSON('relation', $overpassR->elements ?? [], $output);
             $output->write('Ways: ');
             $geojsonW = $this->createGeoJSON('way', $overpassW->elements ?? [], $output);
 
-            if (isset($this->config['exclude'], $this->config['exclude']['relation']) && is_array($this->config['exclude']['relation'])) {
-                $geojsonR['features'] = array_filter($geojsonR['features'], function ($feature): bool {
-                    return !in_array($feature['id'], $this->config['exclude']['relation'], true);
+            if (isset($this->config->exclude, $this->config->exclude->relation) && is_array($this->config->exclude->relation)) {
+                $geojsonR->features = array_filter($geojsonR->features, function (Feature $feature): bool {
+                    return !in_array($feature->id, $this->config->exclude->relation, true);
                 });
             }
-            if (isset($this->config['exclude'], $this->config['exclude']['way']) && is_array($this->config['exclude']['way'])) {
-                $geojsonW['features'] = array_filter($geojsonW['features'], function ($feature): bool {
-                    return !in_array($feature['id'], $this->config['exclude']['way'], true);
+            if (isset($this->config->exclude, $this->config->exclude->way) && is_array($this->config->exclude->way)) {
+                $geojsonW->features = array_filter($geojsonW->features, function (Feature $feature): bool {
+                    return !in_array($feature->id, $this->config->exclude->way, true);
                 });
             }
 
@@ -102,6 +116,12 @@ class GeoJSONCommand extends AbstractCommand
         }
     }
 
+    /**
+     * @param string $type
+     * @param Element[] $elements
+     *
+     * @return Element[]
+     */
     private static function extractElements(string $type, array $elements): array
     {
         $filter = array_filter(
@@ -120,43 +140,51 @@ class GeoJSONCommand extends AbstractCommand
         return $result;
     }
 
-    private static function extractDetails($entity, array $config, array &$warnings = []): ?array
+    /**
+     * @param Entity $entity
+     * @param Config $config
+     * @param string[] $warnings
+     */
+    private static function extractDetails(Entity $entity, Config $config, array &$warnings = []): Details
     {
         $dateOfBirth = Wikidata::extractDateOfBirth($entity);
         $dateOfDeath = Wikidata::extractDateOfDeath($entity);
 
-        $person = Wikidata::isPerson($entity, $config['instances']);
+        $person = Wikidata::isPerson($entity, $config->instances);
         if (is_null($person)) {
             $warnings[] = sprintf('No instance or subclass for "%s".', $entity->id);
             $person = false;
         }
 
-        return [
+        return new Details([
             'wikidata'     => $entity->id,
             'person'       => $person,
             'gender'       => Wikidata::extractGender($entity),
-            'labels'       => Wikidata::extractLabels($entity, $config['languages']),
-            'descriptions' => Wikidata::extractDescriptions($entity, $config['languages']),
-            'nicknames'    => Wikidata::extractNicknames($entity, $config['languages']),
+            'labels'       => Wikidata::extractLabels($entity, $config->languages),
+            'descriptions' => Wikidata::extractDescriptions($entity, $config->languages),
+            'nicknames'    => Wikidata::extractNicknames($entity, $config->languages),
             'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 0, 5)),
             'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 0, 5)),
-            'sitelinks'    => Wikidata::extractSitelinks($entity, $config['languages']),
+            'sitelinks'    => Wikidata::extractSitelinks($entity, $config->languages),
             'image'        => Wikidata::extractImage($entity),
-        ];
+        ]);
     }
 
-    private function createProperties($object, array &$warnings = []): array
+    /**
+     * @param Element $object
+     * @param string[] $warnings
+     */
+    private function createProperties(Element $object, array &$warnings = []): Properties
     {
-        $properties = [
-            'name'     => $object->tags->name ?? null,
-            'wikidata' => $object->tags->wikidata ?? null,
-            'source'   => null,
-            'gender'   => null,
-            'details'  => null,
-        ];
+        $properties = new Properties();
+        $properties->name = $object->tags->name ?? null; // @phpstan-ignore-line
+        $properties->wikidata = $object->tags->wikidata ?? null; // @phpstan-ignore-line
+        $properties->source = null;
+        $properties->gender = null;
+        $properties->details = null;
 
-        if (isset($object->tags->{'name:etymology:wikidata'})) {
-            $identifiers = explode(';', $object->tags->{'name:etymology:wikidata'});
+        if (isset($object->tags->{'name:etymology:wikidata'})) { // @phpstan-ignore-line
+            $identifiers = explode(';', $object->tags->{'name:etymology:wikidata'}); // @phpstan-ignore-line
             $identifiers = array_map('trim', $identifiers);
 
             $details = [];
@@ -176,7 +204,7 @@ class GeoJSONCommand extends AbstractCommand
                         $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged in %s(%s)).', $identifier, $entity->id, $object->type, $object->id);
                     }
 
-                    $details[] = self::extractDetails($entity, $this->config ?? [], $warnings);
+                    $details[] = self::extractDetails($entity, $this->config, $warnings);
                 }
             }
 
@@ -189,39 +217,52 @@ class GeoJSONCommand extends AbstractCommand
                 $details = current($details);
             }
 
-            $properties['source'] = 'wikidata';
-            $properties['gender'] = $gender;
-            $properties['details'] = $details;
-        } elseif (
-            isset(
-                $this->config['gender'],
-                $this->config['gender'][$object->type],
-                $this->config['gender'][$object->type][(string) $object->id]
-            )
-        ) {
-            $properties['source'] = 'config';
-            $properties['gender'] = $this->config['gender'][$object->type][(string) $object->id];
+            $properties->source = 'wikidata';
+            $properties->gender = $gender;
+            $properties->details = $details;
+        } elseif ($object->type === 'relation' && isset(
+            $this->config->gender,
+            $this->config->gender->relation,
+            $this->config->gender->relation[(string) $object->id]
+        )) {
+            $properties->source = 'config';
+            $properties->gender = $this->config->gender->relation[(string) $object->id];
+        } elseif ($object->type === 'way' && isset(
+            $this->config->gender,
+            $this->config->gender->way,
+            $this->config->gender->way[(string) $object->id]
+        )) {
+            $properties->source = 'config';
+            $properties->gender = $this->config->gender->way[(string) $object->id];
         } elseif (isset($this->csv) && count($this->csv) > 0) {
-            if (isset($object->tags->{'name:fr'}, $this->csv[md5($object->tags->{'name:fr'})])) {
-                $properties['source'] = 'event';
-                $properties['gender'] = $this->csv[md5($object->tags->{'name:fr'})];
-            } elseif (isset($object->tags->{'name:nl'}, $this->csv[md5($object->tags->{'name:nl'})])) {
-                $properties['source'] = 'event';
-                $properties['gender'] = $this->csv[md5($object->tags->{'name:nl'})];
-            } elseif (isset($object->tags->{'name'}, $this->csv[md5($object->tags->{'name'})])) {
-                $properties['source'] = 'event';
-                $properties['gender'] = $this->csv[md5($object->tags->{'name'})];
+            if (isset($object->tags->{'name:fr'}, $this->csv[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
+                $properties->source = 'event';
+                $properties->gender = $this->csv[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
+            } elseif (isset($object->tags->{'name:nl'}, $this->csv[md5($object->tags->{'name:nl'})])) { // @phpstan-ignore-line
+                $properties->source = 'event';
+                $properties->gender = $this->csv[md5($object->tags->{'name:nl'})]; // @phpstan-ignore-line
+            } elseif (isset($object->tags->{'name'}, $this->csv[md5($object->tags->{'name'})])) { // @phpstan-ignore-line
+                $properties->source = 'event';
+                $properties->gender = $this->csv[md5($object->tags->{'name'})]; // @phpstan-ignore-line
             }
         }
 
         return $properties;
     }
 
-    private static function createGeometry($object, array $relations, array $ways, array $nodes, array &$warnings = []): ?array
+    /**
+     * @param (Way|Relation) $object
+     * @param Relation[] $relations
+     * @param Way[] $ways
+     * @param Node[] $nodes
+     * @param string[] $warnings
+     */
+    private static function createGeometry(Element $object, array $relations, array $ways, array $nodes, array &$warnings = []): ?Geometry
     {
         $linestrings = [];
 
         if ($object->type === 'relation') {
+            /** @var Relation */ $object = $object;
             $members = array_filter(
                 $object->members,
                 function ($member): bool {
@@ -249,6 +290,7 @@ class GeoJSONCommand extends AbstractCommand
                 }
             }
         } elseif ($object->type === 'way') {
+            /** @var Way */ $object = $object;
             foreach ($object->nodes as $id) {
                 $node = $nodes[$id] ?? null;
 
@@ -265,30 +307,26 @@ class GeoJSONCommand extends AbstractCommand
 
             return null;
         } elseif (count($linestrings) > 1) {
-            return [
-                'type'        => 'MultiLineString',
-                'coordinates' => $linestrings,
-            ];
+            return new MultiLineString($linestrings);
         } else {
-            return [
-                'type'        => 'LineString',
-                'coordinates' => $linestrings[0],
-            ];
+            return new LineString($linestrings[0]);
         }
     }
 
-    private function createGeoJSON(string $type, array $elements, OutputInterface $output)
+    /**
+     * @param string $type
+     * @param Element[] $elements
+     * @param OutputInterface $output
+     */
+    private function createGeoJSON(string $type, array $elements, OutputInterface $output): FeatureCollection
     {
-        $nodes = self::extractElements('node', $elements);
-        $ways = self::extractElements('way', $elements);
-        $relations = self::extractElements('relation', $elements);
+        /** @var Node[] */ $nodes = self::extractElements('node', $elements);
+        /** @var Way[] */ $ways = self::extractElements('way', $elements);
+        /** @var Relation[] */ $relations = self::extractElements('relation', $elements);
 
         $output->writeln(sprintf('%d node(s), %d way(s), %d relation(s)', count($nodes), count($ways), count($relations)));
 
-        $geojson = [
-            'type'     => 'FeatureCollection',
-            'features' => [],
-        ];
+        $geojson = new FeatureCollection();
 
         $objects = $type === 'relation' ? $relations : $ways;
 
@@ -300,12 +338,12 @@ class GeoJSONCommand extends AbstractCommand
             $properties = $this->createProperties($object, $warnings);
             $geometry = self::createGeometry($object, $relations, $ways, $nodes, $warnings);
 
-            $geojson['features'][] = [
-                'type' => 'Feature',
-                'id'   => $object->id,
-                'properties' => $properties,
-                'geometry' => $geometry,
-            ];
+            $feature = new Feature();
+            $feature->id = $object->id;
+            $feature->properties = $properties;
+            $feature->geometry = $geometry;
+
+            $geojson->features[] = $feature;
 
             $progressBar->advance();
         }

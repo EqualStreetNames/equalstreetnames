@@ -2,6 +2,8 @@
 
 namespace App\Command;
 
+use App\Model\Overpass\Element;
+use App\Model\Overpass\Overpass;
 use ErrorException;
 use Exception;
 use GuzzleHttp\Exception\BadResponseException;
@@ -38,16 +40,16 @@ class WikidataCommand extends AbstractCommand
             }
 
             $contentR = file_get_contents($relationPath);
-            $relations = $contentR !== false ? json_decode($contentR) : null;
+            /** @var Overpass */ $overpassR = $contentR !== false ? json_decode($contentR) : null;
             $contentW = file_get_contents($wayPath);
-            $ways = $contentW !== false ? json_decode($contentW) : null;
+            /** @var Overpass */ $overpassW = $contentW !== false ? json_decode($contentW) : null;
 
             // Only keep ways/relations that have a `wikidata` tag and/or a `name:etymology:wikidata` tag
             $elements = array_filter(
-                array_merge($relations->elements ?? [], $ways->elements ?? []),
+                array_merge($overpassR->elements ?? [], $overpassW->elements ?? []),
                 function ($element): bool {
                     return isset($element->tags) &&
-                        (isset($element->tags->wikidata) || isset($element->tags->{'name:etymology:wikidata'}));
+                        (isset($element->tags->wikidata) || isset($element->tags->{'name:etymology:wikidata'})); // @phpstan-ignore-line
                 }
             );
 
@@ -65,8 +67,8 @@ class WikidataCommand extends AbstractCommand
             // $progressBar->minSecondsBetweenRedraws(1);
 
             foreach ($elements as $element) {
-                $wikidataTag = $element->tags->wikidata ?? null;
-                $etymologyTag = $element->tags->{'name:etymology:wikidata'} ?? null;
+                $wikidataTag = $element->tags->wikidata ?? null; // @phpstan-ignore-line
+                $etymologyTag = $element->tags->{'name:etymology:wikidata'} ?? null; // @phpstan-ignore-line
 
                 if (!is_null($etymologyTag)) {
                     $identifiers = explode(';', $etymologyTag);
@@ -86,13 +88,13 @@ class WikidataCommand extends AbstractCommand
                     }
                 }
 
-                if (!is_null($wikidataTag)) {
-                    // Download Wikidata item
-                    // $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
-                    // if (!file_exists($path)) {
-                    //   self::save($wikidataTag, $element, $path, $warnings);
-                    // }
-                }
+                // Download Wikidata item
+                // if (!is_null($wikidataTag)) {
+                //     $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
+                //     if (!file_exists($path)) {
+                //       self::save($wikidataTag, $element, $path, $warnings);
+                //     }
+                // }
 
 
                 $progressBar->advance();
@@ -110,7 +112,13 @@ class WikidataCommand extends AbstractCommand
         }
     }
 
-    private static function save(string $identifier, $element, string $path, &$warnings = []): void
+    /**
+     * @param string $identifier
+     * @param Element $element
+     * @param string $path
+     * @param string[] $warnings
+     */
+    private static function save(string $identifier, Element $element, string $path, array &$warnings = []): void
     {
         $url = sprintf('%s%s.json', self::URL, $identifier);
 

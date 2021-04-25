@@ -2,82 +2,108 @@
 
 namespace App\Wikidata;
 
+use App\Model\Wikidata\Entity;
+
 class Wikidata
 {
-    public static function extractLabels($entity, array $languages): array
+    /**
+     * @param Entity $entity
+     * @param string[] $languages
+     *
+     * @return array<string,string>
+     */
+    public static function extractLabels(Entity $entity, array $languages): array
     {
         $labels = [];
 
         foreach ($languages as $language) {
-            if (isset($entity->labels->{$language})) {
-                $labels[$language] = $entity->labels->{$language};
+            if (isset($entity->labels->{$language})) { // @phpstan-ignore-line
+                $labels[$language] = $entity->labels->{$language}; // @phpstan-ignore-line
             }
         }
 
         return $labels;
     }
 
-    public static function extractDescriptions($entity, array $languages): array
+    /**
+     * @param Entity $entity
+     * @param string[] $languages
+     *
+     * @return array<string,string>
+     */
+    public static function extractDescriptions(Entity $entity, array $languages): array
     {
         $descriptions = [];
 
         foreach ($languages as $language) {
-            if (isset($entity->descriptions->{$language})) {
-                $descriptions[$language] = $entity->descriptions->{$language};
+            if (isset($entity->descriptions->{$language})) { // @phpstan-ignore-line
+                $descriptions[$language] = $entity->descriptions->{$language}; // @phpstan-ignore-line
             }
         }
 
         return $descriptions;
     }
 
-    public static function extractSitelinks($entity, array $languages): array
+    /**
+     * @param Entity $entity
+     * @param string[] $languages
+     *
+     * @return array<string,string>
+     */
+    public static function extractSitelinks(Entity $entity, array $languages): array
     {
         $sitelinks = [];
 
         foreach ($languages as $language) {
-            if (isset($entity->sitelinks->{$language . 'wiki'})) {
-                $sitelinks[$language . 'wiki'] = $entity->sitelinks->{$language . 'wiki'};
+            if (isset($entity->sitelinks->{$language . 'wiki'})) { // @phpstan-ignore-line
+                $sitelinks[$language . 'wiki'] = $entity->sitelinks->{$language . 'wiki'}; // @phpstan-ignore-line
             }
         }
 
         return $sitelinks;
     }
 
-    public static function extractNicknames($entity, array $languages): ?array
+    /**
+     * @param Entity $entity
+     * @param string[] $languages
+     *
+     * @return null|array<string,string>
+     */
+    public static function extractNicknames(Entity $entity, array $languages): ?array
     {
         $nicknames = null;
 
         $claims = $entity->claims->P1449 ?? [];
 
         foreach ($claims as $value) {
-            $language = $value->mainsnak->datavalue->value->language;
+            $language = $value->mainsnak->datavalue->value->language; // @phpstan-ignore-line
 
             if (in_array($language, $languages, true)) {
-                $nicknames[$language] = $value->mainsnak->datavalue->value;
+                $nicknames[$language] = $value->mainsnak->datavalue->value; // @phpstan-ignore-line
             }
         }
 
         return $nicknames;
     }
 
-    public static function extractDateOfBirth($entity): ?string
+    public static function extractDateOfBirth(Entity $entity): ?string
     {
-        return $entity->claims->P569[0]->mainsnak->datavalue->value->time ?? null;
+        return isset($entity->claims->P569) ? $entity->claims->P569[0]->mainsnak->datavalue->value->time ?? null : null; // @phpstan-ignore-line
     }
 
-    public static function extractDateOfDeath($entity): ?string
+    public static function extractDateOfDeath(Entity $entity): ?string
     {
-        return $entity->claims->P570[0]->mainsnak->datavalue->value->time ?? null;
+        return isset($entity->claims->P570) ? $entity->claims->P570[0]->mainsnak->datavalue->value->time ?? null : null; // @phpstan-ignore-line
     }
 
-    public static function extractImage($entity): ?string
+    public static function extractImage(Entity $entity): ?string
     {
-        return $entity->claims->P18[0]->mainsnak->datavalue->value ?? null;
+        return isset($entity->claims->P18) ? $entity->claims->P18[0]->mainsnak->datavalue->value ?? null : null; // @phpstan-ignore-line
     }
 
-    public static function extractGender($entity): ?string
+    public static function extractGender(Entity $entity): ?string
     {
-        $identifier = $entity->claims->P21[0]->mainsnak->datavalue->value->id ?? null;
+        $identifier = isset($entity->claims->P21) ? $entity->claims->P21[0]->mainsnak->datavalue->value->id ?? null : null; // @phpstan-ignore-line
 
         switch ($identifier) {
             case 'Q6581097': // male
@@ -105,7 +131,10 @@ class Wikidata
         }
     }
 
-    private static function extractInstances($entity): ?array
+    /**
+     * @return string[]
+     */
+    private static function extractInstances(Entity $entity): ?array
     {
         $property = $entity->claims->P31 ?? $entity->claims->P279 ?? null;
 
@@ -114,11 +143,15 @@ class Wikidata
         }
 
         return array_map(function ($p) {
-            return $p->mainsnak->datavalue->value->id;
+            return $p->mainsnak->datavalue->value->id; // @phpstan-ignore-line
         }, $property);
     }
 
-    public static function isPerson($entity, array $instances): ?bool
+    /**
+     * @param Entity $entity
+     * @param array<string,bool> $instances
+     */
+    public static function isPerson(Entity $entity, array $instances): ?bool
     {
         $identifiers = self::extractInstances($entity);
 

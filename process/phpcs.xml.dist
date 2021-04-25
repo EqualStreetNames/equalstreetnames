@@ -15,6 +15,7 @@
 
     <!-- Paths to check -->
     <file>Command</file>
+    <file>Model</file>
     <file>Wikidata</file>
     <file>process.php</file>
 </ruleset>

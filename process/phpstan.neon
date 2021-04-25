@@ -3,13 +3,13 @@ includes:
 parameters:
     paths:
         - Command
+        - Model
         - Wikidata
         - process.php
     fileExtensions:
         - php
     level: max
     reportUnmatchedIgnoredErrors: true
-    # checkModelProperties: true
-    # checkMissingIterableValueType: false
+    # checkGenericClassInNonGenericObjectType: false
     ignoreErrors:
         - '#Method App\\Command\\AbstractCommand::execute\(\) should return int but return statement is missing.#'

@@ -45,12 +45,12 @@ class GeoJSONCommand extends AbstractCommand
 
       if (isset($this->config['exclude'], $this->config['exclude']['relation']) && is_array($this->config['exclude']['relation'])) {
         $geojsonR['features'] = array_filter($geojsonR['features'], function ($feature) {
-          return !in_array($feature['id'], $this->config['exclude']['relation']);
+          return !in_array($feature['id'], $this->config['exclude']['relation'], true);
         });
       }
-      if (isset($this->config['exclude'], $this->config['exclude']['ways']) && is_array($this->config['exclude']['ways'])) {
+      if (isset($this->config['exclude'], $this->config['exclude']['way']) && is_array($this->config['exclude']['way'])) {
         $geojsonW['features'] = array_filter($geojsonW['features'], function ($feature) {
-          return !in_array($feature['id'], $this->config['exclude']['ways']);
+          return !in_array($feature['id'], $this->config['exclude']['way'], true);
         });
       }
 

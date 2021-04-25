@@ -43,11 +43,6 @@ class Wikidata
     return $sitelinks;
   }
 
-  public static function extractInstance($entity): ?string
-  {
-    return $entity->claims->P31 ?? $entity->claims->P279 ?? null;
-  }
-
   public static function extractNicknames($entity, array $languages): ?array
   {
     $nicknames = null;
@@ -108,5 +103,35 @@ class Wikidata
       default:
         return null;
     }
+  }
+
+  private static function extractInstances($entity): ?array
+  {
+    $property = $entity->claims->P31 ?? $entity->claims->P279 ?? null;
+
+    if (is_null($property)) {
+      return null;
+    }
+
+    return array_map(function ($p) { return $p->mainsnak->datavalue->value->id; }, $property);
+  }
+
+  public static function isPerson($entity, array $instances): ?bool
+  {
+    $identifiers = self::extractInstances($entity);
+
+    if (is_null($identifiers)) {
+      return null;
+    }
+
+    $person = false;
+    foreach ($identifiers as $id) {
+      if (isset($instances[$id]) && $instances[$id] === true) {
+        $person = true;
+        break;
+      }
+    }
+
+    return $person;
   }
 }

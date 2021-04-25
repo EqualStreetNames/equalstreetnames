@@ -26,6 +26,33 @@ class GeoJSONCommand extends AbstractCommand
     try {
       parent::execute($input, $output);
 
+      // Brussels only (for now)
+      if ($this->city === 'belgium/brussels') {
+        $csvPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
+        if (file_exists($csvPath) && is_readable($csvPath)) {
+          $this->csv = [];
+          $handle = fopen(sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir), 'r');
+          if ($handle !== false) {
+            while (($data = fgetcsv($handle)) !== false) {
+              $streetFR = $data[0];
+              $streetNL = $data[1];
+              $gender = $data[2];
+
+              if (isset($this->csv[md5($streetFR)]) && $this->csv[md5($streetFR)] !== $gender) {
+                throw new ErrorException('');
+              }
+              if (isset($this->csv[md5($streetNL)]) && $this->csv[md5($streetNL)] !== $gender) {
+                throw new ErrorException('');
+              }
+
+              $this->csv[md5($streetFR)] = $gender;
+              $this->csv[md5($streetNL)] = $gender;
+            }
+            fclose($handle);
+          }
+        }
+      }
+
       $relationPath = sprintf('%s/overpass/relation.json', $this->processOutputDir);
       if (!file_exists($relationPath) || !is_readable($relationPath)) {
         throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
@@ -167,6 +194,19 @@ class GeoJSONCommand extends AbstractCommand
     )) {
       $properties['source'] = 'config';
       $properties['gender'] = $this->config['gender'][$object->type][(string) $object->id];
+    } else if (isset($this->csv) && count($this->csv) > 0) {
+      if (isset($object->tags->{'name:fr'}, $this->csv[md5($object->tags->{'name:fr'})])) {
+        $properties['source'] = 'event';
+        $properties['gender'] = $this->csv[md5($object->tags->{'name:fr'})];
+      }
+      else if (isset($object->tags->{'name:nl'}, $this->csv[md5($object->tags->{'name:nl'})])) {
+        $properties['source'] = 'event';
+        $properties['gender'] = $this->csv[md5($object->tags->{'name:nl'})];
+      }
+      else if (isset($object->tags->{'name'}, $this->csv[md5($object->tags->{'name'})])) {
+        $properties['source'] = 'event';
+        $properties['gender'] = $this->csv[md5($object->tags->{'name'})];
+      }
     }
 
     return $properties;

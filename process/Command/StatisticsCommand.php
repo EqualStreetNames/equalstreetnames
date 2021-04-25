@@ -93,7 +93,15 @@ class StatisticsCommand extends AbstractCommand
 
       foreach ($streets as $street) {
         $genders[$street['gender'] ?? '-']++;
-        $sources[$street['source'] ?? '-']++;
+
+        if (is_null($street['source'])) {
+          $sources['-']++;
+        } else {
+          $_sources = explode('+', $street['source']);
+          foreach ($_sources as $s) {
+            $sources[$s]++;
+          }
+        }
       }
 
       // Store statistics
@@ -145,6 +153,7 @@ class StatisticsCommand extends AbstractCommand
     return [
       'id'       => $feature->id,
       'name'     => $feature->properties->name,
+      'source'   => $feature->properties->source,
       'gender'   => $feature->properties->gender ?? null,
       'wikidata' => $wikidata,
     ];

@@ -6,12 +6,12 @@ class Geometry
 {
     public string $type;
 
-  /** @var number[]|number[][] */
+    /** @var array<array{number,number}>|array<array<array{number,number}>> */
     public array $coordinates;
 
-  /**
-   * @param number[]|number[][] $coordinates
-   */
+    /**
+     * @param array<array{number,number}>|array<array<array{number,number}>> $coordinates
+     */
     public function __construct(array $coordinates)
     {
         $this->coordinates = $coordinates;

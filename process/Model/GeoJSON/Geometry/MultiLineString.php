@@ -6,9 +6,12 @@ class MultiLineString extends Geometry
 {
     public string $type = 'MultiLineString';
 
-  /**
-   * @param number[][] $coordinates
-   */
+    /** @var array<array<array{number,number}>> */
+    public array $coordinates;
+
+    /**
+     * @param array<array<array{number,number}>> $coordinates
+     */
     public function __construct(array $coordinates)
     {
         parent::__construct($coordinates);

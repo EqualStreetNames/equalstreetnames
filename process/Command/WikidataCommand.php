@@ -118,7 +118,7 @@ class WikidataCommand extends AbstractCommand
      * @param string $path
      * @param string[] $warnings
      */
-    private static function save(string $identifier, Element $element, string $path, array &$warnings = []): void
+    private static function save(string $identifier, $element, string $path, array &$warnings = []): void
     {
         $url = sprintf('%s%s.json', self::URL, $identifier);
 

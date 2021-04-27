@@ -2,13 +2,17 @@
 
 namespace App\Model;
 
-use ArrayObject;
-
 class ExcludeRelationWay {
   /** @var int[] */
   public array $relation;
   /** @var int[] */
   public array $way;
+
+  public function __construct(array $relation, array $way)
+  {
+    $this->relation = $relation;
+    $this->way = $way;
+  }
 }
 
 class GenderRelationWay {
@@ -16,6 +20,12 @@ class GenderRelationWay {
   public array $relation;
   /** @var array<string,string> */
   public array $way;
+
+  public function __construct(array $relation, array $way)
+  {
+    $this->relation = $relation;
+    $this->way = $way;
+  }
 }
 
 class Config {
@@ -35,8 +45,8 @@ class Config {
   {
     $this->relationId = $config['relationId'];
     $this->languages = $config['languages'];
-    $this->exclude = $config['exclude'];
-    $this->gender = $config['gender'];
+    $this->exclude = new ExcludeRelationWay($config['exclude']['relation'] ?? [], $config['exclude']['way'] ?? []);
+    $this->gender = new GenderRelationWay($config['gender']['relation'] ?? [], $config['gender']['way'] ?? []);
     $this->instances = $config['instances'];
   }
 }

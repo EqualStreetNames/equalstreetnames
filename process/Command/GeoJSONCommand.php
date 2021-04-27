@@ -288,7 +288,7 @@ class GeoJSONCommand extends AbstractCommand
                                 if ($geometry->type === 'LineString') {
                                     /** @var LineString */ $geometry = $geometry;
                                     $coordinates[] = $geometry->coordinates;
-                                } else if ($geometry->type === 'MultiLineString') {
+                                } elseif ($geometry->type === 'MultiLineString') {
                                     /** @var MultiLineString */ $geometry = $geometry;
                                     $coordinates = array_merge($coordinates, $geometry->coordinates);
                                 }

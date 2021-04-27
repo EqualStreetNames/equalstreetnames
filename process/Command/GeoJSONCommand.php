@@ -6,9 +6,9 @@ use App\Model\Config;
 use App\Model\Details;
 use App\Model\GeoJSON\Feature;
 use App\Model\GeoJSON\FeatureCollection;
-use App\Model\GeoJSON\Geometry;
-use App\Model\GeoJSON\LineString;
-use App\Model\GeoJSON\MultiLineString;
+use App\Model\GeoJSON\Geometry\Geometry;
+use App\Model\GeoJSON\Geometry\LineString;
+use App\Model\GeoJSON\Geometry\MultiLineString;
 use App\Model\GeoJSON\Properties;
 use App\Model\Overpass\Element;
 use App\Model\Overpass\Node;
@@ -145,7 +145,7 @@ class GeoJSONCommand extends AbstractCommand
      * @param Config $config
      * @param string[] $warnings
      */
-    private static function extractDetails(Entity $entity, Config $config, array &$warnings = []): Details
+    private static function extractDetails($entity, Config $config, array &$warnings = []): Details
     {
         $dateOfBirth = Wikidata::extractDateOfBirth($entity);
         $dateOfDeath = Wikidata::extractDateOfDeath($entity);
@@ -174,7 +174,7 @@ class GeoJSONCommand extends AbstractCommand
      * @param Element $object
      * @param string[] $warnings
      */
-    private function createProperties(Element $object, array &$warnings = []): Properties
+    private function createProperties($object, array &$warnings = []): Properties
     {
         $properties = new Properties();
         $properties->name = $object->tags->name ?? null; // @phpstan-ignore-line
@@ -220,18 +220,22 @@ class GeoJSONCommand extends AbstractCommand
             $properties->source = 'wikidata';
             $properties->gender = $gender;
             $properties->details = $details;
-        } elseif ($object->type === 'relation' && isset(
-            $this->config->gender,
-            $this->config->gender->relation,
-            $this->config->gender->relation[(string) $object->id]
-        )) {
+        } elseif (
+            $object->type === 'relation' && isset(
+                $this->config->gender,
+                $this->config->gender->relation,
+                $this->config->gender->relation[(string) $object->id]
+            )
+        ) {
             $properties->source = 'config';
             $properties->gender = $this->config->gender->relation[(string) $object->id];
-        } elseif ($object->type === 'way' && isset(
-            $this->config->gender,
-            $this->config->gender->way,
-            $this->config->gender->way[(string) $object->id]
-        )) {
+        } elseif (
+            $object->type === 'way' && isset(
+                $this->config->gender,
+                $this->config->gender->way,
+                $this->config->gender->way[(string) $object->id]
+            )
+        ) {
             $properties->source = 'config';
             $properties->gender = $this->config->gender->way[(string) $object->id];
         } elseif (isset($this->csv) && count($this->csv) > 0) {
@@ -257,7 +261,7 @@ class GeoJSONCommand extends AbstractCommand
      * @param Node[] $nodes
      * @param string[] $warnings
      */
-    private static function createGeometry(Element $object, array $relations, array $ways, array $nodes, array &$warnings = []): ?Geometry
+    private static function createGeometry($object, array $relations, array $ways, array $nodes, array &$warnings = []): ?Geometry
     {
         $linestrings = [];
 

@@ -276,6 +276,8 @@ class GeoJSONCommand extends AbstractCommand
 
             if (count($members) === 0) {
                 $warnings[] = sprintf('No "street" or "outer" member in relation(%d).</warning>', $object->id);
+
+                return null;
             } else {
                 $coordinates = [];
                 foreach ($members as $member) {
@@ -332,6 +334,8 @@ class GeoJSONCommand extends AbstractCommand
             }
             return new LineString($coordinates);
         }
+
+        var_dump($object);
 
         return null;
     }

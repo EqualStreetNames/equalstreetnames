@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Model\GeoJSON;
+namespace App\Model\GeoJSON\Geometry;
 
 class Geometry
 {
-  public string $type;
+    public string $type;
 
   /** @var number[]|number[][] */
-  public array $coordinates;
+    public array $coordinates;
 
   /**
    * @param number[]|number[][] $coordinates
    */
-  public function __construct(array $coordinates)
-  {
-    $this->coordinates = $coordinates;
-  }
+    public function __construct(array $coordinates)
+    {
+        $this->coordinates = $coordinates;
+    }
 }

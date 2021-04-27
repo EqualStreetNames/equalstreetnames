@@ -2,37 +2,40 @@
 
 namespace App\Model\Wikidata;
 
-class LanguageValue {
-  public string $language;
-  public string $value;
+class LanguageValue
+{
+    public string $language;
+    public string $value;
 }
 
-class Claims {
+class Claims
+{
   /** @var null|array<object> image */
-  public ?array $P18;
+    public ?array $P18;
   /** @var null|array<object> sex or gender */
-  public ?array $P21;
+    public ?array $P21;
   /** @var null|array<object> instance of */
-  public ?array $P31;
+    public ?array $P31;
   /** @var null|array<object> subclass of */
-  public ?array $P279;
+    public ?array $P279;
   /** @var null|array<object> date of birth */
-  public ?array $P569;
+    public ?array $P569;
   /** @var null|array<object> date of death */
-  public ?array $P570;
+    public ?array $P570;
   /** @var null|array<object> nickname */
-  public ?array $P1449;
+    public ?array $P1449;
 }
 
-class Entity {
-  public string $id;
+class Entity
+{
+    public string $id;
 
-  public object $labels;
+    public object $labels;
 
-  public object $descriptions;
+    public object $descriptions;
 
-  public object $sitelinks;
+    public object $sitelinks;
 
   /** @var Claims */
-  public object $claims;
+    public object $claims;
 }

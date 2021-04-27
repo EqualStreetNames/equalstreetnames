@@ -4,7 +4,7 @@ namespace App\Model\GeoJSON;
 
 class FeatureCollection
 {
-  public string $type = 'FeatureCollection';
+    public string $type = 'FeatureCollection';
   /** @var Feature[] $features */
-  public array $features = [];
+    public array $features = [];
 }

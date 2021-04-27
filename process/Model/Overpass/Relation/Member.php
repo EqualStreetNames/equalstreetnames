@@ -2,11 +2,12 @@
 
 namespace App\Model\Overpass\Relation;
 
-class Member {
+class Member
+{
   /** @var 'node'|'way'|'relation' */
-  public string $type;
+    public string $type;
 
-  public int $ref;
+    public int $ref;
 
-  public string $role;
+    public string $role;
 }

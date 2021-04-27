@@ -2,9 +2,10 @@
 
 namespace App\Model\Overpass;
 
-class Way extends Element {
-  public string $type = 'way';
+class Way extends Element
+{
+    public string $type = 'way';
 
   /** @var int[] */
-  public array $nodes = [];
+    public array $nodes = [];
 }

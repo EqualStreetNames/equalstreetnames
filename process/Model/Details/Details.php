@@ -1,27 +1,21 @@
 <?php
 
-namespace App\Model;
-
-class LanguageValue
-{
-    public string $language;
-    public string $value;
-}
+namespace App\Model\Details;
 
 class Details
 {
     public ?string $wikidata;
     public ?bool $person;
     public ?string $gender;
-  /** @var null|array<string,LanguageValue> */
+    /** @var null|array<string,LanguageValue> */
     public ?array $labels;
-  /** @var null|array<string,LanguageValue> */
+    /** @var null|array<string,LanguageValue> */
     public ?array $descriptions;
-  /** @var array<string,string> */
+    /** @var array<string,string> */
     public ?array $nicknames;
     public ?int $birth;
     public ?int $death;
-  /** @var null|array<string,string> */
+    /** @var null|array<string,string> */
     public ?array $sitelinks;
     public ?string $image;
 

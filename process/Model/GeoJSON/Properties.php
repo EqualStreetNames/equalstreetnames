@@ -2,7 +2,7 @@
 
 namespace App\Model\GeoJSON;
 
-use App\Model\Details;
+use App\Model\Details\Details;
 
 class Properties
 {

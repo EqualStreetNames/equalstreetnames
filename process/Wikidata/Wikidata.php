@@ -12,7 +12,7 @@ class Wikidata
      *
      * @return array<string,string>
      */
-    public static function extractLabels(Entity $entity, array $languages): array
+    public static function extractLabels($entity, array $languages): array
     {
         $labels = [];
 
@@ -31,7 +31,7 @@ class Wikidata
      *
      * @return array<string,string>
      */
-    public static function extractDescriptions(Entity $entity, array $languages): array
+    public static function extractDescriptions($entity, array $languages): array
     {
         $descriptions = [];
 
@@ -50,7 +50,7 @@ class Wikidata
      *
      * @return array<string,string>
      */
-    public static function extractSitelinks(Entity $entity, array $languages): array
+    public static function extractSitelinks($entity, array $languages): array
     {
         $sitelinks = [];
 
@@ -69,7 +69,7 @@ class Wikidata
      *
      * @return null|array<string,string>
      */
-    public static function extractNicknames(Entity $entity, array $languages): ?array
+    public static function extractNicknames($entity, array $languages): ?array
     {
         $nicknames = null;
 
@@ -86,22 +86,22 @@ class Wikidata
         return $nicknames;
     }
 
-    public static function extractDateOfBirth(Entity $entity): ?string
+    public static function extractDateOfBirth($entity): ?string
     {
         return isset($entity->claims->P569) ? $entity->claims->P569[0]->mainsnak->datavalue->value->time ?? null : null; // @phpstan-ignore-line
     }
 
-    public static function extractDateOfDeath(Entity $entity): ?string
+    public static function extractDateOfDeath($entity): ?string
     {
         return isset($entity->claims->P570) ? $entity->claims->P570[0]->mainsnak->datavalue->value->time ?? null : null; // @phpstan-ignore-line
     }
 
-    public static function extractImage(Entity $entity): ?string
+    public static function extractImage($entity): ?string
     {
         return isset($entity->claims->P18) ? $entity->claims->P18[0]->mainsnak->datavalue->value ?? null : null; // @phpstan-ignore-line
     }
 
-    public static function extractGender(Entity $entity): ?string
+    public static function extractGender($entity): ?string
     {
         $identifier = isset($entity->claims->P21) ? $entity->claims->P21[0]->mainsnak->datavalue->value->id ?? null : null; // @phpstan-ignore-line
 
@@ -134,7 +134,7 @@ class Wikidata
     /**
      * @return string[]
      */
-    private static function extractInstances(Entity $entity): ?array
+    private static function extractInstances($entity): ?array
     {
         $property = $entity->claims->P31 ?? $entity->claims->P279 ?? null;
 
@@ -151,7 +151,7 @@ class Wikidata
      * @param Entity $entity
      * @param array<string,bool> $instances
      */
-    public static function isPerson(Entity $entity, array $instances): ?bool
+    public static function isPerson($entity, array $instances): ?bool
     {
         $identifiers = self::extractInstances($entity);
 

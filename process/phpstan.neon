@@ -11,5 +11,6 @@ parameters:
     level: max
     reportUnmatchedIgnoredErrors: true
     # checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
     ignoreErrors:
         - '#Method App\\Command\\AbstractCommand::execute\(\) should return int but return statement is missing.#'

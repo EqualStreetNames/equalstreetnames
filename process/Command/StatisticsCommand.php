@@ -152,14 +152,16 @@ class StatisticsCommand extends AbstractCommand
     /**
      * @param Feature $feature
      *
-     * @return array<string,string>
+     * @return array<string,mixed>
      */
     private static function extract($feature): array
     {
-        if (!is_null($feature->properties->details) && is_array($feature->properties->details)) {
-            $wikidata = implode(';', array_column($feature->properties->details, 'wikidata'));
-        } else {
-            $wikidata = $feature->properties->details->wikidata ?? null;
+        if (!is_null($feature->properties->details)) {
+            if (is_array($feature->properties->details)) {
+                $wikidata = implode(';', array_column($feature->properties->details, 'wikidata'));
+            } else {
+                $wikidata = $feature->properties->details->wikidata ?? null;
+            }
         }
 
         return [
@@ -167,7 +169,7 @@ class StatisticsCommand extends AbstractCommand
             'name'     => $feature->properties->name,
             'source'   => $feature->properties->source,
             'gender'   => $feature->properties->gender ?? null,
-            'wikidata' => $wikidata,
+            'wikidata' => $wikidata ?? null,
         ];
     }
 

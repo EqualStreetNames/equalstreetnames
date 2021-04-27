@@ -86,21 +86,33 @@ class Wikidata
         return $nicknames;
     }
 
+    /**
+     * @param Entity $entity
+     */
     public static function extractDateOfBirth($entity): ?string
     {
         return isset($entity->claims->P569) ? $entity->claims->P569[0]->mainsnak->datavalue->value->time ?? null : null; // @phpstan-ignore-line
     }
 
+    /**
+     * @param Entity $entity
+     */
     public static function extractDateOfDeath($entity): ?string
     {
         return isset($entity->claims->P570) ? $entity->claims->P570[0]->mainsnak->datavalue->value->time ?? null : null; // @phpstan-ignore-line
     }
 
+    /**
+     * @param Entity $entity
+     */
     public static function extractImage($entity): ?string
     {
         return isset($entity->claims->P18) ? $entity->claims->P18[0]->mainsnak->datavalue->value ?? null : null; // @phpstan-ignore-line
     }
 
+    /**
+     * @param Entity $entity
+     */
     public static function extractGender($entity): ?string
     {
         $identifier = isset($entity->claims->P21) ? $entity->claims->P21[0]->mainsnak->datavalue->value->id ?? null : null; // @phpstan-ignore-line
@@ -132,6 +144,8 @@ class Wikidata
     }
 
     /**
+     * @param Entity $entity
+     *
      * @return string[]
      */
     private static function extractInstances($entity): ?array

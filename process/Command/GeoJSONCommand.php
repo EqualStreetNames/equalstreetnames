@@ -88,12 +88,12 @@ class GeoJSONCommand extends AbstractCommand
             $output->write('Ways: ');
             $geojsonW = $this->createGeoJSON('way', $overpassW->elements ?? [], $output);
 
-            if (isset($this->config->exclude, $this->config->exclude->relation) && is_array($this->config->exclude->relation)) {
+            if (isset($this->config->exclude, $this->config->exclude->relation)) {
                 $geojsonR->features = array_filter($geojsonR->features, function (Feature $feature): bool {
                     return !in_array($feature->id, $this->config->exclude->relation, true);
                 });
             }
-            if (isset($this->config->exclude, $this->config->exclude->way) && is_array($this->config->exclude->way)) {
+            if (isset($this->config->exclude, $this->config->exclude->way)) {
                 $geojsonW->features = array_filter($geojsonW->features, function (Feature $feature): bool {
                     return !in_array($feature->id, $this->config->exclude->way, true);
                 });

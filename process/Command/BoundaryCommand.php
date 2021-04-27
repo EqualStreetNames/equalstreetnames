@@ -26,7 +26,7 @@ class BoundaryCommand extends AbstractCommand
         try {
             parent::execute($input, $output);
 
-            if (!isset($this->config->relationId) || !is_int($this->config->relationId)) {
+            if (!isset($this->config->relationId)) {
                 throw new ErrorException('"relationId" parameter is missing or is invalid in "config.php".');
             }
 

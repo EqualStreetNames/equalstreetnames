@@ -255,16 +255,16 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param (Way|Relation) $object
+     * @param Way|Relation $object
      * @param Relation[] $relations
      * @param Way[] $ways
      * @param Node[] $nodes
      * @param string[] $warnings
+     *
+     * @return null|LineString|MultiLineString
      */
-    private static function createGeometry($object, array $relations, array $ways, array $nodes, array &$warnings = []): ?Geometry
+    private static function createGeometry($object, array $relations, array $ways, array $nodes, array &$warnings = [])
     {
-        $linestrings = [];
-
         if ($object->type === 'relation') {
             /** @var Relation */ $object = $object;
             $members = array_filter(
@@ -277,44 +277,63 @@ class GeoJSONCommand extends AbstractCommand
             if (count($members) === 0) {
                 $warnings[] = sprintf('No "street" or "outer" member in relation(%d).</warning>', $object->id);
             } else {
+                $coordinates = [];
                 foreach ($members as $member) {
                     if ($member->type === 'relation') {
                         if (isset($relations[$member->ref])) {
-                            $linestrings[] = self::createGeometry($relations[$member->ref], $relations, $ways, $nodes, $warnings);
+                            $geometry = self::createGeometry($relations[$member->ref], $relations, $ways, $nodes, $warnings);
+                            if (!is_null($geometry)) {
+                                if ($geometry->type === 'LineString') {
+                                    /** @var LineString */ $geometry = $geometry;
+                                    $coordinates[] = $geometry->coordinates;
+                                } else if ($geometry->type === 'MultiLineString') {
+                                    /** @var MultiLineString */ $geometry = $geometry;
+                                    $coordinates = array_merge($coordinates, $geometry->coordinates);
+                                }
+                            }
                         } else {
-                            $linestrings[] = sprintf('<warning>Can\'t find relation(%d) in relation(%d).</warning>', $member->ref, $object->id);
+                            $warnings[] = sprintf('<warning>Can\'t find relation(%d) in relation(%d).</warning>', $member->ref, $object->id);
                         }
                     } elseif ($member->type === 'way') {
                         if (isset($ways[$member->ref])) {
-                            $linestrings[] = self::createGeometry($ways[$member->ref], $relations, $ways, $nodes, $warnings);
+                            /** @var null|LineString */ $geometry = self::createGeometry($ways[$member->ref], $relations, $ways, $nodes, $warnings);
+                            if (!is_null($geometry)) {
+                                $coordinates[] = $geometry->coordinates;
+                            }
                         } else {
-                            $linestrings[] = sprintf('<warning>Can\'t find way(%d) in relation(%d).</warning>', $member->ref, $object->id);
+                            $warnings[] = sprintf('<warning>Can\'t find way(%d) in relation(%d).</warning>', $member->ref, $object->id);
                         }
                     }
                 }
+                if (count($coordinates) === 0) {
+                    $warnings[] = sprintf('<warning>No geometry for %s(%d).</warning>', $object->type, $object->id);
+
+                    return null;
+                }
+                return new MultiLineString($coordinates);
             }
         } elseif ($object->type === 'way') {
             /** @var Way */ $object = $object;
+
+            $coordinates = [];
             foreach ($object->nodes as $id) {
                 $node = $nodes[$id] ?? null;
 
                 if (is_null($node)) {
                     $warnings[] = sprintf('<warning>Can\'t find node(%d) in way(%d).</warning>', $id, $object->id);
                 } else {
-                    $linestrings[] = [$node->lon, $node->lat];
+                    $coordinates[] = [$node->lon, $node->lat];
                 }
             }
+            if (count($coordinates) === 0) {
+                $warnings[] = sprintf('<warning>No geometry for %s(%d).</warning>', $object->type, $object->id);
+
+                return null;
+            }
+            return new LineString($coordinates);
         }
 
-        if (count($linestrings) === 0) {
-            $warnings[] = sprintf('<warning>No geometry for %s(%d).</warning>', $object->type, $object->id);
-
-            return null;
-        } elseif (count($linestrings) > 1) {
-            return new MultiLineString($linestrings);
-        } else {
-            return new LineString($linestrings[0]);
-        }
+        return null;
     }
 
     /**

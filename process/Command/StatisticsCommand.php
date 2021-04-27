@@ -149,7 +149,12 @@ class StatisticsCommand extends AbstractCommand
         }
     }
 
-    private static function extract(Feature $feature): array
+    /**
+     * @param Feature $feature
+     *
+     * @return array<string,string>
+     */
+    private static function extract($feature): array
     {
         if (!is_null($feature->properties->details) && is_array($feature->properties->details)) {
             $wikidata = implode(';', array_column($feature->properties->details, 'wikidata'));

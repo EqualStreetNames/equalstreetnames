@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Model\Config;
+use App\Model\Config\Config;
 use App\Model\Details;
 use App\Model\GeoJSON\Feature;
 use App\Model\GeoJSON\FeatureCollection;

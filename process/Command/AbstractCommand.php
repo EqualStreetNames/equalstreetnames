@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Model\Config;
+use App\Model\Config\Config;
 use ErrorException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;

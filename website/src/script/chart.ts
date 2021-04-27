@@ -1,12 +1,14 @@
 'use strict';
 
-import Chart from 'chart.js';
+import { ArcElement, Chart, DoughnutController } from 'chart.js';
 
 import colors from './colors';
 import { statistics } from './index';
 
 let elementCanvas: HTMLCanvasElement;
 let elementDiv: HTMLDivElement;
+
+Chart.register(ArcElement, DoughnutController);
 
 function createChart (data: number[]): Chart | null {
   const context = elementCanvas.getContext('2d');
@@ -42,10 +44,14 @@ function createChart (data: number[]): Chart | null {
           animateScale: false,
           animateRotate: false
         },
-        circumference: Math.PI,
-        legend: false,
-        responsive: true,
-        rotation: -Math.PI
+        circumference: 180,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        responsive: false,
+        rotation: -90
       }
     });
   }

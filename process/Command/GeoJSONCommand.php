@@ -28,7 +28,7 @@ class GeoJSONCommand extends AbstractCommand
 {
     protected static $defaultName = 'geojson';
 
-    protected array $csv;
+    protected array $event;
 
     protected function configure(): void
     {
@@ -44,9 +44,9 @@ class GeoJSONCommand extends AbstractCommand
 
             // Brussels only (for now)
             if ($this->city === 'belgium/brussels') {
-                $csvPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
-                if (file_exists($csvPath) && is_readable($csvPath)) {
-                    $this->csv = [];
+                $eventPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
+                if (file_exists($eventPath) && is_readable($eventPath)) {
+                    $this->event = [];
                     $handle = fopen(sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir), 'r');
                     if ($handle !== false) {
                         while (($data = fgetcsv($handle)) !== false) {
@@ -54,15 +54,15 @@ class GeoJSONCommand extends AbstractCommand
                             $streetNL = $data[1];
                             $gender = $data[2];
 
-                            if (isset($this->csv[md5($streetFR)]) && $this->csv[md5($streetFR)] !== $gender) {
+                            if (isset($this->event[md5($streetFR)]) && $this->event[md5($streetFR)] !== $gender) {
                                 throw new ErrorException('');
                             }
-                            if (isset($this->csv[md5($streetNL)]) && $this->csv[md5($streetNL)] !== $gender) {
+                            if (isset($this->event[md5($streetNL)]) && $this->event[md5($streetNL)] !== $gender) {
                                 throw new ErrorException('');
                             }
 
-                            $this->csv[md5($streetFR)] = $gender;
-                            $this->csv[md5($streetNL)] = $gender;
+                            $this->event[md5($streetFR)] = $gender;
+                            $this->event[md5($streetNL)] = $gender;
                         }
                         fclose($handle);
                     }
@@ -240,16 +240,16 @@ class GeoJSONCommand extends AbstractCommand
         ) {
             $properties->source = 'config';
             $properties->gender = $this->config->gender->way[(string) $object->id];
-        } elseif (isset($this->csv) && count($this->csv) > 0) {
-            if (isset($object->tags->{'name:fr'}, $this->csv[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
+        } elseif (isset($this->event) && count($this->event) > 0) {
+            if (isset($object->tags->{'name:fr'}, $this->event[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
                 $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
-            } elseif (isset($object->tags->{'name:nl'}, $this->csv[md5($object->tags->{'name:nl'})])) { // @phpstan-ignore-line
+                $properties->gender = $this->event[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
+            } elseif (isset($object->tags->{'name:nl'}, $this->event[md5($object->tags->{'name:nl'})])) { // @phpstan-ignore-line
                 $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name:nl'})]; // @phpstan-ignore-line
-            } elseif (isset($object->tags->{'name'}, $this->csv[md5($object->tags->{'name'})])) { // @phpstan-ignore-line
+                $properties->gender = $this->event[md5($object->tags->{'name:nl'})]; // @phpstan-ignore-line
+            } elseif (isset($object->tags->{'name'}, $this->event[md5($object->tags->{'name'})])) { // @phpstan-ignore-line
                 $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name'})]; // @phpstan-ignore-line
+                $properties->gender = $this->event[md5($object->tags->{'name'})]; // @phpstan-ignore-line
             }
         }
 

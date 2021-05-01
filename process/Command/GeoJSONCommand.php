@@ -89,14 +89,16 @@ class GeoJSONCommand extends AbstractCommand
             $geojsonW = $this->createGeoJSON('way', $overpassW->elements ?? [], $output);
 
             if (isset($this->config->exclude, $this->config->exclude->relation)) {
-                $geojsonR->features = array_filter($geojsonR->features, function (Feature $feature): bool {
+                $features = array_filter($geojsonR->features, function (Feature $feature): bool {
                     return !in_array($feature->id, $this->config->exclude->relation, true);
                 });
+                $geojsonR->features = array_values($features);
             }
             if (isset($this->config->exclude, $this->config->exclude->way)) {
-                $geojsonW->features = array_filter($geojsonW->features, function (Feature $feature): bool {
+                $features = array_filter($geojsonW->features, function (Feature $feature): bool {
                     return !in_array($feature->id, $this->config->exclude->way, true);
                 });
+                $geojsonW->features = array_values($features);
             }
 
             file_put_contents(
@@ -334,8 +336,6 @@ class GeoJSONCommand extends AbstractCommand
             }
             return new LineString($coordinates);
         }
-
-        var_dump($object);
 
         return null;
     }

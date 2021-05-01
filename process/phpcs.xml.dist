@@ -14,5 +14,8 @@
     </rule>
 
     <!-- Paths to check -->
-    <file>scripts</file>
+    <file>Command</file>
+    <file>Model</file>
+    <file>Wikidata</file>
+    <file>process.php</file>
 </ruleset>

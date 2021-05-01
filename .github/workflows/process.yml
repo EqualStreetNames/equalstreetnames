@@ -20,6 +20,23 @@ defaults:
     working-directory: process
 
 jobs:
+  process-brussels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          extensions: curl
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+      - name: Run update
+        run: composer run update-data -- --city=belgium/brussels
+
   phpcs:
     name: PHP_CodeSniffer
     runs-on: ubuntu-latest

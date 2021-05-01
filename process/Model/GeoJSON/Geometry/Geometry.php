@@ -2,7 +2,9 @@
 
 namespace App\Model\GeoJSON\Geometry;
 
-class Geometry
+use JsonSerializable;
+
+class Geometry implements JsonSerializable
 {
     public string $type;
 
@@ -15,5 +17,12 @@ class Geometry
     public function __construct(array $coordinates)
     {
         $this->coordinates = $coordinates;
+    }
+
+    public function jsonSerialize() {
+        return [
+            'type' => $this->type,
+            'coordinates' => $this->coordinates,
+        ];
     }
 }

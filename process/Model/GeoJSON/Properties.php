@@ -14,13 +14,14 @@ class Properties implements JsonSerializable
     /** @var null|Details|Details[] */
     public $details;
 
-    public function jsonSerialize() {
-      return [
+    public function jsonSerialize()
+    {
+        return [
         'name' => $this->name,
         'wikidata' => $this->wikidata,
         'gender' => $this->gender,
         'source' => $this->source,
         'details' => $this->details,
-      ];
+        ];
     }
 }

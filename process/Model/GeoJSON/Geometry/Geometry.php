@@ -19,7 +19,8 @@ class Geometry implements JsonSerializable
         $this->coordinates = $coordinates;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return [
             'type' => $this->type,
             'coordinates' => $this->coordinates,

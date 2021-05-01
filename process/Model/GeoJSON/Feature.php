@@ -12,7 +12,8 @@ class Feature implements JsonSerializable
     public Properties $properties;
     public ?Geometry $geometry;
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return [
             'type' => $this->type,
             'id' => $this->id,

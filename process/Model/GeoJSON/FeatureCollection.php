@@ -10,10 +10,11 @@ class FeatureCollection implements JsonSerializable
   /** @var Feature[] $features */
     public array $features = [];
 
-    public function jsonSerialize() {
-      return [
+    public function jsonSerialize()
+    {
+        return [
         'type' => $this->type,
         'features' => $this->features
-      ];
+        ];
     }
 }

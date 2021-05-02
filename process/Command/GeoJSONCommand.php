@@ -132,6 +132,17 @@ class GeoJSONCommand extends AbstractCommand
                 $geojsonW->features = array_values($features);
             }
 
+            // Check GeoJSON features count.
+            if (count($geojsonR->features) === 0) {
+                $output->writeln('<warning>No relation feature.</warning>');
+            }
+            if (count($geojsonW->features) === 0) {
+                $output->writeln('<warning>No way feature.</warning>');
+            }
+            if (count($geojsonR->features) === 0 && count($geojsonW->features) === 0) {
+                throw new ErrorException('No feature at all!');
+            }
+
             // Store consolidated GeoJSON files.
             file_put_contents(
                 sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_RELATION),

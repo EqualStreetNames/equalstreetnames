@@ -2,8 +2,7 @@
 
 ## Scripts
 
-- [`overpass-relation.php`](../../process/scripts/overpass-relation.php)
-- [`overpass-way.php`](../../process/scripts/overpass-way.php)
+- [`OverpassCommand.php`](../Command/OverpassCommand.php)
 
 ## Download data from [_OpenStreetMap_](https://openstreetmap.org/) using Overpass
 
@@ -53,8 +52,7 @@ out skel qt;
 ```cmd
 composer install
 
-php scripts/overpass/relation.php
-php scripts/overpass/way.php
+php process.php overpass
 ```
 
 The `full.json` file containing all the `associatedStreet` relations will be stored in `data/overpass/relation/` directory.  

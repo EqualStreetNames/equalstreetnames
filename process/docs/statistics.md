@@ -2,4 +2,4 @@
 
 ## Scripts
 
-- [`statistics.php`](../../process/scripts/statistics.php)
+- [`StatisticsCommand.php`](../Command/StatisticsCommand.php)

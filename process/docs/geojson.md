@@ -2,7 +2,7 @@
 
 ## Scripts
 
-- [`geojson.php`](../../process/scripts/geojson.php)
+- [`GeoJSONCommand.php`](../Command/GeoJSONCommand.php)
 
 ## Generate final GeoJSON files
 
@@ -35,7 +35,7 @@ From the files downloaded from _Wikidata_, we extract the following informations
 ```cmd
 composer install
 
-php scripts/geojson.php
+php process.php geojson
 ```
 
 The `relations.geojson` and `ways.geojson` files will be stored in the city `data/` directory.

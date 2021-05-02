@@ -144,15 +144,14 @@ class GeoJSONCommand extends AbstractCommand
 
     /**
      * @param Entity $entity
-     * @param Config $config
      * @param string[] $warnings
      */
-    private static function extractDetails($entity, Config $config, array &$warnings = []): Details
+    private function extractDetailsFromWikidata($entity, array &$warnings = []): Details
     {
         $dateOfBirth = Wikidata::extractDateOfBirth($entity);
         $dateOfDeath = Wikidata::extractDateOfDeath($entity);
 
-        $person = Wikidata::isPerson($entity, $config->instances);
+        $person = Wikidata::isPerson($entity, $this->config->instances);
         if (is_null($person)) {
             $warnings[] = sprintf('No instance or subclass for "%s".', $entity->id);
             $person = false;
@@ -162,12 +161,12 @@ class GeoJSONCommand extends AbstractCommand
             'wikidata'     => $entity->id,
             'person'       => $person,
             'gender'       => Wikidata::extractGender($entity),
-            'labels'       => Wikidata::extractLabels($entity, $config->languages),
-            'descriptions' => Wikidata::extractDescriptions($entity, $config->languages),
-            'nicknames'    => Wikidata::extractNicknames($entity, $config->languages),
+            'labels'       => Wikidata::extractLabels($entity, $this->config->languages),
+            'descriptions' => Wikidata::extractDescriptions($entity, $this->config->languages),
+            'nicknames'    => Wikidata::extractNicknames($entity, $this->config->languages),
             'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 0, 5)),
             'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 0, 5)),
-            'sitelinks'    => Wikidata::extractSitelinks($entity, $config->languages),
+            'sitelinks'    => Wikidata::extractSitelinks($entity, $this->config->languages),
             'image'        => Wikidata::extractImage($entity),
         ]);
     }
@@ -254,7 +253,7 @@ class GeoJSONCommand extends AbstractCommand
                         $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged in %s(%s)).', $identifier, $entity->id, $object->type, $object->id);
                     }
 
-                    $details[] = self::extractDetails($entity, $this->config, $warnings);
+                    $details[] = $this->extractDetailsFromWikidata($entity, $warnings);
                 }
             }
 

@@ -55,5 +55,5 @@ composer install
 php process.php overpass
 ```
 
-The `full.json` file containing all the `associatedStreet` relations will be stored in `data/overpass/relation/` directory.  
-The `full.json` file containing all the `highway` ways will be stored in `data/overpass/way/` directory.
+The `relation.json` file containing all the `associatedStreet` relations will be stored in `data/overpass` directory.  
+The `way.json` file containing all the `highway` ways will be stored in `data/overpass` directory.

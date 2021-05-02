@@ -93,6 +93,7 @@ class StatisticsCommand extends AbstractCommand
             ];
             $sources = [
                 'wikidata' => 0,
+                'csv'      => 0,
                 'config'   => 0,
                 'event'    => 0,
                 '-'        => 0,
@@ -136,6 +137,7 @@ class StatisticsCommand extends AbstractCommand
             $output->writeln([
                 'Sources:',
                 sprintf('  Wikidata: %d (%.2f %%)', $sources['wikidata'], $sources['wikidata'] / $total * 100),
+                sprintf('  CSV: %d (%.2f %%)', $sources['csv'], $sources['csv'] / $total * 100),
                 sprintf('  Configuration: %d (%.2f %%)', $sources['config'], $sources['config'] / $total * 100),
                 sprintf('  Event (Brussels only): %d (%.2f %%)', $sources['event'], $sources['event'] / $total * 100),
                 sprintf('No source: %d', $sources['-']),

@@ -2,26 +2,26 @@
 
 ## Scripts used by the data update process
 
-1. Download data from _OpenStreetMap_ using Overpass ([documentation](./overpass.md))
+1. Download data from _OpenStreetMap_ using Overpass ([documentation](./docs/overpass.md))
 
     ```cmd
     php scripts/overpass/relation.php
     php scripts/overpass/way.php
     ```
 
-1. Download data from _Wikidata_ ([documentation](./wikidata.md))
+1. Download data from _Wikidata_ ([documentation](./docs/wikidata.md))
 
     ```cmd
     php scripts/wikidata.php
     ```
 
-1. Generate final GeoJSON files ([documentation](./geojson.md))
+1. Generate final GeoJSON files ([documentation](./docs/geojson.md))
 
     ```cmd
     php scripts/geojson.php
     ```
 
-1. Generate final statistics JSON file and CSV files ([documentation](./statistics.md))
+1. Generate final statistics JSON file and CSV files ([documentation](./docs/statistics.md))
 
     ```cmd
     php scripts/statistics.php

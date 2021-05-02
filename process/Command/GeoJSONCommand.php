@@ -39,6 +39,7 @@ class GeoJSONCommand extends AbstractCommand
     /** @var string Filename for the ways GeoJSON file. */
     public const FILENAME_WAY = 'ways.geojson';
 
+    /** @var array<string,string> Data from event CSV file (Brussels only). */
     protected array $event;
 
     /**
@@ -94,6 +95,7 @@ class GeoJSONCommand extends AbstractCommand
                 }
             }
 
+            // Read CSV file.
             $csvPath = sprintf('%s/data.csv', $this->cityDir);
             if (file_exists($csvPath) && is_readable($csvPath)) {
                 if (($handle = fopen($csvPath, 'r')) !== false) {
@@ -112,7 +114,7 @@ class GeoJSONCommand extends AbstractCommand
             }
 
             // Check path of Overpass query result for relations.
-            $relationPath = sprintf('%s/overpass/relation.json', $this->processOutputDir);
+            $relationPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
             }
@@ -234,14 +236,11 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * Create GeoJSON feature "property".
-     * Extract gender from Wikidata, or configuration and define source depending.
+     * Extract details from CSV file.
      *
      * @param Element $object OpenStreetMap element (relation/way/node).
-     * @param string[] $warnings
-     * @return Properties
-     *
-     * @throws ErrorException
+     * @param array $warnings
+     * @return null|Details
      */
     private function extractDetailsFromCSV($object, array &$warnings = []): ?Details
     {
@@ -276,8 +275,11 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param Element $object
+     * Extract gender from configuration.
+     *
+     * @param Element $object OpenStreetMap element (relation/way/node).
      * @param string[] $warnings
+     * @return null|string
      */
     private function getGenderFromConfig($object, array &$warnings = []): ?string
     {
@@ -303,8 +305,11 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param Element $object
+     * Extact gender from event CSF file (Brussels only).
+     *
+     * @param Element $object OpenStreetMap element (relation/way/node).
      * @param string[] $warnings
+     * @return null|string
      */
     private function getGenderFromEvent($object, array &$warnings = []): ?string
     {
@@ -324,8 +329,14 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param Element $object
+     * Create GeoJSON feature "property".
+     * Extract gender from Wikidata, or configuration and define source depending.
+     *
+     * @param Element $object OpenStreetMap element (relation/way/node).
      * @param string[] $warnings
+     * @return Properties
+     *
+     * @throws ErrorException
      */
     private function createProperties($object, array &$warnings = []): Properties
     {
@@ -379,38 +390,14 @@ class GeoJSONCommand extends AbstractCommand
             $properties->source = 'csv';
             $properties->gender = $details->gender;
             $properties->details = $details;
-        } elseif (
-            $object->type === 'relation' && isset(
-                $this->config->gender,
-                $this->config->gender->relation,
-                $this->config->gender->relation[(string) $object->id]
-            )
-        ) {
-            // If gender for relation identifier is set in configuration, use it to determine gender.
+        } elseif (!is_null($gender = $this->getGenderFromConfig($object, $warnings))) {
+            // If gender for relation/way identifier is set in configuration, use it to determine gender.
             $properties->source = 'config';
-            $properties->gender = $this->config->gender->relation[(string) $object->id];
-        } elseif (
-            $object->type === 'way' && isset(
-                $this->config->gender,
-                $this->config->gender->way,
-                $this->config->gender->way[(string) $object->id]
-            )
-        ) {
-            // If gender for way identifier is set in configuration, use it to determine gender.
-            $properties->source = 'config';
-            $properties->gender = $this->config->gender->way[(string) $object->id];
-        } elseif (isset($this->csv) && count($this->csv) > 0) {
+            $properties->gender = $gender;
+        } elseif (!is_null($gender = $this->getGenderFromEvent($object, $warnings))) {
             // If gender is set in event file, use it to determine gender (Brussels only).
-            if (isset($object->tags->{'name:fr'}, $this->csv[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
-            } elseif (isset($object->tags->{'name:nl'}, $this->csv[md5($object->tags->{'name:nl'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name:nl'})]; // @phpstan-ignore-line
-            } elseif (isset($object->tags->{'name'}, $this->csv[md5($object->tags->{'name'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name'})]; // @phpstan-ignore-line
-            }
+            $properties->source = 'event';
+            $properties->gender = $gender;
         }
 
         return $properties;

@@ -26,12 +26,16 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
-          extensions: curl
       - name: Validate composer.json and composer.lock
-        run: composer validate
+        run: composer validate --strict
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
       - name: Run update
@@ -42,9 +46,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
       - run: composer install --prefer-dist --no-progress
       - name: Configure PHPCS
         run: ./vendor/squizlabs/php_codesniffer/bin/phpcs --config-set ignore_warnings_on_exit 1
@@ -55,8 +56,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
       - run: composer install --prefer-dist --no-progress
       - run: composer run-script analyze

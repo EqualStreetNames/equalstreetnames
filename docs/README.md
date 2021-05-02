@@ -48,4 +48,4 @@ In the _Wikidata_ object, the sex or gender is defined by the property [`P21`](h
 
 ## Scripts
 
-See [`scripts/README.md`](./scripts/README.md)
+See [`process/README.md`](../process/README.md)

@@ -4,8 +4,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
-        "ext-pdo": "*",
-        "ext-sqlite3": "*",
         "guzzlehttp/guzzle": "^7.3",
         "symfony/console": "^5.2"
     },

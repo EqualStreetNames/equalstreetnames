@@ -3,16 +3,35 @@
 namespace App\Command;
 
 use App\Model\GeoJSON\Feature;
+use App\Model\GeoJSON\FeatureCollection;
 use ErrorException;
 use Exception;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Generate statistics and final CSV files.
+ *   - `sources.json` will contain sources statistics (wikidata/config/event/none)
+ *   - `statistics.json` will contain gender statistics
+ *   - `gender.csv` will contain the listing of streets with the gender, source, and wikidata identifier(s) (if available)
+ *   - `other.csv` will contain the listing of streets that are not related to a person
+ *
+ * @package App\Command
+ */
 class StatisticsCommand extends AbstractCommand
 {
+    /** {@inheritdoc} */
     protected static $defaultName = 'statistics';
 
+    /**
+     * {@inheritdoc}
+     *
+     * @return void
+     *
+     * @throws InvalidArgumentException
+     */
     protected function configure(): void
     {
         parent::configure();
@@ -20,26 +39,36 @@ class StatisticsCommand extends AbstractCommand
         $this->setDescription('Calculate statistics.');
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             parent::execute($input, $output);
 
-            $relationPath = sprintf('%s/relations.geojson', $this->cityOutputDir);
+            // Check path of relations GeoJSON file.
+            $relationPath = sprintf('%s/%s', $this->cityOutputDir, GeoJSONCommand::FILENAME_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $relationPath));
             }
-            $wayPath = sprintf('%s/ways.geojson', $this->cityOutputDir);
+            // Check path of ways GeoJSON file.
+            $wayPath = sprintf('%s/%s', $this->cityOutputDir, GeoJSONCommand::FILENAME_WAY);
             if (!file_exists($wayPath) || !is_readable($wayPath)) {
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $wayPath));
             }
 
             $streets = [];
 
+            // Read GeoJSON files.
             $contentR = file_get_contents($relationPath);
-            $relations = $contentR !== false ? json_decode($contentR) : null;
+            /** @var FeatureCollection|null */ $relations = $contentR !== false ? json_decode($contentR) : null;
             $contentW = file_get_contents($wayPath);
-            $ways = $contentW !== false ? json_decode($contentW) : null;
+            /** @var FeatureCollection|null */ $ways = $contentW !== false ? json_decode($contentW) : null;
 
             // Extract necesarry data
             if (!is_null($relations)) {
@@ -152,7 +181,9 @@ class StatisticsCommand extends AbstractCommand
     }
 
     /**
-     * @param Feature $feature
+     * Extract data needed for statistics from GeoJSON Feature.
+     *
+     * @param Feature $feature GeoJSON Feature.
      *
      * @return array<string,mixed>
      */
@@ -175,6 +206,13 @@ class StatisticsCommand extends AbstractCommand
         ];
     }
 
+    /**
+     * Remove accents from string.
+     *
+     * @param string $string
+     * @param string $charset
+     * @return string
+     */
     private static function normalize(string $string, string $charset = 'utf-8'): string
     {
         $str = htmlentities($string, ENT_NOQUOTES, $charset);
@@ -188,6 +226,12 @@ class StatisticsCommand extends AbstractCommand
         return $str;
     }
 
+    /**
+     * Sort streets array by wikidata, gender, and street name.
+     *
+     * @param array $streets
+     * @return array
+     */
     private static function sort(array $streets): array
     {
         $wikidata = array_map(
@@ -217,6 +261,15 @@ class StatisticsCommand extends AbstractCommand
         return $streets;
     }
 
+    /**
+     * Group streets by street name (using md5 hash of the normalized street name).
+     *
+     * @param array $streets
+     * @param OutputInterface $output
+     * @return array
+     *
+     * @throws Exception
+     */
     private static function groupBy(array $streets, OutputInterface $output): array
     {
         // Group streets by streetname
@@ -291,6 +344,13 @@ class StatisticsCommand extends AbstractCommand
         return $results;
     }
 
+    /**
+     * Write streets array in CSV File (with header).
+     *
+     * @param string $path Path of the resulting CSV file.
+     * @param array $streets
+     * @return void
+     */
     private static function exportCSV(string $path, array $streets): void
     {
         $fp = fopen($path, 'w');

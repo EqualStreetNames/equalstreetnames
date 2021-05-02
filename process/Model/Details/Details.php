@@ -24,12 +24,12 @@ class Details
         $this->wikidata = $details['wikidata'] ?? null;
         $this->person = $details['person'] ?? null;
         $this->gender = $details['gender'] ?? null;
-        $this->labels = $details['labels'] ?? null;
-        $this->descriptions = $details['descriptions'] ?? null;
-        $this->nicknames = $details['nicknames'] ?? null;
+        $this->labels = $details['labels'] ?? [];
+        $this->descriptions = $details['descriptions'] ?? [];
+        $this->nicknames = $details['nicknames'] ?? [];
         $this->birth = $details['birth'] ?? null;
         $this->death = $details['death'] ?? null;
-        $this->sitelinks = $details['sitelinks'] ?? null;
+        $this->sitelinks = $details['sitelinks'] ?? [];
         $this->image = $details['image'] ?? null;
     }
 }

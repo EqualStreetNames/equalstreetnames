@@ -80,6 +80,12 @@ class WikidataCommand extends AbstractCommand
                 }
             );
 
+            // Check count of elements with Wikidata information.
+            if (count($elements) === 0) {
+                throw new ErrorException('No element with Wikidata information!');
+            }
+
+            // Create wikidata directory to store results.
             $outputDir = sprintf('%s/wikidata', self::OUTPUTDIR);
             if (!file_exists($outputDir) || !is_dir($outputDir)) {
                 mkdir($outputDir, 0777, true);

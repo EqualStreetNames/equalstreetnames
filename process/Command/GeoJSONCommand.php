@@ -69,6 +69,23 @@ class GeoJSONCommand extends AbstractCommand
                 }
             }
 
+            $csvPath = sprintf('%s/data.csv', $this->cityDir);
+            if (file_exists($csvPath) && is_readable($csvPath)) {
+                if (($handle = fopen($csvPath, 'r')) !== false) {
+                    while (($data = fgetcsv($handle, 1000)) !== false) {
+                        $this->csv[] = [
+                            'type'        => $data[0],
+                            'id'          => intval($data[1]),
+                            'name'        => $data[2],
+                            'gender'      => $data[3],
+                            'person'      => $data[4],
+                            'description' => $data[5],
+                        ];
+                    }
+                    fclose($handle);
+                }
+            }
+
             $relationPath = sprintf('%s/overpass/relation.json', $this->processOutputDir);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));

@@ -81,22 +81,5 @@ abstract class AbstractCommand extends Command
 
         $configArray = require $configPath;
         $this->config = new Config($configArray);
-
-        $csvPath = sprintf('%s/data.csv', $this->cityDir);
-        if (file_exists($configPath) && is_readable($configPath)) {
-            if (($handle = fopen($csvPath, 'r')) !== false) {
-                while (($data = fgetcsv($handle, 1000)) !== false) {
-                    $this->csv[] = [
-                        'type'        => $data[0],
-                        'id'          => $data[1],
-                        'name'        => $data[2],
-                        'gender'      => $data[3],
-                        'person'      => $data[4],
-                        'description' => $data[5],
-                    ];
-                }
-                fclose($handle);
-            }
-        }
     }
 }

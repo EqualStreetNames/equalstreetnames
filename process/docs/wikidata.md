@@ -2,7 +2,7 @@
 
 ## Scripts
 
-- [`wikidata.php`](../../process/scripts/wikidata.php)
+- [`WikidataCommand.php`](../Command/WikidataCommand.php)
 
 ## Download data from [_Wikidata_](https://www.wikidata.org/)
 
@@ -13,7 +13,7 @@ For every `associatedStreet` relations and `highway` ways that have a [`wikidata
 ```cmd
 composer install
 
-php scripts/wikidata.php
+php process.php wikidata
 ```
 
 The JSON files will be stored in `data/wikidata/` directory.

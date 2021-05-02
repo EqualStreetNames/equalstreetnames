@@ -6,7 +6,6 @@ use App\Model\Config\Config;
 use App\Model\Details\Details;
 use App\Model\GeoJSON\Feature;
 use App\Model\GeoJSON\FeatureCollection;
-use App\Model\GeoJSON\Geometry\Geometry;
 use App\Model\GeoJSON\Geometry\LineString;
 use App\Model\GeoJSON\Geometry\MultiLineString;
 use App\Model\GeoJSON\Properties;
@@ -20,16 +19,35 @@ use App\Wikidata\Wikidata;
 use ErrorException;
 use Exception;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Generate consolidated GeoJSON files (geometry from _OpenStreetMap_ + data from _Wikidata_).
+ *
+ * @package App\Command
+ */
 class GeoJSONCommand extends AbstractCommand
 {
+    /** {@inheritdoc} */
     protected static $defaultName = 'geojson';
+
+    /** @var string Filename for the relations GeoJSON file. */
+    public const FILENAME_RELATION = 'relations.geojson';
+    /** @var string Filename for the ways GeoJSON file. */
+    public const FILENAME_WAY = 'ways.geojson';
 
     protected array $csv;
 
+    /**
+     * {@inheritdoc}
+     *
+     * @return void
+     *
+     * @throws InvalidArgumentException
+     */
     protected function configure(): void
     {
         parent::configure();
@@ -37,12 +55,19 @@ class GeoJSONCommand extends AbstractCommand
         $this->setDescription('Generate GeoJSON files.');
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             parent::execute($input, $output);
 
-            // Brussels only (for now)
+            // Process CSV file from event - Brussels only.
             if ($this->city === 'belgium/brussels') {
                 $csvPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
                 if (file_exists($csvPath) && is_readable($csvPath)) {
@@ -69,31 +94,37 @@ class GeoJSONCommand extends AbstractCommand
                 }
             }
 
-            $relationPath = sprintf('%s/overpass/relation.json', $this->processOutputDir);
+            // Check path of Overpass query result for relations.
+            $relationPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
             }
-            $wayPath = sprintf('%s/overpass/way.json', $this->processOutputDir);
+            // Check path of Overpass query result for ways.
+            $wayPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_WAY);
             if (!file_exists($wayPath) || !is_readable($wayPath)) {
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
             }
 
+            // Read Overpass queries result.
             $contentR = file_get_contents($relationPath);
             /** @var Overpass */ $overpassR = $contentR !== false ? json_decode($contentR) : null;
             $contentW = file_get_contents($wayPath);
             /** @var Overpass */ $overpassW = $contentW !== false ? json_decode($contentW) : null;
 
+            // Generate consolidated GeoJSON files (OpenStreetMap + Wikidata).
             $output->write('Relations: ');
             $geojsonR = $this->createGeoJSON('relation', $overpassR->elements ?? [], $output);
             $output->write('Ways: ');
             $geojsonW = $this->createGeoJSON('way', $overpassW->elements ?? [], $output);
 
+            // Filter out relations based on identifiers defined in `config.php`.
             if (isset($this->config->exclude, $this->config->exclude->relation)) {
                 $features = array_filter($geojsonR->features, function (Feature $feature): bool {
                     return !in_array($feature->id, $this->config->exclude->relation, true);
                 });
                 $geojsonR->features = array_values($features);
             }
+            // Filter out ways based on identifiers defined in `config.php`.
             if (isset($this->config->exclude, $this->config->exclude->way)) {
                 $features = array_filter($geojsonW->features, function (Feature $feature): bool {
                     return !in_array($feature->id, $this->config->exclude->way, true);
@@ -101,12 +132,13 @@ class GeoJSONCommand extends AbstractCommand
                 $geojsonW->features = array_values($features);
             }
 
+            // Store consolidated GeoJSON files.
             file_put_contents(
-                sprintf('%s/relations.geojson', $this->cityOutputDir),
+                sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_RELATION),
                 json_encode($geojsonR)
             );
             file_put_contents(
-                sprintf('%s/ways.geojson', $this->cityOutputDir),
+                sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_WAY),
                 json_encode($geojsonW)
             );
 
@@ -119,9 +151,10 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param string $type
-     * @param Element[] $elements
+     * Extract OpenStreetMap elements based on type (relation/way/node) and return associative array where key is element identifier.
      *
+     * @param string $type OpenStreetMap element type (relation/way/node).
+     * @param Element[] $elements OpenStreetMap elements (relation/way/node).
      * @return Element[]
      */
     private static function extractElements(string $type, array $elements): array
@@ -143,9 +176,12 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param Entity $entity
-     * @param Config $config
+     * Extract needed details from Wikidata item.
+     *
+     * @param Entity $entity Wikidata item.
+     * @param Config $config Configuration (from `config.php`).
      * @param string[] $warnings
+     * @return Details
      */
     private static function extractDetails($entity, Config $config, array &$warnings = []): Details
     {
@@ -173,8 +209,14 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param Element $object
+     * Create GeoJSON feature "property".
+     * Extract gender from Wikidata, or configuration and define source depending.
+     *
+     * @param Element $object OpenStreetMap element (relation/way/node).
      * @param string[] $warnings
+     * @return Properties
+     *
+     * @throws ErrorException
      */
     private function createProperties($object, array &$warnings = []): Properties
     {
@@ -186,12 +228,13 @@ class GeoJSONCommand extends AbstractCommand
         $properties->details = null;
 
         if (isset($object->tags->{'name:etymology:wikidata'})) { // @phpstan-ignore-line
+            // If `name:etymology:wikidata` tag is set, use it to determine gender.
             $identifiers = explode(';', $object->tags->{'name:etymology:wikidata'}); // @phpstan-ignore-line
             $identifiers = array_map('trim', $identifiers);
 
             $details = [];
             foreach ($identifiers as $identifier) {
-                $wikiPath = sprintf('%s/wikidata/%s.json', $this->processOutputDir, $identifier);
+                $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $identifier);
                 if (!file_exists($wikiPath) || !is_readable($wikiPath)) {
                     $warnings[] = sprintf('<warning>File "%s" doesn\'t exist or is not readable (tagged in %s(%s)). You maybe need to run "wikidata" command first.</warning>', $wikiPath, $object->type, $object->id);
                 } else {
@@ -229,6 +272,7 @@ class GeoJSONCommand extends AbstractCommand
                 $this->config->gender->relation[(string) $object->id]
             )
         ) {
+            // If gender for relation identifier is set in configuration, use it to determine gender.
             $properties->source = 'config';
             $properties->gender = $this->config->gender->relation[(string) $object->id];
         } elseif (
@@ -238,9 +282,11 @@ class GeoJSONCommand extends AbstractCommand
                 $this->config->gender->way[(string) $object->id]
             )
         ) {
+            // If gender for way identifier is set in configuration, use it to determine gender.
             $properties->source = 'config';
             $properties->gender = $this->config->gender->way[(string) $object->id];
         } elseif (isset($this->csv) && count($this->csv) > 0) {
+            // If gender is set in event file, use it to determine gender (Brussels only).
             if (isset($object->tags->{'name:fr'}, $this->csv[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
                 $properties->source = 'event';
                 $properties->gender = $this->csv[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
@@ -257,10 +303,12 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param Way|Relation $object
-     * @param Relation[] $relations
-     * @param Way[] $ways
-     * @param Node[] $nodes
+     * Create GeoJSON feature "geometry" based on Overpass query result.
+     *
+     * @param Way|Relation $object OpenStreetMap element (relation/way).
+     * @param Relation[] $relations OpenStreetMap relations.
+     * @param Way[] $ways OpenStreetMap ways.
+     * @param Node[] $nodes OpenStreetMap nodes.
      * @param string[] $warnings
      *
      * @return null|LineString|MultiLineString
@@ -341,9 +389,14 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * @param string $type
-     * @param Element[] $elements
+     * Create GeoJSON FeatureCollection.
+     *
+     * @param string $type OpenStreetMap element type (relation/way).
+     * @param Element[] $elements OpenStreetMap elements (relation/way/node).
      * @param OutputInterface $output
+     * @return FeatureCollection
+     *
+     * @throws ErrorException
      */
     private function createGeoJSON(string $type, array $elements, OutputInterface $output): FeatureCollection
     {

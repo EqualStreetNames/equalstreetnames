@@ -7,17 +7,35 @@ use App\Model\Overpass\Overpass;
 use ErrorException;
 use Exception;
 use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Download in JSON format Wikidata item(s) defined in `name:etymology:wikidata` tag for each relation/way.
+ *
+ * @todo Download Wikidata item defined in `wikidata` tag.
+ *
+ * @package App\Command
+ */
 class WikidataCommand extends AbstractCommand
 {
+    /** {@inheritdoc} */
     protected static $defaultName = 'wikidata';
 
+    /** @var string Wikidata item URL. */
     protected const URL = 'https://www.wikidata.org/wiki/Special:EntityData/';
 
+    /**
+     * {@inheritdoc}
+     *
+     * @return void
+     *
+     * @throws InvalidArgumentException
+     */
     protected function configure(): void
     {
         parent::configure();
@@ -25,24 +43,33 @@ class WikidataCommand extends AbstractCommand
         $this->setDescription('Download data from Wikidata.');
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     *
+     * @throws GuzzleException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             parent::execute($input, $output);
 
-            $relationPath = sprintf('%s/overpass/relation.json', $this->processOutputDir);
+            $relationPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
             }
-            $wayPath = sprintf('%s/overpass/way.json', $this->processOutputDir);
+            $wayPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_WAY);
             if (!file_exists($wayPath) || !is_readable($wayPath)) {
                 throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
             }
 
             $contentR = file_get_contents($relationPath);
-            /** @var Overpass */ $overpassR = $contentR !== false ? json_decode($contentR) : null;
+            /** @var Overpass|null */ $overpassR = $contentR !== false ? json_decode($contentR) : null;
             $contentW = file_get_contents($wayPath);
-            /** @var Overpass */ $overpassW = $contentW !== false ? json_decode($contentW) : null;
+            /** @var Overpass|null */ $overpassW = $contentW !== false ? json_decode($contentW) : null;
 
             // Only keep ways/relations that have a `wikidata` tag and/or a `name:etymology:wikidata` tag
             $elements = array_filter(
@@ -53,7 +80,7 @@ class WikidataCommand extends AbstractCommand
                 }
             );
 
-            $outputDir = sprintf('%s/wikidata', $this->processOutputDir);
+            $outputDir = sprintf('%s/wikidata', self::OUTPUTDIR);
             if (!file_exists($outputDir) || !is_dir($outputDir)) {
                 mkdir($outputDir, 0777, true);
             }
@@ -62,14 +89,11 @@ class WikidataCommand extends AbstractCommand
             $progressBar = new ProgressBar($output, count($elements));
             $progressBar->start();
 
-            // $progressBar->setRedrawFrequency(5);
-            // $progressBar->maxSecondsBetweenRedraws(5);
-            // $progressBar->minSecondsBetweenRedraws(1);
-
             foreach ($elements as $element) {
                 $wikidataTag = $element->tags->wikidata ?? null; // @phpstan-ignore-line
                 $etymologyTag = $element->tags->{'name:etymology:wikidata'} ?? null; // @phpstan-ignore-line
 
+                // Download Wikidata item(s) defined in `name:etymology:wikidata` tag
                 if (!is_null($etymologyTag)) {
                     $identifiers = explode(';', $etymologyTag);
                     $identifiers = array_map('trim', $identifiers);
@@ -88,14 +112,13 @@ class WikidataCommand extends AbstractCommand
                     }
                 }
 
-                // Download Wikidata item
+                // Download Wikidata item defined in `wikidata` tag
                 // if (!is_null($wikidataTag)) {
                 //     $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
                 //     if (!file_exists($path)) {
                 //       self::save($wikidataTag, $element, $path, $warnings);
                 //     }
                 // }
-
 
                 $progressBar->advance();
             }
@@ -113,10 +136,16 @@ class WikidataCommand extends AbstractCommand
     }
 
     /**
-     * @param string $identifier
-     * @param Element $element
-     * @param string $path
+     * Send request and store result.
+     * Display warning if the Wikidata item doesn't exist or if the process can't download the Wikidate item.
+     *
+     * @param string $identifier Wikidata item identifier.
+     * @param Element $element OpenStreetMap element (relation/way/node).
+     * @param string $path Path where to store the result.
      * @param string[] $warnings
+     * @return void
+     *
+     * @throws GuzzleException
      */
     private static function save(string $identifier, $element, string $path, array &$warnings = []): void
     {

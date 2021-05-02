@@ -4,16 +4,35 @@ namespace App\Command;
 
 use ErrorException;
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Based on `relationId` from `config.php` file, download city boundary geometry as GeoJSON file.
+ *
+ * @package App\Command
+ */
 class BoundaryCommand extends AbstractCommand
 {
+    /** {@inheritdoc} */
     protected static $defaultName = 'boundary';
 
+    /** @var string Script URL (by OpenStreetMap France). */
     protected const URL = 'http://polygons.openstreetmap.fr/get_geojson.py';
 
+    /** @var string Filename for the result. */
+    protected const FILENAME = 'boundary.geojson';
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return void
+     *
+     * @throws InvalidArgumentException
+     */
     protected function configure(): void
     {
         parent::configure();
@@ -21,6 +40,15 @@ class BoundaryCommand extends AbstractCommand
         $this->setDescription('Download city boundary from OpenStreetMap.');
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     *
+     * @throws GuzzleException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
@@ -30,9 +58,7 @@ class BoundaryCommand extends AbstractCommand
                 throw new ErrorException('"relationId" parameter is missing or is invalid in "config.php".');
             }
 
-            $boundary = self::query($this->config->relationId);
-
-            file_put_contents(sprintf('%s/boundary.geojson', $this->cityOutputDir), $boundary);
+            self::save($this->config->relationId, sprintf('%s/%s', $this->cityOutputDir, self::FILENAME));
 
             return Command::SUCCESS;
         } catch (Exception $error) {
@@ -42,19 +68,20 @@ class BoundaryCommand extends AbstractCommand
         }
     }
 
-    private static function query(int $id): string
+    /**
+     * Send request and store result.
+     *
+     * @param int $id OpenStreetMap relation identifier.
+     * @param string $path Path where to store the result.
+     * @return void
+     *
+     * @throws GuzzleException
+     */
+    private static function save(int $id, string $path): void
     {
         $url = sprintf('%s?id=%d', self::URL, $id);
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', $url);
-
-        $status = $response->getStatusCode();
-
-        if ($status !== 200) {
-            throw new ErrorException($response->getReasonPhrase());
-        }
-
-        return (string) $response->getBody();
+        $client->request('GET', $url, ['sink' => $path]);
     }
 }

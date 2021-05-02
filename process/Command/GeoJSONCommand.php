@@ -42,7 +42,7 @@ class GeoJSONCommand extends AbstractCommand
         try {
             parent::execute($input, $output);
 
-            // Brussels only (for now)
+            // Brussels only
             if ($this->city === 'belgium/brussels') {
                 $eventPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
                 if (file_exists($eventPath) && is_readable($eventPath)) {
@@ -176,6 +176,54 @@ class GeoJSONCommand extends AbstractCommand
      * @param Element $object
      * @param string[] $warnings
      */
+    private function getGenderFromConfig($object, array &$warnings = []): ?string
+    {
+        if (
+            $object->type === 'relation' && isset(
+                $this->config->gender,
+                $this->config->gender->relation,
+                $this->config->gender->relation[(string) $object->id]
+            )
+        ) {
+            return $this->config->gender->relation[(string) $object->id];
+        } elseif (
+            $object->type === 'way' && isset(
+                $this->config->gender,
+                $this->config->gender->way,
+                $this->config->gender->way[(string) $object->id]
+            )
+        ) {
+            return $this->config->gender->way[(string) $object->id];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param Element $object
+     * @param string[] $warnings
+     */
+    private function getGenderFromEvent($object, array &$warnings = []): ?string
+    {
+        if (!isset($this->event) || count($this->event) === 0) {
+            return null;
+        }
+
+        if (isset($object->tags->{'name:fr'}, $this->event[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
+            return $this->event[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
+        } elseif (isset($object->tags->{'name:nl'}, $this->event[md5($object->tags->{'name:nl'})])) { // @phpstan-ignore-line
+            return $this->event[md5($object->tags->{'name:nl'})]; // @phpstan-ignore-line
+        } elseif (isset($object->tags->{'name'}, $this->event[md5($object->tags->{'name'})])) { // @phpstan-ignore-line
+            return $this->event[md5($object->tags->{'name'})]; // @phpstan-ignore-line
+        }
+
+        return null;
+    }
+
+    /**
+     * @param Element $object
+     * @param string[] $warnings
+     */
     private function createProperties($object, array &$warnings = []): Properties
     {
         $properties = new Properties();
@@ -222,35 +270,12 @@ class GeoJSONCommand extends AbstractCommand
             $properties->source = 'wikidata';
             $properties->gender = $gender;
             $properties->details = $details;
-        } elseif (
-            $object->type === 'relation' && isset(
-                $this->config->gender,
-                $this->config->gender->relation,
-                $this->config->gender->relation[(string) $object->id]
-            )
-        ) {
+        } elseif (!is_null($gender = $this->getGenderFromConfig($object, $warnings))) {
             $properties->source = 'config';
-            $properties->gender = $this->config->gender->relation[(string) $object->id];
-        } elseif (
-            $object->type === 'way' && isset(
-                $this->config->gender,
-                $this->config->gender->way,
-                $this->config->gender->way[(string) $object->id]
-            )
-        ) {
-            $properties->source = 'config';
-            $properties->gender = $this->config->gender->way[(string) $object->id];
-        } elseif (isset($this->event) && count($this->event) > 0) {
-            if (isset($object->tags->{'name:fr'}, $this->event[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->event[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
-            } elseif (isset($object->tags->{'name:nl'}, $this->event[md5($object->tags->{'name:nl'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->event[md5($object->tags->{'name:nl'})]; // @phpstan-ignore-line
-            } elseif (isset($object->tags->{'name'}, $this->event[md5($object->tags->{'name'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->event[md5($object->tags->{'name'})]; // @phpstan-ignore-line
-            }
+            $properties->gender = $gender;
+        } elseif (!is_null($gender = $this->getGenderFromEvent($object, $warnings))) {
+            $properties->source = 'event';
+            $properties->gender = $gender;
         }
 
         return $properties;

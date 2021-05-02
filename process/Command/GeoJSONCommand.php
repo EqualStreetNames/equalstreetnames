@@ -198,6 +198,42 @@ class GeoJSONCommand extends AbstractCommand
      * @param Element $object
      * @param string[] $warnings
      */
+    private function extractDetailsFromCSV($object, array &$warnings = []): ?Details
+    {
+        $records = array_filter($this->csv, function ($r) use ($object): bool {
+            return $r['type'] === $object->type && $r['id'] === $object->id;
+        });
+
+        if (count($records) === 0) {
+            return null;
+        }
+        if (count($records) > 1) {
+            $warnings[] = sprintf('Duplicated record of %s(%s) in CSV file.', $object->type, $object->id);
+        }
+
+        $record = current($records);
+
+        $labels = [];
+        foreach ($this->config->languages as $lang) {
+            $labels[$lang] = ['language' => $lang, 'value' => $record['person']];
+        }
+        $descriptions = [];
+        foreach ($this->config->languages as $lang) {
+            $descriptions[$lang] = ['language' => $lang, 'value' => $record['description']];
+        }
+
+        return new Details([
+            'person'       => true,
+            'gender'       => $record['gender'],
+            'labels'       => $labels,
+            'descriptions' => $descriptions,
+        ]);
+    }
+
+    /**
+     * @param Element $object
+     * @param string[] $warnings
+     */
     private function getGenderFromConfig($object, array &$warnings = []): ?string
     {
         if (
@@ -291,6 +327,10 @@ class GeoJSONCommand extends AbstractCommand
 
             $properties->source = 'wikidata';
             $properties->gender = $gender;
+            $properties->details = $details;
+        } elseif (!is_null($details = $this->extractDetailsFromCSV($object, $warnings))) {
+            $properties->source = 'csv';
+            $properties->gender = $details->gender;
             $properties->details = $details;
         } elseif (!is_null($gender = $this->getGenderFromConfig($object, $warnings))) {
             $properties->source = 'config';

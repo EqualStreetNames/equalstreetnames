@@ -46,12 +46,12 @@
 [submodule "cities/netherlands/groningen"]
 	path = cities/netherlands/groningen
 	url = https://github.com/EqualStreetNames/equalstreetnames-groningen.git
+[submodule "cities/netherlands/leiden"]
+	path = cities/netherlands/leiden
+	url = https://github.com/EqualStreetNames/equalstreetnames-leiden.git
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
 	url = https://github.com/EqualStreetNames/equalstreetnames-belgrade
 [submodule "cities/switzerland/bern"]
 	path = cities/switzerland/bern
 	url = https://github.com/EqualStreetNames/equalstreetnames-bern.git
-[submodule "cities/netherlands/leiden"]
-	path = cities/netherlands/leiden
-	url = https://github.com/EqualStreetNames/equalstreetnames-leiden.git

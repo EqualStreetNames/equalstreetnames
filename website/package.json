@@ -49,14 +49,14 @@
     "build:belgium:mons": "node build.js -c belgium/mons",
     "build:belgium:namur": "node build.js -c belgium/namur",
     "build:belgium:nivelles": "node build.js -c belgium/nivelles",
-    "build:netherlands:assen": "node build.js -c netherlands/assen",
-    "build:netherlands:groningen": "node build.js -c netherlands/groningen",
-    "build:netherlands:leiden": "node build.js -c netherlands/leiden",
     "build:germany:berlin": "node build.js -c germany/berlin",
     "build:germany:freising": "node build.js -c germany/freising",
     "build:germany:halle-saale": "node build.js -c germany/halle-saale",
     "build:germany:leipzig": "node build.js -c germany/leipzig",
     "build:germany:munich": "node build.js -c germany/munich",
+    "build:netherlands:assen": "node build.js -c netherlands/assen",
+    "build:netherlands:groningen": "node build.js -c netherlands/groningen",
+    "build:netherlands:leiden": "node build.js -c netherlands/leiden",
     "build:serbia:belgrade": "node build.js -c serbia/belgrade",
     "build:switzerland:bern": "node build.js -c switzerland/bern"
   }

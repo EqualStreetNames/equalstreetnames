@@ -52,3 +52,6 @@
 [submodule "cities/switzerland/bern"]
 	path = cities/switzerland/bern
 	url = https://github.com/EqualStreetNames/equalstreetnames-bern.git
+[submodule "cities/netherlands/leiden"]
+	path = cities/netherlands/leiden
+	url = https://github.com/EqualStreetNames/equalstreetnames-leiden.git

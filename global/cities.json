@@ -84,6 +84,10 @@
       "name": "🇨🇭 Bern, Switzerland",
       "url": "https://bern.equalstreetnames.eu/"
     },
+    "lausanne": {
+      "name": "🇨🇭 Lausanne, Switzerland",
+      "url": "https://lausanne.equalstreetnames.eu/"
+    },
     "stgallen": {
       "name": "🇨🇭 St. Gallen, Switzerland",
       "url": "https://stgallen.equalstreetnames.eu/"

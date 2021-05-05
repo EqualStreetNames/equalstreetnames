@@ -59,6 +59,7 @@
     "build:netherlands:leiden": "node build.js -c netherlands/leiden",
     "build:serbia:belgrade": "node build.js -c serbia/belgrade",
     "build:switzerland:bern": "node build.js -c switzerland/bern",
+    "build:switzerland:lausanne": "node build.js -c switzerland/lausanne",
     "build:switzerland:stgallen": "node build.js -c switzerland/stgallen"
   }
 }

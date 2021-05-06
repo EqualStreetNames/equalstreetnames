@@ -106,8 +106,8 @@ class WikidataCommand extends AbstractCommand
 
                     foreach ($identifiers as $identifier) {
                         // Check that the value of the tag is a valid Wikidata item identifier
-                        if (preg_match('/^Q.+$/', $identifier) !== 1) {
-                            throw new Exception(sprintf('Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).', $identifier, $element->type, $element->id));
+                        if (preg_match('/^Q[0-9]+$/', $identifier) !== 1) {
+                            $warnings[] = sprintf('Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).', $identifier, $element->type, $element->id);
                         }
 
                         // Download Wikidata item

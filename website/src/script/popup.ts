@@ -38,7 +38,7 @@ export default function (
 function popupDetails (
   details: {[key: string]: string | number | boolean}
 ): string {
-  const wikidata = details.wikidata as string;
+  const wikidata = details.wikidata as string|null;
   const name = getName(details, lang);
   const birth = getBirth(details);
   const death = getDeath(details);
@@ -89,7 +89,9 @@ function popupDetails (
       `Wikipedia (${wikipedia.lang.toUpperCase()})` +
       '</a> + ';
   }
-  htmlDetails += `<a target="_blank" href="https://www.wikidata.org/wiki/${wikidata}">Wikidata</a>`;
+  if (wikidata !== null) {
+    htmlDetails += `<a target="_blank" href="https://www.wikidata.org/wiki/${wikidata}">Wikidata</a>`;
+  }
   htmlDetails += '</div>';
 
   htmlDetails += '</div>';

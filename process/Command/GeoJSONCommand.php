@@ -39,7 +39,8 @@ class GeoJSONCommand extends AbstractCommand
     /** @var string Filename for the ways GeoJSON file. */
     public const FILENAME_WAY = 'ways.geojson';
 
-    protected array $csv;
+    /** @var array<string,string> Data from event CSV file (Brussels only). */
+    protected array $event;
 
     /**
      * {@inheritdoc}
@@ -69,9 +70,9 @@ class GeoJSONCommand extends AbstractCommand
 
             // Process CSV file from event - Brussels only.
             if ($this->city === 'belgium/brussels') {
-                $csvPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
-                if (file_exists($csvPath) && is_readable($csvPath)) {
-                    $this->csv = [];
+                $eventPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
+                if (file_exists($eventPath) && is_readable($eventPath)) {
+                    $this->event = [];
                     $handle = fopen(sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir), 'r');
                     if ($handle !== false) {
                         while (($data = fgetcsv($handle)) !== false) {
@@ -79,18 +80,36 @@ class GeoJSONCommand extends AbstractCommand
                             $streetNL = $data[1];
                             $gender = $data[2];
 
-                            if (isset($this->csv[md5($streetFR)]) && $this->csv[md5($streetFR)] !== $gender) {
+                            if (isset($this->event[md5($streetFR)]) && $this->event[md5($streetFR)] !== $gender) {
                                 throw new ErrorException('');
                             }
-                            if (isset($this->csv[md5($streetNL)]) && $this->csv[md5($streetNL)] !== $gender) {
+                            if (isset($this->event[md5($streetNL)]) && $this->event[md5($streetNL)] !== $gender) {
                                 throw new ErrorException('');
                             }
 
-                            $this->csv[md5($streetFR)] = $gender;
-                            $this->csv[md5($streetNL)] = $gender;
+                            $this->event[md5($streetFR)] = $gender;
+                            $this->event[md5($streetNL)] = $gender;
                         }
                         fclose($handle);
                     }
+                }
+            }
+
+            // Read CSV file.
+            $csvPath = sprintf('%s/data.csv', $this->cityDir);
+            if (file_exists($csvPath) && is_readable($csvPath)) {
+                if (($handle = fopen($csvPath, 'r')) !== false) {
+                    while (($data = fgetcsv($handle, 1000)) !== false) {
+                        $this->csv[] = [
+                            'type'        => $data[0],
+                            'id'          => intval($data[1]),
+                            'name'        => $data[2],
+                            'gender'      => $data[3],
+                            'person'      => $data[4],
+                            'description' => $data[5],
+                        ];
+                    }
+                    fclose($handle);
                 }
             }
 
@@ -116,6 +135,15 @@ class GeoJSONCommand extends AbstractCommand
             $geojsonR = $this->createGeoJSON('relation', $overpassR->elements ?? [], $output);
             $output->write('Ways: ');
             $geojsonW = $this->createGeoJSON('way', $overpassW->elements ?? [], $output);
+
+            // Filter out ways that are already relation members.
+            $waysInRelation = array_map(function ($element): int {
+                return $element->id;
+            }, self::extractElements('way', $overpassR->elements ?? []));
+            $features = array_filter($geojsonW->features, function (Feature $feature) use ($waysInRelation): bool {
+                return !in_array($feature->id, $waysInRelation, true);
+            });
+            $geojsonW->features = array_values($features);
 
             // Filter out relations based on identifiers defined in `config.php`.
             if (isset($this->config->exclude, $this->config->exclude->relation)) {
@@ -190,16 +218,15 @@ class GeoJSONCommand extends AbstractCommand
      * Extract needed details from Wikidata item.
      *
      * @param Entity $entity Wikidata item.
-     * @param Config $config Configuration (from `config.php`).
      * @param string[] $warnings
      * @return Details
      */
-    private static function extractDetails($entity, Config $config, array &$warnings = []): Details
+    private function extractDetailsFromWikidata($entity, array &$warnings = []): Details
     {
         $dateOfBirth = Wikidata::extractDateOfBirth($entity);
         $dateOfDeath = Wikidata::extractDateOfDeath($entity);
 
-        $person = Wikidata::isPerson($entity, $config->instances);
+        $person = Wikidata::isPerson($entity, $this->config->instances);
         if (is_null($person)) {
             $warnings[] = sprintf('No instance or subclass for "%s".', $entity->id);
             $person = false;
@@ -209,14 +236,107 @@ class GeoJSONCommand extends AbstractCommand
             'wikidata'     => $entity->id,
             'person'       => $person,
             'gender'       => Wikidata::extractGender($entity),
-            'labels'       => Wikidata::extractLabels($entity, $config->languages),
-            'descriptions' => Wikidata::extractDescriptions($entity, $config->languages),
-            'nicknames'    => Wikidata::extractNicknames($entity, $config->languages),
+            'labels'       => Wikidata::extractLabels($entity, $this->config->languages),
+            'descriptions' => Wikidata::extractDescriptions($entity, $this->config->languages),
+            'nicknames'    => Wikidata::extractNicknames($entity, $this->config->languages),
             'birth'        => is_null($dateOfBirth) ? null : intval(substr($dateOfBirth, 0, 5)),
             'death'        => is_null($dateOfDeath) ? null : intval(substr($dateOfDeath, 0, 5)),
-            'sitelinks'    => Wikidata::extractSitelinks($entity, $config->languages),
+            'sitelinks'    => Wikidata::extractSitelinks($entity, $this->config->languages),
             'image'        => Wikidata::extractImage($entity),
         ]);
+    }
+
+    /**
+     * Extract details from CSV file.
+     *
+     * @param Element $object OpenStreetMap element (relation/way/node).
+     * @param array $warnings
+     * @return null|Details
+     */
+    private function extractDetailsFromCSV($object, array &$warnings = []): ?Details
+    {
+        $records = array_filter($this->csv, function ($r) use ($object): bool {
+            return $r['type'] === $object->type && $r['id'] === $object->id;
+        });
+
+        if (count($records) === 0) {
+            return null;
+        }
+        if (count($records) > 1) {
+            $warnings[] = sprintf('Duplicated record of %s(%s) in CSV file.', $object->type, $object->id);
+        }
+
+        $record = current($records);
+
+        $labels = [];
+        foreach ($this->config->languages as $lang) {
+            $labels[$lang] = ['language' => $lang, 'value' => $record['person']];
+        }
+        $descriptions = [];
+        foreach ($this->config->languages as $lang) {
+            $descriptions[$lang] = ['language' => $lang, 'value' => $record['description']];
+        }
+
+        return new Details([
+            'person'       => true,
+            'gender'       => $record['gender'],
+            'labels'       => $labels,
+            'descriptions' => $descriptions,
+        ]);
+    }
+
+    /**
+     * Extract gender from configuration.
+     *
+     * @param Element $object OpenStreetMap element (relation/way/node).
+     * @param string[] $warnings
+     * @return null|string
+     */
+    private function getGenderFromConfig($object, array &$warnings = []): ?string
+    {
+        if (
+            $object->type === 'relation' && isset(
+                $this->config->gender,
+                $this->config->gender->relation,
+                $this->config->gender->relation[(string) $object->id]
+            )
+        ) {
+            return $this->config->gender->relation[(string) $object->id];
+        } elseif (
+            $object->type === 'way' && isset(
+                $this->config->gender,
+                $this->config->gender->way,
+                $this->config->gender->way[(string) $object->id]
+            )
+        ) {
+            return $this->config->gender->way[(string) $object->id];
+        }
+
+        return null;
+    }
+
+    /**
+     * Extact gender from event CSF file (Brussels only).
+     *
+     * @param Element $object OpenStreetMap element (relation/way/node).
+     * @param string[] $warnings
+     * @return null|string
+     */
+    private function getGenderFromEvent($object, array &$warnings = []): ?string
+    {
+        if (!isset($this->event) || count($this->event) === 0) {
+            return null;
+        }
+
+        if (isset($object->tags->{'name:fr'}, $this->event[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
+            return $this->event[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
+        } elseif (isset($object->tags->{'name:nl'}, $this->event[md5($object->tags->{'name:nl'})])) { // @phpstan-ignore-line
+            return $this->event[md5($object->tags->{'name:nl'})]; // @phpstan-ignore-line
+        } elseif (isset($object->tags->{'name'}, $this->event[md5($object->tags->{'name'})])) { // @phpstan-ignore-line
+            return $this->event[md5($object->tags->{'name'})]; // @phpstan-ignore-line
+        }
+
+        return null;
     }
 
     /**
@@ -239,7 +359,7 @@ class GeoJSONCommand extends AbstractCommand
         $properties->details = null;
 
         if (isset($object->tags->{'name:etymology:wikidata'})) { // @phpstan-ignore-line
-            // If `name:etymology:wikidata` tag is set, use it to determine gender.
+            // If `name:etymology:wikidata` tag is set, use it to extract details and determine gender.
             $identifiers = explode(';', $object->tags->{'name:etymology:wikidata'}); // @phpstan-ignore-line
             $identifiers = array_map('trim', $identifiers);
 
@@ -260,7 +380,7 @@ class GeoJSONCommand extends AbstractCommand
                         $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged in %s(%s)).', $identifier, $entity->id, $object->type, $object->id);
                     }
 
-                    $details[] = self::extractDetails($entity, $this->config, $warnings);
+                    $details[] = $this->extractDetailsFromWikidata($entity, $warnings);
                 }
             }
 
@@ -276,38 +396,19 @@ class GeoJSONCommand extends AbstractCommand
             $properties->source = 'wikidata';
             $properties->gender = $gender;
             $properties->details = $details;
-        } elseif (
-            $object->type === 'relation' && isset(
-                $this->config->gender,
-                $this->config->gender->relation,
-                $this->config->gender->relation[(string) $object->id]
-            )
-        ) {
-            // If gender for relation identifier is set in configuration, use it to determine gender.
+        } elseif (!is_null($details = $this->extractDetailsFromCSV($object, $warnings))) {
+            // If relation/way is defined in CSV file, use it to extract details and determine gender.
+            $properties->source = 'csv';
+            $properties->gender = $details->gender;
+            $properties->details = $details;
+        } elseif (!is_null($gender = $this->getGenderFromConfig($object, $warnings))) {
+            // If gender for relation/way identifier is set in configuration, use it to determine gender.
             $properties->source = 'config';
-            $properties->gender = $this->config->gender->relation[(string) $object->id];
-        } elseif (
-            $object->type === 'way' && isset(
-                $this->config->gender,
-                $this->config->gender->way,
-                $this->config->gender->way[(string) $object->id]
-            )
-        ) {
-            // If gender for way identifier is set in configuration, use it to determine gender.
-            $properties->source = 'config';
-            $properties->gender = $this->config->gender->way[(string) $object->id];
-        } elseif (isset($this->csv) && count($this->csv) > 0) {
+            $properties->gender = $gender;
+        } elseif (!is_null($gender = $this->getGenderFromEvent($object, $warnings))) {
             // If gender is set in event file, use it to determine gender (Brussels only).
-            if (isset($object->tags->{'name:fr'}, $this->csv[md5($object->tags->{'name:fr'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name:fr'})]; // @phpstan-ignore-line
-            } elseif (isset($object->tags->{'name:nl'}, $this->csv[md5($object->tags->{'name:nl'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name:nl'})]; // @phpstan-ignore-line
-            } elseif (isset($object->tags->{'name'}, $this->csv[md5($object->tags->{'name'})])) { // @phpstan-ignore-line
-                $properties->source = 'event';
-                $properties->gender = $this->csv[md5($object->tags->{'name'})]; // @phpstan-ignore-line
-            }
+            $properties->source = 'event';
+            $properties->gender = $gender;
         }
 
         return $properties;

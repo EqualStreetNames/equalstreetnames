@@ -27,6 +27,9 @@ abstract class AbstractCommand extends Command
     /** @var Config City configuration (using `config.php` file). */
     protected Config $config;
 
+    /** @var mixed[] Data from CSV file. */
+    protected array $csv = [];
+
     /** @var string Process output directory. */
     protected const OUTPUTDIR = 'data';
 

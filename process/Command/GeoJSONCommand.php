@@ -34,6 +34,8 @@ class GeoJSONCommand extends AbstractCommand
     /** {@inheritdoc} */
     protected static $defaultName = 'geojson';
 
+    /** @var string Filename of the CSV file. */
+    public const FILENAME_CSV = 'data.csv';
     /** @var string Filename for the relations GeoJSON file. */
     public const FILENAME_RELATION = 'relations.geojson';
     /** @var string Filename for the ways GeoJSON file. */
@@ -96,7 +98,7 @@ class GeoJSONCommand extends AbstractCommand
             }
 
             // Read CSV file.
-            $csvPath = sprintf('%s/data.csv', $this->cityDir);
+            $csvPath = sprintf('%s/%s', $this->cityDir, self::FILENAME_CSV);
             if (file_exists($csvPath) && is_readable($csvPath)) {
                 if (($handle = fopen($csvPath, 'r')) !== false) {
                     while (($data = fgetcsv($handle, 1000)) !== false) {

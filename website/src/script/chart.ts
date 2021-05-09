@@ -3,7 +3,7 @@
 import { ArcElement, Chart, DoughnutController } from 'chart.js';
 
 import colors from './colors';
-import { statistics } from './index';
+import { lang, lastUpdate, statistics } from './index';
 
 let elementCanvas: HTMLCanvasElement;
 let elementDiv: HTMLDivElement;
@@ -128,4 +128,12 @@ export default function (element: HTMLCanvasElement): void {
 
   spanCount.innerText = `${totalPerson} (${percentage}%)`;
   spanTotal.innerText = total;
+
+  const spanLastUpdate = document.getElementById('last-update') as HTMLSpanElement;
+  if (spanLastUpdate !== null) {
+    const date = new Date(lastUpdate);
+    const format = new Intl.DateTimeFormat(lang, { dateStyle: 'medium', timeStyle: 'short' });
+
+    spanLastUpdate.innerText = format.format(date);
+  }
 }

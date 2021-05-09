@@ -36,9 +36,9 @@ async function bundle (options) {
     const boundary = JSON.parse(fs.readFileSync(path.resolve(directory, 'data', 'boundary.geojson')));
     const bounds = bbox(turfHelpers.feature(boundary));
 
-    const statistics = JSON.parse(fs.readFileSync(path.resolve(directory, 'data', 'statistics.json')));
+    const metadata = JSON.parse(fs.readFileSync(path.resolve(directory, 'data', 'metadata.json')));
 
-    const static = { bounds, statistics };
+    const static = { bounds, statistics: metadata.genders, lastUpdate: metadata.update };
 
     fs.writeFileSync(
       path.join('static', 'static.json'),

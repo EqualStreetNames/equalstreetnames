@@ -25,6 +25,13 @@ class StatisticsCommand extends AbstractCommand
     /** {@inheritdoc} */
     protected static $defaultName = 'statistics';
 
+    /** @var string Filename for the CSV file containing streets with "a gender". */
+    public const FILENAME_GENDER_CSV = 'gender.csv';
+    /** @var string Filename for the CSV file containing streets without "a gender". */
+    public const FILENAME_OTHER_CSV = 'other.csv';
+    /** @var string Filename for the metadata JSON file. */
+    public const FILENAME_METADATA = 'metadata.json';
+
     /**
      * {@inheritdoc}
      *
@@ -96,13 +103,13 @@ class StatisticsCommand extends AbstractCommand
 
             // Export to CSV ("gender.csv" + "other.csv")
             self::exportCSV(
-                sprintf('%s/gender.csv', $this->cityOutputDir),
+                sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_GENDER_CSV),
                 array_filter($streets, function ($street): bool {
                     return !is_null($street['gender']);
                 })
             );
             self::exportCSV(
-                sprintf('%s/other.csv', $this->cityOutputDir),
+                sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_OTHER_CSV),
                 array_filter($streets, function ($street): bool {
                     return is_null($street['gender']);
                 })
@@ -141,9 +148,16 @@ class StatisticsCommand extends AbstractCommand
                 }
             }
 
+            $metadata = [
+                'sources' => $sources,
+                'genders' => $genders,
+            ];
+
             // Store statistics
-            file_put_contents(sprintf('%s/statistics.json', $this->cityOutputDir), json_encode($genders));
-            file_put_contents(sprintf('%s/sources.json', $this->cityOutputDir), json_encode($sources));
+            file_put_contents(
+                sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_METADATA),
+                json_encode($metadata)
+            );
 
             // Display statistics
             $total = $genders['F'] + $genders['M'] + $genders['FX'] + $genders['MX'] + $genders['X'] + $genders['NB'] + $genders['+'] + $genders['?'];

@@ -13,8 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Generate statistics and final CSV files.
- *   - `sources.json` will contain sources statistics (wikidata/config/event/none)
- *   - `statistics.json` will contain gender statistics
+ *   - `metadata.json` will contain last update datetime, sources statistics, and gender statistics
  *   - `gender.csv` will contain the listing of streets with the gender, source, and wikidata identifier(s) (if available)
  *   - `other.csv` will contain the listing of streets that are not related to a person
  *
@@ -149,14 +148,15 @@ class StatisticsCommand extends AbstractCommand
             }
 
             $metadata = [
+                'update'  => date('c'),
                 'sources' => $sources,
                 'genders' => $genders,
             ];
 
-            // Store statistics
+            // Store metadata
             file_put_contents(
                 sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_METADATA),
-                json_encode($metadata)
+                json_encode($metadata, JSON_PRETTY_PRINT)
             );
 
             // Display statistics

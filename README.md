@@ -54,16 +54,19 @@ Following data is available for each city:
 - `gender.csv` : List of streetnames in CSV (Comma-separated values) format with streetname, gender, and Wikidata item ;
 - `other.csv` : List of streetnames in CSV (Comma-separated values) format that are not related to a person (with Wikidata item if available) ;
 - `relations.geojson` + `ways.geojson` : Streets in [GeoJSON format](https://geojson.org/) with streetname, gender, Wikidata item and details (when available) ;
-- `statistics.json` : Number of streetnames for each gender:
-  - `F` : cisgender female ;
-  - `M` : cisgender male ;
-  - `FX` : transgender female ;
-  - `MX` : transgender male ;
-  - `X` : intersex ;
-  - `NB` : non-binary ;
-  - `+` : multiple ;
-  - `?` : unknown ;
-  - `-` : not related to a person ;
+- `metadata.json`
+  - Datetime of the last data update
+  - Number of streetnames for each source
+  - Number of streetnames for each gender:
+    - `F` : cisgender female ;
+    - `M` : cisgender male ;
+    - `FX` : transgender female ;
+    - `MX` : transgender male ;
+    - `X` : intersex ;
+    - `NB` : non-binary ;
+    - `+` : multiple ;
+    - `?` : unknown ;
+    - `-` : not related to a person ;
 - `boundary.geojson` : Boundary of the city in [GeoJSON format](https://geojson.org/) (only the streets that are inside this boundary are processed) ;
 
 ## Replicate the EqualStreetNames project for your city

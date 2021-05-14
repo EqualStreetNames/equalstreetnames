@@ -7,7 +7,7 @@ import 'bootstrap/js/dist/modal';
 import initChart from './chart';
 import initMap from './map';
 
-export { bounds, statistics } from '../../static/static.json';
+export { bounds, lastUpdate, statistics } from '../../static/static.json';
 
 export let lang: string;
 

@@ -13,8 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Generate statistics and final CSV files.
- *   - `sources.json` will contain sources statistics (wikidata/config/event/none)
- *   - `statistics.json` will contain gender statistics
+ *   - `metadata.json` will contain last update datetime, sources statistics, and gender statistics
  *   - `gender.csv` will contain the listing of streets with the gender, source, and wikidata identifier(s) (if available)
  *   - `other.csv` will contain the listing of streets that are not related to a person
  *
@@ -24,6 +23,13 @@ class StatisticsCommand extends AbstractCommand
 {
     /** {@inheritdoc} */
     protected static $defaultName = 'statistics';
+
+    /** @var string Filename for the CSV file containing streets with "a gender". */
+    public const FILENAME_GENDER_CSV = 'gender.csv';
+    /** @var string Filename for the CSV file containing streets without "a gender". */
+    public const FILENAME_OTHER_CSV = 'other.csv';
+    /** @var string Filename for the metadata JSON file. */
+    public const FILENAME_METADATA = 'metadata.json';
 
     /**
      * {@inheritdoc}
@@ -96,13 +102,13 @@ class StatisticsCommand extends AbstractCommand
 
             // Export to CSV ("gender.csv" + "other.csv")
             self::exportCSV(
-                sprintf('%s/gender.csv', $this->cityOutputDir),
+                sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_GENDER_CSV),
                 array_filter($streets, function ($street): bool {
                     return !is_null($street['gender']);
                 })
             );
             self::exportCSV(
-                sprintf('%s/other.csv', $this->cityOutputDir),
+                sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_OTHER_CSV),
                 array_filter($streets, function ($street): bool {
                     return is_null($street['gender']);
                 })
@@ -141,9 +147,17 @@ class StatisticsCommand extends AbstractCommand
                 }
             }
 
-            // Store statistics
-            file_put_contents(sprintf('%s/statistics.json', $this->cityOutputDir), json_encode($genders));
-            file_put_contents(sprintf('%s/sources.json', $this->cityOutputDir), json_encode($sources));
+            $metadata = [
+                'update'  => date('c'),
+                'sources' => $sources,
+                'genders' => $genders,
+            ];
+
+            // Store metadata
+            file_put_contents(
+                sprintf('%s/%s', $this->cityOutputDir, self::FILENAME_METADATA),
+                json_encode($metadata, JSON_PRETTY_PRINT)
+            );
 
             // Display statistics
             $total = $genders['F'] + $genders['M'] + $genders['FX'] + $genders['MX'] + $genders['X'] + $genders['NB'] + $genders['+'] + $genders['?'];

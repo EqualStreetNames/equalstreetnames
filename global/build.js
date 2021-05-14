@@ -51,17 +51,18 @@ async function bundle (options) {
           geometry: null
         };
 
-        const statistics = fs.readFileSync(
+        const metadata = fs.readFileSync(
           path.join(
             directory,
             country.name,
             city.name,
             'data',
-            'statistics.json'
+            'metadata.json'
           ),
           'utf8'
         );
-        feature.properties.statistics = JSON.parse(statistics);
+        feature.properties.statistics = JSON.parse(metadata.genders);
+        feature.properties.lastUpdate = JSON.parse(metadata.update);
 
         const boundary = fs.readFileSync(
           path.join(

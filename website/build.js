@@ -14,7 +14,10 @@ program.version(version);
 
 program.option('-c, --city <path>').option('-s, --serve').action(bundle);
 
-program.parse(process.argv);
+program.parseAsync(process.argv).catch(error => {
+  console.error(error);
+  process.exit(1);
+});
 
 async function bundle (options) {
   const city = options.city;

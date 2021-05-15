@@ -7,8 +7,15 @@ const turf = require('@turf/turf');
 const version = require('./package.json').version;
 
 program.version(version);
+
 program.option('-s, --serve').action(bundle);
-program.parse(process.argv);
+
+program
+  .parseAsync(process.argv)
+  .catch(error => {
+    shell.echo(`Error: ${error}`);
+    shell.exit(1);
+  });
 
 async function bundle (options) {
   const serve = options.serve || false;

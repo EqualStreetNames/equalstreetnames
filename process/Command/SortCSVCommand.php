@@ -101,13 +101,13 @@ class SortCSVCommand extends AbstractCommand
     {
         array_unshift($csv, ['type', 'id', 'name', 'gender', 'person', 'description']);
 
-        $fp = fopen($path, 'w');
+        if (($fp = fopen($path, 'w')) !== false) {
+            foreach ($csv as $record) {
+                fputcsv($fp, $record);
+            }
 
-        foreach ($csv as $record) {
-            fputcsv($fp, $record);
+            fclose($fp);
         }
-
-        fclose($fp);
     }
 
     /**
@@ -145,16 +145,20 @@ class SortCSVCommand extends AbstractCommand
             $csv
         );
 
+        $type = array_column($csv, 0);
+        $gender = array_column($csv, 3);
+        $id = array_column($csv, 1);
+
         array_multisort(
-            array_column($csv, 0), // type
+            $type,
             SORT_ASC,
-            array_column($csv, 3), // gender
+            $gender,
             SORT_ASC,
             $name,
             SORT_ASC,
-            array_column($csv, 1), // id
+            $id,
             SORT_ASC,
-            $csv
+            $csv,
         );
 
         return $csv;

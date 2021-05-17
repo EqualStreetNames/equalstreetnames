@@ -28,6 +28,9 @@
 [submodule "cities/germany/berlin"]
 	path = cities/germany/berlin
 	url = https://github.com/EqualStreetNames/equalstreetnames-berlin.git
+[submodule "cities/germany/brandenburg-an-der-havel"]
+	path = cities/germany/brandenburg-an-der-havel
+	url = https://github.com/EqualStreetNames/equalstreetnames-brandenburg-an-der-havel.git
 [submodule "cities/germany/freising"]
 	path = cities/germany/freising
 	url = https://github.com/EqualStreetNames/equalstreetnames-freising.git

@@ -55,6 +55,24 @@ class SortCSVCommand extends AbstractCommand
 
             $csv = self::read($csvPath);
 
+            $ids = [
+                'relation' => [],
+                'way' => [],
+            ];
+            foreach ($csv as $i => $record) {
+                if (count($record) !== 6) {
+                    throw new Exception(sprintf('Invalid number of columns at line %d.', $i + 2));
+                }
+                if (!in_array($record[0], ['relation', 'way'], true)) {
+                    throw new Exception(sprintf('Invalid type "%s" at line %d.', $record[0], $i + 2));
+                }
+                if (in_array($record[1], $ids[$record[0]], true)) {
+                    throw new Exception(sprintf('Duplicate id %s(%s) at line %d.', $record[0], $record[1], $i + 2));
+                }
+
+                $ids[$record[0]][] = $record[1];
+            }
+
             $csv = self::sort($csv);
 
             self::write($csvPath, $csv);

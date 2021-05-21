@@ -10,12 +10,10 @@ program.version(version);
 
 program.option('-s, --serve').action(bundle);
 
-program
-  .parseAsync(process.argv)
-  .catch(error => {
-    shell.echo(`Error: ${error}`);
-    shell.exit(1);
-  });
+program.parseAsync(process.argv).catch((error) => {
+  shell.echo(`Error: ${error}`);
+  shell.exit(1);
+});
 
 async function bundle (options) {
   const serve = options.serve || false;
@@ -58,18 +56,20 @@ async function bundle (options) {
           geometry: null
         };
 
-        const metadata = fs.readFileSync(
-          path.join(
-            directory,
-            country.name,
-            city.name,
-            'data',
-            'metadata.json'
-          ),
-          'utf8'
+        const metadata = JSON.parse(
+          fs.readFileSync(
+            path.join(
+              directory,
+              country.name,
+              city.name,
+              'data',
+              'metadata.json'
+            ),
+            'utf8'
+          )
         );
-        feature.properties.statistics = JSON.parse(metadata.genders);
-        feature.properties.lastUpdate = JSON.parse(metadata.update);
+        feature.properties.statistics = metadata.genders;
+        feature.properties.lastUpdate = metadata.update;
 
         const boundary = fs.readFileSync(
           path.join(
@@ -110,7 +110,14 @@ async function bundle (options) {
       'utf8'
     );
 
-    shell.echo('Total:', polygons.features.length, 'polygons', '&', points.features.length, 'points');
+    shell.echo(
+      'Total:',
+      polygons.features.length,
+      'polygons',
+      '&',
+      points.features.length,
+      'points'
+    );
 
     if (serve === true) {
       shell.exec('npm run parcel:serve', { async: true });

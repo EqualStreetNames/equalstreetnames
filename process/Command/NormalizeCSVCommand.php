@@ -11,14 +11,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Sort `data.csv` file.
+ * Normalize `data.csv` file.
  *
  * @package App\Command
  */
-class SortCSVCommand extends AbstractCommand
+class NormalizeCSVCommand extends AbstractCommand
 {
     /** {@inheritdoc} */
-    protected static $defaultName = 'sort-csv';
+    protected static $defaultName = 'normalize-csv';
 
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ class SortCSVCommand extends AbstractCommand
     {
         parent::configure();
 
-        $this->setDescription('Sort `data.csv` file.');
+        $this->setDescription('Normalize `data.csv` file.');
     }
 
     /**

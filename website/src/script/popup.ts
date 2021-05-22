@@ -18,8 +18,22 @@ export default function (
   details:
     | {[key: string]: string | number | boolean}
     | {[key: string]: string | number | boolean}[]
-    | null
+    | null,
+  feature: any
 ): string {
+
+  const layer = feature.layer.id;
+  const featureId = feature.id
+
+  let featureType
+
+  if (layer == "layer-relations"){
+    featureType = "relation";
+  }
+  else {
+    featureType = "way";
+  }
+
   let html = '';
 
   if (details !== null) {
@@ -31,6 +45,8 @@ export default function (
       html += popupDetails(details);
     }
   }
+
+  html += `<a target="_blank" href="https://edit.equalstreetnames.eu/?type=${featureType}&id=${featureId}" class="popup-edit">Edit</a>`;
 
   return html + `<div class="popup-streetname">${streetname}</div>`;
 }

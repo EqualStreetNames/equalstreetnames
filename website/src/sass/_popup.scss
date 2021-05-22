@@ -43,6 +43,12 @@
     & > .popup-links {
       margin-top: 10px;
     }
+
+    & > .popup-edit {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
   }
 
   & > hr {
@@ -51,6 +57,12 @@
 
   & > .popup-streetname {
     padding: 6px;
+  }
+
+  & > .popup-edit {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
   }
 }
 

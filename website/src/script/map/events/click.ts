@@ -24,7 +24,7 @@ export default function (
       ? JSON.parse(properties.details)
       : null;
 
-  const html = popupContent(streetname, details);
+  const html = popupContent(streetname, details, features[0]);
 
   new mapboxgl.Popup({ maxWidth: 'none' })
     .setLngLat(lnglat)

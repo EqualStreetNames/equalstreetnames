@@ -55,7 +55,7 @@ export default function (
   }
 
   html += `<div class="popup-streetname">${streetname}`;
-  html += `<a target="_blank" href="https://edit.equalstreetnames.eu/?type=${featureType}&id=${featureId}" class="fas fa-edit popup-edit" title="Edit in OpenStreetMap"></a></div>`;
+  html += `<a target="_blank" href="https://edit.equalstreetnames.eu/?type=${featureType}&id=${featureId}&close=1" class="fas fa-edit popup-edit" title="Edit in OpenStreetMap"></a></div>`;
 
   return html;
 }

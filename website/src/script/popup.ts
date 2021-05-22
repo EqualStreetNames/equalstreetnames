@@ -21,17 +21,15 @@ export default function (
     | null,
   feature: any
 ): string {
-
   const layer = feature.layer.id;
-  const featureId = feature.id
+  const featureId = feature.id;
 
-  let featureType
+  let featureType;
 
-  if (layer == "layer-relations"){
-    featureType = "relation";
-  }
-  else {
-    featureType = "way";
+  if (layer === 'layer-relations') {
+    featureType = 'relation';
+  } else {
+    featureType = 'way';
   }
 
   let html = '';

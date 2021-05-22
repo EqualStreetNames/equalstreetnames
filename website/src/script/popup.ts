@@ -12,21 +12,31 @@ import getImage from './wikidata/image';
 import colors from './colors';
 
 import { lang } from './index';
+import { MapboxGeoJSONFeature } from 'maplibre-gl';
+
+interface Property {
+  name: string;
+  wikidata: string | null;
+  etymology: string | null;
+  details?: string;
+}
 
 export default function (
-  streetname: string,
-  details:
-    | {[key: string]: string | number | boolean}
-    | {[key: string]: string | number | boolean}[]
-    | null,
-  feature: any
-): string {
-  const layer = feature.layer.id;
+  feature: MapboxGeoJSONFeature): string {
+  const properties = feature.properties as Property;
+
+  const streetname = getStreetname(properties);
+  const details =
+    typeof properties.details !== 'undefined' && properties.details !== null
+      ? JSON.parse(properties.details)
+      : null;
+
+  const source = feature.source;
   const featureId = feature.id;
 
   let featureType;
 
-  if (layer === 'layer-relations') {
+  if (source === 'geojson-relations') {
     featureType = 'relation';
   } else {
     featureType = 'way';
@@ -117,4 +127,21 @@ function popupDetails (
   htmlDetails += '<hr>';
 
   return htmlDetails;
+}
+
+function getStreetname (properties: { name: string }): string {
+  // Bug in MapboxGL (see https://github.com/mapbox/mapbox-gl-js/issues/8497)
+  if (properties.name === null || properties.name === 'null') {
+    return '';
+  }
+
+  const matches = properties.name.match(/^(.+) - (.+)$/);
+
+  if (matches !== null && matches.length > 1) {
+    matches.shift();
+
+    return matches.join('<br>');
+  }
+
+  return properties.name;
 }

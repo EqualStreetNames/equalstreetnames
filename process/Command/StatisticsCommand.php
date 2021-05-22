@@ -130,7 +130,7 @@ class StatisticsCommand extends AbstractCommand
                 'wikidata' => 0,
                 'csv'      => 0,
                 'config'   => 0,
-                'event'    => 0,
+                // 'event'    => 0,
                 '-'        => 0,
             ];
 
@@ -182,7 +182,7 @@ class StatisticsCommand extends AbstractCommand
                 sprintf('  Wikidata: %d (%.2f %%)', $sources['wikidata'], $sources['wikidata'] / $total * 100),
                 sprintf('  CSV: %d (%.2f %%)', $sources['csv'], $sources['csv'] / $total * 100),
                 sprintf('  Configuration: %d (%.2f %%)', $sources['config'], $sources['config'] / $total * 100),
-                sprintf('  Event (Brussels only): %d (%.2f %%)', $sources['event'], $sources['event'] / $total * 100),
+                // sprintf('  Event (Brussels only): %d (%.2f %%)', $sources['event'], $sources['event'] / $total * 100),
                 sprintf('No source: %d', $sources['-']),
             ]);
 
@@ -329,14 +329,7 @@ class StatisticsCommand extends AbstractCommand
                 sort($wikidatas);
 
                 if (count($sources) > 1) {
-                    // Temporary workaround (Brussels only)
-                    if ($sources === ['event', 'wikidata']) {
-                        $sources = ['wikidata'];
-                    } elseif ($sources === ['config', 'event']) {
-                        $sources = ['config'];
-                    } else {
-                        $output->writeln(sprintf('Multiple source (%s) for street "%s".', implode(', ', $sources), $_streets[0]['name']));
-                    }
+                    $output->writeln(sprintf('Multiple source (%s) for street "%s".', implode(', ', $sources), $_streets[0]['name']));
                 }
                 if (count($genders) > 1) {
                     $output->writeln(sprintf('<warning>Gender mismatch (%s) for street "%s".</warning>', implode(', ', $genders), $_streets[0]['name']));

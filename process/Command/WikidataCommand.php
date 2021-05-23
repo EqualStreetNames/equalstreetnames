@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\Model\Overpass\Element;
 use App\Model\Overpass\Overpass;
+use App\Wikidata\Wikidata;
 use ErrorException;
 use Exception;
 use GuzzleHttp\Exception\BadResponseException;
@@ -131,6 +132,26 @@ class WikidataCommand extends AbstractCommand
                     $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
                     if (!file_exists($path)) {
                       self::save($wikidataTag, $element, $path, $warnings);
+
+                      $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $wikidataTag);
+                      $entity = Wikidata::read($wikiPath);
+
+                      $identifiers = Wikidata::extractNamedAfter($entity);
+                      if (!is_null($identifiers) && count($identifiers) > 0) {
+                        foreach ($identifiers as $identifier) {
+                            // Check that the value of the tag is a valid Wikidata item identifier
+                            if (preg_match('/^Q[0-9]+$/', $identifier) !== 1) {
+                                $warnings[] = sprintf('Format of `P138` (NamedAfter) property is invalid (%s) for in item "%s".', $identifier, $wikidataTag);
+                                continue;
+                            }
+
+                            // Download Wikidata item
+                            $path = sprintf('%s/%s.json', $outputDir, $identifier);
+                            if (!file_exists($path)) {
+                                self::save($identifier, $element, $path, $warnings);
+                            }
+                        }
+                      }
                     }
                 }
 

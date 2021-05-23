@@ -368,22 +368,13 @@ class GeoJSONCommand extends AbstractCommand
             $details = [];
             foreach ($identifiers as $identifier) {
                 $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $identifier);
-                if (!file_exists($wikiPath) || !is_readable($wikiPath)) {
-                    $warnings[] = sprintf('<warning>File "%s" doesn\'t exist or is not readable (tagged in %s(%s)). You maybe need to run "wikidata" command first.</warning>', $wikiPath, $object->type, $object->id);
-                } else {
-                    $content = file_get_contents($wikiPath);
-                    $json = $content !== false ? json_decode($content) : null;
-                    if (is_null($json)) {
-                        throw new ErrorException(sprintf('Can\'t read "%s".', $wikiPath));
-                    }
-                    $entity = current($json->entities);
 
-                    if ($entity->id !== $identifier) {
-                        $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged in %s(%s)).', $identifier, $entity->id, $object->type, $object->id);
-                    }
-
-                    $details[] = $this->extractDetailsFromWikidata($entity, $warnings);
+                $entity = Wikidata::read($wikiPath);
+                if ($entity->id !== $identifier) {
+                    $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged in %s(%s)).', $identifier, $entity->id, $object->type, $object->id);
                 }
+
+                $details[] = $this->extractDetailsFromWikidata($entity, $warnings);
             }
 
             $_person = array_unique(array_column($details, 'person'));

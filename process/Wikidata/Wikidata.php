@@ -3,9 +3,32 @@
 namespace App\Wikidata;
 
 use App\Model\Wikidata\Entity;
+use ErrorException;
 
 class Wikidata
 {
+    /**
+     * @param string $path
+     *
+     * @return Entity
+     *
+     * @throws ErrorException
+     */
+    public static function read(string $path)
+    {
+        if (!file_exists($path) || !is_readable($path)) {
+            throw new ErrorException(sprintf('<warning>File "%s" doesn\'t exist or is not readable. You maybe need to run "wikidata" command first.</warning>', $path));
+        }
+
+        $content = file_get_contents($path);
+        $json = $content !== false ? json_decode($content) : null;
+        if (is_null($json)) {
+            throw new ErrorException(sprintf('Can\'t read "%s".', $path));
+        }
+
+        return current($json->entities);
+    }
+
     /**
      * @param Entity $entity
      * @param string[] $languages
@@ -84,6 +107,26 @@ class Wikidata
         }
 
         return $nicknames;
+    }
+
+    /**
+     * @param Entity $entity
+     *
+     * @return null|string[]
+     */
+    public static function extractNamedAfter($entity): ?array
+    {
+        $identifiers = [];
+
+        $claims = $entity->claims->P138 ?? [];
+
+        foreach ($claims as $value) {
+            $id = $value->mainsnak->datavalue->value->id; // @phpstan-ignore-line
+
+            $identifiers[] = $id;
+        }
+
+        return count($identifiers) === 0 ? null : $identifiers;
     }
 
     /**

@@ -121,6 +121,11 @@ class Wikidata
         $claims = $entity->claims->P138 ?? [];
 
         foreach ($claims as $value) {
+            $endTime = $value->qualifiers->P582[0]->datavalue->value->time ?? null;
+            if (!is_null($endTime) && $endTime < date('c')) {
+                continue;
+            }
+
             $id = $value->mainsnak->datavalue->value->id; // @phpstan-ignore-line
 
             $identifiers[] = $id;

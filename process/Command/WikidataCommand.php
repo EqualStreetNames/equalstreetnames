@@ -137,7 +137,7 @@ class WikidataCommand extends AbstractCommand
                       $entity = Wikidata::read($wikiPath);
 
                       $identifiers = Wikidata::extractNamedAfter($entity);
-                      if (!is_null($identifiers) && count($identifiers) > 0) {
+                      if (!is_null($identifiers)) {
                         foreach ($identifiers as $identifier) {
                             // Check that the value of the tag is a valid Wikidata item identifier
                             if (preg_match('/^Q[0-9]+$/', $identifier) !== 1) {

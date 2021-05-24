@@ -131,27 +131,27 @@ class WikidataCommand extends AbstractCommand
                     // Download Wikidata item
                     $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
                     if (!file_exists($path)) {
-                      self::save($wikidataTag, $element, $path, $warnings);
+                        self::save($wikidataTag, $element, $path, $warnings);
 
-                      $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $wikidataTag);
-                      $entity = Wikidata::read($wikiPath);
+                        $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $wikidataTag);
+                        $entity = Wikidata::read($wikiPath);
 
-                      $identifiers = Wikidata::extractNamedAfter($entity);
-                      if (!is_null($identifiers)) {
-                        foreach ($identifiers as $identifier) {
-                            // Check that the value of the tag is a valid Wikidata item identifier
-                            if (preg_match('/^Q[0-9]+$/', $identifier) !== 1) {
-                                $warnings[] = sprintf('Format of `P138` (NamedAfter) property is invalid (%s) for in item "%s".', $identifier, $wikidataTag);
-                                continue;
-                            }
+                        $identifiers = Wikidata::extractNamedAfter($entity);
+                        if (!is_null($identifiers)) {
+                            foreach ($identifiers as $identifier) {
+                                // Check that the value of the tag is a valid Wikidata item identifier
+                                if (preg_match('/^Q[0-9]+$/', $identifier) !== 1) {
+                                    $warnings[] = sprintf('Format of `P138` (NamedAfter) property is invalid (%s) for in item "%s".', $identifier, $wikidataTag);
+                                    continue;
+                                }
 
-                            // Download Wikidata item
-                            $path = sprintf('%s/%s.json', $outputDir, $identifier);
-                            if (!file_exists($path)) {
-                                self::save($identifier, $element, $path, $warnings);
+                                // Download Wikidata item
+                                $path = sprintf('%s/%s.json', $outputDir, $identifier);
+                                if (!file_exists($path)) {
+                                    self::save($identifier, $element, $path, $warnings);
+                                }
                             }
                         }
-                      }
                     }
                 }
 

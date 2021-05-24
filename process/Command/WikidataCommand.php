@@ -97,7 +97,9 @@ class WikidataCommand extends AbstractCommand
             $progressBar->start();
 
             foreach ($elements as $element) {
+                /** @var string|null */
                 $wikidataTag = $element->tags->wikidata ?? null; // @phpstan-ignore-line
+                /** @var string|null */
                 $etymologyTag = $element->tags->{'name:etymology:wikidata'} ?? null; // @phpstan-ignore-line
 
                 // Download Wikidata item(s) defined in `name:etymology:wikidata` tag

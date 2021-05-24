@@ -422,7 +422,7 @@ class GeoJSONCommand extends AbstractCommand
             }
         }
 
-        if (isset($idsEtymology, $idsWikidata) && !is_null($idsWikidata)) {
+        if (isset($idsEtymology, $idsWikidata)) {
             sort($idsEtymology);
             sort($idsWikidata);
 
@@ -436,7 +436,7 @@ class GeoJSONCommand extends AbstractCommand
                 );
             }
 
-            if ($genderEtymology !== $genderWikidata) {
+            if (($genderEtymology ?? null) !== ($genderWikidata ?? null)) {
                 $warnings[] = sprintf(
                     '<warning>Gender mismatch (%s/%s) between `name:etymology:wikidata` tag (%s) and `P138` (NamedAfter) property (%s) for %s(%s).</warning>',
                     $genderEtymology ?? '-',

@@ -116,16 +116,18 @@ class Wikidata
      */
     public static function extractNamedAfter($entity): ?array
     {
+        /** @var string[] */
         $identifiers = [];
 
         $claims = $entity->claims->P138 ?? [];
 
         foreach ($claims as $value) {
-            $endTime = $value->qualifiers->P582[0]->datavalue->value->time ?? null;
+            $endTime = $value->qualifiers->P582[0]->datavalue->value->time ?? null; // @phpstan-ignore-line
             if (!is_null($endTime) && $endTime < date('c')) {
                 continue;
             }
 
+            /** @var string */
             $id = $value->mainsnak->datavalue->value->id; // @phpstan-ignore-line
 
             $identifiers[] = $id;

@@ -41,7 +41,10 @@ class GeoJSONCommand extends AbstractCommand
     /** @var string Filename for the ways GeoJSON file. */
     public const FILENAME_WAY = 'ways.geojson';
 
-    /** @var array<string,string> Data from event CSV file (Brussels only). */
+    /**
+     * @var array<string,string> Data from event CSV file (Brussels only).
+     * @deprecated
+     */
     protected array $event;
 
     /**
@@ -71,31 +74,31 @@ class GeoJSONCommand extends AbstractCommand
             parent::execute($input, $output);
 
             // Process CSV file from event - Brussels only.
-            if ($this->city === 'belgium/brussels') {
-                $eventPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
-                if (file_exists($eventPath) && is_readable($eventPath)) {
-                    $this->event = [];
-                    $handle = fopen(sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir), 'r');
-                    if ($handle !== false) {
-                        while (($data = fgetcsv($handle)) !== false) {
-                            $streetFR = $data[0];
-                            $streetNL = $data[1];
-                            $gender = $data[2];
+            // if ($this->city === 'belgium/brussels') {
+            //     $eventPath = sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir);
+            //     if (file_exists($eventPath) && is_readable($eventPath)) {
+            //         $this->event = [];
+            //         $handle = fopen(sprintf('%s/event-2020-02-17/gender.csv', $this->cityDir), 'r');
+            //         if ($handle !== false) {
+            //             while (($data = fgetcsv($handle)) !== false) {
+            //                 $streetFR = $data[0];
+            //                 $streetNL = $data[1];
+            //                 $gender = $data[2];
 
-                            if (isset($this->event[md5($streetFR)]) && $this->event[md5($streetFR)] !== $gender) {
-                                throw new ErrorException('');
-                            }
-                            if (isset($this->event[md5($streetNL)]) && $this->event[md5($streetNL)] !== $gender) {
-                                throw new ErrorException('');
-                            }
+            //                 if (isset($this->event[md5($streetFR)]) && $this->event[md5($streetFR)] !== $gender) {
+            //                     throw new ErrorException('');
+            //                 }
+            //                 if (isset($this->event[md5($streetNL)]) && $this->event[md5($streetNL)] !== $gender) {
+            //                     throw new ErrorException('');
+            //                 }
 
-                            $this->event[md5($streetFR)] = $gender;
-                            $this->event[md5($streetNL)] = $gender;
-                        }
-                        fclose($handle);
-                    }
-                }
-            }
+            //                 $this->event[md5($streetFR)] = $gender;
+            //                 $this->event[md5($streetNL)] = $gender;
+            //             }
+            //             fclose($handle);
+            //         }
+            //     }
+            // }
 
             // Read CSV file.
             $csvPath = sprintf('%s/%s', $this->cityDir, self::FILENAME_CSV);
@@ -318,7 +321,9 @@ class GeoJSONCommand extends AbstractCommand
     }
 
     /**
-     * Extact gender from event CSF file (Brussels only).
+     * Extract gender from event CSV file (Brussels only).
+     *
+     * @deprecated
      *
      * @param Element $object OpenStreetMap element (relation/way/node).
      * @param string[] $warnings
@@ -407,11 +412,12 @@ class GeoJSONCommand extends AbstractCommand
             // If gender for relation/way identifier is set in configuration, use it to determine gender.
             $properties->source = 'config';
             $properties->gender = $gender;
-        } elseif (!is_null($gender = $this->getGenderFromEvent($object, $warnings))) {
-            // If gender is set in event file, use it to determine gender (Brussels only).
-            $properties->source = 'event';
-            $properties->gender = $gender;
         }
+        // elseif (!is_null($gender = $this->getGenderFromEvent($object, $warnings))) {
+        //     // If gender is set in event file, use it to determine gender (Brussels only).
+        //     $properties->source = 'event';
+        //     $properties->gender = $gender;
+        // }
 
         return $properties;
     }

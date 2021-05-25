@@ -1,5 +1,7 @@
 'use strict';
 
+import { MapboxGeoJSONFeature } from 'maplibre-gl';
+
 import getGender from './wikidata/gender';
 import getName from './wikidata/labels';
 import getBirth from './wikidata/birth';
@@ -12,12 +14,12 @@ import getImage from './wikidata/image';
 import colors from './colors';
 
 import { lang } from './index';
-import { MapboxGeoJSONFeature } from 'maplibre-gl';
 
 interface Property {
   name: string;
   wikidata: string | null;
-  etymology: string | null;
+  gender: string | null;
+  source: string | null;
   details?: string;
 }
 
@@ -36,10 +38,18 @@ export default function (
 
   let featureType;
 
-  if (source === 'geojson-relations') {
-    featureType = 'relation';
-  } else {
-    featureType = 'way';
+  switch (source) {
+    case 'geojson-relations': {
+      featureType = 'relation';
+      break;
+    }
+    case 'geojson-ways': {
+      featureType = 'way';
+      break;
+    }
+    default: {
+      featureType = false;
+    }
   }
 
   let html = '';
@@ -54,8 +64,14 @@ export default function (
     }
   }
 
-  html += `<div class="popup-streetname">${streetname}`;
-  html += `<a target="_blank" href="https://edit.equalstreetnames.eu/?type=${featureType}&id=${featureId}&close=1" class="fas fa-edit popup-edit" title="Edit in OpenStreetMap"></a></div>`;
+  html += '<div class="popup-streetname">';
+  html += streetname;
+
+  if (featureType) {
+    html += `<a target="_blank" href="https://edit.equalstreetnames.eu/?type=${featureType}&id=${featureId}&close=1" class="fas fa-edit popup-edit" title="Edit in OpenStreetMap"></a>`;
+  }
+
+  html += '</div>';
 
   return html;
 }

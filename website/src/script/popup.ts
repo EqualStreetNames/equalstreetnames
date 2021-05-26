@@ -1,5 +1,7 @@
 'use strict';
 
+import { MapboxGeoJSONFeature } from 'maplibre-gl';
+
 import getGender from './wikidata/gender';
 import getName from './wikidata/labels';
 import getBirth from './wikidata/birth';
@@ -13,13 +15,40 @@ import colors from './colors';
 
 import { lang } from './index';
 
+interface Property {
+  name: string;
+  wikidata: string | null;
+  gender: string | null;
+  source: string | null;
+  details?: string;
+}
+
 export default function (
-  streetname: string,
-  details:
-    | {[key: string]: string | number | boolean}
-    | {[key: string]: string | number | boolean}[]
-    | null
-): string {
+  feature: MapboxGeoJSONFeature): string {
+  const properties = feature.properties as Property;
+
+  const streetname = getStreetname(properties);
+  const details =
+    typeof properties.details !== 'undefined' && properties.details !== null
+      ? JSON.parse(properties.details)
+      : null;
+
+  const source = feature.source;
+  const featureId = feature.id;
+
+  let featureType: string = null;
+
+  switch (source) {
+    case 'geojson-relations': {
+      featureType = 'relation';
+      break;
+    }
+    case 'geojson-ways': {
+      featureType = 'way';
+      break;
+    }
+  }
+
   let html = '';
 
   if (details !== null) {
@@ -32,7 +61,16 @@ export default function (
     }
   }
 
-  return html + `<div class="popup-streetname">${streetname}</div>`;
+  html += '<div class="popup-streetname">';
+  html += streetname;
+
+  if (featureType === 'node' || featureType === 'way' || featureType === 'relation') {
+    html += `<a target="_blank" href="https://www.openstreetmap.org/${featureType}/${featureId}" class="fas fa-edit popup-edit" title="Edit in OpenStreetMap"></a>`;
+  }
+
+  html += '</div>';
+
+  return html;
 }
 
 function popupDetails (
@@ -103,4 +141,21 @@ function popupDetails (
   htmlDetails += '<hr>';
 
   return htmlDetails;
+}
+
+function getStreetname (properties: { name: string }): string {
+  // Bug in MapboxGL (see https://github.com/mapbox/mapbox-gl-js/issues/8497)
+  if (properties.name === null || properties.name === 'null') {
+    return '';
+  }
+
+  const matches = properties.name.match(/^(.+) - (.+)$/);
+
+  if (matches !== null && matches.length > 1) {
+    matches.shift();
+
+    return matches.join('<br>');
+  }
+
+  return properties.name;
 }

@@ -36,7 +36,7 @@ export default function (
   const source = feature.source;
   const featureId = feature.id;
 
-  let featureType;
+  let featureType?: string;
 
   switch (source) {
     case 'geojson-relations': {

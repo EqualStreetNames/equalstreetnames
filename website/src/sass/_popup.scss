@@ -52,6 +52,10 @@
   & > .popup-streetname {
     padding: 6px;
   }
+
+  & .popup-edit {
+    float: inline-end;
+  }
 }
 
 @keyframes fadein {

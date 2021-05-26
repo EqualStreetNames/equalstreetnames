@@ -30,15 +30,36 @@ body {
 }
 
 nav.navbar {
-  background-color: rgba(38, 42, 43, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
+  .navbar-brand,
+  .navbar-brand:focus {
+    color: #000 !important;
+  }
+
   .navbar-nav {
-    color: #fff;
+    a.nav-link {
+      color: #000 !important;
+    }
 
     .nav-item {
       margin-left: 20px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(38, 42, 43, 0.9);
+    .navbar-brand,
+    .navbar-brand:focus {
+      color: #fff !important;
+    }
+
+    .navbar-nav {
+      a.nav-link {
+        color: #fff !important;
+      }
     }
   }
 }

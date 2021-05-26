@@ -12,71 +12,73 @@
   top: 60px;
 }
 
-// Change all the light map elements to a darker version
-$dark-background-color-transparant: rgba(24, 26, 27, 0.5);
-$dark-text-color-transparant: rgba(232, 230, 227, 0.75);
+@media (prefers-color-scheme: dark) {
+  // Change all the light map elements to a darker version
+  $dark-background-color-transparant: rgba(24, 26, 27, 0.5);
+  $dark-text-color-transparant: rgba(232, 230, 227, 0.75);
 
-$dark-background-color-solid: rgb(24, 26, 27);
-$dark-text-color-solid: rgb(232, 230, 227);
+  $dark-background-color-solid: rgb(24, 26, 27);
+  $dark-text-color-solid: rgb(232, 230, 227);
 
-.mapboxgl-ctrl-attrib {
-  background-color: $dark-background-color-transparant !important;
-  color: $dark-text-color-transparant !important;
-  
-  a {
+  .mapboxgl-ctrl-attrib {
+    background-color: $dark-background-color-transparant !important;
     color: $dark-text-color-transparant !important;
-  }
-}
 
-.mapboxgl-ctrl-scale {
-  background-color: $dark-background-color-transparant!important;
-  color: $dark-text-color-transparant !important;
-  border-color: rgb(123, 114, 101);
-}
-
-.mapboxgl-ctrl-group {
-  background-color: $dark-background-color-solid !important;
-
-  button > span {
-    filter: invert(100%);
-  }
-}
-
-.mapboxgl-ctrl-geocoder {
-  background-color: $dark-background-color-solid !important;
-  
-  svg {
-    fill: white;
-  }
-
-  input {
-    color: $dark-text-color-transparant;
-
-    &:focus {
-      color: $dark-text-color-solid;
+    a {
+      color: $dark-text-color-transparant !important;
     }
   }
 
-  .suggestions {
+  .mapboxgl-ctrl-scale {
+    background-color: $dark-background-color-transparant !important;
+    color: $dark-text-color-transparant !important;
+    border-color: rgb(123, 114, 101);
+  }
+
+  .mapboxgl-ctrl-group {
     background-color: $dark-background-color-solid !important;
 
-    .active > a,
-    li > a:hover {
+    button > span {
+      filter: invert(100%);
+    }
+  }
+
+  .mapboxgl-ctrl-geocoder {
+    background-color: $dark-background-color-solid !important;
+
+    svg {
+      fill: white;
+    }
+
+    input {
+      color: $dark-text-color-transparant;
+
+      &:focus {
+        color: $dark-text-color-solid;
+      }
+    }
+
+    .suggestions {
+      background-color: $dark-background-color-solid !important;
+
+      .active > a,
+      li > a:hover {
         background-color: rgb(31, 33, 35);
       }
+    }
   }
-}
 
-.mapboxgl-ctrl-geocoder--suggestion-title,
-.mapboxgl-ctrl-geocoder--suggestion-address {
-  color: rgb(192, 186, 178) !important;
-}
+  .mapboxgl-ctrl-geocoder--suggestion-title,
+  .mapboxgl-ctrl-geocoder--suggestion-address {
+    color: rgb(192, 186, 178) !important;
+  }
 
-.mapboxgl-ctrl-geocoder--button {
-  // This removes the white background color of the button
-  background-color: rgba(0, 0, 0, 0);
-}
+  .mapboxgl-ctrl-geocoder--button {
+    // This removes the white background color of the button
+    background-color: rgba(0, 0, 0, 0);
+  }
 
-.mapboxgl-ctrl-geocoder--icon-close {
-  fill: rgb(162, 154, 142);
+  .mapboxgl-ctrl-geocoder--icon-close {
+    fill: rgb(162, 154, 142);
+  }
 }

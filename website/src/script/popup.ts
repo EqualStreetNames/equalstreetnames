@@ -48,7 +48,8 @@ export default function (
       break;
     }
     default: {
-      featureType = false;
+      featureType = null;
+      break;
     }
   }
 

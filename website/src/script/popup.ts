@@ -36,7 +36,7 @@ export default function (
   const source = feature.source;
   const featureId = feature.id;
 
-  let featureType?: string;
+  let featureType: string = null;
 
   switch (source) {
     case 'geojson-relations': {
@@ -45,10 +45,6 @@ export default function (
     }
     case 'geojson-ways': {
       featureType = 'way';
-      break;
-    }
-    default: {
-      featureType = null;
       break;
     }
   }

@@ -30,7 +30,9 @@ body {
 }
 
 nav.navbar {
-  background-color: rgba(52, 51, 50, 0.9);
+  background-color: rgba(38, 42, 43, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   .navbar-nav {
     color: #fff;

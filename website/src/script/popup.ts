@@ -68,7 +68,7 @@ export default function (
   html += streetname;
 
   if (featureType) {
-    html += `<a target="_blank" href="https://www.openstreetmap.org/edit?editor=id&${featureType}=${featureId}" class="fas fa-edit popup-edit" title="Edit in OpenStreetMap"></a>`;
+    html += `<a target="_blank" href="https://www.openstreetmap.org/${featureType}/${featureId}" class="fas fa-edit popup-edit" title="Edit in OpenStreetMap"></a>`;
   }
 
   html += '</div>';

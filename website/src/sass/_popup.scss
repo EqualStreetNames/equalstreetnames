@@ -62,3 +62,19 @@
     opacity: 1;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .mapboxgl-popup-tip {
+    border-top-color: #181A1B !important;
+  }
+
+  .mapboxgl-popup-content {
+    background-color: rgb(24, 26, 27);
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 2px;
+    color: rgb(209, 205, 199);
+
+    button {
+      color: rgb(209, 205, 199);
+    }
+  }
+}

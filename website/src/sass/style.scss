@@ -18,6 +18,7 @@
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/custom-forms";
 
 @import "theme";
 @import "loader";
@@ -41,11 +42,14 @@ nav.navbar {
   }
 
   .navbar-nav {
-    a.nav-link {
+    a.nav-link,
+    label {
       color: var(--text-color) !important;
     }
-
+    
     .nav-item {
+      display: grid;
+      align-content: center;
       margin-left: 20px;
     }
   }

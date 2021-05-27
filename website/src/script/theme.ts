@@ -1,37 +1,18 @@
 'use strict';
 
-function updateTheme (newTheme: string) {
-  // Change the active item
-  document.querySelectorAll('.theme-option').forEach(element => {
-    element.setAttribute('data-active', 'false');
-  });
-  document.getElementById(`theme-${newTheme}`)?.setAttribute('data-active', 'true');
-
-  if (newTheme === 'light' || newTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', newTheme);
-  } else {
-    // Follow system theme
-    const theme = window.matchMedia('(prefers-color-scheme: dark)');
-    document.documentElement.setAttribute('data-theme', (theme.matches) ? 'dark' : 'light');
-  }
-}
-
-function themeBtnClick (this: HTMLElement, ev: MouseEvent) {
-  // Update localstorage
-  const newTheme = this.id.split('-')[1] ?? 'system';
-  localStorage.setItem('theme', newTheme);
-
-  updateTheme(newTheme);
+function changeTheme (darkMode: boolean) {
+  document.documentElement.setAttribute('data-theme', (darkMode) ? 'dark' : 'light');
+  (document.getElementById('themeSwitch') as HTMLInputElement).checked = darkMode;
 }
 
 export default function initTheme () {
-  updateTheme(localStorage.getItem('theme') ?? 'system');
+  changeTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', _ => {
-    updateTheme(localStorage.getItem('theme') ?? 'system');
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', theme => {
+    changeTheme(theme.matches);
   });
 
-  document.getElementById('theme-light')?.addEventListener('click', themeBtnClick);
-  document.getElementById('theme-dark')?.addEventListener('click', themeBtnClick);
-  document.getElementById('theme-system')?.addEventListener('click', themeBtnClick);
+  document.getElementById('themeSwitch')?.addEventListener('click', (event: MouseEvent) => {
+    changeTheme((event.target as HTMLInputElement).checked);
+  });
 }

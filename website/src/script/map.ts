@@ -40,9 +40,7 @@ export default async function (): Promise<Map> {
       changeTheme();
     });
 
-    document.getElementById('theme-light')?.addEventListener('click', changeTheme);
-    document.getElementById('theme-dark')?.addEventListener('click', changeTheme);
-    document.getElementById('theme-system')?.addEventListener('click', changeTheme);
+    document.getElementById('themeSwitch')?.addEventListener('click', changeTheme);
   } else {
     createMap();
   }
@@ -54,19 +52,9 @@ export default async function (): Promise<Map> {
   return map;
 
   function changeTheme () {
-    // Change the style
-    switch (localStorage.getItem('theme') ?? 'system') {
-      case 'light':
-        options.style = 'mapbox://styles/mapbox/light-v10';
-        break;
-      case 'dark':
-        options.style = 'mapbox://styles/mapbox/dark-v10';
-        break;
-      default:
-        options.style = (window.matchMedia('(prefers-color-scheme: dark)').matches)
-          ? 'mapbox://styles/mapbox/dark-v10'
-          : 'mapbox://styles/mapbox/light-v10';
-    }
+    options.style = ((document.getElementById('themeSwitch') as HTMLInputElement).checked)
+      ? 'mapbox://styles/mapbox/dark-v10'
+      : 'mapbox://styles/mapbox/light-v10';
 
     // Recreate the map
     // map.setStyle would remove the data

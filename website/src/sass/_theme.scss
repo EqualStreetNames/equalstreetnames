@@ -7,25 +7,27 @@
 	--bg-color-map-solid: #ffffff;
 	--text-color-map-transparant: rgba(0,0,0,.75);
 	--text-color-map-solid: #000000;
-	--border-color-map: rgb(51, 51, 51);
+	--border-color-map: #333333;
 	--button-invert-map: invert(0%);
 	--bg-color-navbar: rgba(255, 255, 255, 0.9);
 	--border-color-modal: rgba(0, 0, 0, 0.2);
+	--bg-color-dropdown-hover: #E9ECEF;
+	--text-color-dropdown-hover: #000000;
 }
 
 [data-theme="dark"] {
 	--bg-color: #222222;
 	--text-color: #ffffff;
-	--text-counter-color: rgb(209, 205, 199);
-	--text-muted-color: rgb(158, 150, 137);
+	--text-counter-color: #d1cdc7;
+	--text-muted-color: #9e9689;
 	--bg-color-map-transparant: rgba(24, 26, 27, 0.5);
-	--bg-color-map-solid: rgb(24, 26, 27);
+	--bg-color-map-solid: #181a1b;
 	--text-color-map-transparant: rgba(232, 230, 227, 0.75);
-	--text-color-map-solid: rgb(232, 230, 227);
-	--border-color-map: rgb(123, 114, 101);
+	--text-color-map-solid: #e8e6e3;
+	--border-color-map: #7b7265;
 	--button-invert-map: invert(100%);
 	--bg-color-navbar: rgba(38, 42, 43, 0.9);
 	--border-color-modal: rgba(140, 130, 115, 0.2);
-	--bg-color-dropdown-hover: rgb(35, 38, 39);
-	--text-color-dropdown-hover: rgb(217, 213, 208);
+	--bg-color-dropdown-hover: #232627;
+	--text-color-dropdown-hover: #d9d5d0;
 }

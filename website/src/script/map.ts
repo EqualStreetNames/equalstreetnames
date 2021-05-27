@@ -44,52 +44,46 @@ export default async function (): Promise<Map> {
       map.remove();
       map = new Map(options);
 
-      map.on('load', () => {
-        map.resize();
-
-        // Add GeoJSON sources.
-        addRelations(map);
-        addWays(map);
-        addBoundary(map);
-
-        // Add events
-        addEvents(map);
-      });
+      createMap();
     });
   }
 
-  // Add controls.
-  const nav = new NavigationControl({ showCompass: false });
-  map.addControl(nav, 'top-left');
-
-  const scale = new ScaleControl({ unit: 'metric' });
-  map.addControl(scale);
-
-  const geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    bbox: bbox || bounds,
-    countries,
-    enableEventLogging: false,
-    language: lang,
-    mapboxgl: mapboxgl
-  });
-  map.addControl(geocoder);
-
-  map.on('load', () => {
-    map.resize();
-
-    // Add GeoJSON sources.
-    addRelations(map);
-    addWays(map);
-    addBoundary(map);
-
-    // Add events
-    addEvents(map);
-  });
+  createMap();
 
   map.on('idle', () => {
     document.body.classList.add('loaded');
   });
 
   return map;
+
+  function createMap () {
+    // Add controls.
+    const nav = new NavigationControl({ showCompass: false });
+    map.addControl(nav, 'top-left');
+
+    const scale = new ScaleControl({ unit: 'metric' });
+    map.addControl(scale);
+
+    const geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      bbox: bbox || bounds,
+      countries,
+      enableEventLogging: false,
+      language: lang,
+      mapboxgl: mapboxgl
+    });
+    map.addControl(geocoder);
+
+    map.on('load', () => {
+      map.resize();
+
+      // Add GeoJSON sources.
+      addRelations(map);
+      addWays(map);
+      addBoundary(map);
+
+      // Add events
+      addEvents(map);
+    });
+  }
 }

@@ -61,40 +61,43 @@ function createChart (data: number[]): Chart | null {
   return null;
 }
 
-function updateLabel (gender: string, count: number, total: number): void {
-  const labelElement = elementDiv.querySelector(
-    `.gender-chart-label[data-gender=${gender}]`
-  ) as HTMLTableRowElement;
-  const countElement = labelElement.querySelector(
-    '.gender-chart-count'
-  ) as HTMLTableCellElement;
-  const pctElement = labelElement.querySelector(
-    '.gender-chart-pct'
-  ) as HTMLTableCellElement;
-
-  const percentage = Math.round((count / total) * 100 * 100) / 100;
-
-  labelElement.style.color = colors[gender];
-  countElement.innerText = `${count}`;
-  pctElement.innerText = `${percentage} %`;
-}
-
 function updateLabels (count: {
   f: number;
   m: number;
   fx: number;
   mx: number;
   x: number;
+  nb: number;
   u: number; // unknown
   p: number; // multiple
   o: number; // not a person
 }): void {
   const totalPerson =
-    count.f + count.m + count.fx + count.mx + count.x + count.p;
-  // const total = totalPerson + count.o;
+    count.f + count.m + count.fx + count.mx + count.x + count.nb + count.u + count.p;
 
-  ['f', 'm', 'fx', 'mx'].forEach((gender: string) => {
-    updateLabel(gender, count[gender], totalPerson);
+  Object.keys(count).forEach((gender: string) => {
+    const labelElement = elementDiv.querySelector(
+      `.gender-chart-label[data-gender=${gender}]`
+    ) as HTMLTableRowElement;
+    if (labelElement !== null) {
+      labelElement.style.color = colors[gender];
+
+      const countElement = labelElement.querySelector(
+        '.gender-chart-count'
+      ) as HTMLTableCellElement;
+      if (countElement !== null) {
+        countElement.innerText = `${count[gender]}`;
+      }
+
+      const pctElement = labelElement.querySelector(
+        '.gender-chart-pct'
+      ) as HTMLTableCellElement;
+      if (pctElement !== null) {
+        const percentage = Math.round((count[gender] / totalPerson) * 100 * 100) / 100;
+
+        pctElement.innerText = `${percentage} %`;
+      }
+    }
   });
 }
 

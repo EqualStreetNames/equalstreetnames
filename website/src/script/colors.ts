@@ -1,6 +1,6 @@
 'use strict';
 
-const colors: {[key: string]: string} = {
+const colorsLight: {[key: string]: string} = {
   f: '#800080', // female (cis)
   m: '#C8C800', // male (cis)
   fx: '#00a050', // female (transgender)
@@ -8,7 +8,18 @@ const colors: {[key: string]: string} = {
   x: '#00a050', // intersex
   u: '#808080', // unknown
   p: '#A46440', // multiple
-  o: '#DDDDDD' // other (not a person or multiple)
+  o: '#AAAAAA' // other (not a person or multiple)
 };
 
-export default colors;
+const colorsDark: {[key: string]: string} = {
+  f: '#F46D43', // female (cis)
+  m: '#FEE296', // male (cis)
+  fx: '#74ADD1', // female (transgender)
+  mx: '#74ADD1', // male (transgender)
+  x: '#ABD9E9', // intersex
+  u: '#4575B4', // unknown
+  p: '#8073AC', // multiple
+  o: '#525252' // other (not a person or multiple)
+};
+
+export default colorsDark;

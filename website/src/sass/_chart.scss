@@ -1,5 +1,7 @@
 #chart-overlay {
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-navbar);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   bottom: 50px;

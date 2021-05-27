@@ -1,8 +1,12 @@
 'use strict';
 
+const themeSwitch = document.querySelector<HTMLInputElement>('#themeSwitch');
+
 function changeTheme (darkMode: boolean) {
   document.documentElement.setAttribute('data-theme', (darkMode) ? 'dark' : 'light');
-  (document.getElementById('themeSwitch') as HTMLInputElement).checked = darkMode;
+  if (themeSwitch) {
+    themeSwitch.checked = darkMode;
+  }
 }
 
 export default function initTheme () {
@@ -12,7 +16,7 @@ export default function initTheme () {
     changeTheme(theme.matches);
   });
 
-  document.getElementById('themeSwitch')?.addEventListener('click', (event: MouseEvent) => {
-    changeTheme((event.target as HTMLInputElement).checked);
+  themeSwitch?.addEventListener('click', (event: MouseEvent) => {
+    changeTheme(themeSwitch.checked);
   });
 }

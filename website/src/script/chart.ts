@@ -23,6 +23,7 @@ function createChart (data: number[]): Chart | null {
           'Male (trans)',
           'Female (trans)',
           'Intersex',
+          'Non-binary',
           'Unknown'
         ],
         datasets: [
@@ -34,6 +35,7 @@ function createChart (data: number[]): Chart | null {
               colors.mx,
               colors.fx,
               colors.x,
+              colors.nb,
               colors.u
             ]
           }
@@ -106,15 +108,16 @@ export default function (element: HTMLCanvasElement): void {
     fx: statistics.FX,
     mx: statistics.MX,
     x: statistics.X,
+    nb: statistics.NB,
     u: statistics['?'], // unknown
     p: statistics['+'], // multiple
     o: statistics['-'] // not a person
   };
   const totalPerson =
-    count.f + count.m + count.fx + count.mx + count.x + count.u + count.p;
+    count.f + count.m + count.fx + count.mx + count.x + count.nb + count.u + count.p;
   const total = totalPerson + count.o;
 
-  createChart([count.m, count.f, count.mx, count.fx, count.x, count.u]);
+  createChart([count.m, count.f, count.mx, count.fx, count.x, count.nb, count.u]);
   updateLabels(count);
 
   const spanCount = document.getElementById(

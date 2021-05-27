@@ -6,6 +6,7 @@ const colors: {[key: string]: string} = {
   fx: '#00a050', // female (transgender)
   mx: '#00a050', // male (transgender)
   x: '#00a050', // intersex
+  nb: '#00a050', // non-binary
   u: '#808080', // unknown
   p: '#A46440', // multiple
   o: '#DDDDDD' // other (not a person or multiple)

@@ -32,29 +32,49 @@ export default async function (): Promise<Map> {
   // Initialize map.
   map = new Map(options);
 
-  // Change the map theme when the browser theme changes (only when the default theme is light or dark)
+  // Change the map theme when the browser theme changes or the user changes it (only when the default theme is light or dark)
   if (style === 'mapbox://styles/mapbox/dark-v10' || style === 'mapbox://styles/mapbox/light-v10') {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-      console.log('Chaning theme');
-      // Change the style
-      options.style = (event.matches) ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/light-v10';
+    changeTheme();
 
-      // Recreate the map
-      // map.setStyle would remove the data
-      map.remove();
-      map = new Map(options);
-
-      createMap();
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', _ => {
+      changeTheme();
     });
-  }
 
-  createMap();
+    document.getElementById('theme-light')?.addEventListener('click', changeTheme);
+    document.getElementById('theme-dark')?.addEventListener('click', changeTheme);
+    document.getElementById('theme-system')?.addEventListener('click', changeTheme);
+  } else {
+    createMap();
+  }
 
   map.on('idle', () => {
     document.body.classList.add('loaded');
   });
 
   return map;
+
+  function changeTheme () {
+    // Change the style
+    switch (localStorage.getItem('theme') ?? 'system') {
+      case 'light':
+        options.style = 'mapbox://styles/mapbox/light-v10';
+        break;
+      case 'dark':
+        options.style = 'mapbox://styles/mapbox/dark-v10';
+        break;
+      default:
+        options.style = (window.matchMedia('(prefers-color-scheme: dark)').matches)
+          ? 'mapbox://styles/mapbox/dark-v10'
+          : 'mapbox://styles/mapbox/light-v10';
+    }
+
+    // Recreate the map
+    // map.setStyle would remove the data
+    map.remove();
+    map = new Map(options);
+
+    createMap();
+  }
 
   function createMap () {
     // Add controls.

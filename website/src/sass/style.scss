@@ -81,4 +81,9 @@ nav.navbar {
     color: var(--text-color-dropdown-hover);
     background-color: var(--bg-color-dropdown-hover);
   }
+
+  &[data-active="true"] {
+    color: var(--text-color-dropdown-hover);
+    background-color: var(--bg-color-dropdown-hover);
+  }
 }

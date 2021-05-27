@@ -33,11 +33,11 @@ export default async function (): Promise<Map> {
   map = new Map(options);
 
   // Change the map theme when the browser theme changes (only when the default theme is light or dark)
-  if (style == "mapbox://styles/mapbox/dark-v10" || style == "mapbox://styles/mapbox/light-v10") {
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", event => {
-      console.log("Chaning theme");
+  if (style === 'mapbox://styles/mapbox/dark-v10' || style === 'mapbox://styles/mapbox/light-v10') {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      console.log('Chaning theme');
       // Change the style
-      options.style = (event.matches) ? "mapbox://styles/mapbox/dark-v10" : "mapbox://styles/mapbox/light-v10";
+      options.style = (event.matches) ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/light-v10';
 
       // Recreate the map
       // map.setStyle would remove the data
@@ -46,16 +46,16 @@ export default async function (): Promise<Map> {
 
       map.on('load', () => {
         map.resize();
-    
+
         // Add GeoJSON sources.
         addRelations(map);
         addWays(map);
         addBoundary(map);
-    
+
         // Add events
         addEvents(map);
       });
-    })
+    });
   }
 
   // Add controls.

@@ -19,6 +19,7 @@
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/utilities";
 
+@import "theme";
 @import "loader";
 @import "map";
 @import "popup";
@@ -30,77 +31,54 @@ body {
 }
 
 nav.navbar {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--bg-color-navbar);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
   .navbar-brand,
   .navbar-brand:focus {
-    color: #000 !important;
+    color: var(--text-color) !important;
   }
 
   .navbar-nav {
     a.nav-link {
-      color: #000 !important;
+      color: var(--text-color) !important;
     }
 
     .nav-item {
       margin-left: 20px;
     }
   }
+}
 
-  @media (prefers-color-scheme: dark) {
-    background-color: rgba(38, 42, 43, 0.9);
-    .navbar-brand,
-    .navbar-brand:focus {
-      color: #fff !important;
-    }
+.modal-content {
+  background-color: var(--bg-color-map-solid);
+  border-color: var(--border-color-modal);
+  color: var(--text-color-map-solid);
+}
 
-    .navbar-nav {
-      a.nav-link {
-        color: #fff !important;
-      }
-    }
+.modal-header {
+  border-bottom-color: var(--border-color-modal);
+}
+
+.close {
+  color: var(--text-color-map-solid);
+  text-shadow: rgb(24 26 27) 0px 1px 0px;
+  &:hover {
+    color: var(--text-color-map-solid);
   }
 }
 
-.navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.8) !important;
+.dropdown-menu {
+  color: var(--text-color-map-solid);
+  background-color: var(--bg-color-map-solid);
+  border-color: var(--border-color-modal);
 }
 
-// Dark mode support for the modal component
-@media (prefers-color-scheme: dark) {
-  .modal-content {
-    background-color: rgb(24, 26, 27);
-    border-color: rgba(140, 130, 115, 0.2);
-    color: rgb(209, 205, 199);
-  }
-
-  .modal-header {
-    border-bottom-color: rgb(56, 61, 63);
-  }
-
-  .close {
-    color: rgb(232, 230, 227);
-    text-shadow: rgb(24 26 27) 0px 1px 0px;
-    &:hover {
-      color: rgb(232, 230, 227);
-    }
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .dropdown-menu {
-    color: rgb(209, 205, 199);
-    background-color: rgb(24, 26, 27);
-    border-color: rgba(140, 130, 115, 0.15);
-  }
-
-  .dropdown-item {
-    color: rgb(209, 205, 199);
-    &:hover {
-      color: rgb(217, 213, 208);
-      background-color: rgb(35, 38, 39);
-    }
+.dropdown-item {
+  color: var(--text-color-map-solid);
+  &:hover {
+    color: var(--text-color-dropdown-hover);
+    background-color: var(--bg-color-dropdown-hover);
   }
 }

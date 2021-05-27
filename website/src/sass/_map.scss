@@ -12,73 +12,60 @@
   top: 60px;
 }
 
-@media (prefers-color-scheme: dark) {
-  // Change all the light map elements to a darker version
-  $dark-background-color-transparant: rgba(24, 26, 27, 0.5);
-  $dark-text-color-transparant: rgba(232, 230, 227, 0.75);
+.mapboxgl-ctrl-attrib {
+  background-color: var(--bg-color-map-transparant) !important;
+  color: var(--text-color-map-transparant) !important;
 
-  $dark-background-color-solid: rgb(24, 26, 27);
-  $dark-text-color-solid: rgb(232, 230, 227);
+  a {
+    color: var(--text-color-map-transparant) !important;
+  }
+}
 
-  .mapboxgl-ctrl-attrib {
-    background-color: $dark-background-color-transparant !important;
-    color: $dark-text-color-transparant !important;
+.mapboxgl-ctrl-scale {
+  background-color: var(--bg-color-map-transparant) !important;
+  color: var(--text-color-map-transparant) !important;
+  border-color: var(--border-color-map);
+}
 
-    a {
-      color: $dark-text-color-transparant !important;
+.mapboxgl-ctrl-group {
+  background-color: var(--bg-color-map-solid) !important;
+
+  button > span {
+    filter: var(--button-invert-map);
+  }
+}
+
+.mapboxgl-ctrl-geocoder {
+  background-color: var(--bg-color-map-solid) !important;
+
+  svg {
+    fill: var(--text-color-map-solid);
+  }
+
+  input {
+    color: var(--text-color-map-transparant);
+
+    &:focus {
+      color: var(--text-color-map-solid);
     }
   }
 
-  .mapboxgl-ctrl-scale {
-    background-color: $dark-background-color-transparant !important;
-    color: $dark-text-color-transparant !important;
-    border-color: rgb(123, 114, 101);
-  }
+  .suggestions {
+    background-color: var(--bg-color-map-solid) !important;
 
-  .mapboxgl-ctrl-group {
-    background-color: $dark-background-color-solid !important;
-
-    button > span {
-      filter: invert(100%);
+    .active > a,
+    li > a:hover {
+      background-color: var(--bg-color);
     }
   }
+}
 
-  .mapboxgl-ctrl-geocoder {
-    background-color: $dark-background-color-solid !important;
+.mapboxgl-ctrl-geocoder--suggestion-title,
+.mapboxgl-ctrl-geocoder--suggestion-address {
+  color: var(--text-color-map-transparant) !important;
+}
 
-    svg {
-      fill: white;
-    }
-
-    input {
-      color: $dark-text-color-transparant;
-
-      &:focus {
-        color: $dark-text-color-solid;
-      }
-    }
-
-    .suggestions {
-      background-color: $dark-background-color-solid !important;
-
-      .active > a,
-      li > a:hover {
-        background-color: rgb(31, 33, 35);
-      }
-    }
-  }
-
-  .mapboxgl-ctrl-geocoder--suggestion-title,
-  .mapboxgl-ctrl-geocoder--suggestion-address {
-    color: rgb(192, 186, 178) !important;
-  }
-
-  .mapboxgl-ctrl-geocoder--button {
-    // This removes the white background color of the button
-    background-color: rgba(0, 0, 0, 0);
-  }
-
-  .mapboxgl-ctrl-geocoder--icon-close {
-    fill: rgb(162, 154, 142);
-  }
+.mapboxgl-ctrl-geocoder--button {
+  // This removes the white background color of the button
+  background-color: rgba(0, 0, 0, 0);
 }

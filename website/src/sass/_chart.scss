@@ -1,5 +1,5 @@
 #chart-overlay {
-  background: rgba(255, 255, 255, 1);
+  background-color: var(--bg-color);
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   bottom: 50px;
@@ -8,11 +8,8 @@
   right: 0;
   width: 300px;
   
-  @media (prefers-color-scheme: dark) {
-    background-color: rgb(24, 26, 27);
-    .text-muted {
-      color: rgb(158, 150, 137) !important;
-    }
+  .text-muted {
+    color: var(--text-muted-color) !important;
   }
 }
 
@@ -33,7 +30,6 @@
 
 #count-information {
   margin-top: 10px;
-  @media (prefers-color-scheme: dark) {
-    color: rgb(209, 205, 199);
-  }
+  
+  color: var(--text-counter-color);
 }

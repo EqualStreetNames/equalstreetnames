@@ -67,3 +67,40 @@ nav.navbar {
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.8) !important;
 }
+
+// Dark mode support for the modal component
+@media (prefers-color-scheme: dark) {
+  .modal-content {
+    background-color: rgb(24, 26, 27);
+    border-color: rgba(140, 130, 115, 0.2);
+    color: rgb(209, 205, 199);
+  }
+
+  .modal-header {
+    border-bottom-color: rgb(56, 61, 63);
+  }
+
+  .close {
+    color: rgb(232, 230, 227);
+    text-shadow: rgb(24 26 27) 0px 1px 0px;
+    &:hover {
+      color: rgb(232, 230, 227);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .dropdown-menu {
+    color: rgb(209, 205, 199);
+    background-color: rgb(24, 26, 27);
+    border-color: rgba(140, 130, 115, 0.15);
+  }
+
+  .dropdown-item {
+    color: rgb(209, 205, 199);
+    &:hover {
+      color: rgb(217, 213, 208);
+      background-color: rgb(35, 38, 39);
+    }
+  }
+}

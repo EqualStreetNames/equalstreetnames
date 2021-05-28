@@ -83,6 +83,12 @@
       "url": "https://naziviulica.openstreetmap.rs/"
     }
   },
+  "spain": {
+    "madrid": {
+      "name": "🇪🇸 Madrid, Spain",
+      "url": ""
+    }
+  },
   "switzerland": {
     "bern": {
       "name": "🇨🇭 Bern, Switzerland",

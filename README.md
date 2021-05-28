@@ -37,6 +37,7 @@ The project start with Brussels, Belgium in March 2020 and since then, this proj
 | 🇨🇭      | Bern                     | [bern.equalstreetnames.eu](https://bern.equalstreetnames.eu/)                                         | [Repository](https://github.com/EqualStreetNames/equalstreetnames-bern)                     | [@habi](https://github.com/habi/)                             |
 | 🇨🇭      | Lausanne                 | [lausanne.equalstreetnames.eu](https://lausanne.equalstreetnames.eu/)                                 | [Repository](https://github.com/EqualStreetNames/equalstreetnames-lausanne)                 | [@eginhard](https://github.com/eginhard/)                     |
 | 🇨🇭      | St. Gallen               | [stgallen.equalstreetnames.eu](https://stgallen.equalstreetnames.eu/)                                 | [Repository](https://github.com/EqualStreetNames/equalstreetnames-stgallen)                 | [@1-Byte](https://github.com/1-Byte/)                         |
+| 🇨🇭      | Zurich                   | [zurich.equalstreetnames.eu](https://zurich.equalstreetnames.eu/)                                     | [Repository](https://github.com/EqualStreetNames/equalstreetnames-zurich)                   | [@CaptainInler](https://github.com/CaptainInler/)             |
 
 ## How
 

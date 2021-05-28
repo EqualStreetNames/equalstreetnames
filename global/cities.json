@@ -95,6 +95,10 @@
     "stgallen": {
       "name": "🇨🇭 St. Gallen, Switzerland",
       "url": "https://stgallen.equalstreetnames.eu/"
+    },
+    "zurich": {
+      "name": "🇨🇭 Zurich, Switzerland",
+      "url": "https://zurich.equalstreetnames.eu/"
     }
   }
 }

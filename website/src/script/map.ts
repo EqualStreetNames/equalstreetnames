@@ -9,6 +9,7 @@ import addWays from './map/layers/ways';
 import addEvents from './map/events';
 
 import { lang, center, zoom, bbox, countries, style, bounds } from './index';
+import { theme } from './theme';
 
 export let map: Map;
 
@@ -18,7 +19,7 @@ export default async function (): Promise<Map> {
   const options: MapboxOptions = {
     container: 'map',
     hash: true,
-    style
+    style: typeof style !== 'undefined' ? style : (theme === 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/light-v10')
   };
 
   if (typeof center !== 'undefined' && typeof zoom !== 'undefined') {
@@ -30,68 +31,43 @@ export default async function (): Promise<Map> {
   }
 
   // Initialize map.
+  if (typeof map !== 'undefined') {
+    map.remove();
+  }
   map = new Map(options);
 
-  // Change the map theme when the browser theme changes or the user changes it (only when the default theme is light or dark)
-  if (style === 'mapbox://styles/mapbox/dark-v10' || style === 'mapbox://styles/mapbox/light-v10') {
-    changeTheme();
+  // Add controls.
+  const nav = new NavigationControl({ showCompass: false });
+  map.addControl(nav, 'top-left');
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', _ => {
-      changeTheme();
-    });
+  const scale = new ScaleControl({ unit: 'metric' });
+  map.addControl(scale);
 
-    document.getElementById('themeSwitch')?.addEventListener('click', changeTheme);
-  } else {
-    createMap();
-  }
+  const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    bbox: bbox || bounds,
+    countries,
+    enableEventLogging: false,
+    language: lang,
+    mapboxgl: mapboxgl
+  });
+  map.addControl(geocoder);
+
+  map.on('load', () => {
+    map.resize();
+
+    // Add GeoJSON sources.
+    addRelations(map);
+    addWays(map);
+    addBoundary(map);
+
+    // Add events
+    addEvents(map);
+  });
 
   map.on('idle', () => {
     document.body.classList.add('loaded');
   });
 
   return map;
-
-  function changeTheme () {
-    options.style = ((document.getElementById('themeSwitch') as HTMLInputElement).checked)
-      ? 'mapbox://styles/mapbox/dark-v10'
-      : 'mapbox://styles/mapbox/light-v10';
-
-    // Recreate the map
-    // map.setStyle would remove the data
-    map.remove();
-    map = new Map(options);
-
-    createMap();
-  }
-
-  function createMap () {
-    // Add controls.
-    const nav = new NavigationControl({ showCompass: false });
-    map.addControl(nav, 'top-left');
-
-    const scale = new ScaleControl({ unit: 'metric' });
-    map.addControl(scale);
-
-    const geocoder = new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      bbox: bbox || bounds,
-      countries,
-      enableEventLogging: false,
-      language: lang,
-      mapboxgl: mapboxgl
-    });
-    map.addControl(geocoder);
-
-    map.on('load', () => {
-      map.resize();
-
-      // Add GeoJSON sources.
-      addRelations(map);
-      addWays(map);
-      addBoundary(map);
-
-      // Add events
-      addEvents(map);
-    });
-  }
 }

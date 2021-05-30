@@ -31,6 +31,9 @@
 [submodule "cities/germany/brandenburg-an-der-havel"]
 	path = cities/germany/brandenburg-an-der-havel
 	url = https://github.com/EqualStreetNames/equalstreetnames-brandenburg-an-der-havel.git
+[submodule "cities/germany/dresden"]
+	path = cities/germany/dresden
+	url = https://github.com/EqualStreetNames/equalstreetnames-dresden.git
 [submodule "cities/germany/freising"]
 	path = cities/germany/freising
 	url = https://github.com/EqualStreetNames/equalstreetnames-freising.git
@@ -55,6 +58,9 @@
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
 	url = https://github.com/EqualStreetNames/equalstreetnames-belgrade
+[submodule "cities/spain/madrid"]
+	path = cities/spain/madrid
+	url = https://github.com/EqualStreetNames/equalstreetnames-madrid.git
 [submodule "cities/switzerland/bern"]
 	path = cities/switzerland/bern
 	url = https://github.com/EqualStreetNames/equalstreetnames-bern.git
@@ -64,3 +70,6 @@
 [submodule "cities/switzerland/stgallen"]
 	path = cities/switzerland/stgallen
 	url = https://github.com/EqualStreetNames/equalstreetnames-stgallen.git
+[submodule "cities/switzerland/zurich"]
+	path = cities/switzerland/zurich
+	url = https://github.com/EqualStreetNames/equalstreetnames-zurich.git

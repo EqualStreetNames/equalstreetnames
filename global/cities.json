@@ -46,6 +46,10 @@
       "name": "🇩🇪 Brandenburg an der Havel, Germany",
       "url": "https://brandenburg-an-der-havel.equalstreetnames.eu/"
     },
+    "dresden": {
+      "name": "🇩🇪 Dresden, Germany",
+      "url": "https://dresden.equalstreetnames.eu/"
+    },
     "freising": {
       "name": "🇩🇪 Freising, Germany",
       "url": "https://freising.equalstreetnames.eu/"
@@ -83,6 +87,12 @@
       "url": "https://naziviulica.openstreetmap.rs/"
     }
   },
+  "spain": {
+    "madrid": {
+      "name": "🇪🇸 Madrid, Spain",
+      "url": "https://madrid.equalstreetnames.eu/"
+    }
+  },
   "switzerland": {
     "bern": {
       "name": "🇨🇭 Bern, Switzerland",
@@ -95,6 +105,10 @@
     "stgallen": {
       "name": "🇨🇭 St. Gallen, Switzerland",
       "url": "https://stgallen.equalstreetnames.eu/"
+    },
+    "zurich": {
+      "name": "🇨🇭 Zurich, Switzerland",
+      "url": "https://zurich.equalstreetnames.eu/"
     }
   }
 }

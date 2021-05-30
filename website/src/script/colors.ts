@@ -22,4 +22,4 @@ const colorsDark: {[key: string]: string} = {
   o: '#525252' // other (not a person or multiple)
 };
 
-export default colorsDark;
+export { colorsLight, colorsDark };

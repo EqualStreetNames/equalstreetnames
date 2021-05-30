@@ -13,6 +13,8 @@ There are several ways to approach the inequality of street names and leverage a
 
 The project start with Brussels, Belgium in March 2020 and since then, this project has been replicated in several cities across multiple countries.
 
+You can see all the cities on a map: <https://equalstreetnames.be/>
+
 | Country | City                     | Link                                                                                                  | Data Repository                                                                             | Maintainer                                                    |
 |---------|--------------------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|---------------------------------------------------------------|
 | 🇧🇪      | Brussels                 | [equalstreetnames.brussels](https://equalstreetnames.brussels/)                                       | [Repository](https://github.com/EqualStreetNames/equalstreetnames-brussels)                 | [@jbelien](https://github.com/jbelien/)                       |

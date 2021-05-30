@@ -56,6 +56,7 @@
     "build:germany:halle-saale": "node build.js -c germany/halle-saale",
     "build:germany:leipzig": "node build.js -c germany/leipzig",
     "build:germany:munich": "node build.js -c germany/munich",
+    "build:italy:bolzano": "node build.js -c italy/bolzano",
     "build:netherlands:assen": "node build.js -c netherlands/assen",
     "build:netherlands:groningen": "node build.js -c netherlands/groningen",
     "build:netherlands:leiden": "node build.js -c netherlands/leiden",

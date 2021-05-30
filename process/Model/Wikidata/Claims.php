@@ -10,6 +10,8 @@ class Claims
     public ?array $P21;
     /** @var null|array<object> instance of */
     public ?array $P31;
+    /** @var null|array<object> named after */
+    public ?array $P138;
     /** @var null|array<object> subclass of */
     public ?array $P279;
     /** @var null|array<object> date of birth */

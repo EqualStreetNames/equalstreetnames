@@ -37,6 +37,12 @@
       "url": "https://nivelles.equalstreetnames.be/"
     }
   },
+  "france": {
+    "saint-brieuc": {
+      "name": "🇫🇷 Saint-Brieuc, France",
+      "url": "https://saint-brieuc.equalstreetnames.eu/"
+    }
+  },
   "germany": {
     "berlin": {
       "name": "🇩🇪 Berlin, Germany",

@@ -67,6 +67,12 @@
       "url": "https://munich.equalstreetnames.eu/"
     }
   },
+  "italy": {
+    "bolzano": {
+      "name": "🇮🇹 Bolzano, Italy",
+      "url": "https://bolzano.equalstreetnames.eu/"
+    }
+  },
   "netherlands": {
     "assen": {
       "name": "🇳🇱 Assen, The Netherlands",

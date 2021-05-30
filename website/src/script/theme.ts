@@ -1,22 +1,43 @@
 'use strict';
 
-const themeSwitch = document.querySelector<HTMLInputElement>('#themeSwitch');
+import initChart from './chart';
+import initMap from './map';
 
-function changeTheme (darkMode: boolean) {
-  document.documentElement.setAttribute('data-theme', (darkMode) ? 'dark' : 'light');
-  if (themeSwitch) {
-    themeSwitch.checked = darkMode;
+const themeSwitch = document.querySelector('#themeSwitch') as HTMLInputElement;
+
+export let theme!: string;
+
+function changeTheme () {
+  document.documentElement.setAttribute('data-theme', theme);
+
+  if (typeof themeSwitch !== 'undefined') {
+    themeSwitch.checked = theme === 'dark';
   }
+
+  initMap();
+
+  initChart();
 }
 
-export default function initTheme () {
-  changeTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+export default function initTheme (): void {
+  // Initialize theme
+  theme = window.matchMedia('(prefers-color-scheme: dark)').matches === true ? 'dark' : 'light';
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', theme => {
-    changeTheme(theme.matches);
+  console.log(theme);
+
+  changeTheme();
+
+  // Update theme when browser configuration changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event: MediaQueryListEvent) => {
+    theme = event.matches === true ? 'dark' : 'light';
+
+    changeTheme();
   });
 
+  // Update theme when user click on them switch
   themeSwitch?.addEventListener('click', (event: MouseEvent) => {
-    changeTheme(themeSwitch.checked);
+    theme = themeSwitch.checked === true ? 'dark' : 'light';
+
+    changeTheme();
   });
 }

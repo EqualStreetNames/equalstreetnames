@@ -2,19 +2,27 @@
 
 import { ArcElement, Chart, DoughnutController } from 'chart.js';
 
-import colors from './colors';
+import { colorsLight, colorsDark } from './colors';
 import { lang, lastUpdate, statistics } from './index';
+import { theme } from './theme';
 
-let elementCanvas: HTMLCanvasElement;
-let elementDiv: HTMLDivElement;
+export let chart: Chart<'doughnut'>;
+
+const elementCanvas = document.querySelector('#gender-chart > canvas') as HTMLCanvasElement;
+const elementDiv = elementCanvas.parentElement as HTMLDivElement;
 
 Chart.register(ArcElement, DoughnutController);
 
-function createChart (data: number[]): Chart | null {
+function createChart (data: number[]): Chart|undefined {
   const context = elementCanvas.getContext('2d');
+  const colors = theme === 'dark' ? colorsDark : colorsLight;
 
   if (context !== null) {
-    return new Chart(context, {
+    if (typeof chart !== 'undefined') {
+      chart.destroy();
+    }
+
+    chart = new Chart(context, {
       type: 'doughnut',
       data: {
         labels: [
@@ -54,9 +62,9 @@ function createChart (data: number[]): Chart | null {
         rotation: -90
       }
     });
-  }
 
-  return null;
+    return chart;
+  }
 }
 
 function updateLabel (gender: string, count: number, total: number): void {
@@ -71,6 +79,7 @@ function updateLabel (gender: string, count: number, total: number): void {
   ) as HTMLTableCellElement;
 
   const percentage = Math.round((count / total) * 100 * 100) / 100;
+  const colors = theme === 'dark' ? colorsDark : colorsLight;
 
   labelElement.style.color = colors[gender];
   countElement.innerText = `${count}`;
@@ -96,10 +105,7 @@ function updateLabels (count: {
   });
 }
 
-export default function (element: HTMLCanvasElement): void {
-  elementCanvas = element;
-  elementDiv = elementCanvas.parentElement as HTMLDivElement;
-
+export default function (): void {
   const count = {
     f: statistics.F,
     m: statistics.M,

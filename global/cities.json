@@ -79,6 +79,12 @@
       "url": "https://bolzano.equalstreetnames.eu/"
     }
   },
+  "luxembourg": {
+    "luxembourg": {
+      "name": "🇱🇺 Luxembourg, Luxembourg",
+      "url": "https://luxembourg.equalstreetnames.eu/"
+    }
+  },
   "netherlands": {
     "assen": {
       "name": "🇳🇱 Assen, The Netherlands",

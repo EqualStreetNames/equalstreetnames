@@ -11,9 +11,9 @@ import getNickname from './wikidata/nicknames';
 import getWikipedia from './wikidata/sitelinks';
 import getImage from './wikidata/image';
 
-import colors from './colors';
-
+import { colorsLight, colorsDark } from './colors';
 import { lang } from './index';
+import { theme } from './theme';
 
 interface Property {
   name: string;
@@ -23,8 +23,7 @@ interface Property {
   details?: string;
 }
 
-export default function (
-  feature: MapboxGeoJSONFeature): string {
+export default function (feature: MapboxGeoJSONFeature): string {
   const properties = feature.properties as Property;
 
   const streetname = getStreetname(properties);
@@ -76,6 +75,8 @@ export default function (
 function popupDetails (
   details: {[key: string]: string | number | boolean}
 ): string {
+  const colors = theme === 'dark' ? colorsDark : colorsLight;
+
   const wikidata = details.wikidata as string|null;
   const name = getName(details, lang);
   const birth = getBirth(details);

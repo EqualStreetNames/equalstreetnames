@@ -365,44 +365,105 @@ class GeoJSONCommand extends AbstractCommand
         $properties->gender = null;
         $properties->details = null;
 
+        // Try to extract information from `name:etymology:wikidata` tag in OpenStreetMap
         if (isset($object->tags->{'name:etymology:wikidata'})) { // @phpstan-ignore-line
-            // If `name:etymology:wikidata` tag is set, use it to extract details and determine gender.
-            $identifiers = explode(';', $object->tags->{'name:etymology:wikidata'}); // @phpstan-ignore-line
-            $identifiers = array_map('trim', $identifiers);
+            $idsEtymology = explode(';', $object->tags->{'name:etymology:wikidata'}); // @phpstan-ignore-line
+            $idsEtymology = array_map('trim', $idsEtymology);
 
-            $details = [];
-            foreach ($identifiers as $identifier) {
-                $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $identifier);
-                if (!file_exists($wikiPath) || !is_readable($wikiPath)) {
-                    $warnings[] = sprintf('<warning>File "%s" doesn\'t exist or is not readable (tagged in %s(%s)). You maybe need to run "wikidata" command first.</warning>', $wikiPath, $object->type, $object->id);
-                } else {
-                    $content = file_get_contents($wikiPath);
-                    $json = $content !== false ? json_decode($content) : null;
-                    if (is_null($json)) {
-                        throw new ErrorException(sprintf('Can\'t read "%s".', $wikiPath));
+            $detailsEtymology = [];
+            foreach ($idsEtymology as $id) {
+                $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $id);
+
+                $entity = Wikidata::read($wikiPath);
+                if ($entity->id !== $id) {
+                    $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged as `name:etymology:wikidata` in %s(%s)).', $id, $entity->id, $object->type, $object->id);
+                }
+
+                $detailsEtymology[] = $this->extractDetailsFromWikidata($entity, $warnings);
+            }
+
+            $_person = array_unique(array_column($detailsEtymology, 'person'));
+            $_gender = array_unique(array_column($detailsEtymology, 'gender'));
+
+            $genderEtymology = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : null;
+
+            if (count($detailsEtymology) === 1) {
+                $detailsEtymology = current($detailsEtymology);
+            }
+        }
+
+        // Try to extract information from `P138` (NamedAfter) property in Wikidata
+        if (isset($object->tags->wikidata)) {
+            $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $object->tags->wikidata);
+
+            $entity = Wikidata::read($wikiPath);
+            if ($entity->id !== $object->tags->wikidata) {
+                $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged as `wikidata` in %s(%s)).', $object->tags->wikidata, $entity->id, $object->type, $object->id);
+            }
+
+            $idsWikidata = Wikidata::extractNamedAfter($entity);
+
+            if (!is_null($idsWikidata)) {
+                $detailsWikidata = [];
+                foreach ($idsWikidata as $id) {
+                    $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $id);
+
+                    $entity = Wikidata::read($wikiPath);
+                    if ($entity->id !== $id) {
+                        $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (set as `P138` property in "%s").', $id, $entity->id, $object->tags->wikidata);
                     }
-                    $entity = current($json->entities);
 
-                    if ($entity->id !== $identifier) {
-                        $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged in %s(%s)).', $identifier, $entity->id, $object->type, $object->id);
-                    }
+                    $detailsWikidata[] = $this->extractDetailsFromWikidata($entity, $warnings);
+                }
 
-                    $details[] = $this->extractDetailsFromWikidata($entity, $warnings);
+                $_person = array_unique(array_column($detailsWikidata, 'person'));
+                $_gender = array_unique(array_column($detailsWikidata, 'gender'));
+
+                $genderWikidata = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : null;
+
+                if (count($detailsWikidata) === 1) {
+                    $detailsWikidata = current($detailsWikidata);
                 }
             }
+        }
 
-            $_person = array_unique(array_column($details, 'person'));
-            $_gender = array_unique(array_column($details, 'gender'));
+        if (isset($idsEtymology, $idsWikidata)) {
+            sort($idsEtymology);
+            sort($idsWikidata);
 
-            $gender = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : null;
-
-            if (count($details) === 1) {
-                $details = current($details);
+            if ($idsEtymology !== $idsWikidata) {
+                $warnings[] = sprintf(
+                    'Mismatch between `name:etymology:wikidata` tag (%s) and `P138` (NamedAfter) property (%s) for %s(%s).',
+                    implode(', ', $idsEtymology),
+                    implode(', ', $idsWikidata),
+                    $object->type,
+                    $object->id
+                );
             }
 
+            if (($genderEtymology ?? null) !== ($genderWikidata ?? null)) {
+                $warnings[] = sprintf(
+                    '<warning>Gender mismatch (%s/%s) between `name:etymology:wikidata` tag (%s) and `P138` (NamedAfter) property (%s) for %s(%s).</warning>',
+                    $genderEtymology ?? '-',
+                    $genderWikidata ?? '-',
+                    implode(', ', $idsEtymology),
+                    implode(', ', $idsWikidata),
+                    $object->type,
+                    $object->id
+                );
+            }
+        }
+
+        if (isset($genderEtymology, $detailsEtymology)) {
+            // If `name:etymology:wikidata` tag is set, use it to extract details and determine gender.
             $properties->source = 'wikidata';
-            $properties->gender = $gender;
-            $properties->details = $details;
+            $properties->gender = $genderEtymology;
+            $properties->details = $detailsEtymology;
+        } elseif (isset($genderWikidata, $detailsWikidata)) {
+            // If `P138` (NamedAfter) property is set, use it to extract details and determine gender.
+            $properties->source = 'wikidata';
+            $properties->gender = $genderWikidata;
+            $properties->details = $detailsWikidata;
         } elseif (!is_null($details = $this->extractDetailsFromCSV($object, $warnings))) {
             // If relation/way is defined in CSV file, use it to extract details and determine gender.
             $properties->source = 'csv';

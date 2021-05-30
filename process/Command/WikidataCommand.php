@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\Model\Overpass\Element;
 use App\Model\Overpass\Overpass;
+use App\Wikidata\Wikidata;
 use ErrorException;
 use Exception;
 use GuzzleHttp\Exception\BadResponseException;
@@ -96,7 +97,9 @@ class WikidataCommand extends AbstractCommand
             $progressBar->start();
 
             foreach ($elements as $element) {
+                /** @var string|null */
                 $wikidataTag = $element->tags->wikidata ?? null; // @phpstan-ignore-line
+                /** @var string|null */
                 $etymologyTag = $element->tags->{'name:etymology:wikidata'} ?? null; // @phpstan-ignore-line
 
                 // Download Wikidata item(s) defined in `name:etymology:wikidata` tag
@@ -120,12 +123,39 @@ class WikidataCommand extends AbstractCommand
                 }
 
                 // Download Wikidata item defined in `wikidata` tag
-                // if (!is_null($wikidataTag)) {
-                //     $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
-                //     if (!file_exists($path)) {
-                //       self::save($wikidataTag, $element, $path, $warnings);
-                //     }
-                // }
+                if (!is_null($wikidataTag)) {
+                    // Check that the value of the tag is a valid Wikidata item identifier
+                    if (preg_match('/^Q[0-9]+$/', $wikidataTag) !== 1) {
+                        $warnings[] = sprintf('Format of `wikidata` is invalid (%s) for %s(%d).', $wikidataTag, $element->type, $element->id);
+                        continue;
+                    }
+
+                    // Download Wikidata item
+                    $path = sprintf('%s/%s.json', $outputDir, $wikidataTag);
+                    if (!file_exists($path)) {
+                        self::save($wikidataTag, $element, $path, $warnings);
+
+                        $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $wikidataTag);
+                        $entity = Wikidata::read($wikiPath);
+
+                        $identifiers = Wikidata::extractNamedAfter($entity);
+                        if (!is_null($identifiers)) {
+                            foreach ($identifiers as $identifier) {
+                                // Check that the value of the tag is a valid Wikidata item identifier
+                                if (preg_match('/^Q[0-9]+$/', $identifier) !== 1) {
+                                    $warnings[] = sprintf('Format of `P138` (NamedAfter) property is invalid (%s) for in item "%s".', $identifier, $wikidataTag);
+                                    continue;
+                                }
+
+                                // Download Wikidata item
+                                $path = sprintf('%s/%s.json', $outputDir, $identifier);
+                                if (!file_exists($path)) {
+                                    self::save($identifier, $element, $path, $warnings);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 $progressBar->advance();
             }

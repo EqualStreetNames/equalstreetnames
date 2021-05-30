@@ -103,7 +103,7 @@ class WikidataCommand extends AbstractCommand
                 $etymologyTag = $element->tags->{'name:etymology:wikidata'} ?? null; // @phpstan-ignore-line
 
                 // Download Wikidata item(s) defined in `name:etymology:wikidata` tag
-                if (!is_null($etymologyTag)) {
+                if (!is_null($etymologyTag) && $etymologyTag !== $wikidataTag) {
                     $identifiers = explode(';', $etymologyTag);
                     $identifiers = array_map('trim', $identifiers);
 
@@ -135,7 +135,7 @@ class WikidataCommand extends AbstractCommand
                     if (!file_exists($path)) {
                         self::save($wikidataTag, $element, $path, $warnings);
 
-                        $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $wikidataTag);
+                        $wikiPath = sprintf('%s/%s.json', $outputDir, $wikidataTag);
                         $entity = Wikidata::read($wikiPath);
 
                         $identifiers = Wikidata::extractNamedAfter($entity);

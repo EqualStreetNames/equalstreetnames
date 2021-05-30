@@ -23,8 +23,6 @@ export default function initTheme (): void {
   // Initialize theme
   theme = window.matchMedia('(prefers-color-scheme: dark)').matches === true ? 'dark' : 'light';
 
-  console.log(theme);
-
   changeTheme();
 
   // Update theme when browser configuration changes

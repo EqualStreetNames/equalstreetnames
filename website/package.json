@@ -51,6 +51,7 @@
     "build:belgium:nivelles": "node build.js -c belgium/nivelles",
     "build:germany:berlin": "node build.js -c germany/berlin",
     "build:germany:brandenburg-an-der-havel": "node build.js -c germany/brandenburg-an-der-havel",
+    "build:germany:dresden": "node build.js -c germany/dresden",
     "build:germany:freising": "node build.js -c germany/freising",
     "build:germany:halle-saale": "node build.js -c germany/halle-saale",
     "build:germany:leipzig": "node build.js -c germany/leipzig",

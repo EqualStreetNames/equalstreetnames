@@ -385,7 +385,7 @@ class GeoJSONCommand extends AbstractCommand
             $_person = array_unique(array_column($detailsEtymology, 'person'));
             $_gender = array_unique(array_column($detailsEtymology, 'gender'));
 
-            $genderEtymology = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : null;
+            $genderEtymology = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : false;
 
             if (count($detailsEtymology) === 1) {
                 $detailsEtymology = current($detailsEtymology);
@@ -419,7 +419,7 @@ class GeoJSONCommand extends AbstractCommand
                 $_person = array_unique(array_column($detailsWikidata, 'person'));
                 $_gender = array_unique(array_column($detailsWikidata, 'gender'));
 
-                $genderWikidata = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : null;
+                $genderWikidata = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : false;
 
                 if (count($detailsWikidata) === 1) {
                     $detailsWikidata = current($detailsWikidata);
@@ -457,12 +457,12 @@ class GeoJSONCommand extends AbstractCommand
         if (isset($genderEtymology, $detailsEtymology)) {
             // If `name:etymology:wikidata` tag is set, use it to extract details and determine gender.
             $properties->source = 'wikidata';
-            $properties->gender = $genderEtymology;
+            $properties->gender = $genderEtymology ? $genderEtymology : null;
             $properties->details = $detailsEtymology;
         } elseif (isset($genderWikidata, $detailsWikidata)) {
             // If `P138` (NamedAfter) property is set, use it to extract details and determine gender.
             $properties->source = 'wikidata';
-            $properties->gender = $genderWikidata;
+            $properties->gender = $genderWikidata ? $genderWikidata : null;
             $properties->details = $detailsWikidata;
         } elseif (!is_null($details = $this->extractDetailsFromCSV($object, $warnings))) {
             // If relation/way is defined in CSV file, use it to extract details and determine gender.

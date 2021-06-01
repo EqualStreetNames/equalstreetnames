@@ -13,7 +13,7 @@
     "@parcel/transformer-sass": "^2.0.0-nightly.690",
     "@turf/turf": "^5.1.6",
     "@types/ol": "^6.5.0",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "commander": "^7.2.0",
     "eslint": "^7.27.0",

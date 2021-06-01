@@ -33,7 +33,7 @@
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@mapbox/mapbox-gl-geocoder": "^4.7.0",
     "bootstrap": "^4.6.0",
-    "chart.js": "^3.2.0",
+    "chart.js": "^3.3.2",
     "jquery": "^3.6.0",
     "maplibre-gl": "^1.14.0",
     "popper.js": "^1.16.1"

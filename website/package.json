@@ -32,7 +32,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@mapbox/mapbox-gl-geocoder": "^4.7.1",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.0.1",
     "chart.js": "^3.3.2",
     "jquery": "^3.6.0",
     "maplibre-gl": "^1.14.0",

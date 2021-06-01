@@ -16,7 +16,7 @@
     "@types/mapbox__mapbox-gl-geocoder": "^4.7.0",
     "@types/maplibre-gl": "^1.13.1",
     "@types/node": "^15.6.1",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "commander": "^7.2.0",
     "eslint": "^7.27.0",

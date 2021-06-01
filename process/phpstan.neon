@@ -13,5 +13,4 @@ parameters:
     # checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
     ignoreErrors:
-        - '#Cannot access property \$gender on App\\Model\\Details\\Details\|null.#'
         - '#Method App\\Command\\AbstractCommand::execute\(\) should return int but return statement is missing.#'

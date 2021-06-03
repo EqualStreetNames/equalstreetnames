@@ -373,14 +373,22 @@ class GeoJSONCommand extends AbstractCommand
 
             $detailsEtymology = [];
             foreach ($idsEtymology as $id) {
-                $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $id);
-
-                $entity = Wikidata::read($wikiPath);
-                if ($entity->id !== $id) {
-                    $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged as `name:etymology:wikidata` in %s(%s)).', $id, $entity->id, $object->type, $object->id);
+                if (preg_match('/^Q[0-9]+$/', $id) !== 1) {
+                    $warnings[] = sprintf('Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).', $id, $object->type, $object->id);
+                    continue;
                 }
 
-                $detailsEtymology[] = $this->extractDetailsFromWikidata($entity, $warnings);
+                try {
+                    $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $id);
+                    $entity = Wikidata::read($wikiPath);
+                    if ($entity->id !== $id) {
+                        $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged as `name:etymology:wikidata` in %s(%s)).', $id, $entity->id, $object->type, $object->id);
+                    }
+
+                    $detailsEtymology[] = $this->extractDetailsFromWikidata($entity, $warnings);
+                } catch (FileException $e) {
+                    $warnings[] = sprintf($e->getMessage());
+                }
             }
 
             $_person = array_unique(array_column($detailsEtymology, 'person'));
@@ -395,35 +403,44 @@ class GeoJSONCommand extends AbstractCommand
 
         // Try to extract information from `P138` (NamedAfter) property in Wikidata
         if (isset($object->tags->wikidata)) {
-            $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $object->tags->wikidata);
+            if (preg_match('/^Q[0-9]+$/', $object->tags->wikidata) !== 1) {
+                $warnings[] = sprintf('Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).', $id, $object->type, $object->id);
+            } else {
 
-            $entity = Wikidata::read($wikiPath);
-            if ($entity->id !== $object->tags->wikidata) {
-                $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged as `wikidata` in %s(%s)).', $object->tags->wikidata, $entity->id, $object->type, $object->id);
-            }
-
-            $idsWikidata = Wikidata::extractNamedAfter($entity);
-
-            if (!is_null($idsWikidata)) {
-                $detailsWikidata = [];
-                foreach ($idsWikidata as $id) {
-                    $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $id);
+                try {
+                    $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $object->tags->wikidata);
 
                     $entity = Wikidata::read($wikiPath);
-                    if ($entity->id !== $id) {
-                        $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (set as `P138` property in "%s").', $id, $entity->id, $object->tags->wikidata);
+                    if ($entity->id !== $object->tags->wikidata) {
+                        $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (tagged as `wikidata` in %s(%s)).', $object->tags->wikidata, $entity->id, $object->type, $object->id);
                     }
 
-                    $detailsWikidata[] = $this->extractDetailsFromWikidata($entity, $warnings);
-                }
+                    $idsWikidata = Wikidata::extractNamedAfter($entity);
 
-                $_person = array_unique(array_column($detailsWikidata, 'person'));
-                $_gender = array_unique(array_column($detailsWikidata, 'gender'));
+                    if (!is_null($idsWikidata)) {
+                        $detailsWikidata = [];
+                        foreach ($idsWikidata as $id) {
+                            $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $id);
 
-                $genderWikidata = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : false;
+                            $entity = Wikidata::read($wikiPath);
+                            if ($entity->id !== $id) {
+                                $warnings[] = sprintf('Entity "%s" is (probably) redirected to "%s" (set as `P138` property in "%s").', $id, $entity->id, $object->tags->wikidata);
+                            }
 
-                if (count($detailsWikidata) === 1) {
-                    $detailsWikidata = current($detailsWikidata);
+                            $detailsWikidata[] = $this->extractDetailsFromWikidata($entity, $warnings);
+                        }
+
+                        $_person = array_unique(array_column($detailsWikidata, 'person'));
+                        $_gender = array_unique(array_column($detailsWikidata, 'gender'));
+
+                        $genderWikidata = (count($_person) === 1 && current($_person) === true) ? (count($_gender) === 1 ? current($_gender) : '+') : false;
+
+                        if (count($detailsWikidata) === 1) {
+                            $detailsWikidata = current($detailsWikidata);
+                        }
+                    }
+                } catch (FileException $e) {
+                    $warnings[] = sprintf($e->getMessage());
                 }
             }
         }

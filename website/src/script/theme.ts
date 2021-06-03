@@ -10,7 +10,7 @@ export let theme!: string;
 function changeTheme () {
   document.documentElement.setAttribute('data-theme', theme);
 
-  if (themeSwitch) {
+  if (typeof themeSwitch?.checked !== 'undefined') {
     themeSwitch.checked = theme === 'dark';
   }
 

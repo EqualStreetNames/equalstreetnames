@@ -406,7 +406,6 @@ class GeoJSONCommand extends AbstractCommand
             if (preg_match('/^Q[0-9]+$/', $object->tags->wikidata) !== 1) {
                 $warnings[] = sprintf('Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).', $id, $object->type, $object->id);
             } else {
-
                 try {
                     $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $object->tags->wikidata);
 

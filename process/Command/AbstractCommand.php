@@ -2,8 +2,8 @@
 
 namespace App\Command;
 
+use App\Exception\FileException;
 use App\Model\Config\Config;
-use ErrorException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\LogicException;
@@ -109,13 +109,13 @@ abstract class AbstractCommand extends Command
      * @param OutputInterface $output
      * @return int
      *
-     * @throws ErrorException
+     * @throws FileException
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // Check if directory for city exist.
         if (!file_exists($this->cityDir) || !is_dir($this->cityDir)) {
-            throw new ErrorException(sprintf('Directory "%s" doesn\'t exist.', $this->cityDir));
+            throw new FileException(sprintf('Directory "%s" doesn\'t exist.', $this->cityDir));
         }
 
         // Create `data` folder in city directory.
@@ -130,7 +130,7 @@ abstract class AbstractCommand extends Command
         // Check if `config.php` file exist.
         $configPath = sprintf('%s/%s', $this->cityDir, self::CONFIG_FILENAME);
         if (!file_exists($configPath) || !is_readable($configPath)) {
-            throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $configPath));
+            throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable.', $configPath));
         }
         // Read configuration.
         $configArray = require $configPath;

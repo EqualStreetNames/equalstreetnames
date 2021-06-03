@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use ErrorException;
+use App\Exception\ConfigException;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\Console\Command\Command;
@@ -46,8 +46,6 @@ class BoundaryCommand extends AbstractCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
-     *
-     * @throws GuzzleException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -55,7 +53,7 @@ class BoundaryCommand extends AbstractCommand
             parent::execute($input, $output);
 
             if (!isset($this->config->relationId)) {
-                throw new ErrorException('"relationId" parameter is missing or is invalid in "config.php".');
+                throw new ConfigException('"relationId" parameter is missing or is invalid in "config.php".');
             }
 
             self::save($this->config->relationId, sprintf('%s/%s', $this->cityOutputDir, self::FILENAME));

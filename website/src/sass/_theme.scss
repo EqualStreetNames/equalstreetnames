@@ -13,6 +13,7 @@
 	--border-color-modal: rgba(0, 0, 0, 0.2);
 	--bg-color-dropdown-hover: #E9ECEF;
 	--text-color-dropdown-hover: #000000;
+	--fa-color-navbar: rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] {
@@ -30,4 +31,5 @@
 	--border-color-modal: rgba(140, 130, 115, 0.2);
 	--bg-color-dropdown-hover: #232627;
 	--text-color-dropdown-hover: #d9d5d0;
+	--fa-color-navbar: rgba(255, 255, 255, 0.75);
 }

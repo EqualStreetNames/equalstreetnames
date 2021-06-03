@@ -404,7 +404,7 @@ class GeoJSONCommand extends AbstractCommand
         // Try to extract information from `P138` (NamedAfter) property in Wikidata
         if (isset($object->tags->wikidata)) {
             if (preg_match('/^Q[0-9]+$/', $object->tags->wikidata) !== 1) {
-                $warnings[] = sprintf('Format of `name:etymology:wikidata` is invalid (%s) for %s(%d).', $id, $object->type, $object->id);
+                $warnings[] = sprintf('Format of `wikidata` is invalid (%s) for %s(%d).', $object->tags->wikidata, $object->type, $object->id);
             } else {
                 try {
                     $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $object->tags->wikidata);

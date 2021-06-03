@@ -2,7 +2,8 @@
 
 namespace App\Command;
 
-use App\Model\Config\Config;
+use App\Exception\FileException;
+use App\Exception\GeoJSONException;
 use App\Model\Details\Details;
 use App\Model\GeoJSON\Feature;
 use App\Model\GeoJSON\FeatureCollection;
@@ -121,12 +122,12 @@ class GeoJSONCommand extends AbstractCommand
             // Check path of Overpass query result for relations.
             $relationPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
             }
             // Check path of Overpass query result for ways.
             $wayPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_WAY);
             if (!file_exists($wayPath) || !is_readable($wayPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
             }
 
             // Read Overpass queries result.
@@ -173,7 +174,7 @@ class GeoJSONCommand extends AbstractCommand
                 $output->writeln('<warning>No way feature.</warning>');
             }
             if (count($geojsonR->features) === 0 && count($geojsonW->features) === 0) {
-                throw new ErrorException('No feature at all!');
+                throw new GeoJSONException('No feature at all!');
             }
 
             // Store consolidated GeoJSON files.

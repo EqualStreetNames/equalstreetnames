@@ -2,10 +2,11 @@
 
 namespace App\Command;
 
+use App\Exception\FileException;
+use App\Exception\OSMException;
 use App\Model\Overpass\Element;
 use App\Model\Overpass\Overpass;
 use App\Wikidata\Wikidata;
-use ErrorException;
 use Exception;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\GuzzleException;
@@ -50,8 +51,6 @@ class WikidataCommand extends AbstractCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
-     *
-     * @throws GuzzleException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -60,11 +59,11 @@ class WikidataCommand extends AbstractCommand
 
             $relationPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
             }
             $wayPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_WAY);
             if (!file_exists($wayPath) || !is_readable($wayPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
             }
 
             $contentR = file_get_contents($relationPath);
@@ -83,7 +82,7 @@ class WikidataCommand extends AbstractCommand
 
             // Check count of elements with Wikidata information.
             if (count($elements) === 0) {
-                throw new ErrorException('No element with Wikidata information!');
+                throw new OSMException('No element with Wikidata information!');
             }
 
             // Create wikidata directory to store results.

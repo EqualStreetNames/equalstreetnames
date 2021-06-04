@@ -45,7 +45,7 @@ You can see all the cities on a map: <https://equalstreetnames.org/>
 | 🇨🇭      | Lausanne                 | [lausanne.equalstreetnames.eu](https://lausanne.equalstreetnames.eu/)                                 | [Repository](https://github.com/EqualStreetNames/equalstreetnames-lausanne)                 | [@eginhard](https://github.com/eginhard/)                      |
 | 🇨🇭      | St. Gallen               | [stgallen.equalstreetnames.eu](https://stgallen.equalstreetnames.eu/)                                 | [Repository](https://github.com/EqualStreetNames/equalstreetnames-stgallen)                 | [@1-Byte](https://github.com/1-Byte/)                          |
 | 🇨🇭      | Zurich                   | [zurich.equalstreetnames.eu](https://zurich.equalstreetnames.eu/)                                     | [Repository](https://github.com/EqualStreetNames/equalstreetnames-zurich)                   | [@CaptainInler](https://github.com/CaptainInler/)              |
-| 🇺🇸      | San Francisco            |                                                                                                       | [Repository](https://github.com/EqualStreetNames/equalstreetnames-sanfrancisco)             |                                                                |
+| 🇺🇸      | San Francisco            | [sanfrancisco.equalstreetnames.org](https://sanfrancisco.equalstreetnames.org/)                       | [Repository](https://github.com/EqualStreetNames/equalstreetnames-sanfrancisco)             |                                                                |
 
 ## How
 

@@ -128,5 +128,11 @@
       "name": "🇨🇭 Zurich, Switzerland",
       "url": "https://zurich.equalstreetnames.eu/"
     }
+  },
+  "usa": {
+    "sanfrancisco": {
+      "name": "🇺🇸 San Francisco, USA",
+      "url": ""
+    }
   }
 }

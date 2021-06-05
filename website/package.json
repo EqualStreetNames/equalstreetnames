@@ -64,6 +64,7 @@
     "build:netherlands:assen": "node build.js -c netherlands/assen",
     "build:netherlands:groningen": "node build.js -c netherlands/groningen",
     "build:netherlands:leiden": "node build.js -c netherlands/leiden",
+    "build:philippines:sanpablo": "node build.js -c philippines/sanpablo",
     "build:serbia:belgrade": "node build.js -c serbia/belgrade",
     "build:spain:madrid": "node build.js -c spain/madrid",
     "build:switzerland:bern": "node build.js -c switzerland/bern",

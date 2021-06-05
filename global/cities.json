@@ -111,6 +111,12 @@
       "url": "https://leiden.equalstreetnames.eu/"
     }
   },
+  "philippines": {
+    "sanpablo": {
+      "name": "🇵🇭 San Pablo, Philippines",
+      "url": "https://sanpablo.equalstreetnames.org/"
+    }
+  },
   "serbia": {
     "belgrade": {
       "name": "🇷🇸 Belgrade, Serbia",

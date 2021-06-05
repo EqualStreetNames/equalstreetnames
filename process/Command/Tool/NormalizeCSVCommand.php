@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Command;
+namespace App\Command\Tool;
 
+use App\Command\AbstractCommand;
+use App\Command\GeoJSONCommand;
 use App\Exception\CSVException;
 use App\Exception\FileException;
 use Exception;
@@ -13,12 +15,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Normalize `data.csv` file.
  *
- * @package App\Command
+ * @package App\Command\Tool
  */
 class NormalizeCSVCommand extends AbstractCommand
 {
     /** {@inheritdoc} */
-    protected static $defaultName = 'normalize-csv';
+    protected static $defaultName = 'tool:normalize-csv';
 
     /**
      * {@inheritdoc}

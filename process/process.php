@@ -6,8 +6,9 @@ require __DIR__ . '/vendor/autoload.php';
 use App\Command\BoundaryCommand;
 use App\Command\GeoJSONCommand;
 use App\Command\OverpassCommand;
-use App\Command\NormalizeCSVCommand;
 use App\Command\StatisticsCommand;
+use App\Command\Tool\CalendarCommand;
+use App\Command\Tool\NormalizeCSVCommand;
 use App\Command\WikidataCommand;
 use Symfony\Component\Console\Application;
 
@@ -19,6 +20,7 @@ $application->add(new BoundaryCommand());
 $application->add(new GeoJSONCommand());
 $application->add(new StatisticsCommand());
 
+$application->add(new CalendarCommand());
 $application->add(new NormalizeCSVCommand());
 
 $application->run();

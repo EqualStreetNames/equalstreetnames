@@ -2,7 +2,13 @@
   "austria": {
     "vienna": {
       "name": "🇦🇹 Vienna, Austria",
-      "url": "https://vienna.equalstreetnames.org/"
+      "url": "https://vienna.equalstreetnames.eu/"
+    }
+  },
+  "belarus": {
+    "minsk": {
+      "name": "🇧🇾 Minsk, Belarus",
+      "url": "https://minsk.equalstreetnames.org/"
     }
   },
   "belgium": {

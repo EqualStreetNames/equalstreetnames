@@ -141,6 +141,12 @@
       "url": "https://zurich.equalstreetnames.eu/"
     }
   },
+  "united-kingdom": {
+    "chester-le-street": {
+      "name": "🇬🇧 Chester-le-Street, United Kingdom",
+      "url": "https://chester-le-street.equalstreetnames.org/"
+    }
+  },
   "usa": {
     "sanfrancisco": {
       "name": "🇺🇸 San Francisco, USA",

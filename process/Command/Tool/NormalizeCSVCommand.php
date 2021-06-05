@@ -66,6 +66,9 @@ class NormalizeCSVCommand extends AbstractCommand
                 if (!in_array($record[0], ['relation', 'way'], true)) {
                     throw new CSVException(sprintf('Invalid type "%s" at line %d.', $record[0], $i + 2));
                 }
+                if (intval($record[1]) <= 0) {
+                    throw new CSVException(sprintf('Invalid relation/way id "%s" at line %d.', $record[1], $i + 2));
+                }
                 if (in_array($record[1], $ids[$record[0]], true)) {
                     throw new CSVException(sprintf('Duplicate id %s(%s) at line %d.', $record[0], $record[1], $i + 2));
                 }

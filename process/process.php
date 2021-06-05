@@ -6,8 +6,8 @@ require __DIR__ . '/vendor/autoload.php';
 use App\Command\BoundaryCommand;
 use App\Command\GeoJSONCommand;
 use App\Command\OverpassCommand;
-use App\Command\NormalizeCSVCommand;
 use App\Command\StatisticsCommand;
+use App\Command\Tool\NormalizeCSVCommand;
 use App\Command\WikidataCommand;
 use Symfony\Component\Console\Application;
 

@@ -70,6 +70,7 @@
     "build:switzerland:lausanne": "node build.js -c switzerland/lausanne",
     "build:switzerland:stgallen": "node build.js -c switzerland/stgallen",
     "build:switzerland:zurich": "node build.js -c switzerland/zurich",
+    "build:united-kingdom:chester-le-street": "node build.js -c united-kingdom/chester-le-street",
     "build:usa:sanfrancisco": "node build.js -c usa/sanfrancisco"
   }
 }

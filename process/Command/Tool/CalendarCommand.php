@@ -59,10 +59,10 @@ class CalendarCommand extends Command
                     /** @var CronExpression[] */
                     $calendar = [];
                     foreach ($yaml['on']['schedule'] as $schedule) {
-                        $crons = array_values(array_filter($schedule, function ($key) {
+                        $crons = array_values(array_filter($schedule, function ($key): bool {
                             return $key === 'cron';
                         }, ARRAY_FILTER_USE_KEY));
-                        $cronExpressions = array_map(function ($c) {
+                        $cronExpressions = array_map(function ($c): CronExpression {
                             return new CronExpression($c);
                         }, $crons);
                         $calendar = array_merge($calendar, $cronExpressions);
@@ -71,12 +71,12 @@ class CalendarCommand extends Command
                     foreach ($calendar as $cron) {
                         $parts = $cron->getParts();
                         $day = $parts[4];
-                        if ($day === 0) {
-                            $day = 7;
+                        if ($day === '0') {
+                            $day = '7';
                         }
                         $time = sprintf('%02s:%02s', $parts[1], $parts[0]);
 
-                        $duplicates = array_filter($data, function ($row) use ($day, $time) {
+                        $duplicates = array_filter($data, function ($row) use ($day, $time): bool {
                             return ($row[1] === $day && $row[2] === $time) || ($row[1] === '*' && $row[2] === $time) || ($day === '*' && $row[2] === $time);
                         });
                         $warning = count($duplicates) > 0 ? '⚠ Duplicate' : null;
@@ -93,10 +93,12 @@ class CalendarCommand extends Command
                 }
             }
 
+            $days = array_column($data, 1);
+            $times = array_column($data, 2);
             array_multisort(
-                array_column($data, 1),
+                $days,
                 SORT_ASC,
-                array_column($data, 2),
+                $times,
                 SORT_ASC,
                 $data
             );

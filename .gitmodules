@@ -70,6 +70,9 @@
 [submodule "cities/netherlands/leiden"]
 	path = cities/netherlands/leiden
 	url = https://github.com/EqualStreetNames/equalstreetnames-leiden.git
+[submodule "cities/philippines/sanpablo"]
+	path = cities/philippines/sanpablo
+	url = https://github.com/EqualStreetNames/equalstreetnames-sanpablo.git
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
 	url = https://github.com/EqualStreetNames/equalstreetnames-belgrade

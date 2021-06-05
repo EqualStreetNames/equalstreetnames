@@ -1,4 +1,10 @@
 {
+  "austria": {
+    "vienna": {
+      "name": "🇦🇹 Vienna, Austria",
+      "url": "https://vienna.equalstreetnames.org/"
+    }
+  },
   "belgium": {
     "brussels": {
       "name": "🇧🇪 Brussels, Belgium",

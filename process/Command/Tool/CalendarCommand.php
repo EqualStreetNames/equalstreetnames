@@ -59,15 +59,21 @@ class CalendarCommand extends Command
                     /** @var CronExpression[] */
                     $calendar = [];
                     foreach ($yaml['on']['schedule'] as $schedule) {
-                        $crons = array_values(array_filter($schedule, function ($key) { return $key === 'cron'; }, ARRAY_FILTER_USE_KEY));
-                        $cronExpressions = array_map(function ($c) { return new CronExpression($c); }, $crons);
+                        $crons = array_values(array_filter($schedule, function ($key) {
+                            return $key === 'cron';
+                        }, ARRAY_FILTER_USE_KEY));
+                        $cronExpressions = array_map(function ($c) {
+                            return new CronExpression($c);
+                        }, $crons);
                         $calendar = array_merge($calendar, $cronExpressions);
                     }
 
                     foreach ($calendar as $cron) {
                         $parts = $cron->getParts();
                         $day = $parts[4];
-                        if ($day === 0) { $day = 7; }
+                        if ($day === 0) {
+                            $day = 7;
+                        }
                         $time = sprintf('%02s:%02s', $parts[1], $parts[0]);
 
                         $duplicates = array_filter($data, function ($row) use ($day, $time) {
@@ -88,8 +94,10 @@ class CalendarCommand extends Command
             }
 
             array_multisort(
-                array_column($data, 1), SORT_ASC,
-                array_column($data, 2), SORT_ASC,
+                array_column($data, 1),
+                SORT_ASC,
+                array_column($data, 2),
+                SORT_ASC,
                 $data
             );
 

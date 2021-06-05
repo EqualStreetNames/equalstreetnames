@@ -88,6 +88,9 @@
 [submodule "cities/switzerland/zurich"]
 	path = cities/switzerland/zurich
 	url = https://github.com/EqualStreetNames/equalstreetnames-zurich.git
+[submodule "cities/united-kingdom/chester-le-street"]
+	path = cities/united-kingdom/chester-le-street
+	url = https://github.com/EqualStreetNames/equalstreetnames-chester-le-street.git
 [submodule "cities/usa/sanfrancisco"]
 	path = cities/usa/sanfrancisco
 	url = https://github.com/EqualStreetNames/equalstreetnames-sanfrancisco.git

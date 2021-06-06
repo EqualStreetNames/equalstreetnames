@@ -17,8 +17,9 @@ const colorsDark: {[key: string]: string} = {
   m: '#FEE296', // male (cis)
   fx: '#74ADD1', // female (transgender)
   mx: '#74ADD1', // male (transgender)
-  x: '#ABD9E9', // intersex
-  u: '#4575B4', // unknown
+  x: '#74ADD1', // intersex
+  nb: '#74ADD1', // non-binary
+  u: '#808080', // unknown
   p: '#8073AC', // multiple
   o: '#525252' // other (not a person or multiple)
 };

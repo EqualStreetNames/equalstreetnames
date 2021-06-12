@@ -1,6 +1,6 @@
 'use strict';
 
-import { Map } from 'maplibre-gl';
+import { LinePaint, Map } from 'maplibre-gl';
 
 import layout from '../style/layout';
 import paint from '../style/paint';
@@ -22,6 +22,6 @@ export default function (map: Map): void {
     type: 'line',
     source: 'geojson-ways',
     layout,
-    paint
+    paint: paint() as LinePaint
   });
 }

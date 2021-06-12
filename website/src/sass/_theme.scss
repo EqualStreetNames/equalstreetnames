@@ -1,0 +1,35 @@
+:root {
+	--bg-color: #ffffff;
+	--text-color: #000000;
+	--text-counter-color: #212529;
+	--text-muted-color: #6c757d;
+	--bg-color-map-transparant: hsla(0,0%,100%,.75);
+	--bg-color-map-solid: #ffffff;
+	--text-color-map-transparant: rgba(0,0,0,.75);
+	--text-color-map-solid: #000000;
+	--border-color-map: #333333;
+	--button-invert-map: invert(0%);
+	--bg-color-navbar: rgba(255, 255, 255, 0.9);
+	--border-color-modal: rgba(0, 0, 0, 0.2);
+	--bg-color-dropdown-hover: #E9ECEF;
+	--text-color-dropdown-hover: #000000;
+	--fa-color-navbar: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] {
+	--bg-color: #222222;
+	--text-color: #ffffff;
+	--text-counter-color: #d1cdc7;
+	--text-muted-color: #9e9689;
+	--bg-color-map-transparant: rgba(24, 26, 27, 0.5);
+	--bg-color-map-solid: #181a1b;
+	--text-color-map-transparant: rgba(232, 230, 227, 0.75);
+	--text-color-map-solid: #e8e6e3;
+	--border-color-map: #7b7265;
+	--button-invert-map: invert(100%);
+	--bg-color-navbar: rgba(38, 42, 43, 0.9);
+	--border-color-modal: rgba(140, 130, 115, 0.2);
+	--bg-color-dropdown-hover: #232627;
+	--text-color-dropdown-hover: #d9d5d0;
+	--fa-color-navbar: rgba(255, 255, 255, 0.75);
+}

@@ -1,5 +1,7 @@
 #chart-overlay {
-  background: rgba(255, 255, 255, 1);
+  background-color: var(--bg-color-navbar);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   bottom: 50px;
@@ -7,6 +9,10 @@
   position: absolute;
   right: 0;
   width: 300px;
+  
+  .text-muted {
+    color: var(--text-muted-color) !important;
+  }
 }
 
 #gender-chart {
@@ -26,4 +32,6 @@
 
 #count-information {
   margin-top: 10px;
+  
+  color: var(--text-counter-color);
 }

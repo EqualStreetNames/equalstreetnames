@@ -11,9 +11,9 @@ import getNickname from './wikidata/nicknames';
 import getWikipedia from './wikidata/sitelinks';
 import getImage from './wikidata/image';
 
-import colors from './colors';
-
+import { colorsLight, colorsDark } from './colors';
 import { lang } from './index';
+import { theme } from './theme';
 
 interface Property {
   name: string;
@@ -23,8 +23,7 @@ interface Property {
   details?: string;
 }
 
-export default function (
-  feature: MapboxGeoJSONFeature): string {
+export default function (feature: MapboxGeoJSONFeature): string {
   const properties = feature.properties as Property;
 
   const streetname = getStreetname(properties);
@@ -76,6 +75,8 @@ export default function (
 function popupDetails (
   details: {[key: string]: string | number | boolean}
 ): string {
+  const colors = theme === 'dark' ? colorsDark : colorsLight;
+
   const wikidata = details.wikidata as string|null;
   const name = getName(details, lang);
   const birth = getBirth(details);
@@ -91,9 +92,9 @@ function popupDetails (
   htmlDetails += '<div class="popup-wikidata">';
 
   if (image !== null) {
-    htmlDetails += '<div class="media">';
-    htmlDetails += `<img class="mr-3" src="${image}" alt="${name}" />`;
-    htmlDetails += '<div class="media-body">';
+    htmlDetails += '<div class="d-flex">';
+    htmlDetails += `<div class="flex-shrink-0"><img src="${image}" alt="${name}" /></div>`;
+    htmlDetails += '<div class="flex-grow-1 ms-3">';
   }
 
   htmlDetails += '<div class="popup-name">';
@@ -132,9 +133,8 @@ function popupDetails (
   }
   htmlDetails += '</div>';
 
-  htmlDetails += '</div>';
-
   if (image !== null) {
+    htmlDetails += '</div>';
     htmlDetails += '</div>';
   }
 

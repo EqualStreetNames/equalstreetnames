@@ -6,6 +6,7 @@ import 'bootstrap/js/dist/modal';
 
 import initChart from './chart';
 import initMap from './map';
+import initTheme from './theme';
 
 export { bounds, lastUpdate, statistics } from '../../static/static.json';
 
@@ -34,9 +35,7 @@ export let style: string;
     bbox = JSON.parse(data.bbox);
   }
 
+  initTheme();
   initMap();
-
-  initChart(
-    document.querySelector('#gender-chart > canvas') as HTMLCanvasElement
-  );
+  initChart();
 })();

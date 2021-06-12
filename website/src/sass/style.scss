@@ -1,23 +1,5 @@
-@import "@fortawesome/fontawesome-free/css/brands.css";
-@import "@fortawesome/fontawesome-free/css/solid.css";
-@import "@fortawesome/fontawesome-free/css/fontawesome.css";
-
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/mixins";
-
-@import "bootstrap/scss/reboot";
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/close";
-@import "bootstrap/scss/dropdown";
-@import "bootstrap/scss/grid";
-@import "bootstrap/scss/media";
-@import "bootstrap/scss/modal";
-@import "bootstrap/scss/nav";
-@import "bootstrap/scss/navbar";
-@import "bootstrap/scss/transitions";
-@import "bootstrap/scss/type";
-@import "bootstrap/scss/utilities";
+@import "fontawesome";
+@import "bootstrap";
 
 @import "loader";
 @import "map";

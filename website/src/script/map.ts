@@ -8,7 +8,7 @@ import addRelations from './map/layers/relation';
 import addWays from './map/layers/ways';
 import addEvents from './map/events';
 
-import { lang, center, zoom, bbox, countries, style, bounds } from './index';
+import { lang, center, zoom, bbox, style, bounds } from './index';
 import { theme } from './theme';
 
 export let map: Map;
@@ -46,7 +46,6 @@ export default async function (): Promise<Map> {
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     bbox: bbox || bounds,
-    countries,
     enableEventLogging: false,
     language: lang,
     mapboxgl: mapboxgl

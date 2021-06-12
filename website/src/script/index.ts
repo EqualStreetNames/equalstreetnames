@@ -4,8 +4,6 @@ import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/modal';
 
-import initChart from './chart';
-import initMap from './map';
 import initTheme from './theme';
 
 export { bounds, lastUpdate, statistics } from '../../static/static.json';
@@ -33,6 +31,4 @@ export let style: string;
   }
 
   initTheme();
-  initMap();
-  initChart();
 })();

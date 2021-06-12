@@ -2,9 +2,10 @@
 
 namespace App\Command;
 
+use App\Exception\FileException;
+use App\Exception\OSMException;
 use App\Model\GeoJSON\Feature;
 use App\Model\GeoJSON\FeatureCollection;
-use ErrorException;
 use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -60,12 +61,12 @@ class StatisticsCommand extends AbstractCommand
             // Check path of relations GeoJSON file.
             $relationPath = sprintf('%s/%s', $this->cityOutputDir, GeoJSONCommand::FILENAME_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $relationPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $relationPath));
             }
             // Check path of ways GeoJSON file.
             $wayPath = sprintf('%s/%s', $this->cityOutputDir, GeoJSONCommand::FILENAME_WAY);
             if (!file_exists($wayPath) || !is_readable($wayPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $wayPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "geojson" command first.', $wayPath));
             }
 
             $streets = [];
@@ -282,7 +283,7 @@ class StatisticsCommand extends AbstractCommand
      * @param OutputInterface $output
      * @return array
      *
-     * @throws Exception
+     * @throws OSMException
      */
     private static function groupBy(array $streets, OutputInterface $output): array
     {
@@ -290,7 +291,7 @@ class StatisticsCommand extends AbstractCommand
         $groups = [];
         foreach ($streets as $street) {
             if (is_null($street['name'])) {
-                throw new Exception('%s(%s): Streetname should not be NULL.', $street['type'], $street['id']);
+                throw new OSMException('%s(%s): Streetname should not be NULL.', $street['type'], $street['id']);
             }
 
             $key = md5($street['name']);

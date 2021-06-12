@@ -2,8 +2,9 @@
 
 namespace App\Wikidata;
 
+use App\Exception\FileException;
+use App\Exception\WikidataException;
 use App\Model\Wikidata\Entity;
-use ErrorException;
 
 class Wikidata
 {
@@ -12,18 +13,19 @@ class Wikidata
      *
      * @return Entity
      *
-     * @throws ErrorException
+     * @throws FileException
+     * @throws WikidataException
      */
     public static function read(string $path)
     {
         if (!file_exists($path) || !is_readable($path)) {
-            throw new ErrorException(sprintf('<warning>File "%s" doesn\'t exist or is not readable. You maybe need to run "wikidata" command first.</warning>', $path));
+            throw new FileException(sprintf('<warning>File "%s" doesn\'t exist or is not readable. You maybe need to run "wikidata" command first.</warning>', $path));
         }
 
         $content = file_get_contents($path);
         $json = $content !== false ? json_decode($content) : null;
         if (is_null($json)) {
-            throw new ErrorException(sprintf('Can\'t read "%s".', $path));
+            throw new WikidataException(sprintf('Can\'t read "%s".', $path));
         }
 
         return current($json->entities);

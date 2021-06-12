@@ -2,10 +2,11 @@
 
 namespace App\Command;
 
+use App\Exception\FileException;
+use App\Exception\OSMException;
 use App\Model\Overpass\Element;
 use App\Model\Overpass\Overpass;
 use App\Wikidata\Wikidata;
-use ErrorException;
 use Exception;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\GuzzleException;
@@ -50,8 +51,6 @@ class WikidataCommand extends AbstractCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
-     *
-     * @throws GuzzleException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -60,11 +59,11 @@ class WikidataCommand extends AbstractCommand
 
             $relationPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $relationPath));
             }
             $wayPath = sprintf('%s/overpass/%s', self::OUTPUTDIR, OverpassCommand::FILENAME_WAY);
             if (!file_exists($wayPath) || !is_readable($wayPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable. You maybe need to run "overpass" command first.', $wayPath));
             }
 
             $contentR = file_get_contents($relationPath);
@@ -83,7 +82,7 @@ class WikidataCommand extends AbstractCommand
 
             // Check count of elements with Wikidata information.
             if (count($elements) === 0) {
-                throw new ErrorException('No element with Wikidata information!');
+                throw new OSMException('No element with Wikidata information!');
             }
 
             // Create wikidata directory to store results.
@@ -103,7 +102,7 @@ class WikidataCommand extends AbstractCommand
                 $etymologyTag = $element->tags->{'name:etymology:wikidata'} ?? null; // @phpstan-ignore-line
 
                 // Download Wikidata item(s) defined in `name:etymology:wikidata` tag
-                if (!is_null($etymologyTag)) {
+                if (!is_null($etymologyTag) && $etymologyTag !== $wikidataTag) {
                     $identifiers = explode(';', $etymologyTag);
                     $identifiers = array_map('trim', $identifiers);
 
@@ -135,7 +134,7 @@ class WikidataCommand extends AbstractCommand
                     if (!file_exists($path)) {
                         self::save($wikidataTag, $element, $path, $warnings);
 
-                        $wikiPath = sprintf('%s/wikidata/%s.json', self::OUTPUTDIR, $wikidataTag);
+                        $wikiPath = sprintf('%s/%s.json', $outputDir, $wikidataTag);
                         $entity = Wikidata::read($wikiPath);
 
                         $identifiers = Wikidata::extractNamedAfter($entity);

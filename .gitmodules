@@ -1,3 +1,9 @@
+[submodule "cities/austria/vienna"]
+	path = cities/austria/vienna
+	url = https://github.com/EqualStreetNames/equalstreetnames-vienna.git
+[submodule "cities/belarus/minsk"]
+	path = cities/belarus/minsk
+	url = https://github.com/EqualStreetNames/equalstreetnames-minsk.git
 [submodule "cities/belgium/braine-lalleud"]
 	path = cities/belgium/braine-lalleud
 	url = https://github.com/EqualStreetNames/equalstreetnames-braine-lalleud.git
@@ -25,6 +31,9 @@
 [submodule "cities/belgium/nivelles"]
 	path = cities/belgium/nivelles
 	url = https://github.com/EqualStreetNames/equalstreetnames-nivelles.git
+[submodule "cities/france/saint-brieuc"]
+	path = cities/france/saint-brieuc
+	url = https://github.com/EqualStreetNames/equalstreetnames-saint-brieuc.git
 [submodule "cities/germany/berlin"]
 	path = cities/germany/berlin
 	url = https://github.com/EqualStreetNames/equalstreetnames-berlin.git
@@ -46,6 +55,12 @@
 [submodule "cities/germany/munich"]
 	path = cities/germany/munich
 	url = https://github.com/EqualStreetNames/equalstreetnames-munich.git
+[submodule "cities/italy/bolzano"]
+	path = cities/italy/bolzano
+	url = https://github.com/EqualStreetNames/equalstreetnames-bolzano.git
+[submodule "cities/luxembourg/luxembourg"]
+	path = cities/luxembourg/luxembourg
+	url = https://github.com/EqualStreetNames/equalstreetnames-luxembourg.git
 [submodule "cities/netherlands/assen"]
 	path = cities/netherlands/assen
 	url = https://github.com/EqualStreetNames/equalstreetnames-assen.git
@@ -55,6 +70,9 @@
 [submodule "cities/netherlands/leiden"]
 	path = cities/netherlands/leiden
 	url = https://github.com/EqualStreetNames/equalstreetnames-leiden.git
+[submodule "cities/philippines/sanpablo"]
+	path = cities/philippines/sanpablo
+	url = https://github.com/EqualStreetNames/equalstreetnames-sanpablo.git
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
 	url = https://github.com/EqualStreetNames/equalstreetnames-belgrade
@@ -73,3 +91,9 @@
 [submodule "cities/switzerland/zurich"]
 	path = cities/switzerland/zurich
 	url = https://github.com/EqualStreetNames/equalstreetnames-zurich.git
+[submodule "cities/united-kingdom/chester-le-street"]
+	path = cities/united-kingdom/chester-le-street
+	url = https://github.com/EqualStreetNames/equalstreetnames-chester-le-street.git
+[submodule "cities/usa/sanfrancisco"]
+	path = cities/usa/sanfrancisco
+	url = https://github.com/EqualStreetNames/equalstreetnames-sanfrancisco.git

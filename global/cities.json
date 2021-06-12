@@ -1,4 +1,16 @@
 {
+  "austria": {
+    "vienna": {
+      "name": "🇦🇹 Vienna, Austria",
+      "url": "https://vienna.equalstreetnames.eu/"
+    }
+  },
+  "belarus": {
+    "minsk": {
+      "name": "🇧🇾 Minsk, Belarus",
+      "url": "https://minsk.equalstreetnames.org/"
+    }
+  },
   "belgium": {
     "brussels": {
       "name": "🇧🇪 Brussels, Belgium",
@@ -37,6 +49,12 @@
       "url": "https://nivelles.equalstreetnames.be/"
     }
   },
+  "france": {
+    "saint-brieuc": {
+      "name": "🇫🇷 Saint-Brieuc, France",
+      "url": "https://saint-brieuc.equalstreetnames.eu/"
+    }
+  },
   "germany": {
     "berlin": {
       "name": "🇩🇪 Berlin, Germany",
@@ -67,6 +85,18 @@
       "url": "https://munich.equalstreetnames.eu/"
     }
   },
+  "italy": {
+    "bolzano": {
+      "name": "🇮🇹 Bolzano, Italy",
+      "url": "https://bolzano.equalstreetnames.eu/"
+    }
+  },
+  "luxembourg": {
+    "luxembourg": {
+      "name": "🇱🇺 Luxembourg, Luxembourg",
+      "url": "https://luxembourg.equalstreetnames.eu/"
+    }
+  },
   "netherlands": {
     "assen": {
       "name": "🇳🇱 Assen, The Netherlands",
@@ -79,6 +109,12 @@
     "leiden": {
       "name": "🇳🇱 Leiden, The Netherlands",
       "url": "https://leiden.equalstreetnames.eu/"
+    }
+  },
+  "philippines": {
+    "sanpablo": {
+      "name": "🇵🇭 San Pablo, Philippines",
+      "url": "https://sanpablo.equalstreetnames.org/"
     }
   },
   "serbia": {
@@ -109,6 +145,18 @@
     "zurich": {
       "name": "🇨🇭 Zurich, Switzerland",
       "url": "https://zurich.equalstreetnames.eu/"
+    }
+  },
+  "united-kingdom": {
+    "chester-le-street": {
+      "name": "🇬🇧 Chester-le-Street, United Kingdom",
+      "url": "https://chester-le-street.equalstreetnames.org/"
+    }
+  },
+  "usa": {
+    "sanfrancisco": {
+      "name": "🇺🇸 San Francisco, USA",
+      "url": "https://sanfrancisco.equalstreetnames.org/"
     }
   }
 }

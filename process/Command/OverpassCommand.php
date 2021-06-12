@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Exception\FileException;
 use ErrorException;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
@@ -53,8 +54,6 @@ class OverpassCommand extends AbstractCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
-     *
-     * @throws GuzzleException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -64,12 +63,12 @@ class OverpassCommand extends AbstractCommand
             // Check path of Overpass query for relations.
             $relationPath = sprintf('%s/overpass/%s', $this->cityDir, self::OVERPASS_RELATION);
             if (!file_exists($relationPath) || !is_readable($relationPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $relationPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable.', $relationPath));
             }
             // Check path of Overpass query for ways.
             $wayPath = sprintf('%s/overpass/%s', $this->cityDir, self::OVERPASS_WAY);
             if (!file_exists($wayPath) || !is_readable($wayPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $wayPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable.', $wayPath));
             }
 
             // Create `overpass` directory to store results.

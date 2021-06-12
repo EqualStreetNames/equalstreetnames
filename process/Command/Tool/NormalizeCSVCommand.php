@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Command;
+namespace App\Command\Tool;
 
-use ErrorException;
+use App\Command\AbstractCommand;
+use App\Command\GeoJSONCommand;
+use App\Exception\CSVException;
+use App\Exception\FileException;
 use Exception;
-use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,12 +15,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Normalize `data.csv` file.
  *
- * @package App\Command
+ * @package App\Command\Tool
  */
 class NormalizeCSVCommand extends AbstractCommand
 {
     /** {@inheritdoc} */
-    protected static $defaultName = 'normalize-csv';
+    protected static $defaultName = 'tool:normalize-csv';
 
     /**
      * {@inheritdoc}
@@ -40,8 +42,6 @@ class NormalizeCSVCommand extends AbstractCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
-     *
-     * @throws GuzzleException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -50,7 +50,7 @@ class NormalizeCSVCommand extends AbstractCommand
 
             $csvPath = sprintf('%s/%s', $this->cityDir, GeoJSONCommand::FILENAME_CSV);
             if (!file_exists($csvPath) || !is_readable($csvPath)) {
-                throw new ErrorException(sprintf('File "%s" doesn\'t exist or is not readable.', $csvPath));
+                throw new FileException(sprintf('File "%s" doesn\'t exist or is not readable.', $csvPath));
             }
 
             $csv = self::read($csvPath);
@@ -61,13 +61,16 @@ class NormalizeCSVCommand extends AbstractCommand
             ];
             foreach ($csv as $i => $record) {
                 if (count($record) !== 6) {
-                    throw new Exception(sprintf('Invalid number of columns at line %d.', $i + 2));
+                    throw new CSVException(sprintf('Invalid number of columns at line %d.', $i + 2));
                 }
                 if (!in_array($record[0], ['relation', 'way'], true)) {
-                    throw new Exception(sprintf('Invalid type "%s" at line %d.', $record[0], $i + 2));
+                    throw new CSVException(sprintf('Invalid type "%s" at line %d.', $record[0], $i + 2));
+                }
+                if (intval($record[1]) <= 0) {
+                    throw new CSVException(sprintf('Invalid relation/way id "%s" at line %d.', $record[1], $i + 2));
                 }
                 if (in_array($record[1], $ids[$record[0]], true)) {
-                    throw new Exception(sprintf('Duplicate id %s(%s) at line %d.', $record[0], $record[1], $i + 2));
+                    throw new CSVException(sprintf('Duplicate id %s(%s) at line %d.', $record[0], $record[1], $i + 2));
                 }
 
                 $ids[$record[0]][] = $record[1];

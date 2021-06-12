@@ -1,4 +1,5 @@
 .cache/
+.parcel-cache/
 assets/
 dist/
 node_modules/

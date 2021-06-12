@@ -1,4 +1,3 @@
-const Parcel = require('parcel-bundler');
 const fs = require('fs');
 const path = require('path');
 const shell = require('shelljs');
@@ -36,7 +35,7 @@ async function bundle (options) {
 
     shell.cp(path.join(directory, 'assets', '*'), 'assets');
     shell.cp('-r', path.join(directory, 'html', '*'), 'public');
-    shell.cp(path.join(directory, 'data', '*.geojson'), outDir);
+    shell.cp(path.join(directory, 'data', '*.geojson'), 'static');
 
     const boundary = JSON.parse(fs.readFileSync(path.resolve(directory, 'data', 'boundary.geojson')));
     const bounds = bbox(turfHelpers.feature(boundary));
@@ -51,22 +50,12 @@ async function bundle (options) {
       'utf8'
     );
 
-    const parcelOptions = { global: 'app', outDir };
+    const file = path.join(__dirname, 'public', 'index.html');
 
     if (serve === true) {
-      process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
-      const bundler = new Parcel(path.join(__dirname, 'public', 'index.html'), { ...parcelOptions });
-      bundler.on('buildError', () => { shell.exit(1); });
-
-      await bundler.serve();
+      shell.exec(`parcel serve "${file}" --dist-dir "${outDir}"`, { async: true });
     } else {
-      process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-
-      const bundler = new Parcel(path.join(__dirname, 'public', 'index.html'), { ...parcelOptions, production: true });
-      bundler.on('buildError', () => { shell.exit(1); });
-
-      bundler.bundle();
+      shell.exec(`parcel build "${file}" --dist-dir "${outDir}"`);
     }
   } else {
     shell.echo(`Error: Path ${directory} does not exist.`);

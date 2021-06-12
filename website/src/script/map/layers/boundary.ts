@@ -2,6 +2,8 @@
 
 import { Map } from 'maplibre-gl';
 
+import data from 'url:../../../../static/boundary.geojson';
+
 const attribution =
   '© <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
@@ -9,7 +11,7 @@ export default function (map: Map): void {
   map.addSource('geojson-boundary', {
     type: 'geojson',
     attribution,
-    data: '/boundary.geojson'
+    data
   });
 
   map.addLayer({

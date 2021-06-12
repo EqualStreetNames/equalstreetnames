@@ -9,6 +9,7 @@ import addWays from './map/layers/ways';
 import addEvents from './map/events';
 
 import { lang, center, zoom, bbox, countries, style, bounds } from './index';
+import { theme } from './theme';
 
 export let map: Map;
 
@@ -18,7 +19,7 @@ export default async function (): Promise<Map> {
   const options: MapboxOptions = {
     container: 'map',
     hash: true,
-    style
+    style: typeof style !== 'undefined' ? style : (theme === 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/light-v10')
   };
 
   if (typeof center !== 'undefined' && typeof zoom !== 'undefined') {
@@ -30,6 +31,9 @@ export default async function (): Promise<Map> {
   }
 
   // Initialize map.
+  if (typeof map !== 'undefined') {
+    map.remove();
+  }
   map = new Map(options);
 
   // Add controls.

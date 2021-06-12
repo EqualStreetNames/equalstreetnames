@@ -1,6 +1,7 @@
 @import "fontawesome";
 @import "bootstrap";
 
+@import "theme";
 @import "loader";
 @import "map";
 @import "popup";
@@ -12,17 +13,66 @@ body {
 }
 
 nav.navbar {
-  background-color: rgba(52, 51, 50, 0.9);
+  background-color: var(--bg-color-navbar);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  .navbar-brand,
+  .navbar-brand:focus {
+    color: var(--text-color) !important;
+  }
+
+  .fa-bars {
+    color: var(--fa-color-navbar) !important;
+  }
 
   .navbar-nav {
-    color: #fff;
+    a.nav-link,
+    label {
+      color: var(--text-color) !important;
+    }
 
     .nav-item {
+      display: grid;
+      align-content: center;
       margin-left: 20px;
     }
   }
 }
 
-.navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.8) !important;
+.modal-content {
+  background-color: var(--bg-color-map-solid);
+  border-color: var(--border-color-modal);
+  color: var(--text-color-map-solid);
+}
+
+.modal-header {
+  border-bottom-color: var(--border-color-modal);
+}
+
+.close {
+  color: var(--text-color-map-solid);
+  text-shadow: rgb(24 26 27) 0px 1px 0px;
+  &:hover {
+    color: var(--text-color-map-solid);
+  }
+}
+
+.dropdown-menu {
+  color: var(--text-color-map-solid);
+  background-color: var(--bg-color-map-solid);
+  border-color: var(--border-color-modal);
+}
+
+.dropdown-item {
+  color: var(--text-color-map-solid);
+  &:hover {
+    color: var(--text-color-dropdown-hover);
+    background-color: var(--bg-color-dropdown-hover);
+  }
+
+  &[data-active="true"] {
+    color: var(--text-color-dropdown-hover);
+    background-color: var(--bg-color-dropdown-hover);
+  }
 }

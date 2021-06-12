@@ -66,3 +66,16 @@
     opacity: 1;
   }
 }
+
+.mapboxgl-popup-tip {
+  border-top-color: var(--bg-color-map-solid) !important;
+}
+
+.mapboxgl-popup-content {
+  background-color: var(--bg-color-map-solid);
+  color: var(--text-color-map-solid);
+
+  button {
+    color: var(--text-color-map-solid);
+  }
+}

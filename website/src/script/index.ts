@@ -21,7 +21,9 @@ export let style: string;
 
   const data = document.getElementById('map')?.dataset;
 
-  style = data?.style ?? '';
+  if (typeof data?.style !== 'undefined') {
+    style = data.style;
+  }
   if (typeof data?.center !== 'undefined' && typeof data?.zoom !== 'undefined') {
     center = JSON.parse(data.center);
     zoom = parseFloat(data.zoom);

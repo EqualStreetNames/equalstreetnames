@@ -123,6 +123,12 @@
       "url": "https://naziviulica.openstreetmap.rs/"
     }
   },
+  "slovakia": {
+    "bratislava": {
+      "name": "🇸🇰 Bratislava, Slovakia",
+      "url": "https://bratislava.equalstreetnames.eu/"
+    }
+  },
   "spain": {
     "madrid": {
       "name": "🇪🇸 Madrid, Spain",

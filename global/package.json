@@ -14,7 +14,7 @@
     "@turf/turf": "^5.1.6",
     "@types/ol": "^6.5.2",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.26.0",
+    "@typescript-eslint/parser": "^4.28.1",
     "commander": "^8.0.0",
     "eslint": "^7.29.0",
     "eslint-config-standard": "^16.0.3",

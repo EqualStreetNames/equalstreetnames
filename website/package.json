@@ -13,7 +13,7 @@
     "@babel/core": "^7.14.3",
     "@parcel/transformer-sass": "2.0.0-beta.2",
     "@parcel/transformer-typescript-tsc": "2.0.0-beta.2",
-    "@turf/bbox": "^6.3.0",
+    "@turf/bbox": "^6.4.0",
     "@types/chart.js": "^2.9.32",
     "@types/mapbox__mapbox-gl-geocoder": "^4.7.0",
     "@types/maplibre-gl": "^1.13.1",

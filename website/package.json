@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "@mapbox/mapbox-gl-geocoder": "^4.7.1",
+    "@mapbox/mapbox-gl-geocoder": "^4.7.2",
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.2",
     "chart.js": "^3.5.0",

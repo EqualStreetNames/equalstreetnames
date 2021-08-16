@@ -10,7 +10,7 @@
   "bugs": "https://github.com/EqualStreetNames/equalstreetnames/issues",
   "homepage": "https://github.com/EqualStreetNames/equalstreetnames#readme",
   "devDependencies": {
-    "@babel/core": "^7.14.6",
+    "@babel/core": "^7.15.0",
     "@parcel/transformer-sass": "2.0.0-beta.2",
     "@parcel/transformer-typescript-tsc": "2.0.0-beta.2",
     "@turf/bbox": "^6.4.0",

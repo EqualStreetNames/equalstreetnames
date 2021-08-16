@@ -117,6 +117,12 @@
       "url": "https://sanpablo.equalstreetnames.org/"
     }
   },
+  "poland": {
+    "warsaw": {
+      "name": "🇵🇱 Warsaw, Poland",
+      "url": "https://warsaw.equalstreetnames.eu/"
+    }
+  },
   "serbia": {
     "belgrade": {
       "name": "🇷🇸 Belgrade, Serbia",

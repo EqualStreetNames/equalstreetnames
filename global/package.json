@@ -31,6 +31,6 @@
     "lint": "eslint \"src/**/*.ts\""
   },
   "dependencies": {
-    "ol": "^6.5.0"
+    "ol": "^6.6.1"
   }
 }

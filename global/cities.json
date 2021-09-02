@@ -122,6 +122,10 @@
     }
   },
   "poland": {
+    "chorzow": {
+      "name": "🇵🇱 Chorzów, Poland",
+      "url": "https://chorzow.equalstreetnames.eu/"
+    },
     "warsaw": {
       "name": "🇵🇱 Warsaw, Poland",
       "url": "https://warsaw.equalstreetnames.eu/"

@@ -69,6 +69,7 @@
     "build:netherlands:groningen": "node build.js -c netherlands/groningen",
     "build:netherlands:leiden": "node build.js -c netherlands/leiden",
     "build:philippines:sanpablo": "node build.js -c philippines/sanpablo",
+    "build:poland:chorzow": "node build.js -c poland/chorzow",
     "build:poland:warsaw": "node build.js -c poland/warsaw",
     "build:serbia:belgrade": "node build.js -c serbia/belgrade",
     "build:slovakia:bratislava": "node build.js -c slovakia/bratislava",

@@ -55,7 +55,10 @@ async function bundle (options) {
     if (serve === true) {
       shell.exec(`parcel serve "${file}" --dist-dir "${outDir}"`, { async: true });
     } else {
-      shell.exec(`parcel build "${file}" --dist-dir "${outDir}"`);
+      if (shell.exec(`parcel build "${file}" --dist-dir "${outDir}"`).code !== 0) {
+        shell.echo(`Error: Build failed`);
+        shell.exit(1);
+      }
     }
   } else {
     shell.echo(`Error: Path ${directory} does not exist.`);

@@ -56,7 +56,7 @@ async function bundle (options) {
       shell.exec(`parcel serve "${file}" --dist-dir "${outDir}"`, { async: true });
     } else {
       if (shell.exec(`parcel build "${file}" --dist-dir "${outDir}"`).code !== 0) {
-        shell.echo(`Error: Build failed`);
+        shell.echo('Error: Build failed');
         shell.exit(1);
       }
     }

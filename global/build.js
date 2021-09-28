@@ -122,7 +122,10 @@ async function bundle (options) {
     if (serve === true) {
       shell.exec('npm run parcel:serve', { async: true });
     } else {
-      shell.exec('npm run parcel:build');
+      if (shell.exec('npm run parcel:build').code !== 0) {
+        shell.echo('Error: Build failed');
+        shell.exit(1);
+      }
     }
   } catch (error) {
     shell.echo(error.message);

@@ -10,19 +10,22 @@
   "bugs": "https://github.com/EqualStreetNames/equalstreetnames/issues",
   "homepage": "https://equalstreetnames.be/",
   "devDependencies": {
-    "@parcel/transformer-sass": "2.0.0-beta.2",
+    "@parcel/transformer-sass": "2.0.0-rc.0",
+    "@parcel/transformer-typescript-tsc": "2.0.0-rc.0",
     "@turf/turf": "^5.1.6",
     "@types/ol": "^6.5.3",
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.5",
-    "commander": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "commander": "^8.2.0",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "parcel": "2.0.0-beta.2",
-    "shelljs": "^0.8.4"
+    "parcel": "2.0.0-rc.0",
+    "sass": "1.37.5",
+    "shelljs": "^0.8.4",
+    "typescript": "4.3.5"
   },
   "scripts": {
     "build": "node build.js",
@@ -31,6 +34,6 @@
     "lint": "eslint \"src/**/*.ts\""
   },
   "dependencies": {
-    "ol": "^6.5.0"
+    "ol": "^6.8.1"
   }
 }

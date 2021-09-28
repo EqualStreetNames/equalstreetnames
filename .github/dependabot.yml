@@ -7,19 +7,28 @@ version: 2
 updates:
   - package-ecosystem: npm
     directory: "/global"
-    labels: ["global"]
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "global"
     schedule:
       interval: monthly
     open-pull-requests-limit: 10
   - package-ecosystem: npm
     directory: "/website"
-    labels: ["website"]
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "website"
     schedule:
       interval: monthly
     open-pull-requests-limit: 10
   - package-ecosystem: composer
     directory: "/process"
-    labels: ["process"]
+    labels:
+      - "dependencies"
+      - "php"
+      - "process"
     schedule:
       interval: monthly
     open-pull-requests-limit: 10

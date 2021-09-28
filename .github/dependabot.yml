@@ -1,17 +1,28 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
 version: 2
 updates:
   - package-ecosystem: npm
     directory: "/global"
+    commit-message:
+      prefix: "[global]"
     schedule:
       interval: monthly
     open-pull-requests-limit: 10
   - package-ecosystem: npm
     directory: "/website"
+    commit-message:
+      prefix: "[website]"
     schedule:
       interval: monthly
     open-pull-requests-limit: 10
   - package-ecosystem: composer
     directory: "/process"
+    commit-message:
+      prefix: "[process]"
     schedule:
       interval: monthly
     open-pull-requests-limit: 10

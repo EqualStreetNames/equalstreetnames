@@ -19,7 +19,7 @@
     "@types/chart.js": "^2.9.34",
     "@types/mapbox__mapbox-gl-geocoder": "^4.7.1",
     "@types/maplibre-gl": "^1.14.0",
-    "@types/node": "^16.10.1",
+    "@types/node": "^16.10.2",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
     "commander": "^8.2.0",

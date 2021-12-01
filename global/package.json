@@ -21,7 +21,7 @@
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-promise": "^5.2.0",
     "parcel": "2.0.0-rc.0",
     "sass": "1.42.1",
     "shelljs": "^0.8.4",

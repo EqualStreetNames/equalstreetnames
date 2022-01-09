@@ -14,7 +14,7 @@
     "@parcel/transformer-typescript-tsc": "2.0.0-rc.0",
     "@turf/turf": "^5.1.6",
     "@types/ol": "^6.5.3",
-    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.32.0",
     "commander": "^8.3.0",
     "eslint": "^7.32.0",

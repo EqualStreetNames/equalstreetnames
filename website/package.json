@@ -10,33 +10,32 @@
   "bugs": "https://github.com/EqualStreetNames/equalstreetnames/issues",
   "homepage": "https://github.com/EqualStreetNames/equalstreetnames#readme",
   "devDependencies": {
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
-    "@parcel/transformer-image": "^2.0",
-    "@parcel/transformer-sass": "^2.0",
-    "@parcel/transformer-typescript-tsc": "^2.0",
+    "@parcel/transformer-image": "^2.1",
+    "@parcel/transformer-sass": "^2.1",
+    "@parcel/transformer-typescript-tsc": "^2.1",
     "@turf/bbox": "^6.5.0",
-    "@types/chart.js": "^2.9.34",
+    "@types/chart.js": "^2.9.35",
     "@types/mapbox__mapbox-gl-geocoder": "^4.7.1",
-    "@types/maplibre-gl": "^1.14.0",
     "@types/node": "^16.10.2",
-    "@typescript-eslint/eslint-plugin": "^4.32.0",
-    "@typescript-eslint/parser": "^4.32.0",
-    "commander": "^8.2.0",
-    "eslint": "^7.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "commander": "^8.3.0",
+    "eslint": "^8.6.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0",
-    "parcel": "^2.0",
-    "sass": "1.47.0",
-    "shelljs": "^0.8.4",
-    "typescript": "4.5.4"
+    "eslint-plugin-promise": "^6.0.0",
+    "parcel": "^2.1",
+    "sass": "^1.47",
+    "shelljs": "^0.8.5",
+    "typescript": "^4.5"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@mapbox/mapbox-gl-geocoder": "^4.7.4",
-    "@popperjs/core": "^2.10.2",
+    "@popperjs/core": "^2.11.2",
     "bootstrap": "^5.1.3",
     "chart.js": "^3.7.0",
     "maplibre-gl": "^1.15.2"
@@ -82,5 +81,6 @@
     "build:switzerland:zurich": "node build.js -c switzerland/zurich",
     "build:united-kingdom:chester-le-street": "node build.js -c united-kingdom/chester-le-street",
     "build:usa:sanfrancisco": "node build.js -c usa/sanfrancisco"
-  }
+  },
+  "browserslist": "last 2 Firefox versions, last 2 Chrome versions, last 2 Edge versions, last 2 Safari versions"
 }

@@ -91,6 +91,10 @@
     "munich": {
       "name": "🇩🇪 Munich, Germany",
       "url": "https://munich.equalstreetnames.eu/"
+    },
+    "rastede": {
+      "name": "🇩🇪 Rastede, Germany",
+      "url": "https://rastede.equalstreetnames.eu/"
     }
   },
   "italy": {

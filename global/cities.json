@@ -95,6 +95,10 @@
     "rastede": {
       "name": "🇩🇪 Rastede, Germany",
       "url": "https://rastede.equalstreetnames.eu/"
+    },
+    "wiesbaden": {
+      "name": "🇩🇪 Wiesbaden, Germany",
+      "url": "https://wiesbaden.equalstreetnames.eu/"
     }
   },
   "italy": {

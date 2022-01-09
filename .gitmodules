@@ -61,6 +61,9 @@
 [submodule "cities/germany/munich"]
 	path = cities/germany/munich
 	url = https://github.com/EqualStreetNames/equalstreetnames-munich.git
+[submodule "cities/germany/rastede"]
+	path = cities/germany/rastede
+	url = https://github.com/EqualStreetNames/equalstreetnames-rastede.git
 [submodule "cities/italy/bolzano"]
 	path = cities/italy/bolzano
 	url = https://github.com/EqualStreetNames/equalstreetnames-bolzano.git

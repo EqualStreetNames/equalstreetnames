@@ -64,6 +64,7 @@
     "build:germany:mainz": "node build.js -c germany/mainz",
     "build:germany:munich": "node build.js -c germany/munich",
     "build:germany:rastede": "node build.js -c germany/rastede",
+    "build:germany:wiesbaden": "node build.js -c germany/wiesbaden",
     "build:italy:bolzano": "node build.js -c italy/bolzano",
     "build:luxembourg:luxembourg": "node build.js -c luxembourg/luxembourg",
     "build:netherlands:assen": "node build.js -c netherlands/assen",

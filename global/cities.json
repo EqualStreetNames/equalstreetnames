@@ -12,6 +12,10 @@
     }
   },
   "belgium": {
+    "antwerpen": {
+      "name": "🇧🇪 Antwerpen, Belgium",
+      "url": "https://antwerpen.equalstreetnames.be/"
+    },
     "brussels": {
       "name": "🇧🇪 Brussels, Belgium",
       "url": "https://equalstreetnames.brussels/"

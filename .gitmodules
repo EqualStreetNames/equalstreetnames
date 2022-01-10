@@ -4,6 +4,9 @@
 [submodule "cities/belarus/minsk"]
 	path = cities/belarus/minsk
 	url = https://github.com/EqualStreetNames/equalstreetnames-minsk.git
+[submodule "cities/belgium/antwerpen"]
+	path = cities/belgium/antwerpen
+	url = https://github.com/EqualStreetNames/equalstreetnames-antwerpen.git
 [submodule "cities/belgium/braine-lalleud"]
 	path = cities/belgium/braine-lalleud
 	url = https://github.com/EqualStreetNames/equalstreetnames-braine-lalleud.git

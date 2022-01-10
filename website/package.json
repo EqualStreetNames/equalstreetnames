@@ -44,6 +44,7 @@
     "lint": "eslint \"src/script/**/*.ts\"",
     "build:austria:vienna": "node build.js -c austria/vienna",
     "build:belarus:minsk": "node build.js -c belarus/minsk",
+    "build:belgium:antwerpen": "node build.js -c belgium/antwerpen",
     "build:belgium:braine-lalleud": "node build.js -c belgium/braine-lalleud",
     "build:belgium:brugge": "node build.js -c belgium/brugge",
     "build:belgium:brussels": "node build.js -c belgium/brussels",

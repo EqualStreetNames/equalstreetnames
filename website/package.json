@@ -30,7 +30,7 @@
     "parcel": "^2.1",
     "sass": "^1.49",
     "shelljs": "^0.8.5",
-    "typescript": "^4.5"
+    "typescript": "^4.6"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",

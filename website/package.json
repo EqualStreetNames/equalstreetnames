@@ -61,6 +61,7 @@
     "build:germany:freiburg-im-breisgau": "node build.js -c germany/freiburg-im-breisgau",
     "build:germany:freising": "node build.js -c germany/freising",
     "build:germany:halle-saale": "node build.js -c germany/halle-saale",
+    "build:germany:kaiserslautern": "node build.js -c germany/kaiserslautern",
     "build:germany:leipzig": "node build.js -c germany/leipzig",
     "build:germany:mainz": "node build.js -c germany/mainz",
     "build:germany:munich": "node build.js -c germany/munich",

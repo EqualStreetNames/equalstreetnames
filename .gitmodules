@@ -34,6 +34,9 @@
 [submodule "cities/belgium/nivelles"]
 	path = cities/belgium/nivelles
 	url = https://github.com/EqualStreetNames/equalstreetnames-nivelles.git
+[submodule "cities/estonia/tallinn"]
+	path = cities/estonia/tallinn
+	url = https://github.com/EqualStreetNames/equalstreetnames-tallinn.git
 [submodule "cities/france/saint-brieuc"]
 	path = cities/france/saint-brieuc
 	url = https://github.com/EqualStreetNames/equalstreetnames-saint-brieuc.git

@@ -54,6 +54,7 @@
     "build:belgium:mons": "node build.js -c belgium/mons",
     "build:belgium:namur": "node build.js -c belgium/namur",
     "build:belgium:nivelles": "node build.js -c belgium/nivelles",
+    "build:estonia:tallinn": "node build.js -c estonia/tallinn",
     "build:france:saint-brieuc": "node build.js -c france/saint-brieuc",
     "build:germany:berlin": "node build.js -c germany/berlin",
     "build:germany:brandenburg-an-der-havel": "node build.js -c germany/brandenburg-an-der-havel",

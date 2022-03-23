@@ -53,6 +53,12 @@
       "url": "https://nivelles.equalstreetnames.be/"
     }
   },
+  "estonia": {
+    "tallinn": {
+      "name": "🇪🇪 Tallinn, Estonia",
+      "url": "https://tallinn.equalstreetnames.eu/"
+    }
+  },
   "france": {
     "saint-brieuc": {
       "name": "🇫🇷 Saint-Brieuc, France",

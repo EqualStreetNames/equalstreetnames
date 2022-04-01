@@ -520,7 +520,8 @@ class GeoJSONCommand extends AbstractCommand
 
             switch ($object->tags->type) {
                 case 'associatedStreet':
-                    $members = array_filter(
+                case 'street':
+                        $members = array_filter(
                         $object->members,
                         function ($member): bool {
                             return $member->role === 'street';

@@ -14,6 +14,7 @@ use App\Model\Overpass\Element;
 use App\Model\Overpass\Node;
 use App\Model\Overpass\Overpass;
 use App\Model\Overpass\Relation;
+use App\Model\Overpass\Relation\Member;
 use App\Model\Overpass\Way;
 use App\Model\Wikidata\Entity;
 use App\Wikidata\Wikidata;
@@ -515,16 +516,48 @@ class GeoJSONCommand extends AbstractCommand
     {
         if ($object->type === 'relation') {
             /** @var Relation */ $object = $object;
-            $members = array_filter(
-                $object->members,
-                function ($member): bool {
-                    return $member->role === 'street' || $member->role === 'outer';
-                }
-            );
+            /** @var Member[] */ $members = [];
+
+            switch ($object->tags->type) {
+                case 'associatedStreet':
+                    $members = array_filter(
+                        $object->members,
+                        function ($member): bool {
+                            return $member->role === 'street';
+                        }
+                    );
+                    if (count($members) === 0) {
+                        $warnings[] = sprintf('<warning>No `role="street"` member in relation(%d).</warning>', $object->id);
+                    }
+                    break;
+                case 'multipolygon':
+                    $members = array_filter(
+                        $object->members,
+                        function ($member): bool {
+                            return $member->role === 'outer';
+                        }
+                    );
+                    if (count($members) === 0) {
+                        $warnings[] = sprintf('<warning>No `role="outer"` member in relation(%d).</warning>', $object->id);
+                    }
+                    break;
+                case 'route':
+                    $members = array_filter(
+                        $object->members,
+                        function ($member): bool {
+                            return $member->role === '' || $member->role === 'forward' || $member->role === 'backward';
+                        }
+                    );
+                    if (count($members) === 0) {
+                        $warnings[] = sprintf('<warning>No `role=""`, `role="forward"`, or `role="backward"` member in relation(%d).</warning>', $object->id);
+                    }
+                    break;
+                default:
+                    $warnings[] = sprintf('<warning>Type "%s" is not supported (yet) for relation(%d).</warning>', $object->tags->type, $object->id);
+                    break;
+            }
 
             if (count($members) === 0) {
-                $warnings[] = sprintf('No "street" or "outer" member in relation(%d).</warning>', $object->id);
-
                 return null;
             } else {
                 $coordinates = [];

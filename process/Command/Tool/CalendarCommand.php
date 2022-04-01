@@ -95,7 +95,9 @@ class CalendarCommand extends Command
                 }
             }
 
-            $nextRun = array_map(function ($row) { return $row[4]->getNextRunDate()->format('c'); }, $data);
+            $nextRun = array_map(function ($row) {
+                return $row[4]->getNextRunDate()->format('c');
+            }, $data);
             array_multisort(
                 $nextRun,
                 SORT_ASC,

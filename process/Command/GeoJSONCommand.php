@@ -519,7 +519,7 @@ class GeoJSONCommand extends AbstractCommand
             /** @var Member[] */ $members = [];
 
             switch ($object->tags->type) {
-                case 'associatedStreet';
+                case 'associatedStreet':
                     $members = array_filter(
                         $object->members,
                         function ($member): bool {
@@ -528,9 +528,9 @@ class GeoJSONCommand extends AbstractCommand
                     );
                     if (count($members) === 0) {
                         $warnings[] = sprintf('<warning>No `role="street"` member in relation(%d).</warning>', $object->id);
-                   }
+                    }
                     break;
-                case 'multipolygon';
+                case 'multipolygon':
                     $members = array_filter(
                         $object->members,
                         function ($member): bool {
@@ -539,9 +539,9 @@ class GeoJSONCommand extends AbstractCommand
                     );
                     if (count($members) === 0) {
                         $warnings[] = sprintf('<warning>No `role="outer"` member in relation(%d).</warning>', $object->id);
-                   }
+                    }
                     break;
-                case 'route';
+                case 'route':
                     $members = array_filter(
                         $object->members,
                         function ($member): bool {
@@ -550,7 +550,7 @@ class GeoJSONCommand extends AbstractCommand
                     );
                     if (count($members) === 0) {
                         $warnings[] = sprintf('<warning>No `role=""`, `role="forward"`, or `role="backward"` member in relation(%d).</warning>', $object->id);
-                   }
+                    }
                     break;
                 default:
                     $warnings[] = sprintf('<warning>Type "%s" is not supported (yet) for relation(%d).</warning>', $object->tags->type, $object->id);

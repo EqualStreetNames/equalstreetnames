@@ -170,6 +170,10 @@
     }
   },
   "spain": {
+    "bilbao": {
+      "name": "🇪🇸 Bilbao, Spain",
+      "url": "https://bilbao.equalstreetnames.eu/"
+    },
     "madrid": {
       "name": "🇪🇸 Madrid, Spain",
       "url": "https://madrid.equalstreetnames.eu/"

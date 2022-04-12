@@ -12,7 +12,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
-    "@parcel/transformer-image": "^2.3",
+    "@parcel/transformer-image": "^2.4",
     "@parcel/transformer-sass": "^2.3",
     "@parcel/transformer-typescript-tsc": "^2.1",
     "@turf/bbox": "^6.5.0",

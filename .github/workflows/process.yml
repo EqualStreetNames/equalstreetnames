@@ -23,7 +23,7 @@ jobs:
   process-brussels:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
       - name: Validate composer.json and composer.lock
@@ -45,7 +45,7 @@ jobs:
     name: PHP_CodeSniffer
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: composer install --prefer-dist --no-progress
       - name: Configure PHPCS
         run: ./vendor/squizlabs/php_codesniffer/bin/phpcs --config-set ignore_warnings_on_exit 1
@@ -55,6 +55,6 @@ jobs:
     name: PHPStan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: composer install --prefer-dist --no-progress
       - run: composer run-script analyze

@@ -80,6 +80,7 @@
     "build:slovakia:bratislava": "node build.js -c slovakia/bratislava",
     "build:spain:bilbao": "node build.js -c spain/bilbao",
     "build:spain:madrid": "node build.js -c spain/madrid",
+    "build:switzerland:basel": "node build.js -c switzerland/basel",
     "build:switzerland:bern": "node build.js -c switzerland/bern",
     "build:switzerland:lausanne": "node build.js -c switzerland/lausanne",
     "build:switzerland:stgallen": "node build.js -c switzerland/stgallen",

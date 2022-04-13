@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
+    "events": "^3.3.0",
     "parcel": "^2.4",
     "sass": "^1.50",
     "shelljs": "^0.8.5",

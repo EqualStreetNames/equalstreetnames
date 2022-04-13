@@ -180,6 +180,10 @@
     }
   },
   "switzerland": {
+    "basel": {
+      "name": "🇨🇭 Basel, Switzerland",
+      "url": "https://basel.equalstreetnames.eu/"
+    },
     "bern": {
       "name": "🇨🇭 Bern, Switzerland",
       "url": "https://bern.equalstreetnames.eu/"

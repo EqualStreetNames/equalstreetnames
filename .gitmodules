@@ -112,6 +112,9 @@
 [submodule "cities/spain/madrid"]
 	path = cities/spain/madrid
 	url = https://github.com/EqualStreetNames/equalstreetnames-madrid.git
+[submodule "cities/switzerland/basel"]
+	path = cities/switzerland/basel
+	url = https://github.com/EqualStreetNames/equalstreetnames-basel.git
 [submodule "cities/switzerland/bern"]
 	path = cities/switzerland/bern
 	url = https://github.com/EqualStreetNames/equalstreetnames-bern.git

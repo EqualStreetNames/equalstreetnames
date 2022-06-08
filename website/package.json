@@ -14,7 +14,7 @@
     "@babel/preset-env": "^7.18.2",
     "@parcel/transformer-image": "^2.4",
     "@parcel/transformer-sass": "^2.4",
-    "@parcel/transformer-typescript-tsc": "^2.4",
+    "@parcel/transformer-typescript-tsc": "^2.6",
     "@turf/bbox": "^6.5.0",
     "@types/chart.js": "^2.9.37",
     "@types/mapbox__mapbox-gl-geocoder": "^4.7.2",

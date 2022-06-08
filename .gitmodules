@@ -136,3 +136,6 @@
 [submodule "cities/usa/sanfrancisco"]
 	path = cities/usa/sanfrancisco
 	url = https://github.com/EqualStreetNames/equalstreetnames-sanfrancisco.git
+[submodule "global"]
+	path = global
+	url = https://github.com/EqualStreetNames/module-global.git

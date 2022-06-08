@@ -142,3 +142,6 @@
 [submodule "process"]
 	path = process
 	url = https://github.com/EqualStreetNames/module-process.git
+[submodule "website"]
+	path = website
+	url = https://github.com/EqualStreetNames/module-website.git

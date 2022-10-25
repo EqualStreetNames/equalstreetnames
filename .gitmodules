@@ -115,6 +115,9 @@
 [submodule "cities/slovakia/bratislava"]
 	path = cities/slovakia/bratislava
 	url = https://github.com/EqualStreetNames/equalstreetnames-bratislava
+[submodule "cities/south-africa/cape-town"]
+	path = cities/south-africa/cape-town
+	url = https://github.com/EqualStreetNames/equalstreetnames-capetown.git
 [submodule "cities/spain/bilbao"]
 	path = cities/spain/bilbao
 	url = https://github.com/EqualStreetNames/equalstreetnames-bilbao.git

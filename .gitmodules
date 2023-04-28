@@ -157,3 +157,6 @@
 [submodule "cities/germany/frankfurt-am-main"]
 	path = cities/germany/frankfurt-am-main
 	url = https://github.com/EqualStreetNames/equalstreetnames-frankfurt-am-main.git
+[submodule "cities/germany/hannover"]
+	path = cities/germany/hannover
+	url = https://github.com/EqualStreetNames/equalstreetnames-hannover.git

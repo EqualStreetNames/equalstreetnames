@@ -37,6 +37,9 @@
 [submodule "cities/belgium/rixensart"]
 	path = cities/belgium/rixensart
 	url = https://github.com/EqualStreetNames/equalstreetnames-rixensart.git
+[submodule "cities/belgium/roeselare"]
+	path = cities/belgium/roeselare
+	url = https://github.com/EqualStreetNames/equalstreetnames-roeselare.git
 [submodule "cities/estonia/tallinn"]
 	path = cities/estonia/tallinn
 	url = https://github.com/EqualStreetNames/equalstreetnames-tallinn.git

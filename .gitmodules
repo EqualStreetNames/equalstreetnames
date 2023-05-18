@@ -73,6 +73,9 @@
 [submodule "cities/germany/leipzig"]
 	path = cities/germany/leipzig
 	url = https://github.com/EqualStreetNames/equalstreetnames-leipzig.git
+[submodule "cities/germany/frankfurt-am-main"]
+	path = cities/germany/frankfurt-am-main
+	url = https://github.com/EqualStreetNames/equalstreetnames-frankfurt-am-main.git
 [submodule "cities/germany/mainz"]
 	path = cities/germany/mainz
 	url = https://github.com/EqualStreetNames/equalstreetnames-mainz.git
@@ -112,6 +115,9 @@
 [submodule "cities/poland/warsaw"]
 	path = cities/poland/warsaw
 	url = https://github.com/EqualStreetNames/equalstreetnames-warsaw.git
+[submodule "cities/poland/wroclaw"]
+	path = cities/poland/wroclaw
+	url = https://github.com/EqualStreetNames/equalstreetnames-wroclaw.git
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
 	url = https://github.com/EqualStreetNames/equalstreetnames-belgrade
@@ -157,6 +163,3 @@
 [submodule "website"]
 	path = website
 	url = https://github.com/EqualStreetNames/module-website.git
-[submodule "cities/germany/frankfurt-am-main"]
-	path = cities/germany/frankfurt-am-main
-	url = https://github.com/EqualStreetNames/equalstreetnames-frankfurt-am-main.git

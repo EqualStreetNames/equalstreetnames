@@ -1,3 +1,6 @@
+[submodule "cities/australia/fremantle"]
+	path = cities/australia/fremantle
+	url = https://github.com/EqualStreetNames/equalstreetnames-fremantle.git
 [submodule "cities/austria/vienna"]
 	path = cities/austria/vienna
 	url = https://github.com/EqualStreetNames/equalstreetnames-vienna.git

@@ -100,6 +100,9 @@
 [submodule "cities/greece/athens"]
 	path = cities/greece/athens
 	url = https://github.com/EqualStreetNames/equalstreetnames-athens.git
+[submodule "cities/hungary/budapest"]
+	path = cities/hungary/budapest
+	url = https://github.com/EqualStreetNames/equalstreetnames-budapest.git
 [submodule "cities/italy/bolzano"]
 	path = cities/italy/bolzano
 	url = https://github.com/EqualStreetNames/equalstreetnames-bolzano.git

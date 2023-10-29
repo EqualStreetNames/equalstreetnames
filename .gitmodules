@@ -142,6 +142,9 @@
 [submodule "cities/portugal/lisbon"]
 	path = cities/portugal/lisbon
 	url = https://github.com/EqualStreetNames/equalstreetnames-lisbon.git
+[submodule "cities/romania/bucharest"]
+	path = cities/romania/bucharest
+	url = https://github.com/EqualStreetNames/equalstreetnames-bucharest.git
 [submodule "cities/serbia/belgrade"]
 	path = cities/serbia/belgrade
 	url = https://github.com/EqualStreetNames/equalstreetnames-belgrade

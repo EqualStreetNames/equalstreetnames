@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-   concurrency:
+    concurrency:
       group: update-${{ inputs.city }}
       cancel-in-progress: true
     steps:

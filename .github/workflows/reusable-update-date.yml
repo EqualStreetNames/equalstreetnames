@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          repository: ${{ github.repository_owner }}/equalstreetnames
           token: ${{ secrets.ACCESS_TOKEN }}
           submodules: true
 

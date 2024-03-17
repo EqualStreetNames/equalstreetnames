@@ -1,0 +1,65 @@
+on:
+  workflow_call:
+    city:
+        description: "Country/City"
+        required: true
+        type: string
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+   concurrency:
+      group: update-${{ inputs.city }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          submodules: true
+
+      - name: Validate composer.json and composer.lock
+        working-directory: process
+        run: composer validate
+      - name: Install dependencies
+        working-directory: process
+        run: composer install --prefer-dist --no-progress
+
+      - name: Checkout submodule to master
+        working-directory: cities/${{ inputs.city }}
+        run: git checkout -q master
+      - name: Update sub-modules
+        run: git submodule update --remote --merge cities/${{ inputs.city }}
+
+      - name: Normalize `data.csv` file
+        working-directory: process
+        run: php process.php tool:normalize-csv --city=${{ inputs.city }}
+
+      - name: Run update
+        working-directory: process
+        run: composer run update-data -- --city=${{ inputs.city }}
+
+      - name: Git configuration
+        if: github.event_name == 'push'
+        working-directory: cities/${{ inputs.city }}
+        run: |
+          git config --global user.name github-actions[bot]
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Commit & Push sub-module
+        if: github.event_name == 'push'
+        working-directory: cities/${{ inputs.city }}
+        run: |
+          git add data.csv
+          git add data/*
+          git commit -m "🗃 Update data"
+          git push
+
+      - name: Commit & Push main repository
+        if: github.event_name == 'push'
+        run: |
+          git pull
+          git add cities/belgium/brussels
+          git commit -m "🗃 Update ${{ inputs.city }} sub-module"
+          git push

@@ -62,6 +62,6 @@ jobs:
         if: github.event_name == 'push'
         run: |
           git pull
-          git add cities/belgium/brussels
+          git add cities/${{ inputs.city }}
           git commit -m "🗃 Update ${{ inputs.city }} sub-module"
           git push

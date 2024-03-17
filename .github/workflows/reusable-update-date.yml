@@ -1,6 +1,7 @@
 on:
   workflow_call:
-    city:
+    inputs:
+      city:
         description: "Country/City"
         required: true
         type: string

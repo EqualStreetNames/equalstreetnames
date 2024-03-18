@@ -36,7 +36,8 @@ jobs:
 
       - name: Normalize `data.csv` file
         working-directory: process
-        run: php process.php tool:normalize-csv --city=${{ inputs.city }}
+        run: |
+          [ -f "../cities/${{ inputs.city }}/data.csv" ] || php process.php tool:normalize-csv --city=${{ inputs.city }}
 
       - name: Run update
         working-directory: process

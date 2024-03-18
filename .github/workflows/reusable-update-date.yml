@@ -53,9 +53,7 @@ jobs:
         if: github.event_name == 'push'
         working-directory: cities/${{ inputs.city }}
         run: |
-          git add data.csv
-          git add data/*
-          git commit -m "🗃 Update data"
+          git commit -a -m "🗃 Update data"
           git push
 
       - name: Commit & Push main repository

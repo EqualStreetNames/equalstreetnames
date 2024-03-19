@@ -36,7 +36,6 @@ jobs:
         uses: GrantBirki/json-yaml-validate@v2
         with:
           use_gitignore: false
-          ajv_strict_mode: false
           json_schema: ./FeatureCollection.json
           files: |
             ./data/relations.geojson

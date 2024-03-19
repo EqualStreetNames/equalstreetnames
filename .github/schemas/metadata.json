@@ -1,0 +1,57 @@
+{
+  "title": "JSON Metadata",
+  "type": "object",
+  "required": [
+    "update",
+    "genders",
+    "sources"
+  ],
+  "properties": {
+    "update": {
+      "type": "string"
+    },
+    "genders": {
+      "F": {
+        "type": "number"
+      },
+      "M": {
+        "type": "number"
+      },
+      "FX": {
+        "type": "number"
+      },
+      "MX": {
+        "type": "number"
+      },
+      "X": {
+        "type": "number"
+      },
+      "NB": {
+        "type": "number"
+      },
+      "+": {
+        "type": "number"
+      },
+      "?": {
+        "type": "number"
+      },
+      "-": {
+        "type": "number"
+      }
+    },
+    "sources": {
+      "wikidata": {
+        "type": "number"
+      },
+      "csv": {
+        "type": "number"
+      },
+      "config": {
+        "type": "number"
+      },
+      "-": {
+        "type": "number"
+      }
+    }
+  }
+}

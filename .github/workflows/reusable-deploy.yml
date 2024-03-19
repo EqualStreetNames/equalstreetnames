@@ -57,7 +57,7 @@ jobs:
           MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: website/dist/${{ inputs.city }}
+          path: website/dist/${{ inputs.country }}/${{ inputs.city }}
 
   deploy:
     needs: build

@@ -36,7 +36,7 @@ jobs:
         with:
           use_gitignore: false
           ajv_strict_mode: false
-          json_schema: ./.github/workflows/schemas/metadata.json
+          json_schema: https://raw.githubusercontent.com/EqualStreetNames/equalstreetnames-brussels/master/data/metadata.json
           files: ./data/metadata.json
 
   build:

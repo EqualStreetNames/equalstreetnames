@@ -13,6 +13,9 @@ on:
 jobs:
   validate-geojson:
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-${{ inputs.country }}-${{ inputs.city }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
       - name: Validate GeoJSON

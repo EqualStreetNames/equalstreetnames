@@ -42,7 +42,6 @@ jobs:
   build:
     needs: [validate-geojson, validate-metadata]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
         with:

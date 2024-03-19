@@ -43,21 +43,17 @@ jobs:
         run: composer run update-data -- --city=${{ inputs.city }}
 
       - name: Git configuration
-        if: github.event_name == 'push'
-        working-directory: cities/${{ inputs.city }}
         run: |
           git config --global user.name github-actions[bot]
           git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
 
       - name: Commit & Push sub-module
-        if: github.event_name == 'push'
         working-directory: cities/${{ inputs.city }}
         run: |
           git commit -a -m "🗃 Update data"
           git push
 
       - name: Commit & Push main repository
-        if: github.event_name == 'push'
         run: |
           git pull
           git add cities/${{ inputs.city }}

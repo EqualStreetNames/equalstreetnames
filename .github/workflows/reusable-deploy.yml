@@ -32,11 +32,12 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: validation-schema
+          path: schemas
       - name: Validate GeoJSON
         uses: GrantBirki/json-yaml-validate@v2
         with:
           use_gitignore: false
-          json_schema: ./FeatureCollection.json
+          json_schema: ./schemas/FeatureCollection.json
           files: |
             ./data/relations.geojson
             ./data/ways.geojson
@@ -47,12 +48,13 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: validation-schema
+          path: schemas
       - name: Validate "metadata.json"
         uses: GrantBirki/json-yaml-validate@v2
         with:
           use_gitignore: false
           ajv_strict_mode: false
-          json_schema: ./metadata.json
+          json_schema: ./schemas/metadata.json
           files: ./data/metadata.json
 
   build:

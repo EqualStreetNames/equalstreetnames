@@ -10,33 +10,50 @@ on:
         required: true
         type: string
 
+concurrency:
+  group: deploy-${{ inputs.country }}-${{ inputs.city }}
+  cancel-in-progress: true
+
 jobs:
-  validate-geojson:
+  validation-schema:
     runs-on: ubuntu-latest
-    concurrency:
-      group: deploy-${{ inputs.country }}-${{ inputs.city }}
-      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/equalstreetnames
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validation-schema
+          path: .github/schemas/*.json
+  validate-geojson:
+    needs: validation-schema
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: validation-schema
       - name: Validate GeoJSON
         uses: GrantBirki/json-yaml-validate@v2
         with:
           use_gitignore: false
           ajv_strict_mode: false
-          json_schema: ./.github/workflows/schemas/FeatureCollection.json
+          json_schema: ./FeatureCollection.json
           files: |
             ./data/relations.geojson
             ./data/ways.geojson
   validate-metadata:
+    needs: validation-schema
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: validation-schema
       - name: Validate "metadata.json"
         uses: GrantBirki/json-yaml-validate@v2
         with:
           use_gitignore: false
           ajv_strict_mode: false
-          json_schema: https://raw.githubusercontent.com/EqualStreetNames/equalstreetnames-brussels/master/data/metadata.json
+          json_schema: ./metadata.json
           files: ./data/metadata.json
 
   build:

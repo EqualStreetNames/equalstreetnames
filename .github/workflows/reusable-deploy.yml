@@ -21,6 +21,8 @@ jobs:
       - name: Validate GeoJSON
         uses: GrantBirki/json-yaml-validate@v2
         with:
+          use_gitignore: false
+          ajv_strict_mode: false
           json_schema: ./.github/workflows/schemas/FeatureCollection.json
           files: |
             ./data/relations.geojson
@@ -32,6 +34,8 @@ jobs:
       - name: Validate "metadata.json"
         uses: GrantBirki/json-yaml-validate@v2
         with:
+          use_gitignore: false
+          ajv_strict_mode: false
           json_schema: ./.github/workflows/schemas/metadata.json
           files: ./data/metadata.json
 

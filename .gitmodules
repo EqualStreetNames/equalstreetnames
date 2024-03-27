@@ -22,6 +22,9 @@
 [submodule "cities/belgium/gent"]
 	path = cities/belgium/gent
 	url = https://github.com/EqualStreetNames/equalstreetnames-gent.git
+[submodule "cities/belgium/halle"]
+	path = cities/belgium/halle
+	url = https://github.com/EqualStreetNames/equalstreetnames-halle.git
 [submodule "cities/belgium/leuven"]
 	path = cities/belgium/leuven
 	url = https://github.com/EqualStreetNames/equalstreetnames-leuven.git

@@ -19,8 +19,9 @@ jobs:
         with:
           repository: ${{ github.repository_owner }}/equalstreetnames
           token: ${{ secrets.ACCESS_TOKEN }}
-          submodules: true
-
+      - run: git submodule update --init process
+      - run: git submodule update --init cities/${{ inputs.city }}
+    
       - name: Validate composer.json and composer.lock
         working-directory: process
         run: composer validate
@@ -50,7 +51,8 @@ jobs:
       - name: Commit & Push sub-module
         working-directory: cities/${{ inputs.city }}
         run: |
-          git commit -a -m "🗃 Update data"
+          git add -A
+          git commit -m "🗃 Update data"
           git push
 
       - name: Commit & Push main repository

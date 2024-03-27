@@ -19,8 +19,7 @@ jobs:
         with:
           repository: ${{ github.repository_owner }}/equalstreetnames
           token: ${{ secrets.ACCESS_TOKEN }}
-      - run: git submodule update --init process
-      - run: git submodule update --init cities/${{ inputs.city }}
+          submodules: true
     
       - name: Validate composer.json and composer.lock
         working-directory: process

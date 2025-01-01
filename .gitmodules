@@ -49,6 +49,9 @@
 [submodule "cities/denmark/copenhagen"]
 	path = cities/denmark/copenhagen
 	url = https://github.com/EqualStreetNames/equalstreetnames-copenhagen.git
+[submodule "cities/estonia/narva"]
+	path = cities/estonia/narva
+	url = https://github.com/EqualStreetNames/equalstreetnames-narva.git
 [submodule "cities/estonia/tallinn"]
 	path = cities/estonia/tallinn
 	url = https://github.com/EqualStreetNames/equalstreetnames-tallinn.git

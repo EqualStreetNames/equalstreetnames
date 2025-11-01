@@ -35,7 +35,7 @@ jobs:
           name: validation-schema
           path: schemas
       - name: Validate GeoJSON
-        uses: GrantBirki/json-yaml-validate@v3
+        uses: GrantBirki/json-yaml-validate@v4
         with:
           use_gitignore: false
           json_schema: ./schemas/FeatureCollection.json
@@ -52,7 +52,7 @@ jobs:
           name: validation-schema
           path: schemas
       - name: Validate "metadata.json"
-        uses: GrantBirki/json-yaml-validate@v3
+        uses: GrantBirki/json-yaml-validate@v4
         with:
           use_gitignore: false
           ajv_strict_mode: false

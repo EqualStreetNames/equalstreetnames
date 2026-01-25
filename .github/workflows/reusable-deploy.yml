@@ -73,8 +73,6 @@ jobs:
         working-directory: website
       - run: npm run build:${{ inputs.country }}:${{ inputs.city }}
         working-directory: website
-        env:
-          MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: website/dist/${{ inputs.country }}/${{ inputs.city }}

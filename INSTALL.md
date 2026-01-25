@@ -75,12 +75,6 @@ You should now have a completely working version of EqualStreetNames to work on.
 
 ### Website
 
-1. Create a [Mapbox token](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/)
-
-1. Create a file named `.env` in the `website/` directory of the project
-
-1. Add the following line to the `.env` file: `MAPBOX_TOKEN=[your Mapbox token]` replacing `[your Mapbox token]` with the token you created
-
 1. Choose the city you want to run locally (command to run in `website/` directory)
 
     ```cmd

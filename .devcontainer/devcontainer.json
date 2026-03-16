@@ -1,0 +1,23 @@
+{
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "equalstreetnames/global": {
+          "permissions": {
+            "contents": "write"
+          }
+        },
+        "equalstreetnames/process": {
+          "permissions": {
+            "contents": "write"
+          }
+        },
+        "equalstreetnames/website": {
+          "permissions": {
+            "contents": "write"
+          }
+        }
+      }
+    }
+  }
+}

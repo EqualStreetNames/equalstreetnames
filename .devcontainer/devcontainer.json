@@ -2,17 +2,17 @@
   "customizations": {
     "codespaces": {
       "repositories": {
-        "equalstreetnames/global": {
+        "equalstreetnames/module-global": {
           "permissions": {
             "contents": "write"
           }
         },
-        "equalstreetnames/process": {
+        "equalstreetnames/module-process": {
           "permissions": {
             "contents": "write"
           }
         },
-        "equalstreetnames/website": {
+        "equalstreetnames/module-website": {
           "permissions": {
             "contents": "write"
           }

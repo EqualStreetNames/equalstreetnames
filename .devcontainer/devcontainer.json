@@ -1,4 +1,8 @@
 {
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/php:1": {}
+  },
   "customizations": {
     "codespaces": {
       "repositories": {

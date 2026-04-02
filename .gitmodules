@@ -58,6 +58,9 @@
 [submodule "cities/estonia/tartu"]
 	path = cities/estonia/tartu
 	url = https://github.com/EqualStreetNames/equalstreetnames-tartu.git
+[submodule "cities/france/bayonne"]
+	path = cities/france/bayonne
+	url = https://github.com/EqualStreetNames/equalstreetnames-bayonne.git
 [submodule "cities/france/crest"]
 	path = cities/france/crest
 	url = https://github.com/EqualStreetNames/equalstreetnames-crest.git

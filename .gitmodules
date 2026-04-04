@@ -67,6 +67,9 @@
 [submodule "cities/france/paris"]
 	path = cities/france/paris
 	url = https://github.com/EqualStreetNames/equalstreetnames-paris.git
+[submodule "cities/france/pau"]
+	path = cities/france/pau
+	url = https://github.com/EqualStreetNames/equalstreetnames-pau.git
 [submodule "cities/france/saint-brieuc"]
 	path = cities/france/saint-brieuc
 	url = https://github.com/EqualStreetNames/equalstreetnames-saint-brieuc.git

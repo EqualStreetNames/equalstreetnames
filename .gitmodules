@@ -85,12 +85,18 @@
 [submodule "cities/germany/dresden"]
 	path = cities/germany/dresden
 	url = https://github.com/EqualStreetNames/equalstreetnames-dresden.git
+[submodule "cities/germany/frankfurt-am-main"]
+	path = cities/germany/frankfurt-am-main
+	url = https://github.com/EqualStreetNames/equalstreetnames-frankfurt-am-main.git
 [submodule "cities/germany/freiburg-im-breisgau"]
 	path = cities/germany/freiburg-im-breisgau
 	url = https://github.com/EqualStreetNames/equalstreetnames-freiburg-im-breisgau.git
 [submodule "cities/germany/freising"]
 	path = cities/germany/freising
 	url = https://github.com/EqualStreetNames/equalstreetnames-freising.git
+[submodule "cities/germany/fuerth"]
+	path = cities/germany/fuerth
+	url = https://github.com/EqualStreetNames/equalstreetnames-fuerth.git
 [submodule "cities/germany/halle-saale"]
 	path = cities/germany/halle-saale
 	url = https://github.com/EqualStreetNames/equalstreetnames-halle-saale.git
@@ -103,12 +109,6 @@
 [submodule "cities/germany/leipzig"]
 	path = cities/germany/leipzig
 	url = https://github.com/EqualStreetNames/equalstreetnames-leipzig.git
-[submodule "cities/germany/frankfurt-am-main"]
-	path = cities/germany/frankfurt-am-main
-	url = https://github.com/EqualStreetNames/equalstreetnames-frankfurt-am-main.git
-[submodule "cities/germany/fuerth"]
-	path = cities/germany/fuerth
-	url = https://github.com/EqualStreetNames/equalstreetnames-fuerth.git
 [submodule "cities/germany/mainz"]
 	path = cities/germany/mainz
 	url = https://github.com/EqualStreetNames/equalstreetnames-mainz.git

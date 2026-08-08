@@ -7,9 +7,18 @@ version: 2
 updates:
   - package-ecosystem: gitsubmodule
     directory: "/"
+    groups:
+      cities:
+        patterns: [ "cities/*" ]
+      core-modules:
+        patterns: [ "global", "process", "website" ]
     schedule:
       interval: weekly
   - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+  - package-ecosystem: devcontainers
     directory: "/"
     schedule:
       interval: monthly

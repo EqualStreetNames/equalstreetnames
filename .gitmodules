@@ -163,6 +163,9 @@
 [submodule "cities/portugal/lisbon"]
 	path = cities/portugal/lisbon
 	url = https://github.com/EqualStreetNames/equalstreetnames-lisbon.git
+[submodule "cities/portugal/porto"]
+	path = cities/portugal/porto
+	url = https://github.com/EqualStreetNames/equalstreetnames-porto.git
 [submodule "cities/romania/bucharest"]
 	path = cities/romania/bucharest
 	url = https://github.com/EqualStreetNames/equalstreetnames-bucharest.git

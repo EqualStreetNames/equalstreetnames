@@ -13,7 +13,7 @@ updates:
       core-modules:
         patterns: [ "global", "process", "website" ]
     schedule:
-      interval: weekly
+      interval: daily
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

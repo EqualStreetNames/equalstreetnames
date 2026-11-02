@@ -1,0 +1,111 @@
+on:
+  workflow_call:
+    inputs:
+      city:
+        description: "Country/City"
+        required: true
+        type: string
+
+jobs:
+
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    concurrency:
+      group: update-${{ inputs.city }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          app-id: ${{ vars.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+      - uses: actions/checkout@v7
+        with:
+          repository: ${{ github.repository_owner }}/equalstreetnames
+          token: ${{ steps.app-token.outputs.token }}
+      - name: Update sub-modules
+        run: git submodule update --init --remote --merge process cities/${{ inputs.city }}
+      - name: Validate composer.json and composer.lock
+        working-directory: process
+        run: composer validate
+      - name: Install dependencies
+        working-directory: process
+        run: composer install --prefer-dist --no-progress
+      - name: Checkout submodule to master
+        working-directory: cities/${{ inputs.city }}
+        run: git checkout -q master
+      - name: Normalize `data.csv` file
+        working-directory: process
+        run: php process.php tool:normalize-csv --city=${{ inputs.city }}
+      - name: Run update
+        working-directory: process
+        run: composer run update-data -- --city=${{ inputs.city }}
+      - name: Git status
+        working-directory: cities/${{ inputs.city }}
+        run: git status
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: data
+          path: |
+            cities/${{ inputs.city }}/data.csv
+            cities/${{ inputs.city }}/data/*.csv
+            cities/${{ inputs.city }}/data/*.geojson
+            cities/${{ inputs.city }}/data/*.json
+          if-no-files-found: ignore
+
+  push-data:
+    runs-on: ubuntu-latest
+    needs: update-data
+    permissions:
+      contents: write
+    if: github.event_name != 'pull_request'
+    steps:
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          app-id: ${{ vars.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          permission-contents: write
+      - uses: actions/checkout@v7
+        with:
+          repository: ${{ github.repository_owner }}/equalstreetnames
+          token: ${{ steps.app-token.outputs.token }}
+      - name: Update sub-modules
+        run: git submodule update --init --remote --merge cities/${{ inputs.city }}
+      - name: Download artifacts
+        uses: actions/download-artifact@v7
+        with:
+          name: data
+          path: cities/${{ inputs.city }}/
+      - name: Git configuration
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          BOT_SLUG: ${{ steps.app-token.outputs.app-slug }}
+        run: |
+          bot_id=$(gh api "/users/${BOT_SLUG}%5Bbot%5D" --jq .id)
+          git config --global user.name "${BOT_SLUG}[bot]"
+          git config --global user.email "${bot_id}+${BOT_SLUG}[bot]@users.noreply.github.com"
+          gh auth setup-git
+      - name: Verify sub-module changes
+        working-directory: cities/${{ inputs.city }}
+        run: git status
+      - name: Commit & Push city repository
+        working-directory: cities/${{ inputs.city }}
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          git add -A
+          git commit -m "🗃 Update data" || echo "No changes to commit"
+          git push origin HEAD:master
+      - name: Verify main repository changes
+        run: git status
+      - name: Commit & Push main repository
+        run: |
+          git add cities/${{ inputs.city }}
+          git commit -m "🗃 Update ${{ inputs.city }} sub-module" || echo "No changes to commit"
+          git push origin HEAD:master
